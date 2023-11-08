@@ -25,6 +25,13 @@
   {{-- SideBar --}}
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="fs-4 fw-semibold">
+          <a href="#" class="ms-3 text-success">QR-Checker</a>
+        </div>
+        <div class="d-flex flex-row align-items-center">
+          <div class="col-3 ms-4 p-0"><i class="bi bi-person-circle text-white scale"></i></div>
+          <div class="col text-white text-start scale-fontname p-0">Name : Unknow <br> 63113532000 </div>
+        </div>
         <a href="#">กา</a>
         <a href="#">รา</a>
         <a href="#">มัง</a>
@@ -44,36 +51,30 @@
                   Windows Microsoft 2023 eiei
                 </div>
                 <div class="fs-4 fw-semibold">
-                  Your Dashboard is updated
+                  <p class="m-0 text-success">Your Dashboard is updated</p>
                 </div>
               </div>
             </div>
             <div class="col border">
-              <div class="d-flex flex-row justify-content-end mb-3">
-                <div class="search">
+              <div class="d-flex flex-row justify-content-end ">
+                
+                <div class="home me-3 py-3">
+                  <button type="button" class="btn btn-light "><i class="bi bi-house"></i></button>
+                </div>
+                <div class="search mx-3 py-3">
                   <form class="">
                     <div class="input-group" >
                       <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1" id="search-input">
-                      <span class="input-group-text btn btn-success rounded-3" id="basic-addon1"><i class="bi bi-search"></i></span>
+                      <span class="input-group-text btn btn-light rounded-3" id="basic-addon1"><i class="bi bi-search"></i></span>
                     </div>
                   </form>
                 </div>
-                <div class="home">
-                  <button type="button" class="btn btn-primary "><i class="bi bi-house"></i></button>
+                <div class="user ms-3 py-4">
+                  <a href="" class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-3">Login</a>
+                  <a href="" class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Register</a>
                 </div>
-                <div class="user">
-                  <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi bi-person"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
                 
-                              
+              </div>                
             </div>
           </div>
         </div>
