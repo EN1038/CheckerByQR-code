@@ -7,7 +7,7 @@
 	ออกแบบ flowchart การทำงานของระบบ
 	สร้าง template 
 	สร้าง Admin dashboard (สำหรับผู้ควบคุมกิจกรรม)
-	สร้าง 
+	สร้าง Super Admin Dashboard 
 
 กำหนดขอบเขต
 	USER
