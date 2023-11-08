@@ -34,7 +34,7 @@
                             <div class="sb-sidenav-menu-heading">Main interface</div>
                             <a class="nav-link" href="tables_user.blade.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Table-mian
+                                Empty
                             </a>
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">NSRU</div>
+                        <div class="d-flex align-items-center justify-content-center small border ">
+                            <div class="text-muted"> Footer NSRU</div>
                         </div>
                     </div>
                 </footer>

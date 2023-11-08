@@ -32,9 +32,13 @@
         <div class="box border" id="main">
           <div class="row">
             <div class="col border">
-              <div class="d-flex flex-column mb-3">
-                <div class="p-2">Flex item 1</div>
-                <div class="p-2">Flex item 2</div>
+              <div class="d-flex flex-column">
+                <div class="">
+                  Windows Microsoft 2023 eiei
+                </div>
+                <div class="fs-4 fw-semibold">
+                  Your Dashboard is updated
+                </div>
               </div>
             </div>
             <div class="col border">34</div>

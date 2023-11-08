@@ -1,6 +1,10 @@
-@extends('layouts.layout_users')
-@section('content')
+@extends('layouts.layout_dashboard')
+@section('content_dashboard')
+
+{{-- Start_Body --}}
 <div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
+    Body Naja
   </div>
+
+{{-- End_Body --}}
 @endsection
