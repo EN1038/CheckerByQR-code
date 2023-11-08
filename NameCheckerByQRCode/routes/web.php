@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +16,3 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('admins/dashboards');
 });
-
-Route::get('/login',[LoginController::class,'login_form'])->name('login');
