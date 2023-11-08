@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('admins/dashboards');
 });
 
+Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
+
 Route::get('/login',[LoginController::class,'login_form'])->name('login');
