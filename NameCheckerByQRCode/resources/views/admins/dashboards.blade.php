@@ -1,4 +1,4 @@
-@extends('layouts.layout_dashboard')
-@section('content_dashboard')
-    <h1>Hello</h1>
+@extends('layouts.layout_dashboardmodren')
+@section('content_body')
+    
 @endsection
