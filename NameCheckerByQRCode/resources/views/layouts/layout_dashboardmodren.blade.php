@@ -22,10 +22,23 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/styles_nav.css') }}">
     <link rel="stylesheet" href="{{asset('css/style_webslide.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_bg.css')}}">
     {{-- End_CSS --}}
 </head>
 
 <body>
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
     {{-- SideBar --}}
     <div id="mySidenav" class="sidenav content-segment">
         <div class="fs-4 fw-semibold">
