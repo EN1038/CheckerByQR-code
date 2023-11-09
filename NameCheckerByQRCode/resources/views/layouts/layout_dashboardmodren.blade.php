@@ -45,17 +45,23 @@
     <div class="box" id="main">
         {{-- Start_sidenav --}}
         <div class="row border-bottom">
-            <div class="col-4 ">
+          <div class="col-1 p-0 text-center">
+            <button class="border-0 btn btn-light scale-icon-nav" id="openNavButton" onclick="toggleNav()"> 
+              <i class="bi bi-caret-left-fill" id="closeNavIcon" onclick="closeNav()"></i> 
+              <i class="bi bi-caret-right-fill p-0 " id="openNavIcon" onclick="openNav()"></i> 
+            </button>
+          </div>
+            <div class="col-4 p-0">
                 <div class="d-flex flex-column">
                     <div class="fs-6 fw-medium text-muted mb-1">
-                        Windows Microsoft 2023 eiei
+                        Apple Banana 2023 eiei
                     </div>
                     <div class="fs-4 fw-semibold">
                         <p class="m-0 text-success">Your Dashboard is updated</p>
                     </div>
                 </div>
             </div>
-            <div class="col ">
+            <div class="col-7 ">
                 <div class="d-flex flex-row justify-content-end ">
 
                     <div class="home me-3 py-3">

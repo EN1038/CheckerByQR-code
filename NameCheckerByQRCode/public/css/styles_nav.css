@@ -106,3 +106,23 @@
 body {
     font-family: 'Prompt', sans-serif;
 }
+
+.scale-icon-nav{
+    font-size: 35px;
+}
+
+/* ซ่อนปุ่มเปิดเมื่อเริ่มต้น */
+#openNavIcon {
+    display: none;
+  }
+  
+  /* เปลี่ยนการแสดงผลเมื่อปุ่มถูกคลิก */
+  #openNavButton.nav-opened #closeNavIcon {
+    display: none;
+  }
+  
+  #openNavButton.nav-opened #openNavIcon {
+    display: inline-block;
+  }
+  
+  

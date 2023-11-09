@@ -37,4 +37,18 @@ function openNav() {
   }, 300); // 300 milliseconds (0.3 seconds)
 }
 
+function toggleNav() {
+  var sidenav = document.getElementById("mySidenav");
+  var openNavButton = document.getElementById("openNavButton");
+  
+  if (sidenav.classList.contains("opened")) {
+    sidenav.classList.remove("opened");
+    openNavButton.classList.remove("nav-opened");
+  } else {
+    sidenav.classList.add("opened");
+    openNavButton.classList.add("nav-opened");
+  }
+}
+
+
 
