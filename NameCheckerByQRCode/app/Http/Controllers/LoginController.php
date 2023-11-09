@@ -33,7 +33,7 @@ class LoginController extends Controller
         $user->save();
 
         // ลงทะเบียนสำเร็จแล้ว
-        return redirect('/welcome')->with('success', 'ลงทะเบียนเรียบร้อย');
+        return redirect()->back()->with('success', 'ลงทะเบียนเรียบร้อย');
     }
     public function login(Request $request)
     {
@@ -42,12 +42,17 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             
             // การลงชื่อเข้าใช้สำเร็จ
-            return redirect()->intended('/welcome');
+            return redirect()->back();
         }
 
         // การลงชื่อเข้าใช้ไม่สำเร็จ
         return back()->withErrors([
             'student_id' => 'อีเมลหรือรหัสผ่านไม่ถูกต้อง',
         ]);
+    }
+    public function logout(){
+        Auth::logout();
+        
+        return redirect()->back();
     }
 }
