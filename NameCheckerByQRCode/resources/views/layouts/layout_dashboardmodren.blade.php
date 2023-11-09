@@ -21,12 +21,27 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/styles_nav.css') }}">
+    <link rel="stylesheet" href="{{asset('css/style_webslide.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_bg.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_glassbox.css')}}">
     {{-- End_CSS --}}
 </head>
 
 <body>
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
     {{-- SideBar --}}
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav content-segment glassmorphism">
         <div class="fs-4 fw-semibold">
             <a href="#" class="ms-3 text-success fs-3">QR-Checker</a>
         </div>
@@ -42,20 +57,26 @@
     </div>
     {{-- End_SideBar --}}
     {{-- Start_main --}}
-    <div class="box" id="main">
+    <div class="box " id="main">
         {{-- Start_sidenav --}}
-        <div class="row border-bottom">
-            <div class="col-4 ">
+        <div class="row border-bottom content-segment">
+          <div class="col-1 p-0 text-center">
+            <button class="border-0 btn btn-light scale-icon-nav" id="openNavButton" onclick="toggleNav()"> 
+              <i class="bi bi-caret-left-fill" id="closeNavIcon" onclick="closeNav()"></i> 
+              <i class="bi bi-caret-right-fill p-0 " id="openNavIcon" onclick="openNav()"></i> 
+            </button>
+          </div>
+            <div class="col-4 p-0">
                 <div class="d-flex flex-column">
                     <div class="fs-6 fw-medium text-muted mb-1">
-                        Windows Microsoft 2023 eiei
+                        Apple Banana 2023 eiei
                     </div>
                     <div class="fs-4 fw-semibold">
-                        <p class="m-0 text-success">Your Dashboard is updated</p>
+                        <p class="m-0 text-success">QR-Code Checker</p>
                     </div>
                 </div>
             </div>
-            <div class="col ">
+            <div class="col-7 ">
                 <div class="d-flex flex-row justify-content-end ">
 
                     <div class="home me-3 py-3">
@@ -87,10 +108,12 @@
         </div>
         {{-- End_sidenav --}}
         {{-- body --}}
-        @yield('content_body')
+        <div class="body content-segment glassmorphism-body mt-4">
+          @yield('content_body')
+        </div>
         {{-- End_body --}}
         {{-- Footer --}}
-        <footer class=" container-fluid py-3 border-top">
+        <footer class=" container-fluid py-3 border-top content-segment">
             <div class="d-flex align-items-center justify-content-center small">
                 <div class="text-muted text-center">NSRU Nakhon Sawan Rajabhat University <br> Copyright &copy; 2023 CIT
                     NSRU All Rights Reserved</div>
@@ -105,6 +128,7 @@
     </script>
     <script src="{{ asset('js/side_nav.js') }}"></script>
     <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/script_slide.js') }}"></script>
     {{-- End_Script --}}
 </body>
 
