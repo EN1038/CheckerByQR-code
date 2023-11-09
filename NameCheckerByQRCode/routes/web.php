@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,9 @@ Route::get('/', function () {
 
 Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
 
-Route::get('/login',[LoginController::class,'login_form'])->name('login');
+//////////Route Login //////////////
+Route::get('/login-form',[LoginController::class,'loginForm'])->name('login');
+Route::get('/register-form',[LoginController::class,'registerForm'])->name('login');
+Route::post('register',[LoginController::Class,'register'])->name('register_post');
+Route::post('login-post',[LoginController::class,'login'])->name('login_post');
+
