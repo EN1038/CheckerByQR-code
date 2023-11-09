@@ -21,12 +21,13 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/styles_nav.css') }}">
+    <link rel="stylesheet" href="{{asset('css/style_webslide.css')}}">
     {{-- End_CSS --}}
 </head>
 
 <body>
     {{-- SideBar --}}
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav content-segment">
         <div class="fs-4 fw-semibold">
             <a href="#" class="ms-3 text-success fs-3">QR-Checker</a>
         </div>
@@ -42,9 +43,9 @@
     </div>
     {{-- End_SideBar --}}
     {{-- Start_main --}}
-    <div class="box" id="main">
+    <div class="box " id="main">
         {{-- Start_sidenav --}}
-        <div class="row border-bottom">
+        <div class="row border-bottom content-segment">
           <div class="col-1 p-0 text-center">
             <button class="border-0 btn btn-light scale-icon-nav" id="openNavButton" onclick="toggleNav()"> 
               <i class="bi bi-caret-left-fill" id="closeNavIcon" onclick="closeNav()"></i> 
@@ -88,10 +89,12 @@
         </div>
         {{-- End_sidenav --}}
         {{-- body --}}
-        @yield('content_body')
+        <div class="body content-segment">
+          @yield('content_body')
+        </div>
         {{-- End_body --}}
         {{-- Footer --}}
-        <footer class=" container-fluid py-3 border-top">
+        <footer class=" container-fluid py-3 border-top content-segment">
             <div class="d-flex align-items-center justify-content-center small">
                 <div class="text-muted text-center">NSRU Nakhon Sawan Rajabhat University <br> Copyright &copy; 2023 CIT
                     NSRU All Rights Reserved</div>
@@ -106,6 +109,7 @@
     </script>
     <script src="{{ asset('js/side_nav.js') }}"></script>
     <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/script_slide.js') }}"></script>
     {{-- End_Script --}}
 </body>
 
