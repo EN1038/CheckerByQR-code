@@ -6,13 +6,14 @@
     Body Naja
   </div>
 
-  @if(auth::check()){
+  @if(Auth::check()){
       <span>Loigin Success</span>
   }
   @else{
     <span>ยังไม่ได้เข้าสู่ระบบ
     </span>
   }
+  @endif
 
 {{-- End_Body --}}
 @endsection
