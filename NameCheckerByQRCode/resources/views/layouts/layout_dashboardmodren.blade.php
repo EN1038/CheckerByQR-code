@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles_nav.css') }}">
     <link rel="stylesheet" href="{{asset('css/style_webslide.css')}}">
     <link rel="stylesheet" href="{{asset('css/style_bg.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_glassbox.css')}}">
     {{-- End_CSS --}}
 </head>
 
@@ -40,7 +41,7 @@
     <li></li>
   </ul>
     {{-- SideBar --}}
-    <div id="mySidenav" class="sidenav content-segment">
+    <div id="mySidenav" class="sidenav content-segment glassmorphism">
         <div class="fs-4 fw-semibold">
             <a href="#" class="ms-3 text-success fs-3">QR-Checker</a>
         </div>
@@ -71,7 +72,7 @@
                         Apple Banana 2023 eiei
                     </div>
                     <div class="fs-4 fw-semibold">
-                        <p class="m-0 text-success">Your Dashboard is updated</p>
+                        <p class="m-0 text-success">QR-Code Checker</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +103,7 @@
         </div>
         {{-- End_sidenav --}}
         {{-- body --}}
-        <div class="body content-segment">
+        <div class="body content-segment glassmorphism-body mt-4">
           @yield('content_body')
         </div>
         {{-- End_body --}}
