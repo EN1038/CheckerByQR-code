@@ -47,7 +47,7 @@
         </div>
         <div class="d-flex flex-row align-items-center my-3">
             <div class="col-3 ms-4 ps-2"><i class="bi bi-person-circle text-white scale"></i></div>
-            <div class="col text-white text-start scale-fontname p-0">Name : Unknow <br> 63113532000 </div>
+            <div class="col text-white text-start scale-fontname p-0">Name : {{Auth::user()->name}} <br> {{Auth::user()->student_id}} </div>
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         </div>
         <a href="#">สร้างกิจกรรมหรือรายวิชา</a>
@@ -93,12 +93,13 @@
                         </form>
                     </div>
                     <div class="user ms-3 py-4">
-                        <a href="{{route('login_form')}}"
-                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-3">Login</a>
+                        
                             @if(Auth::check())
                             <a href="{{route('logout')}}"
-                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">logout</a>
+                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Logout</a>
                             @else
+                            <a href="{{route('login_form')}}"
+                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-3">Login</a>
                             <a href="{{route('register_form')}}"
                             class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Register</a>
                             @endif
