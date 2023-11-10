@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('admins/dashboards');
+    return view('Home.Home');
 });
 
 Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');

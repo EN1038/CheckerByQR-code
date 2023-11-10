@@ -42,7 +42,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             
             // การลงชื่อเข้าใช้สำเร็จ
-            return redirect()->back('/');
+            return redirect('/');
         }
 
         // การลงชื่อเข้าใช้ไม่สำเร็จ
