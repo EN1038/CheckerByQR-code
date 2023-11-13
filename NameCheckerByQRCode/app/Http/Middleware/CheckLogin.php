@@ -23,6 +23,6 @@ class CheckLogin
             return redirect()->route('login_form');
         }
 
-       
+
     }
 }

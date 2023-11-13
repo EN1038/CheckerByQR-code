@@ -24,7 +24,7 @@ Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
 //////////Route Login //////////////
 Route::get('/login-form',[LoginController::class,'loginForm'])->name('login_form');
 Route::get('/register-form',[LoginController::class,'registerForm'])->name('register_form');
-Route::post('register',[LoginController::Class,'register'])->name('register_post');
+Route::post('register',[LoginController::class,'register'])->name('register_post');
 Route::post('login-post',[LoginController::class,'login'])->name('login_post');
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 

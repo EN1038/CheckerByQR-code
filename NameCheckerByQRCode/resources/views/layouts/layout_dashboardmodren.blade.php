@@ -53,8 +53,8 @@
             <span>QR-CHECKER</span>
           </div>
         </div>
-        <div class="d-flex flex-row border align-items-center mb-2">
-          <div class="col-5">
+        <div class="d-flex flex-row align-items-center mb-2">
+          <div class="col-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/694px-Unknown_person.jpg" alt="" class="img-fluid user-img-scale rounded-3">
           </div>
           <div class="col">
