@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
     {{-- Icon_Bootstraps --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     {{-- End_Icon_Bootstraps --}}
 
     {{-- CSS --}}
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('css/style_webslide.css')}}">
     <link rel="stylesheet" href="{{asset('css/style_bg.css')}}">
     <link rel="stylesheet" href="{{asset('css/style_glassbox.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_sidenav.css')}}">
     {{-- End_CSS --}}
 </head>
 
@@ -41,33 +43,67 @@
     <li></li>
   </ul>
     {{-- SideBar --}}
-    <div id="mySidenav" class="sidenav content-segment glassmorphism">
-        <div class="fs-4 fw-semibold">
-            <a href="#" class="ms-3 text-success fs-3">QR-Checker</a>
+    <div id="mySidenav" class="sidenav content-segment">
+      <div class="d-flex flex-column text-white p-3">
+        <div class="d-flex flex-row mb-4">
+          <div class="col-4 text-center">
+            <i class="bi bi-qr-code-scan fs-1"></i>
+          </div>
+          <div class="col  fs-5 fw-bold d-flex align-items-center text-greenlight">
+            <span>QR-CHECKER</span>
+          </div>
         </div>
-        <div class="d-flex flex-row align-items-center my-3">
-            <div class="col-3 ms-4 ps-2"><i class="bi bi-person-circle text-white scale"></i></div>
-            @if(Auth::check())
-            <div class="col text-white text-start scale-fontname p-0">{{Auth::user()->name}} <br> {{Auth::user()->student_id}} </div>
-            @else
-            <div class="col text-white text-start scale-fontname p-0">ยังไม่ได้เข้าสู่ระบบ  </div>
-           @endif
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="d-flex flex-row border align-items-center mb-2">
+          <div class="col-5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/694px-Unknown_person.jpg" alt="" class="img-fluid user-img-scale rounded-3">
+          </div>
+          <div class="col">
+            <div class="d-flex flex-column">
+              <div class="col"><span>Fullname</span></div>
+              <div class="col"><span>PasswordStudent</span></div>
+            </div>
+          </div>
         </div>
-        <a href="#">สร้างกิจกรรมหรือรายวิชา</a>
-        <a href="#">เช็คกิจกรรมหรือรายวิขา</a>
-        <a href="#">ดูผลสถิติของการเข้าร่วม</a>
-        <a href="#">คิดไม่ออกอ้าก</a>
+        <div class="text-start ps-1 mb-2">
+          <span class="text-title">TITLE</span>
+        </div>
+        <div class="hover-btn d-flex flex-row mb-1 rounded-3  ">
+          <div class="col-2 fs-4 text-center">
+            <i class="bi bi-plus-circle-fill "></i>
+          </div>
+          <div class="col d-flex align-items-center justify-content-center fs-7">
+            <span >สร้างกิจกรรมและรายวิชา</span>
+          </div>
+        </div>
+        <div class="hover-btn d-flex flex-row mb-1 rounded-3  ">
+          <div class="col-2 fs-4 text-center">
+            <i class="bi bi-clipboard2-check-fill"></i>
+          </div>
+          <div class="col d-flex align-items-center justify-content-center fs-7">
+            <span >เช็คกิจกรรมหรือรายวิชา</span>
+          </div>
+        </div>
+        <div class="hover-btn d-flex flex-row mb-1 rounded-3  ">
+          <div class="col-2 fs-4 text-center">
+            <i class="bi bi-pie-chart-fill"></i>
+          </div>
+          <div class="col d-flex align-items-center justify-content-center fs-7">
+            <span >ดูผลสถิติของการเข้าร่วม</span>
+          </div>
+        </div>
+      </div>
     </div>
     {{-- End_SideBar --}}
     {{-- Start_main --}}
     <div class="box " id="main">
         {{-- Start_sidenav --}}
         <div class="row border-bottom content-segment">
-          <div class="col-1 p-0 text-center">
-            <button class="border-0 btn btn-light scale-icon-nav" id="openNavButton" onclick="toggleNav()"> 
-              <i class="bi bi-caret-left-fill" id="closeNavIcon" onclick="closeNav()"></i> 
-              <i class="bi bi-caret-right-fill p-0 " id="openNavIcon" onclick="openNav()"></i> 
+          <div class="col-1 p-0 text-center" id="openNavButton" onclick="toggleNav()">
+            <button class="border-0 btn btn-light scale-icon-nav" id="openNavIcon" onclick="openNav()"> 
+              <i class="bi bi-caret-right-fill " ></i> 
+            </button>
+            <button class="border-0 btn btn-light scale-icon-nav" id="closeNavIcon" onclick="closeNav()"> 
+              <i class="bi bi-caret-left-fill "></i>  
             </button>
           </div>
             <div class="col-4 p-0">
@@ -134,6 +170,12 @@
     <script src="{{ asset('js/side_nav.js') }}"></script>
     <script src="{{ asset('js/search.js') }}"></script>
     <script src="{{ asset('js/script_slide.js') }}"></script>
+    <script src="{{asset('js/script_sidenav.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+    integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+    crossorigin="anonymous"></script>
+    <!-- ICONS -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     {{-- End_Script --}}
 </body>
 
