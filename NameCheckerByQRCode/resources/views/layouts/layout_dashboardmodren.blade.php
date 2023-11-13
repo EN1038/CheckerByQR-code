@@ -133,11 +133,17 @@
                         </form>
                     </div>
                     <div class="user ms-3 py-4">
-                        <a href=""
-                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-3">Login</a>
-                        <a href=""
+                        
+                            @if(Auth::check())
+                            <a href="{{route('logout')}}"
                             class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Logout</a>
-                    </div>
+                            @else
+                            <a href="{{route('login_form')}}"
+                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-3">Login</a>
+                            <a href="{{route('register_form')}}"
+                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Register</a>
+                            @endif
+                        </div>
                 </div>
             </div>
         </div>

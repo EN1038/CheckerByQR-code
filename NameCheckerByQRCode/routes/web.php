@@ -16,14 +16,20 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('admins/dashboards');
+    return view('Home.Home');
 });
 
 Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
 
 //////////Route Login //////////////
-Route::get('/login-form',[LoginController::class,'loginForm'])->name('login');
-Route::get('/register-form',[LoginController::class,'registerForm'])->name('login');
+Route::get('/login-form',[LoginController::class,'loginForm'])->name('login_form');
+Route::get('/register-form',[LoginController::class,'registerForm'])->name('register_form');
 Route::post('register',[LoginController::Class,'register'])->name('register_post');
 Route::post('login-post',[LoginController::class,'login'])->name('login_post');
+Route::get('logout',[LoginController::class,'logout'])->name('logout');
+
+
+
+////////////////////HOME////////////////////////////////
+Route::get('make-activity',[HomeController::class,'showMakeActivityPage'])->name('show_activity_page')->middleware('CheckLogin');
 
