@@ -19,7 +19,7 @@
         </div>
         <div class="row ">
             <div class="col d-flex justify-content-center">
-                <a href="{{route('show_activity_page')}}" class="btn mb-4 btn-success">
+                <a href="{{route('show_activity_form_page')}}" class="btn mb-4 btn-success">
                     <span class="fs-5">
                         สร้างกิจกรรม
                     </span>

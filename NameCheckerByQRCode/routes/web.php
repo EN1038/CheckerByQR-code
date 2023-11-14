@@ -16,11 +16,11 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('admins.dashboards');
+    return view("Home.Home");
 });
 
 
-Route::get('test-front-end', function () {
+Route::get('/test-front-end', function () {
     return view('admins.dashboards');
 });
 
