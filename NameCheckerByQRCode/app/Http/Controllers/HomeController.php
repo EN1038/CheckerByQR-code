@@ -10,7 +10,10 @@ class HomeController extends Controller
     function showHome(){
         return view('welcome');
     }
-    public function showMakeActivityPage(){
+    public function showMakeActivityFormPage(){
         return view('Home.make_activity');
+    }
+    public function makeActivity(Request $request){
+        
     }
 }

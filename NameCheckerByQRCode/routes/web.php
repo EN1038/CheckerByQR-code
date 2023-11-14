@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('admins.dashboards');
 });
 
+
+Route::get('test-front-end', function () {
+    return view('admins.dashboards');
+});
+
+
 Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
 
 //////////Route Login //////////////
@@ -31,6 +37,7 @@ Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 
 ////////////////////HOME////////////////////////////////
-Route::get('make-activity',[HomeController::class,'showMakeActivityPage'])->name('show_activity_page');
+Route::get('make-activity-form',[HomeController::class,'showMakeActivityFormPage'])->name('show_make_activity_form_page');
+Route::post('make-activity-post',[HomeController::class,'makeActivity'])->name('make_activity');
 Route::get('activity-box/{id}',[HomeController::class,'showActivityBoxPage'])->name('show_activity_box');
 
