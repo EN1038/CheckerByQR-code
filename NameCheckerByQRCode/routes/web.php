@@ -38,6 +38,6 @@ Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 ////////////////////HOME////////////////////////////////
 Route::get('make-activity-form',[HomeController::class,'showMakeActivityFormPage'])->name('show_make_activity_form_page');
-Route::post('make-activity-post',[HomeController::class,'makeActivity'])->name('make_activity');
+Route::post('make-activity-post',[HomeController::class,'makeActivity'])->name('make_activity_post');
 Route::get('activity-box/{id}',[HomeController::class,'showActivityBoxPage'])->name('show_activity_box');
 
