@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 
 Route::get('/test-front-end', function () {
-    return view('admins.dashboards');
+    return view('activity.activity_box_page');
 });
 
 
