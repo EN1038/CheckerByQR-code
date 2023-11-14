@@ -1,40 +1,33 @@
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-function closeNav() {
-  var sidenav = document.getElementById("mySidenav");
-  sidenav.style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
+function hideElements() {
+  var elementsToHide = document.getElementsByClassName("divToHide");
 
-  // ซ่อนทุกอิลิเมนต์ที่อยู่ใน mySidenav
-  var elements = sidenav.querySelectorAll("*");
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = "none";
+  for (var i = 0; i < elementsToHide.length; i++) {
+    elementsToHide[i].classList.add("delay-close");
   }
+}
 
-  var sidenav = document.getElementById("mySidenav");
-  sidenav.classList.add("closed");
-  setTimeout(function () {
-    sidenav.classList.remove("closed");
-  }, 300); // 300 milliseconds (0.3 seconds)
+function showElements() {
+  var elementsToShow = document.getElementsByClassName("divToHide");
+
+  for (var i = 0; i < elementsToShow.length; i++) {
+    elementsToShow[i].classList.add("delay-show");
+    elementsToShow[i].classList.remove("delay-close");
+  }
 }
 
 
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "70px";
+  document.getElementById("main").style.marginLeft = "80px";
+  document.getElementById("profiles").style.width = "40px";
+  hideElements(); // เรียกใช้ hideDivs เพื่อซ่อน div ทุกตัว
+}
+
 function openNav() {
-  var sidenav = document.getElementById("mySidenav");
-  sidenav.style.width = "250px";
+  document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "280px";
-
-
-  // แสดงทุกอิลิเมนต์ที่อยู่ใน mySidenav
-  var elements = sidenav.querySelectorAll("*");
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = "block";
-  }
-
-  var sidenav = document.getElementById("mySidenav");
-  sidenav.classList.add("opened");
-  setTimeout(function () {
-    sidenav.classList.remove("opened");
-  }, 300); // 300 milliseconds (0.3 seconds)
+  document.getElementById("profiles").style.width = "55px";
+  showElements(); // เรียกใช้ showDivs เพื่อแสดง div ทุกตัว
 }
 
 function toggleNav() {
@@ -49,4 +42,6 @@ function toggleNav() {
     openNavButton.classList.add("nav-opened");
   }
 }
+
+
 
