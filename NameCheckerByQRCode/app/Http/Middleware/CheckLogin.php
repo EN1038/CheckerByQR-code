@@ -16,12 +16,12 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()){
-            return $next($request);
-        } 
-        else{
-            return redirect()->route('login_form');
-        }
+        // if(Auth::check()){
+        //     return $next($request);
+        // } 
+        // else{
+        //     return redirect()->route('login_form');
+        // }
 
 
     }

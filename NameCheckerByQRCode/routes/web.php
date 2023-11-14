@@ -31,5 +31,6 @@ Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 
 ////////////////////HOME////////////////////////////////
-Route::get('make-activity',[HomeController::class,'showMakeActivityPage'])->name('show_activity_page')->middleware('CheckLogin');
+Route::get('make-activity',[HomeController::class,'showMakeActivityPage'])->name('show_activity_page');
+Route::get('activity-box/{id}',[HomeController::class,'showActivityBoxPage'])->name('show_activity_box');
 
