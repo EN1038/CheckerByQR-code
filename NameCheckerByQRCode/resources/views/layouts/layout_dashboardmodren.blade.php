@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('css/style_webslide.css')}}">
     <link rel="stylesheet" href="{{asset('css/style_bg.css')}}">
     <link rel="stylesheet" href="{{asset('css/style_glassbox.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     {{-- End_CSS --}}
 </head>
 
