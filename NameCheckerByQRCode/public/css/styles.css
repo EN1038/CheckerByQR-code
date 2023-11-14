@@ -13,21 +13,16 @@
   background-color: #ffffff;
 }
 
-.activity-box i{
-  font-size: 40px;
-  color: rgb(167, 167, 167,0.6);
-  transition: 0.5s;
-}
-
 .activity-box span{
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   color: #22b671;
   transition: 0.5s;
 }
 
-.activity-box h5{
-  font-size: 17px;
+.activity-box a{
+  font-size: 18px;
+  color: #202020;
   transition: 0.5s;
 }
 
@@ -38,27 +33,92 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #22b671;
+  background: linear-gradient(to right, #22b671, #98ffcd);
   transition: left 0.5s;
 }
 
 .activity-box:hover::before{
   left: 0; 
 }
+.activity-box:active::before{
+  background-color: #1fac6a; 
+}
 
 .activity-box:hover .content-activity-box {
   color: #fff; /* ปรับสีของเนื้อหาเมื่อ hover */
 }
 
-.activity-box:hover .content-activity-box i{
-  font-size: 40px;
-  color: #198754;
-}
 
 .activity-box:hover .content-activity-box span{
-  color: rgb(65, 65, 65);
+  animation: flashColor 1s infinite;
+}
+
+@keyframes flashColor {
+  0% { color: rgb(65, 65, 65); }
+  50% { color: #fff; }
+  100% { color: rgb(65, 65, 65); }
 }
 
 .content-activity-box{
   z-index: 1;
 }
+
+.activity-box:hover .content-activity-box a{
+  color: #fff;
+}
+
+.activity-box:active .content-activity-box a{
+  color: #070707;
+}
+
+
+.button-trash-action-activity {
+  background-color: #ffffff;
+  color: rgb(163, 163, 163);
+  font-size: 30px;
+  width: 35px;
+  height: 42px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  transition: 0.4s;
+}
+
+.activity-box:hover .button-trash-action-activity{
+  background-color: #91ffca50;
+  color: rgb(255, 55, 55);
+}
+
+.activity-box:hover .button-trash-action-activity:hover {
+  background-color: rgb(109, 209, 109);
+}
+
+.activity-box:hover .button-trash-action-activity:active {
+  background-color: #202020;
+}
+
+.button-edit-action-activity {
+  background-color: #ffffff;
+  color: rgb(163, 163, 163);
+  font-size: 30px;
+  width: 35px;
+  height: 42px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  transition: 0.4s;
+}
+
+.activity-box:hover .button-edit-action-activity{
+  background-color: #61fcb150;
+  color: rgb(42, 81, 253);
+}
+
+.activity-box:hover .button-edit-action-activity:hover {
+  background-color: rgb(109, 209, 109);
+}
+
+.activity-box:hover .button-edit-action-activity:active {
+  background-color: #202020;
+}
+
