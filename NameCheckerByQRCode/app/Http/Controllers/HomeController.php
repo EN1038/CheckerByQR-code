@@ -36,4 +36,8 @@ class HomeController extends Controller
         
         return view('activity.activity_box_page',compact('activity_profile_data'));
     }
+    public function showActivityDashboard($id){
+        $activity_data = Activity::where('id','=',$id)->first();
+        return view('activity.activity_dashboard');
+    }
 }
