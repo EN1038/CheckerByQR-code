@@ -28,37 +28,41 @@ class UserTableSeeder extends Seeder
     );
     DB::table('activities')->insert([
     
-    [
+    [   'id' => '1',
         'activity_name' => 'test',
         'user_id' => '1',
         'status' => 'on'
     ],
-    [
+    [   
+        'id' => '2',
         'activity_name' => 'test2',
         'user_id' => '1',
         'status' => 'on'
     ],
-    [
+    [   
+        'id' => '3',
         'activity_name' => 'test3',
         'user_id' => '1',
         'status' => 'on'
     ],
-    [
+    [   'id' => '4',
         'activity_name' => 'test4',
         'user_id' => '1',
         'status' => 'on'
     ],
-    [
+    [   'id' => '5',
         'activity_name' => 'test5',
         'user_id' => '1',
         'status' => 'on'
     ],
-    [
+    [   
+        'id' => '6',
         'activity_name' => 'test6',
         'user_id' => '2',
         'status' => 'on'
     ],
-    [
+    [   
+        'id' => '7',
         'activity_name' => 'test7',
         'user_id' => '2',
         'status' => 'on'
