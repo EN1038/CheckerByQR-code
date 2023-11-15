@@ -1,7 +1,7 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
 <div class="text-center py-4">
-    <h1 class="text-greenlight fw-bold">List Activity</h1>
+    <h1 class="text-greenlight fw-bold"><i class="bi bi-clipboard me-3"></i>List Activity</h1>
     <div class="row">
         {{-- Card-Activity --}}
       <div class="col-3">

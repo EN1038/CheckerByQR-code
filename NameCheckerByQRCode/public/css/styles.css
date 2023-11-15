@@ -54,9 +54,9 @@
 }
 
 @keyframes flashColor {
-  0% { color: rgb(65, 65, 65); }
-  50% { color: #fff; }
-  100% { color: rgb(65, 65, 65); }
+  0% { color: #4affa7; }
+  50% { color: #ffffff; }
+  100% { color: #4affa7; }
 }
 
 .content-activity-box{
