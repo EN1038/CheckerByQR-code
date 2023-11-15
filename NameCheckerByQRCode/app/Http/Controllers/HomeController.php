@@ -28,6 +28,12 @@ class HomeController extends Controller
             'user_id' => Auth::user()->id,
             'status' => 'on'
         ]);
-
+        return redirect()->route('show_activity_profile');
+    }
+    public function showActivityProfile(){
+        $activity_profile_data = Activity::where('status','=','on')
+        ->where('user_id','=',Auth::user()->id)->get();
+        
+        return view('activity.activity_box_page',compact('activity_profile_data'));
     }
 }

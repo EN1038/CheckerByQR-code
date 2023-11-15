@@ -59,8 +59,14 @@
           </div>
           <div class="col-8 " >
             <div class="d-flex flex-column divToHide" >
-              <div class="col"><span >Fullname</span></div>
-              <div class="col"><span >PasswordStudent</span></div>
+              @if(Auth::check())
+              <div class="col"><span >{{Auth::user()->name}}</span></div>
+              <div class="col"><span >{{Auth::user()->student_id}}</span></div>
+              
+              @else
+              <div class="col"><span >USERNAME</span></div>
+              <div class="col"><span >STUDENT_ID</span></div>
+              @endif
             </div>
           </div>
         </div>

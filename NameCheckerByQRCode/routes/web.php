@@ -40,4 +40,4 @@ Route::get('logout',[LoginController::class,'logout'])->name('logout');
 Route::get('make-activity-form',[HomeController::class,'showMakeActivityFormPage'])->name('show_make_activity_form_page');
 Route::post('make-activity-post',[HomeController::class,'makeActivity'])->name('make_activity_post');
 Route::get('activity-box/{id}',[HomeController::class,'showActivityBoxPage'])->name('show_activity_box');
-
+Route::get('activity-profile-page',[HomeController::class,'showActivityProfile'])->name('show_activity_profile');
