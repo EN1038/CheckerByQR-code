@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
-    public function importExcel(REQUEST $request)
+    // public function importExcel(REQUEST $request)
 
-    {
+    // {
         
-        Excel::import(new YourImportClass, 'file.xlsx');
+    //     Excel::import(new YourImportClass, 'file.xlsx');
 
-        return redirect()->back()->with('success', 'Imported successfully!');
-    }
+    //     return redirect()->back()->with('success', 'Imported successfully!');
+    // }
 }

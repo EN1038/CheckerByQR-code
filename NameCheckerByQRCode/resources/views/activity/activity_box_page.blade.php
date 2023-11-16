@@ -1,6 +1,6 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
-<div class="text-center py-4">
+<div class="text-center py-1">
     <h1 class="text-greenlight fw-bold"><i class="bi bi-clipboard me-3"></i>List Activity</h1>
     <div class="row">
         {{-- Card-Activity --}}
@@ -10,27 +10,50 @@
           </div>
         </div>
 
-      @foreach ($activity_profile_data as $row )
-      <div class="col-3">
-        <div class="card activity-box mt-3 mb-2">
+      
+      <div class="col-12 col-lg-4 col-sm-6">
+        <div class="card activity-box mt-3 mb-2 ">
             <div class="card-body d-flex flex-row justify-content-center align-items-center">
               <div class="col-8 col-md-7 text-start content-activity-box">
 
-                <a href="{{route('show_activity_dashboard',$row->id)}}" class="text-decoration-none"><span>Activity</span><br>{{$row->activity_name}}</a>
+                <a href="" class="text-decoration-none" >
+                  <span>Activity</span><br>aaa</a>
             </div>
                 <div class="col-4 col-md-5 content-activity-box z-2">
-                    <button class="button-edit-action-activity" onclick="navigateToURLEdit()"><i class="fa-solid fa-wrench"></i></button>
-                    <button class="button-trash-action-activity" onclick="navigateToURLTrash()"><i class="bi bi-trash-fill"></i></button>
+                    <button class="button-edit-action-activity" data-bs-toggle="modal" data-bs-target="" ><i class="fa-solid fa-wrench"></i></button>
+                  
+                      <button type="submit" class="button-trash-action-activity" ><i class="bi bi-trash-fill"></i></button>
+                
+                    
+                   <script>
+
+                    
+
+                   </script>
+                    
                 </div>
 
-
+                
             </div>
           </div>
       </div>
-      @endforeach
-      
 
+      
+    
+
+      <example-component>
+
+      
+      
+      {{-- @foreach($activity_profile_data as $row) --}}
+
+      
+      {{-- @endforeach --}}
       {{-- End-Card-Activity --}}
     </div>
 </div>
+
 @endsection
+
+{{-- ลูป ID modal --}}
+
