@@ -10,6 +10,7 @@
             <button class="enchagne-botton" id="toggleButton" onclick="toggleDivs()"> 
                 <i class="fa-solid fa-arrow-left"></i> 
             </button>
+            <p class="mt-2 fs-8 fw-light text-muted">Hold this button for Chagne Modes</p>
          </div>
         <div class="col "><h2>Form Two</h2></div>
     </div>
