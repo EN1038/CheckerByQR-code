@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('css/style_bg.css')}}">
     <link rel="stylesheet" href="{{asset('css/style_glassbox.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style_dashboard_activity.css')}}">
     {{-- End_CSS --}}
 </head>
 
