@@ -160,3 +160,7 @@
   opacity: 0;
   transition: opacity 0s;
 }
+
+.fs-8{
+  font-size: 13px;
+}

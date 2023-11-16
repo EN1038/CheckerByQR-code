@@ -58,3 +58,61 @@
 .enchagne-botton:hover:active i {
     opacity: 0;
 }
+
+.button-shortenURL {
+    background-color: #22b671;
+    border: 0;
+    border-radius: 5px;
+    padding: 11px;
+    color: #ffffff;
+    transition: all 0.4s;
+}
+.button-shortenURL:hover{
+    background-color: #037c44;
+    text-decoration: underline 2px;
+
+}
+
+.button-shortenURL i{
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-shortenURL:hover i {
+    transform: rotate(90deg);
+}
+
+.paddin-form{
+    padding-left: 225px;
+    padding-right: 225px;
+}
+
+.backgroud-colour-Shortcode{
+    background-color: #55ffad;
+    padding: 2px 15px 2px 15px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+
+
+.backgroud-colour-Longcode{
+    color: #22b671;
+}
+
+.icon-linkcopy-card{
+    color: #037c44;
+    transition: all 0.3s;
+}
+
+.icon-linkcopy-card:hover{
+    color: #202020;
+}
+
+.icon-linknewpage-card{
+    color: #00bd61;
+    transition: all 0.3s;
+}
+
+.icon-linknewpage-card:hover{
+    color: #202020;
+}
