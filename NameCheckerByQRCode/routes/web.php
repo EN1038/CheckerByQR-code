@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Models\Activity;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,11 @@ Route::get('logout',[LoginController::class,'logout'])->name('logout');
 ////////////////////HOME////////////////////////////////
 Route::get('make-activity-form',[HomeController::class,'showMakeActivityFormPage'])->name('show_make_activity_form_page');
 Route::post('make-activity-post',[HomeController::class,'makeActivity'])->name('make_activity_post');
+
+
+// activity 
 Route::get('activity-box/{id}',[HomeController::class,'showActivityBoxPage'])->name('show_activity_box');
 Route::get('activity-profile-page',[HomeController::class,'showActivityProfile'])->name('show_activity_profile');
 Route::get('activity-dashboard/{id}',[HomeController::class,'showActivityDashboard'])->name('show_activity_dashboard');
+Route::post('activity-update-name/{id}',[ActivityController::class,'updateActivityName'])->name('update_activity_name');
+Route::get('activity-delete/{id}',[ActivityController::class,'deleteActivity'])->name('delete_activity');
