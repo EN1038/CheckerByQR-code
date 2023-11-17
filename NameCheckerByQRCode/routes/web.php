@@ -23,8 +23,9 @@ Route::get('/', function () {
 
 
 Route::get('/test-front-end', function () {
-    return view('activity.activity_box_page');
+    return view('activity.activity_genQRcode');
 });
+
 
 
 Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
