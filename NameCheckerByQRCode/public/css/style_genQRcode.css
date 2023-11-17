@@ -73,6 +73,28 @@
 
 }
 
+.button-CreateForm {
+    background-color: #22b671;
+    border: 0;
+    border-radius: 5px;
+    padding: 11px;
+    color: #ffffff;
+    transition: all 0.4s;
+}
+
+.button-CreateForm:hover{
+    background-color: #037c44;
+}
+
+.button-CreateForm i{
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-CreateForm:hover i{
+    transform: rotate(360deg);
+}
+
 .button-shortenURL i{
     transition: transform 0.3s ease-in-out;
 }
@@ -82,6 +104,11 @@
 }
 
 .paddin-form{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.paddin-form-qrcode{
     padding-left: 225px;
     padding-right: 225px;
 }

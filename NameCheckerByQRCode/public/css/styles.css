@@ -122,6 +122,8 @@
   background-color: #202020;
 }
 
+
+
 @media  (max-width:1440px){
   .button-trash-action-activity{
     font-size: 20px;
@@ -147,3 +149,4 @@
     color: #202020;
   }
 }
+

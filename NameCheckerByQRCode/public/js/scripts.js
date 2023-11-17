@@ -24,3 +24,12 @@ function toggleDivs() {
         toggleButton.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`;
     }
 }
+
+ const toggleAllButton = document.getElementById('toggleAllButton');
+    const toggles = document.querySelectorAll('.toggle');
+
+    toggleAllButton.addEventListener('click', () => {
+        toggles.forEach(toggle => {
+            toggle.classList.toggle('checked');
+        });
+    });
