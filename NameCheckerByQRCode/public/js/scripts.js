@@ -1,35 +1,69 @@
-// JavaScript function เพื่อเปลี่ยนเส้นทาง
-function navigateToURLTrash() {
-    // เปลี่ยนเส้นทางไปยัง URL ที่คุณต้องการ
-    window.location.href = "https://www.youtube.com/";
-}
-// JavaScript function เพื่อเปลี่ยนเส้นทาง
-function navigateToURLEdit() {
-    // เปลี่ยนเส้นทางไปยัง URL ที่คุณต้องการ
-    window.location.href = "https://www.youtube.com/";
-}
-//ซ่อน div ในหน้า activity_dashboard
-function toggleDivs() {
-    var form1 = document.getElementById('Form1');
-    var form2 = document.getElementById('Form2');
-    var toggleButton = document.getElementById('toggleButton');
 
-    if (form1.style.display === 'none') {
-        form1.style.display = 'block';
-        form2.style.display = 'none';
-        toggleButton.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`;
-    } else {
-        form1.style.display = 'none';
-        form2.style.display = 'block';
-        toggleButton.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`;
-    }
-}
 
- const toggleAllButton = document.getElementById('toggleAllButton');
-    const toggles = document.querySelectorAll('.toggle');
+document.getElementById('addDateInput').addEventListener('click', function() {
+  const dateInputs = document.querySelectorAll('.date-input');
+  const dates = Array.from(dateInputs).map(input => input.value);
 
-    toggleAllButton.addEventListener('click', () => {
-        toggles.forEach(toggle => {
-            toggle.classList.toggle('checked');
-        });
+  const lastInput = dateInputs[dateInputs.length - 1];
+
+  if (lastInput.value !== '') {
+    const newInput = document.createElement('input');
+    newInput.setAttribute('type', 'date');
+    newInput.setAttribute('name', 'dateInput[]');
+    newInput.classList.add('date-input');
+
+    newInput.addEventListener('change', function() {
+      checkDateValidity(this, dates);
     });
+
+    dateInputs[dateInputs.length - 1].parentElement.appendChild(newInput);
+    lastInput.parentElement.appendChild(newInput);
+    lastInput.disabled = true; // Disable the previous input
+  }
+});
+
+function checkDateValidity(dateInput, dates) {
+  const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+  if (dateInput.value < currentDate) {
+    alert('Please select a date on or after today.');
+    dateInput.value = ''; // Reset the input value
+  }
+
+  if (dates.includes(dateInput.value)) {
+    alert('Please select a unique date.');
+    dateInput.value = ''; // Reset the input value
+  }
+}
+
+const initialInput = document.querySelector('.date-input');
+initialInput.addEventListener('change', function() {
+  checkDateValidity(this, []);
+});
+
+document.getElementById('removeDateInput').addEventListener('click', function() {
+  const dateInputs = document.querySelectorAll('.date-input');
+  const lastInput = dateInputs[dateInputs.length - 1];
+
+  if (dateInputs.length > 1) {
+    lastInput.parentElement.removeChild(lastInput);
+
+    const previousInput = dateInputs[dateInputs.length - 2];
+    previousInput.disabled = false; // Enable the previous input
+  }
+});
+
+$('.datepicker').datepicker({
+  format: "dd-mm-yyyy",
+  language: "th",
+  startDate: '0d',
+});
+
+$('.datepicker').datepicker().on('hide', function(event) {
+  console.log('มีการเปลี่ยนแปลงใน input:', event.target.value);
+  let button = document.createElement('button');
+    button.textContent = 'ปุ่มใหม่';
+    
+    
+});
+
+
