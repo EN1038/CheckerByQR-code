@@ -150,10 +150,60 @@
   }
 }
 
-.btn-fs-date{
+.btn-fs-date-fisrt{
   width: 40px;
-  height: 100%;
-  font-size: 15px;
-  color: #000;
-  background-color: #22b671;
+  font-size: 22px;
+  color: #22b671;
+  background-color: #ffffff75;
+  border-radius: 10px;
+  transition: all 0.3;
+}
+
+.btn-fs-date-fisrt:hover i{
+  color: #000000;
+}
+
+.btn-fs-dates{
+  width: 40px;
+  font-size: 22px;
+  color: #b62242;
+  background-color: #ffffff75;
+  border-radius: 10px;
+
+}
+
+.btn-fs-dates:hover i{
+  color: #070707;
+}
+
+.bg-input{
+  background-color: #ffffff75;
+}
+
+.input-time-start{
+  width: 100%;
+  height: 33px;
+  border-radius: 9px;
+}
+.input-time-out{
+  width: 100%;
+  height: 33px;
+  border-radius: 9px;
+}
+
+.form-control.datepicker[disabled] {
+  background-color: #ffffff75; /* ตั้งค่าสีพื้นหลังเป็นสีขาว */
+  color: #b1b1b1;
+  opacity: 1; /* สามารถเปลี่ยนแปลงอื่น ๆ ได้ตามต้องการ */
+}
+
+.form-control.input-time-start[disabled] {
+  background-color: #ffffff75; /* ตั้งค่าสีพื้นหลังเป็นสีขาว */
+  color: #b1b1b1;
+  opacity: 1; /* สามารถเปลี่ยนแปลงอื่น ๆ ได้ตามต้องการ */
+}
+.form-control.input-time-out[disabled] {
+  background-color: #ffffff75; /* ตั้งค่าสีพื้นหลังเป็นสีขาว */
+  color: #b1b1b1;
+  opacity: 1; /* สามารถเปลี่ยนแปลงอื่น ๆ ได้ตามต้องการ */
 }

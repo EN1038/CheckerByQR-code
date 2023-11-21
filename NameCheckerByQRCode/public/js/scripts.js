@@ -1,69 +1,218 @@
+$(document).ready(function () {
+    $('.datepicker').datepicker({
+        format: "dd-mm-yyyy",
+        language: "th",
+        startDate: '0d',
 
-
-document.getElementById('addDateInput').addEventListener('click', function() {
-  const dateInputs = document.querySelectorAll('.date-input');
-  const dates = Array.from(dateInputs).map(input => input.value);
-
-  const lastInput = dateInputs[dateInputs.length - 1];
-
-  if (lastInput.value !== '') {
-    const newInput = document.createElement('input');
-    newInput.setAttribute('type', 'date');
-    newInput.setAttribute('name', 'dateInput[]');
-    newInput.classList.add('date-input');
-
-    newInput.addEventListener('change', function() {
-      checkDateValidity(this, dates);
     });
 
-    dateInputs[dateInputs.length - 1].parentElement.appendChild(newInput);
-    lastInput.parentElement.appendChild(newInput);
-    lastInput.disabled = true; // Disable the previous input
-  }
+    let counter = 1;
+
+    function checkInputsFilled() {
+        const allDateInputs = document.querySelectorAll('.form-control.datepicker');
+        const allTimeInputsStart = document.querySelectorAll('.form-control.input-time-start');
+        const allTimeInputsOut = document.querySelectorAll('.form-control.input-time-out');
+        let allFilled = true;
+
+        allDateInputs.forEach(input => {
+            if (input.value === '') {
+                allFilled = false;
+            }
+        });
+
+        allTimeInputsStart.forEach(input => {
+            if (input.value === '') {
+                allFilled = false;
+            }
+        });
+
+        allTimeInputsOut.forEach(input => {
+            if (input.value === '') {
+                allFilled = false;
+            }
+        });
+
+        return allFilled;
+    }
+
+
+
+    //start-add-date
+    function addNewInput() {
+      console.log(counter);
+        let newDivStart = document.createElement('div');
+        newDivStart.id = 'newDivStart' + counter;
+        newDivStart.className = 'mb-2';
+
+        let newDivOut = document.createElement('div');
+        newDivOut.id = 'newDivOut' + counter;
+        newDivOut.className = 'mb-2';
+
+        let newInputStartTime = document.createElement('input');
+        newInputStartTime.type = 'time';
+        newInputStartTime.id = 'startTimeId' + counter;
+        newInputStartTime.className = 'form-control input-time-start mb-2 bg-input';
+
+        let newInputOutTime = document.createElement('input');
+        newInputOutTime.type = 'time';
+        newInputOutTime.id = 'endTimeId' + counter;
+        newInputOutTime.className = 'form-control input-time-out mb-2 bg-input';
+
+        let newDiv = document.createElement('div');
+        newDiv.id = 'inputContainer' + counter;
+        newDiv.className = 'input-group date mb-2';
+
+        let newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.className = 'form-control datepicker border border-end-0 bg-input';
+        newInput.placeholder = 'เลือกวันที่';
+
+        let deleteButton = document.createElement('button');
+        deleteButton.className = 'btn-fs-dates border border-start-0';
+        deleteButton.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+        deleteButton.onclick = function () {
+            deleteInput(newDiv, newInput, deleteButton, newDivStart, newDivOut, newInputStartTime, newInputOutTime);
+        };
+
+        let inputsContainer = document.getElementById('inputContainer1');
+        inputsContainer.appendChild(newDiv);
+
+        newDiv.appendChild(newInput);
+        newDiv.appendChild(deleteButton);
+
+        newDivStart.appendChild(newInputStartTime);
+        newDivOut.appendChild(newInputOutTime);
+
+        document.getElementById('containerIpStart').appendChild(newDivStart);
+        document.getElementById('containerIpOut').appendChild(newDivOut);
+
+        let latestDate = getLatestDate();
+
+        $(newInput).datepicker({
+            format: "dd-mm-yyyy",
+            language: "th",
+            startDate: latestDate,
+        });
+
+
+
+        counter++;
+    }
+
+    function getLatestDate() {
+        const allInputs = document.querySelectorAll('.form-control.datepicker');
+        let latestDate = null;
+
+        allInputs.forEach(input => {
+            if (input.value !== '') {
+                let dateString = input.value;
+                let dateParts = dateString.split("-");
+                let selectedDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+
+                // ถ้ายังไม่มี latestDate หรือวันที่นี้มากกว่า latestDate
+                if (!latestDate || selectedDate > latestDate) {
+                    latestDate = selectedDate;
+                }
+            }
+        });
+
+        // หากมี latestDate
+        if (latestDate) {
+            // เพิ่ม 1 วัน
+            latestDate.setDate(latestDate.getDate() + 1);
+
+            // แปลง latestDate เป็นรูปแบบ 'dd-mm-yyyy'
+            let stringLatestDate = $.datepicker.formatDate('dd-mm-yyyy', latestDate);
+            return stringLatestDate;
+        }
+        return '0d'; // หรือ startDate เริ่มต้นถ้าไม่มีวันที่ล่าสุด
+    }
+
+    function enablePreviousInputs() {
+        const allDateInputs = document.querySelectorAll('.form-control.datepicker');
+        const allTimeInputsStart = document.querySelectorAll('.form-control.input-time-start');
+        const allTimeInputsOut = document.querySelectorAll('.form-control.input-time-out');
+        let previousDateInputs = Array.from(allDateInputs);
+        let previousTimeInputsStart = Array.from(allTimeInputsStart);
+        let previousTimeInputsOut = Array.from(allTimeInputsOut);
+
+        previousDateInputs.forEach(input => {
+            $(previousDateInputs[counter - 2]).prop('disabled', false);
+        });
+
+        previousTimeInputsStart.forEach(input => {
+            $(previousTimeInputsStart[counter - 2]).prop('disabled', false);
+        });
+
+        previousTimeInputsOut.forEach(input => {
+            $(previousTimeInputsOut[counter - 2]).prop('disabled', false);
+        });
+    }
+
+    function deleteInput(divElement, inputElement, deleteButton, newDivStart, newDivOut, newInputStartTime, newInputOutTime) {
+        enablePreviousInputs();
+
+        divElement.parentNode.removeChild(divElement);
+        inputElement.parentNode.removeChild(inputElement);
+        deleteButton.parentNode.removeChild(deleteButton);
+
+        if (newDivStart) {
+            newDivStart.remove();
+        }
+
+        if (newDivOut) {
+            newDivOut.remove();
+        }
+
+        if (newInputStartTime) {
+            newInputStartTime.remove();
+        }
+
+        if (newInputOutTime) {
+            newInputOutTime.remove();
+        }
+
+        counter--;
+    }
+
+
+    $('.datepicker').on('input', function () {
+        const addButton = document.getElementById('addInputButton');
+        if (checkInputsFilled()) {
+            addButton.disabled = false;
+        } else {
+            addButton.disabled = true;
+        }
+    });
+
+    $('#addInputButton').on('click', function () {
+        if (checkInputsFilled()) {
+            addNewInput();
+
+            $('.form-control.datepicker').each(function () {
+                if ($(this).val() !== '') {
+                    $(this).prop('disabled', true);
+                }
+            });
+
+            $('.form-control.input-time-start').each(function () {
+                if ($(this).val() !== '') {
+                    $(this).prop('disabled', true);
+                }
+            });
+
+            $('.form-control.input-time-out').each(function () {
+                if ($(this).val() !== '') {
+                    $(this).prop('disabled', true);
+                }
+            });
+           
+            
+            
+
+        }
+    });
+
 });
 
-function checkDateValidity(dateInput, dates) {
-  const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
-  if (dateInput.value < currentDate) {
-    alert('Please select a date on or after today.');
-    dateInput.value = ''; // Reset the input value
-  }
-
-  if (dates.includes(dateInput.value)) {
-    alert('Please select a unique date.');
-    dateInput.value = ''; // Reset the input value
-  }
-}
-
-const initialInput = document.querySelector('.date-input');
-initialInput.addEventListener('change', function() {
-  checkDateValidity(this, []);
-});
-
-document.getElementById('removeDateInput').addEventListener('click', function() {
-  const dateInputs = document.querySelectorAll('.date-input');
-  const lastInput = dateInputs[dateInputs.length - 1];
-
-  if (dateInputs.length > 1) {
-    lastInput.parentElement.removeChild(lastInput);
-
-    const previousInput = dateInputs[dateInputs.length - 2];
-    previousInput.disabled = false; // Enable the previous input
-  }
-});
-
-$('.datepicker').datepicker({
-  format: "dd-mm-yyyy",
-  language: "th",
-  startDate: '0d',
-});
-
-$('.datepicker').datepicker().on('hide', function(event) {
-  console.log('มีการเปลี่ยนแปลงใน input:', event.target.value);
-  let button = document.createElement('button');
-    button.textContent = 'ปุ่มใหม่';
-    
-    
-});
-
-
+//end-add-date
