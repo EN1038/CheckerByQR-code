@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-3" id="containerIpStart">
                     <div class="mb-2">
-                        <input type="time" class="form-control input-time-start mb-2 bg-input" id="startTimeId">
+                        <input type="time" class="form-control input-time-start mb-2 bg-input" id="startTimeId0">
                     </div>
                 </div>
                 <div class="col-3 text-center pt-2">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-3" id="containerIpOut">
                     <div class="mb-2">
-                        <input type="time" class="form-control input-time-out mb-2 bg-input" id="endTimeId">
+                        <input type="time" class="form-control input-time-out mb-2 bg-input" id="endTimeId0">
                     </div>
                 </div>
             </div>

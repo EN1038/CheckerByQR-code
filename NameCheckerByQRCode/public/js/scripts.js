@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     //start-add-date
     function addNewInput() {
-      console.log(counter);
+        console.log(counter);
         let newDivStart = document.createElement('div');
         newDivStart.id = 'newDivStart' + counter;
         newDivStart.className = 'mb-2';
@@ -97,6 +97,16 @@ $(document).ready(function () {
 
 
         counter++;
+    }
+
+    function checkTime(startTime, endTime) {
+        const time1 = document.getElementById(startTime).value;
+        const time2 = document.getElementById(endTime).value;
+
+        const time1InSeconds = new Date('1970-01-01T' + time1 + 'Z').getTime() / 1000;
+        const time2InSeconds = new Date('1970-01-01T' + time2 + 'Z').getTime() / 1000;
+
+        return time2InSeconds < time1InSeconds;
     }
 
     function getLatestDate() {
@@ -176,6 +186,8 @@ $(document).ready(function () {
     }
 
 
+
+
     $('.datepicker').on('input', function () {
         const addButton = document.getElementById('addInputButton');
         if (checkInputsFilled()) {
@@ -206,10 +218,21 @@ $(document).ready(function () {
                     $(this).prop('disabled', true);
                 }
             });
-           
-            
-            
 
+            const currentCounter = counter-2;
+            const startTimeId = 'startTimeId' + currentCounter;
+            const endTimeId = 'endTimeId' + currentCounter;
+
+            if (checkTime(startTimeId, endTimeId)) {
+                console.log('เวลา timeout ต้องน้อยกว่าเวลา start');
+                $('#addInputButton').prop('disabled', true);
+                
+            } else {
+                console.log('เวลาถูกต้อง');
+                $('#addInputButton').prop('disabled', false);
+            }
+
+            console.log(checkInputsFilled);
         }
     });
 
