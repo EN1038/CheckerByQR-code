@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     });
 
-    let counter = 1;
+    var counter = 1;
 
     function checkInputsFilled() {
         const allDateInputs = document.querySelectorAll('.form-control.datepicker');
@@ -39,7 +39,6 @@ $(document).ready(function () {
 
     //start-add-date
     function addNewInput() {
-        console.log(counter);
         let newDivStart = document.createElement('div');
         newDivStart.id = 'newDivStart' + counter;
         newDivStart.className = 'mb-2';
@@ -97,7 +96,9 @@ $(document).ready(function () {
 
 
         counter++;
+        console.log(counter);
     }
+    console.log(counter)
 
     function checkTime(startTime, endTime) {
         const time1 = document.getElementById(startTime).value;
@@ -196,6 +197,57 @@ $(document).ready(function () {
             addButton.disabled = true;
         }
     });
+    console.log(counter);
+    $('#startTimeId' + (counter - 1)).on('input', function () {
+        const startTimeId = 'startTimeId' + (counter - 1); // ใส่ ID ของ input field ที่ใช้สำหรับเวลาเริ่มต้น
+        const endTimeId = 'endTimeId' + (counter - 1); // ใส่ ID ของ input field ที่ใช้สำหรับเวลาสิ้นสุด
+
+        if (checkTime(startTimeId, endTimeId)) {
+            console.log('เวลา timeout ต้องน้อยกว่าเวลา start');
+            let input_start = document.getElementById(startTimeId);
+            let input_end = document.getElementById(endTimeId);
+            let add_button = document.getElementById('addInputButton');
+            input_start.classList.add('border', 'border-danger'); // เพิ่มคลาสใหม่เข้าไป
+            input_end.classList.add('border', 'border-danger'); // เพิ่มคลาสใหม่เข้าไป
+            add_button.setAttribute('disabled', 'true');
+        } else {
+            console.log('เวลาถูกต้อง');
+            let input_start = document.getElementById(startTimeId);
+            let input_end = document.getElementById(endTimeId);
+            let add_button = document.getElementById('addInputButton');
+            input_start.classList.add('border', 'border-success'); // ลบคลาสที่ไม่ต้องการออก
+            input_start.classList.remove('border', 'border-danger'); // ลบคลาสที่ไม่ต้องการออก
+            input_end.classList.add('border', 'border-success'); // ลบคลาสที่ไม่ต้องการออก
+            input_end.classList.remove('border', 'border-danger'); // ลบคลาสที่ไม่ต้องการออก
+            add_button.removeAttribute('disabled');
+        }
+    });
+
+    $('#endTimeId' + (counter - 1)).on('input', function () {
+        const startTimeId = 'startTimeId' + (counter - 1); // ใส่ ID ของ input field ที่ใช้สำหรับเวลาเริ่มต้น
+        const endTimeId = 'endTimeId' + (counter - 1); // ใส่ ID ของ input field ที่ใช้สำหรับเวลาสิ้นสุด
+
+        if (checkTime(startTimeId, endTimeId)) {
+            console.log('เวลา timeout ต้องน้อยกว่าเวลา start');
+            let input_start = document.getElementById(startTimeId);
+            let input_end = document.getElementById(endTimeId);
+            let add_button = document.getElementById('addInputButton');
+            input_start.classList.add('border', 'border-danger'); // เพิ่มคลาสใหม่เข้าไป
+            input_end.classList.add('border', 'border-danger'); // เพิ่มคลาสใหม่เข้าไป
+            add_button.setAttribute('disabled', 'true');
+        } else {
+            console.log('เวลาถูกต้อง');
+            let input_start = document.getElementById(startTimeId);
+            let input_end = document.getElementById(endTimeId);
+            let add_button = document.getElementById('addInputButton');
+            input_start.classList.add('border', 'border-success'); // ลบคลาสที่ไม่ต้องการออก
+            input_start.classList.remove('border', 'border-danger'); // ลบคลาสที่ไม่ต้องการออก
+            input_end.classList.add('border', 'border-success'); // ลบคลาสที่ไม่ต้องการออก
+            input_end.classList.remove('border', 'border-danger'); // ลบคลาสที่ไม่ต้องการออก
+            add_button.removeAttribute('disabled');
+        }
+    });
+
 
     $('#addInputButton').on('click', function () {
         if (checkInputsFilled()) {
@@ -219,20 +271,22 @@ $(document).ready(function () {
                 }
             });
 
-            const currentCounter = counter-2;
-            const startTimeId = 'startTimeId' + currentCounter;
-            const endTimeId = 'endTimeId' + currentCounter;
+            // const currentCounter = counter-2;
+            // const startTimeId = 'startTimeId' + currentCounter;
+            // const endTimeId = 'endTimeId' + currentCounter;
 
-            if (checkTime(startTimeId, endTimeId)) {
-                console.log('เวลา timeout ต้องน้อยกว่าเวลา start');
-                $('#addInputButton').prop('disabled', true);
-                
-            } else {
-                console.log('เวลาถูกต้อง');
-                $('#addInputButton').prop('disabled', false);
-            }
+            // if (checkTime(startTimeId, endTimeId)) {
+            //     console.log('เวลา timeout ต้องน้อยกว่าเวลา start');
+            //     let input_start = document.getElementById(startTimeId);
+            //     let button_add = document.getElementById('addInputButton');
+            //     input_start.setAttribute('class','border border-danger');
+            //     button_add.setAttribute('disable','true');
+            // } else {
+            //     console.log('เวลาถูกต้อง');
+            //     let input_out = document.getElementById(endTimeId);
+            //     input_out.setAttribute('class','border border-success');
+            // }
 
-            console.log(checkInputsFilled);
         }
     });
 
