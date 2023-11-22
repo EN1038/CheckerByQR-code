@@ -16,11 +16,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- end-links-bootstrap -->
 
+  
+  
   {{-- font--}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/style_indexadmin.css')}}">
+{{-- sweetalert --}}
+
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     </head>
     <body class="sb-nav-fixed">
     <style>
@@ -67,7 +72,7 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="tables_menu.html">
+                            <a class="nav-link" href="{{route('show_admin_table_menu')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Table-menu
                             </a>
