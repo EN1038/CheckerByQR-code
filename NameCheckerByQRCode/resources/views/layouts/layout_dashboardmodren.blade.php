@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/4af39d0791.js" crossorigin="anonymous"></script>
     {{-- End_Icon_Bootstraps --}}
-    {{-- datepicker --}}
+    <!-- ตัวอย่างการโหลด jQuery และ jQuery UI จาก CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -204,9 +206,9 @@
     <script src="{{ asset('js/script_slide.js') }}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
     <script src="{{asset('js/activity/box_page.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
     integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> --}}
     <!-- ICONS -->
     
     {{-- End_Script --}}
