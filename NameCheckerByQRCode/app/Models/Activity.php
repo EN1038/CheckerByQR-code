@@ -15,6 +15,10 @@ class Activity extends Model
         'status'
     ];
 
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+
 
 }
 
