@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 
 Route::get('/test-front-end', function () {
-    return view('activity.activity_genQRcode');
+    return view('activity.activity_table');
 });
 
 

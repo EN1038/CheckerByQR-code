@@ -39,8 +39,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                
+            <div class="col row">
+                <div class="col-9">
+                    {{-- space --}}
+                </div>
+                <div class="col-3 text-end pe-5 mb-3">
+                    <button class="btn btn-success">Comfirm</button>
+                </div>
             </div>
          </form>
         </div>
