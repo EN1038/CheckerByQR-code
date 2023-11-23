@@ -2,7 +2,6 @@
 @section('content_body')
     <form action="#">
         <div class="row ">
-            <form action="#">
             <div class="text-center">
                 <h1 class="text-greenlight"><i class="fa-solid fa-gear"></i>ตั้งค่ากิจกรรม</h1>
             </div>
@@ -47,7 +46,6 @@
                     <button class="btn btn-success">Comfirm</button>
                 </div>
             </div>
-         </form>
         </div>
     </form>
     
