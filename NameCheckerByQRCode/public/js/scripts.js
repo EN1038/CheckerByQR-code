@@ -88,7 +88,7 @@ $(document).ready(function () {
       });
   }
     //start-add-date
-    function addNewInput() {
+   function addNewInput() {
         let newDivStart = document.createElement('div');
         newDivStart.id = 'newDivStart' + counter;
         newDivStart.className = 'mb-2';
@@ -101,11 +101,13 @@ $(document).ready(function () {
         newInputStartTime.type = 'time';
         newInputStartTime.id = 'startTimeId' + counter;
         newInputStartTime.className = 'form-control input-time-start mb-2 bg-input';
+        newInputStartTime.setAttribute('name','start_time[]');
 
         let newInputOutTime = document.createElement('input');
         newInputOutTime.type = 'time';
         newInputOutTime.id = 'endTimeId' + counter;
         newInputOutTime.className = 'form-control input-time-out mb-2 bg-input';
+        newInputOutTime.setAttribute('name','start_time[]');
 
         let newDiv = document.createElement('div');
         newDiv.id = 'inputContainer' + counter;
@@ -115,6 +117,7 @@ $(document).ready(function () {
         newInput.type = 'text';
         newInput.className = 'form-control datepicker border border-end-0 bg-input';
         newInput.placeholder = 'เลือกวันที่';
+        newInput.setAttribute('name','start_time[]');
 
         let deleteButton = document.createElement('button');
         deleteButton.className = 'btn-fs-dates border border-start-0';
@@ -123,7 +126,7 @@ $(document).ready(function () {
             deleteInput(newDiv, newInput, deleteButton, newDivStart, newDivOut, newInputStartTime, newInputOutTime);
         };
 
-        let inputsContainer = document.getElementById('inputContainer1');
+         let inputsContainer = document.getElementById('inputContainer1');
         inputsContainer.appendChild(newDiv);
 
         newDiv.appendChild(newInput);

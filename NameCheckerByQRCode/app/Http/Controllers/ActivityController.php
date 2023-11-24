@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Activity;
+use App\Models\CheckerForm;
 use Illuminate\Support\Facades\Auth;
+use Psy\VersionUpdater\Checker;
 use RealRashid\SweetAlert\Facades\Alert;
 class ActivityController extends Controller
 {
@@ -36,5 +38,24 @@ class ActivityController extends Controller
         }
 
        
+    }
+    public function makeCheckerForm(Request $request,$activity_id){
+        $dynamicInputs = $request->input('date');
+        dd($request);
+
+        // foreach($dynamicInputs as $input){
+        //     dd($input);
+        //     // $insert_checker = CheckerForm::create([
+        //     //     'date' => $input->date,
+        //     //     'start_time' => $input->start_time,
+        //     //     'end_time' => $input->end_time,
+        //     //     'activity_id' => $activity_id,
+        //     //     'status' => 'on'
+        //     // ]);
+        // }
+    }
+
+    public function showActivityMakeForm($activity_id){
+        return view('activity.activity_table');
     }
 }

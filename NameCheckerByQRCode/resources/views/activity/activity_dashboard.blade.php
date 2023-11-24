@@ -1,8 +1,17 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
-    <form action="#">
+    <form action="{{route('make-checker-form',request()->route()->id)}}" method="POST">
+        {{-- @csrf
+        <input type="text" value="aaa" class="form-control" name="test[]"> 
+        <input type="text" value="bbb" class="form-control" name="test[]"> 
+        <input type="text" value="ccc" class="form-control" name="test[]"> 
+        <input type="text" value="ddd" class="form-control" name="test[]"> 
+        <input type="text" value="fff" class="form-control" name="test[]"> 
+        <input type="text" value="ggg" class="form-control" name="test[]">  --}}
         <div class="row ">
-            <form action="#">
+            
+            @csrf
+               
             <div class="text-center">
                 <h1 class="text-greenlight"><i class="fa-solid fa-gear"></i>ตั้งค่ากิจกรรม</h1>
             </div>
@@ -13,8 +22,8 @@
                 </div>
                 <div class="col-9">
                     <div class="input-group date mb-2 ">
-                        <input type="text" class=" form-control datepicker border border-end-0 bg-input" placeholder="เลือกวันที่" aria-describedby="addInputButton">
-                        <button class="btn-fs-date-fisrt border border-start-0 " id="addInputButton"><i class="fa-solid fa-circle-plus" id="icon-addinput"></i></button> 
+                        <input name="date[]" type="text" class=" form-control datepicker border border-end-0 bg-input" placeholder="เลือกวันที่" aria-describedby="addInputButton">
+                        <button type="button" class="btn-fs-date-fisrt border border-start-0 " id="addInputButton"><i class="fa-solid fa-circle-plus" id="icon-addinput"></i></button> 
                     </div> 
                     <div id="inputContainer1">
 
@@ -27,7 +36,7 @@
                 </div>
                 <div class="col-3" id="containerIpStart">
                     <div class="mb-2">
-                        <input type="time" class="form-control input-time-start mb-2 bg-input" id="startTimeId0">
+                        <input name="start_time[]" type="time" class="form-control input-time-start mb-2 bg-input" id="startTimeId0">
                     </div>
                 </div>
                 <div class="col-3 text-center pt-2">
@@ -35,20 +44,21 @@
                 </div>
                 <div class="col-3" id="containerIpOut">
                     <div class="mb-2">
-                        <input type="time" class="form-control input-time-out mb-2 bg-input" id="endTimeId0">
+                        <input name="end_time[]" type="time" class="form-control input-time-out mb-2 bg-input" id="endTimeId0">
                     </div>
                 </div>
             </div>
             <div class="col row">
                 <div class="col-9">
-                    {{-- space --}}
+                    space
                 </div>
                 <div class="col-3 text-end pe-5 mb-3">
-                    <button class="btn btn-success">Comfirm</button>
+                    <button type="submit" class="btn btn-success">Next</button>
                 </div>
             </div>
-         </form>
+         
         </div>
+        {{-- <button type="submit" class="btn btn-success">Next</button> --}}
     </form>
     
 @endsection

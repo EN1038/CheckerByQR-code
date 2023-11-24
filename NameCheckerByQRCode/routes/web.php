@@ -23,9 +23,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test-front-end', function () {
-    return view('activity.activity_table');
-});
+// Route::get('/test-front-end', function () {
+//     return view('activity.activity_table');
+// });
 
 
 
@@ -51,8 +51,10 @@ Route::get('activity-profile-page',[HomeController::class,'showActivityProfile']
 Route::get('activity-dashboard/{id}',[HomeController::class,'showActivityDashboard'])->name('show_activity_dashboard');
 Route::post('activity-update-name/{id}',[ActivityController::class,'updateActivityName'])->name('update_activity_name');
 Route::get('activity-delete/{id}',[ActivityController::class,'deleteActivity'])->name('delete_activity');
+Route::post('activity-make-checker-form/{id}',[ActivityController::class,'makeCheckerForm'])->name('make-checker-form');
 
-
+//activity-form
+// Route::get('activity-make-form/{id}',[ActivityController::class,'showActivityMakeForm'])->name('activity-make-form');
 
 
 // Admin //
@@ -65,4 +67,6 @@ Route::get('/admin/table-menu',[AdminController::class,'showAdminTableMenu'])->n
 Route::get('/admin/table/activity',[AdminController::class,"showTableActivityPage"])->name('show_activity_table');
 Route::post('admin/table/activity/edit/{id}',[AdminController::class,"editActivity"])->name('edit_activity');
 Route::post('admin/table/activity/delete/{id}',[AdminController::class,"deleteActivity"])->name('delete_activity');
+
+
 

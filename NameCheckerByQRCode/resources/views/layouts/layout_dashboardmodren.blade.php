@@ -88,7 +88,7 @@
         <div class="text-start ps-1 mb-2">
           <span class="text-title ">TITLE</span>
         </div>
-        <a href="#" class="text-decoration-none">
+        <a href="" class="text-decoration-none">
           <div class="hover-btn d-flex flex-row mb-1 rounded-3  align-items-center">
             <div class="col-2 fs-4 text-center">
               <i class="bi bi-plus-circle-fill "></i>
@@ -98,7 +98,7 @@
             </div>
           </div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="{{route('show_activity_profile')}}" class="text-decoration-none">
           <div class="hover-btn d-flex flex-row mb-1 rounded-3  align-items-center">
             <div class="col-2 fs-4 text-center">
               <i class="bi bi-clipboard2-check-fill"></i>
