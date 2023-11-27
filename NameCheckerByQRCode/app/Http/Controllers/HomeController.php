@@ -38,6 +38,6 @@ class HomeController extends Controller
     }
     public function showActivityDashboard($id){
         $activity_data = Activity::where('id','=',$id)->first();
-        return view('activity.activity_dashboard');
+        return view('activity.activity_dashboard2',compact('activity_data'));
     }
 }

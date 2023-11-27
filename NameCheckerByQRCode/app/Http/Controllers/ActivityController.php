@@ -40,8 +40,7 @@ class ActivityController extends Controller
        
     }
     public function makeCheckerForm(Request $request,$activity_id){
-        $dynamicInputs = $request->input('date');
-        dd($request);
+        
 
         // foreach($dynamicInputs as $input){
         //     dd($input);

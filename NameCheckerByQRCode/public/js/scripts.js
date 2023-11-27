@@ -107,7 +107,7 @@ $(document).ready(function () {
         newInputOutTime.type = 'time';
         newInputOutTime.id = 'endTimeId' + counter;
         newInputOutTime.className = 'form-control input-time-out mb-2 bg-input';
-        newInputOutTime.setAttribute('name','start_time[]');
+        newInputOutTime.setAttribute('name','end_time[]');
 
         let newDiv = document.createElement('div');
         newDiv.id = 'inputContainer' + counter;
@@ -117,7 +117,7 @@ $(document).ready(function () {
         newInput.type = 'text';
         newInput.className = 'form-control datepicker border border-end-0 bg-input';
         newInput.placeholder = 'เลือกวันที่';
-        newInput.setAttribute('name','start_time[]');
+        newInput.setAttribute('name','date[]');
 
         let deleteButton = document.createElement('button');
         deleteButton.className = 'btn-fs-dates border border-start-0';
