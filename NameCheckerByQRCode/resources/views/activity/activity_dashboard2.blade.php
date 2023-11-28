@@ -8,7 +8,8 @@
     <div class="row">
         <div class="col">
             {{-- activity detail   --}}
-            <form class="row">
+            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label class="label-form">รายละเอียดกิจกรรม</label>
                     <textarea class="form-control" name="activity_detail" id="" cols="30" rows="10"></textarea>
@@ -24,7 +25,8 @@
                 
                     </div>
                 </div>
-           
+                <button class="btn btnsuccess">SUBMIT</button>
+            
             </form>
 
             {{-- ------------------- --}}

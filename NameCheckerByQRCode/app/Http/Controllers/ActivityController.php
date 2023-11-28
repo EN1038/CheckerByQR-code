@@ -41,7 +41,7 @@ class ActivityController extends Controller
     }
     public function makeCheckerForm(Request $request,$activity_id){
         
-
+        dd($request);
         // foreach($dynamicInputs as $input){
         //     dd($input);
         //     // $insert_checker = CheckerForm::create([
