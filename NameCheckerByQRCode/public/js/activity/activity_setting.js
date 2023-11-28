@@ -22,7 +22,7 @@ function addInput(){
     date_input.setAttribute('id','date_input'+counter);
     date_activity_div.appendChild(date_input);
 
-
+    inputWrapper.appendChild(date_activity_div);
     inputContainer.appendChild(inputWrapper);
     counter++
 }
