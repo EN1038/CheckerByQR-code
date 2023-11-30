@@ -7,13 +7,21 @@ function addInput(){
     inputWrapper.setAttribute('id','input-warpper'+counter);
     inputWrapper.setAttribute('class','d-flex flex-column mb-4')
 
+    if (counter > 0) {
+        let previousInputWrapper = document.getElementById('input-warpper' + (counter - 1));
+        if (previousInputWrapper){
+            previousInputWrapper.classList.add('border-bottom');
+            previousInputWrapper.classList.add('border-success');
+            previousInputWrapper.classList.add('border-3');
+        }
+    }
 
     let titleDiv = document.createElement('div');
     titleDiv.setAttribute('class','d-flex flex-row justify-content-between align-items-center mb-3 ');
     inputWrapper.appendChild(titleDiv);
 
     let showDateform = document.createElement('a');
-    showDateform.setAttribute('class','fs-7 fw-bold text-decoration-none');
+    showDateform.setAttribute('class','fs-5 fw-bold text-decoration-none');
     showDateform.textContent = 'วันที่ : '+(counter+1);
     titleDiv.appendChild(showDateform);
 
@@ -350,7 +358,15 @@ function chageModeLoginOutSide(){
   function deleteDiv() {
     if (counter > 0) {
         let deleteDiv = document.getElementById('input-warpper' + (counter - 1));
-        
+        let previousDiv = document.getElementById('input-warpper' + (counter - 2));
+
+        if (deleteDiv && previousDiv) {
+            if (previousDiv){
+                previousDiv.classList.remove('border-bottom');
+                previousDiv.classList.remove('border-success');
+                previousDiv.classList.remove('border-3');
+            }
+        }
         deleteDiv.remove();
         counter--;
     }
