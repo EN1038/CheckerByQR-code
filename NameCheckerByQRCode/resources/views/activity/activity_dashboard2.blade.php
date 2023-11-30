@@ -1,10 +1,14 @@
 @extends('layouts.layout_dashboardmodren')
+
 @section('content_body')
+
 <div class="text-center">
     <h1 class="text-greenlight"><i class="fa-solid fa-gear"></i>ตั้งค่ากิจกรรม</h1>
     <span class="fw-bold fs-2">{{$activity_data->activity_name}}</span>
 </div>
+
 <div class="container">
+    
     <div class="row">
         <div class="col">
             {{-- activity detail   --}}
@@ -16,10 +20,8 @@
                 </div>
                 <div class="mb-3">
                     <span class="fw-bold fs-5">วันจัดกิจกรรม</span>
-                </div>
-                <div class="mb-3">
-                    <span class="btn btn-success" onclick="addInput()">สร้างวันเช็คชื่อ</span>
-                </div>
+                </div>         
+                    <a class="btn btn-success scrollButton" onclick="addInput()" id="scrollButton"><i class="fa-solid fa-calendar-days"></i> สร้างวันเช็คชื่อ</a>
                     <div id="inputContainer">
                         
                 

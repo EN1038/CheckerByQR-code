@@ -27,6 +27,20 @@ function addInput(){
         }
     }
 
+    let titleDiv = document.createElement('div');
+    titleDiv.setAttribute('class','d-flex flex-row justify-content-between align-items-center mb-3 ');
+    inputWrapper.appendChild(titleDiv);
+
+    let showDateform = document.createElement('a');
+    showDateform.setAttribute('class','fs-7 fw-bold text-decoration-none');
+    showDateform.textContent = 'วันที่ : '+(counter+1);
+    titleDiv.appendChild(showDateform);
+
+    let closeIcon = document.createElement('i');
+    closeIcon.setAttribute('class','fs-7 fw-bold text-decoration-none fa-solid fa-trash iconClose');
+    closeIcon.setAttribute('onclick','deleteDiv()');
+    titleDiv.appendChild(closeIcon);
+
     let inputDive1 = document.createElement('div');
     inputDive1.setAttribute('class','d-flex flex-row justify-content-center align-items-center mb-3');
 
@@ -345,3 +359,45 @@ function chageModeLoginOutSide(){
         div_noHaveListNames.classList.add('d-none');
     }
 }
+
+  
+  document.getElementById('scrollButton').addEventListener('click', function() {
+    var bottom = document.documentElement.scrollHeight - window.innerHeight;
+    window.scrollTo({ top: bottom, behavior: 'smooth' }); // เลื่อนไปที่ด้านบนของหน้า
+  });
+  
+  function deleteDiv() {
+    if (counter > 0) {
+        let deleteDiv = document.getElementById('input-warpper' + (counter - 1));
+        let previousDiv = document.getElementById('input-warpper' + (counter - 2));
+
+        if (deleteDiv && previousDiv) {
+            if (previousDiv){
+                previousDiv.classList.remove('bg-disable');
+            }
+            let inputsInsideWrapper = previousDiv.getElementsByTagName('input');
+            let selectInsideWrapper = previousDiv.getElementsByTagName('select');
+            let iconInsideWrapper = previousDiv.querySelector('.icon');
+
+            // เปลี่ยนสถานะ input และ select เป็น enabled
+            for (let i = 0; i < inputsInsideWrapper.length; i++) {
+                inputsInsideWrapper[i].disabled = false;
+            }
+            for (let i = 0; i < selectInsideWrapper.length; i++) {
+                selectInsideWrapper[i].disabled = false;
+            }
+
+            // เปลี่ยน icon ให้กลับมาเป็น icon
+            if (iconInsideWrapper) {
+                iconInsideWrapper.classList.add('icon');
+                iconInsideWrapper.classList.remove('icon-disable');
+            }
+        }
+
+        deleteDiv.remove();
+        counter--;
+    }
+}
+
+
+
