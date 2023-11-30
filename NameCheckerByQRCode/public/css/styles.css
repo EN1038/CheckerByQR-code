@@ -211,3 +211,71 @@
 .red-border {
   border-color: red; /* เพิ่มสีของขอบเป็นสีแดง */
 }
+
+.icon i{
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 55%;
+  transition: all 0.3s;
+}
+
+.icon-disable i{
+  font-size: 40px;
+  cursor: none;
+  border-radius: 55%;
+  border-color: #cfcfcf;
+  color: #f7f7f7;
+  background-color: #cfcfcf;
+  transition: all 0.3s;
+}
+
+.icon-disable i:hover{
+  background-color: #2b2b2b;
+}
+
+.icon i:hover{
+  color: #22b671;
+}
+
+.form-check-input:checked + .form-check-label {
+  /* สีที่คุณต้องการเปลี่ยนเมื่อถูกเลือก */
+  color: #22b671;
+}
+
+.form-check-input{
+  border-color: #2b2b2b;
+}
+
+.form-check-input:checked{
+  border-color: #1fac6a;
+  background-color: #22b671;
+  box-shadow: none;
+}
+
+a{
+  color: #1fac6a;
+}
+
+.bg-disable{
+  border-radius: 10px;
+  color: #cfcfcf;
+  background: #cfcfcf75;
+  padding: 10px;
+}
+
+.bg-disable input{
+  color: #cfcfcf;
+  background: #cfcfcf75;
+}
+
+.bg-disable select{
+  color: #cfcfcf;
+  background: #cfcfcf75;
+}
+
+.bg-disable a{
+  cursor: none;
+  color: #cfcfcf;
+  padding: 7px;
+}
+

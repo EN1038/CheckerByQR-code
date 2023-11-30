@@ -20,12 +20,11 @@
                 <div class="mb-3">
                     <span class="btn btn-success" onclick="addInput()">สร้างวันเช็คชื่อ</span>
                 </div>
-                <div class="mb-3">
-                    <div id="inputContainer" class="mb-3">
+                    <div id="inputContainer">
+                        
                 
                     </div>
-                </div>
-                <button class="btn btnsuccess">SUBMIT</button>
+                <button class="btn btn-success">SUBMIT</button>
             
             </form>
 
