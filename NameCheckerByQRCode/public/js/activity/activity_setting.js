@@ -7,25 +7,6 @@ function addInput(){
     inputWrapper.setAttribute('id','input-warpper'+counter);
     inputWrapper.setAttribute('class','d-flex flex-column mb-4')
 
-    if (counter > 0) {
-        let previousInputWrapper = document.getElementById('input-warpper' + (counter - 1));
-        let inputsInsideWrapper = previousInputWrapper.getElementsByTagName('input');
-        let selectInsideWrapper = previousInputWrapper.getElementsByTagName('select');
-        let iconInsideWrapper = previousInputWrapper.getElementsByClassName('icon')[0];
-        if (previousInputWrapper){
-            previousInputWrapper.classList.add('bg-disable');
-        }
-        for (let i = 0; i < inputsInsideWrapper.length; i++) {
-            inputsInsideWrapper[i].disabled = true;
-        }
-        for (let i = 0; i < selectInsideWrapper.length; i++) {
-            selectInsideWrapper[i].disabled = true;
-        }
-        if (iconInsideWrapper) {
-            iconInsideWrapper.classList.remove('icon');
-            iconInsideWrapper.classList.add('icon-disable');
-        }
-    }
 
     let titleDiv = document.createElement('div');
     titleDiv.setAttribute('class','d-flex flex-row justify-content-between align-items-center mb-3 ');
@@ -369,31 +350,7 @@ function chageModeLoginOutSide(){
   function deleteDiv() {
     if (counter > 0) {
         let deleteDiv = document.getElementById('input-warpper' + (counter - 1));
-        let previousDiv = document.getElementById('input-warpper' + (counter - 2));
-
-        if (deleteDiv && previousDiv) {
-            if (previousDiv){
-                previousDiv.classList.remove('bg-disable');
-            }
-            let inputsInsideWrapper = previousDiv.getElementsByTagName('input');
-            let selectInsideWrapper = previousDiv.getElementsByTagName('select');
-            let iconInsideWrapper = previousDiv.querySelector('.icon');
-
-            // เปลี่ยนสถานะ input และ select เป็น enabled
-            for (let i = 0; i < inputsInsideWrapper.length; i++) {
-                inputsInsideWrapper[i].disabled = false;
-            }
-            for (let i = 0; i < selectInsideWrapper.length; i++) {
-                selectInsideWrapper[i].disabled = false;
-            }
-
-            // เปลี่ยน icon ให้กลับมาเป็น icon
-            if (iconInsideWrapper) {
-                iconInsideWrapper.classList.add('icon');
-                iconInsideWrapper.classList.remove('icon-disable');
-            }
-        }
-
+        
         deleteDiv.remove();
         counter--;
     }
