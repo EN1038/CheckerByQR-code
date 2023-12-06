@@ -1,3 +1,65 @@
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('btnNewInput_GetId')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let clickedId = event.target.id;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId);
+
+        addInput(event.target);
+        var bottom = document.documentElement.scrollHeight - window.innerHeight;
+        window.scrollTo({ top: bottom, behavior: 'smooth' });
+
+    }else if (event.target.classList.contains('iconClose')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let clickedId_deleteDiv = event.target.id;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId_deleteDiv);
+
+        deleteDiv(event.target.id);
+    }else if (event.target.classList.contains('btnChangMode_GetId')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let clickedId_changeMode = event.target.id;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId_changeMode);
+
+        changeMode(event.target.id);
+    }else if (event.target.classList.contains('inputFormCheck1_GetId')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let clickedId = event.target.id;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId);
+
+        chageModeLoginOutSide(event.target);
+    }else if (event.target.classList.contains('inputFormCheck2_GetId')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let clickedId = event.target.id;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId);
+
+        chageModeLoginOutSide(event.target);
+    }else if(event.target.classList.contains('enchagne_button')){
+        let clickedId_changeSystem = event.target.id;
+
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' +clickedId_changeSystem)
+        changeSystem(event.target.id)
+    }else if(event.target.classList.contains('chooseModeTypeDatasIS')){
+        let clickedId_chMTypeDataIS = event.target.id;
+
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' +clickedId_chMTypeDataIS)
+        chooseModeTypeDatasIS(event.target.id)
+    }else if(event.target.classList.contains('chooseModeTypeDatasOS')){
+        let clickedId_chMTypeData = event.target.id;
+
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' +clickedId_chMTypeData)
+        chooseModeTypeDatasOS(event.target.id)
+    }else if(event.target.classList.contains('show-imageHelper')){
+        let clickedId_showImgHelp = event.target.id;
+
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' +clickedId_showImgHelp)
+        showimageHelper(event.target.id)
+    }else if(event.target.classList.contains('showImg_Login')){
+        let clickedId_showImg_Login = event.target.id;
+
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' +clickedId_showImg_Login)
+        showFormLogin(event.target.id)
+    }
+});
+
 let counter = 0;
 
 function addInput(){
@@ -22,12 +84,12 @@ function addInput(){
 
     let showDateform = document.createElement('a');
     showDateform.setAttribute('class','fs-5 fw-bold text-decoration-none');
-    showDateform.textContent = 'วันที่ : '+(counter+1);
+    showDateform.textContent = 'Form : '+(counter+1);
     titleDiv.appendChild(showDateform);
 
     let closeIcon = document.createElement('i');
     closeIcon.setAttribute('class','fs-7 fw-bold text-decoration-none fa-solid fa-trash iconClose');
-    closeIcon.setAttribute('onclick','deleteDiv()');
+    closeIcon.setAttribute('id','iconClose'+counter);
     titleDiv.appendChild(closeIcon);
 
     let inputDive1 = document.createElement('div');
@@ -166,9 +228,8 @@ function addInput(){
     btnChangMode_activity_div.appendChild(textLeft);
 
     let btnChangMode = document.createElement('i');
-    btnChangMode.setAttribute('class','btn btn-success fa-solid fa-arrow-right');
+    btnChangMode.setAttribute('class','btn btn-success fa-solid fa-arrow-right btnChangMode_GetId');
     btnChangMode.setAttribute('id','iconChangeMode'+counter);
-    btnChangMode.setAttribute('onclick', 'changeMode()');
     btnChangMode_activity_div.appendChild(btnChangMode);
 
     let textRight = document.createElement('span');
@@ -196,17 +257,16 @@ function addInput(){
     loginOutSide_activity_div.appendChild(formCheck1);
 
     let inputFormCheck1 = document.createElement('input');
-    inputFormCheck1.setAttribute('class','form-check-input');
+    inputFormCheck1.setAttribute('class','form-check-input inputFormCheck1_GetId');
     inputFormCheck1.setAttribute('type','radio');
     inputFormCheck1.setAttribute('name','inlineRadioOptions');
-    inputFormCheck1.setAttribute('id','inlineRadio1'+counter);
+    inputFormCheck1.setAttribute('id','inlineRadioI'+counter);
     inputFormCheck1.setAttribute('value','option1');
-    inputFormCheck1.setAttribute('onclick', 'chageModeLoginOutSide()');
     formCheck1.appendChild(inputFormCheck1);
 
     let labelFormCheck1 = document.createElement('label');
     labelFormCheck1.setAttribute('class','form-check-label');
-    labelFormCheck1.setAttribute('for','inlineRadio1'+counter);
+    labelFormCheck1.setAttribute('for','inlineRadioI'+counter);
     labelFormCheck1.textContent = 'มีรายชื่อ';
     formCheck1.appendChild(labelFormCheck1);
 
@@ -215,17 +275,16 @@ function addInput(){
     loginOutSide_activity_div.appendChild(formCheck2);
 
     let inputFormCheck2 = document.createElement('input');
-    inputFormCheck2.setAttribute('class','form-check-input');
+    inputFormCheck2.setAttribute('class','form-check-input inputFormCheck2_GetId');
     inputFormCheck2.setAttribute('type','radio');
     inputFormCheck2.setAttribute('name','inlineRadioOptions');
-    inputFormCheck2.setAttribute('id','inlineRadio2'+counter);
+    inputFormCheck2.setAttribute('id','inlineRadioII'+counter);
     inputFormCheck2.setAttribute('value','option2');
-    inputFormCheck2.setAttribute('onclick', 'chageModeLoginOutSide()');
     formCheck2.appendChild(inputFormCheck2);
 
     let labelFormCheck2 = document.createElement('label');
     labelFormCheck2.setAttribute('class','form-check-label');
-    labelFormCheck2.setAttribute('for','inlineRadio2'+counter);
+    labelFormCheck2.setAttribute('for','inlineRadioII'+counter);
     labelFormCheck2.textContent = 'ไม่มีรายชื่อ';
     formCheck2.appendChild(labelFormCheck2);
 
@@ -302,34 +361,35 @@ function addInput(){
     inputWrapper.appendChild(inputDive4);
     inputWrapper.appendChild(inputDive5);
     inputContainer.appendChild(inputWrapper);
+
     counter++
-    changeMode(counter);
-    chageModeLoginOutSide(counter);
 }
 
-function changeMode(){
-    let arrowIcon = document.getElementById('iconChangeMode'+(counter-1));
-    let div4 = document.getElementById('divPersonInSide'+(counter-1));
-    let div5 = document.getElementById('divPersonOutSide'+(counter-1));
-
-    if(arrowIcon.classList.contains('fa-arrow-right')){
-        arrowIcon.classList.remove('fa-arrow-right');
-        arrowIcon.classList.add('fa-arrow-left');
-        div5.classList.toggle('d-none');
-        div4.classList.toggle('d-none');
-    }else {
-        arrowIcon.classList.remove('fa-arrow-left');
-        arrowIcon.classList.add('fa-arrow-right');
-        div5.classList.toggle('d-none');
-        div4.classList.toggle('d-none');
+function changeMode(clickedId_changeMode){
+    if(isNaN(clickedId_changeMode)){
+        let getIdlinks = clickedId_changeMode.match(/\d+/g);
+        console.log('inif = '+clickedId_changeMode);
+        console.log(' = '+getIdlinks);
+        let arrowIcon = document.getElementById(clickedId_changeMode);
+        let div4 = document.getElementById('divPersonInSide'+getIdlinks);
+        let div5 = document.getElementById('divPersonOutSide'+getIdlinks);
+            if(arrowIcon.classList.contains('fa-arrow-right')){
+                arrowIcon.classList.remove('fa-arrow-right');
+                arrowIcon.classList.add('fa-arrow-left');
+                div5.classList.toggle('d-none');
+                div4.classList.toggle('d-none');
+            }else {
+                arrowIcon.classList.remove('fa-arrow-left');
+                arrowIcon.classList.add('fa-arrow-right');
+                div5.classList.toggle('d-none');
+                div4.classList.toggle('d-none');
+            }
     }
-
-
 }
 
 function chageModeLoginOutSide(){
-    let haveListName = document.getElementById('inlineRadio1'+(counter-1));
-    let noHaveListName = document.getElementById('inlineRadio2'+(counter-1));
+    let haveListName = document.getElementById('inlineRadioI'+(counter-1));
+    let noHaveListName = document.getElementById('inlineRadioII'+(counter-1));
     let div_haveListNames = document.getElementById('bigdiv_haveListName'+(counter-1));
     let div_noHaveListNames = document.getElementById('div_noHaveListName'+(counter-1));
     let textAlerts = document.getElementById('textAlert'+(counter-1));
@@ -348,20 +408,15 @@ function chageModeLoginOutSide(){
         div_noHaveListNames.classList.add('d-none');
     }
 }
-
   
-  document.getElementById('scrollButton').addEventListener('click', function() {
-    var bottom = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo({ top: bottom, behavior: 'smooth' }); // เลื่อนไปที่ด้านบนของหน้า
-  });
-  
-  function deleteDiv() {
-    if (counter > 0) {
-        let deleteDiv = document.getElementById('input-warpper' + (counter - 1));
-        let previousDiv = document.getElementById('input-warpper' + (counter - 2));
-
+  function deleteDiv(clickedId_deleteDiv) {
+    if (isNaN(clickedId_deleteDiv)) {
+        let getIdlinks = clickedId_deleteDiv.match(/\d+/g);
+        let deleteDiv = document.getElementById('input-warpper' + getIdlinks);
+        let previousDiv = document.getElementById('input-warpper' + (getIdlinks-1));
         if (deleteDiv && previousDiv) {
             if (previousDiv){
+                console.log(previousDiv)
                 previousDiv.classList.remove('border-bottom');
                 previousDiv.classList.remove('border-success');
                 previousDiv.classList.remove('border-3');
@@ -373,4 +428,85 @@ function chageModeLoginOutSide(){
 }
 
 
+function changeSystem(clickedId_ChangeSystem){
+    if(isNaN(clickedId_ChangeSystem)) {
+        let changeSystem = document.getElementById(clickedId_ChangeSystem);
+        let changeColorText1 = document.getElementById('text1');
+        let changeColorText2 = document.getElementById('text2');
+        let prInSides = document.getElementById('prInSide')
+        let prOutSides = document.getElementById('prOutSide')
+        if(changeSystem.classList.contains('fa-arrow-left')){
+            changeSystem.classList.remove('fa-arrow-left');
+            changeSystem.classList.add('fa-arrow-right');
+            changeColorText1.classList.remove('text-success');
+            changeColorText2.classList.add('text-success');
+            prInSides.classList.add('d-none')
+            prOutSides.classList.remove('d-none');
+        }else {
+            changeSystem.classList.remove('fa-arrow-right');
+            changeSystem.classList.add('fa-arrow-left');
+            changeColorText2.classList.remove('text-success');
+            changeColorText1.classList.add('text-success');
+            prOutSides.classList.add('d-none');
+            prInSides.classList.remove('d-none')
+        }
+    }
+}
 
+function chooseModeTypeDatasIS(clickedId_chMTypeDataIS) {
+    if(isNaN(clickedId_chMTypeDataIS)) {
+        let chooseMoTpDataIS = document.getElementById(clickedId_chMTypeDataIS);
+        let div_HaDataIS = document.getElementById('div_HavedataIS');
+        let div_noHaDataIS = document.getElementById('noDiv_HavedataIS');
+        console.log((chooseMoTpDataIS));
+        if (chooseMoTpDataIS === (id = radiosISHaveData)){
+            console.log('yes')
+            div_HaDataIS.classList.remove('d-none');
+            div_noHaDataIS.classList.add('d-none');
+        }else if(chooseMoTpDataIS === (id = radiosISnoHaveData)){
+            console.log('no')
+            div_noHaDataIS.classList.remove('d-none');
+            div_HaDataIS.classList.add('d-none');
+        }
+    }
+}
+
+function chooseModeTypeDatasOS(clickedId_chMTypeDataOS) {
+    if(isNaN(clickedId_chMTypeDataOS)) {
+        let chooseMoTpDataOS = document.getElementById(clickedId_chMTypeDataOS);
+        let div_HaDataOS = document.getElementById('div_HavedataOS');
+        let div_noHaDataOS = document.getElementById('noDiv_HavedataOS');
+        if (chooseMoTpDataOS === (id = radiosOSHaveData)){
+            console.log('yes')
+            div_HaDataOS.classList.remove('d-none');
+            div_noHaDataOS.classList.add('d-none');
+        }else if(chooseMoTpDataOS === (id = radiosOSnoHaveData)){
+            console.log('no')
+            div_noHaDataOS.classList.remove('d-none');
+            div_HaDataOS.classList.add('d-none');
+        }
+    }
+}
+
+function showimageHelper(clickedId_showImgHelp) {
+    if(isNaN(clickedId_showImgHelp)) {
+        let showImgHelper = document.getElementById(clickedId_showImgHelp);
+        let div_imgHelpIS = document.getElementById('img-helperIS');
+        let div_imgHelpOS = document.getElementById('img-helperOS');
+        if (showImgHelper === (id = imgHelpIS)){
+            div_imgHelpIS.classList.toggle('d-none');
+        }else if(showImgHelper === (id = imgHelpOS)){
+            div_imgHelpOS.classList.toggle('d-none');
+        }
+    }
+}
+
+function showFormLogin(clickedId_showImg_Login){
+    if(isNaN(clickedId_showImg_Login)) {
+        let showImgForm = document.getElementById(clickedId_showImg_Login);
+        let div_ImgForm = document.getElementById('showImgLogin');
+        if (showImgForm){
+            div_ImgForm.classList.toggle('d-none');
+        }
+    }
+}

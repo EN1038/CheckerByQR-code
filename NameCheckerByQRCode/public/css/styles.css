@@ -312,3 +312,41 @@ a{
 .iconClose:hover{
   color: #2b2b2b;
 }
+
+.enchagne_button{
+  font-size: 60px;
+  width: 75px;
+  height: 100%;
+  border-radius: 60%;
+  background-color: #1fac6a;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.enchagne_button:hover{
+  color: #98ffcd;
+}
+
+.show-imageHelper{
+  cursor: pointer;
+  color: #22b671;
+}
+
+.thaID{
+  padding: 5px 10px 5px 10px;
+  border-radius: 15px;
+  background-color: #1e0b75;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.yellow-text{
+  color: #fcff61;
+  font-size: 18px;
+}
+
+.thaID:hover{
+  background-color: #291e5c;
+}
