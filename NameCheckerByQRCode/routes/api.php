@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 ///ข้อมูลคณะฝฝฝฝ
 Route::get('agency-data',[ApiController::class,'agencyApi'])->name('agency_api');
+Route::get('major-data',[ApiController::class,'MajorApi'])->name('Major_api');
