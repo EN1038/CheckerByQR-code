@@ -13,7 +13,7 @@ class ApiController extends Controller
     $agency_data = Agency::all();
    
     // return view('test.relation_test',compact('major_data'));
-    return response()->json($agency_data);
+    return response()->json(['agency_data' => $agency_data]);
    }
 
    public function majorApi(){
