@@ -60,12 +60,12 @@
                 </div>
                 <div class="col d-none my-4" id="noDiv_HavedataIS">
                     <span class="fs-5">สังกัด : </span>
-                    <select class="select-upgrade" id="mySelect" onchange="addOption(event)">
+                    <select class="select-upgrade" id="mySelect">
                         <option value="Option 0">Choose Option</option>
                         <option value="Option 1">Option 1</option>
                         <option value="Option 2">Option 2</option>
                         <option value="Option 3">Option 3</option>
-                      </select>
+                    </select>
                       <div id="myInput" class="box-inputOp border w-75 d-flex"></div>
                 </div>
             </div>

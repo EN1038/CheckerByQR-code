@@ -511,6 +511,20 @@ function showFormLogin(clickedId_showImg_Login){
     }
 }
 
+
+
+
+
+document.addEventListener('change',function(event){
+    if (event.target.classList.contains('select-upgrade')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let changedId_selectUp = event.target.id;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_selectUp);
+
+        addOption(event);
+    }
+});
+
 function addOption(event) {
     var selectedOption = event.target.value;
     var input = document.getElementById("myInput");
@@ -522,8 +536,11 @@ function addOption(event) {
       optionDiv.innerHTML = selectedOption+"<i class='fa-solid fa-xmark' onclick='removeOption(this)'></i>";
       input.appendChild(optionDiv);
     }
+    
   }
 
   function removeOption(element) {
     element.parentNode.remove();
   }
+
+  
