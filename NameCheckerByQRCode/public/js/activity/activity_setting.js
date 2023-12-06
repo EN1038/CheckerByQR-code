@@ -510,3 +510,20 @@ function showFormLogin(clickedId_showImg_Login){
         }
     }
 }
+
+function addOption(event) {
+    var selectedOption = event.target.value;
+    var input = document.getElementById("myInput");
+
+    // Check if the option already exists in the input
+    if (!input.innerHTML.includes(selectedOption)) {
+      var optionDiv = document.createElement("div");
+      optionDiv.setAttribute('class','div-option d-flex align-items-center');
+      optionDiv.innerHTML = selectedOption+"<i class='fa-solid fa-xmark' onclick='removeOption(this)'></i>";
+      input.appendChild(optionDiv);
+    }
+  }
+
+  function removeOption(element) {
+    element.parentNode.remove();
+  }

@@ -350,3 +350,36 @@ a{
 .thaID:hover{
   background-color: #291e5c;
 }
+
+.box-inputOp{
+  padding: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.div-option{
+  background-color: #1fac6a;
+  font-size: 16px;
+  width: 115px;
+  height: 100%;
+  padding: 5px 10px 5px 10px;
+  border-radius: 16px;
+  margin-left: 10px;
+  color: #fff;
+}
+
+.div-option:hover{
+  background-color: #22b671;
+}
+
+.div-option i{
+  cursor: pointer;
+  font-size: 21px;
+  padding-left: 7px;
+  color: #000;
+  transition: all 0.3s;
+}
+
+.div-option i:hover{
+  color: #ff0000;
+}

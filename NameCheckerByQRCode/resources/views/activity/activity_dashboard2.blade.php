@@ -58,8 +58,13 @@
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
                 </div>
-                <div class="col border border-primary d-none" id="noDiv_HavedataIS">
-                    ไม่มีข้อมูลมีรายชื่อ
+                <div class="col d-none" id="noDiv_HavedataIS">
+                    <select id="mySelect" onchange="addOption(event)">
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                      </select>
+                      <div id="myInput" class="box-inputOp border w-75 d-flex"></div>
                 </div>
             </div>
                 <div class="d-flex flex-column mx-5 d-none" id="prOutSide">
