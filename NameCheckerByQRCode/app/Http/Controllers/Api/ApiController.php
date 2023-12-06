@@ -21,5 +21,10 @@ class ApiController extends Controller
     return response()->json(['major_data' => $major_data]);
    }
 
+   public function getmajorById($id){
+    $major_data = Major::where('agency_id','=',$id)->get();
+    return response()->json(['major_data' => $major_data]);
+   }
+
 
 }
