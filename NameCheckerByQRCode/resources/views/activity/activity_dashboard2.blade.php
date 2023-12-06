@@ -58,9 +58,10 @@
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
                 </div>
-                <div class="col d-none" id="noDiv_HavedataIS">
-                    <select id="mySelect" onchange="addOption(event)">
-                        <option value="Option 0" disabled selected>Choose Option</option>
+                <div class="col d-none my-4" id="noDiv_HavedataIS">
+                    <span class="fs-5">สังกัด : </span>
+                    <select class="select-upgrade" id="mySelect" onchange="addOption(event)">
+                        <option value="Option 0">Choose Option</option>
                         <option value="Option 1">Option 1</option>
                         <option value="Option 2">Option 2</option>
                         <option value="Option 3">Option 3</option>
