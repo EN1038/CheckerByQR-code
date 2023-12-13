@@ -5,22 +5,16 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 use App\Models\Activity;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
+
+
 
 Route::get('/', function () {
     return view("Home.Home");
-});
+})->name('index');
 
 
 // Route::get('/test-front-end', function () {
@@ -30,6 +24,12 @@ Route::get('/', function () {
 
 
 Route::get('/welcome',[HomeController::class,"showHome"])->name('show_home');
+
+//nsru core//
+Route::get('/signin', [ AuthController::class, 'signin' ])->name('signin');
+Route::post('/signin', [ AuthController::class, 'signinPostback' ])->name('signin_postback');
+Route::get('/signout', [ AuthController::class, 'signout' ])->name('signout');
+Route::get('/signout_postback', [ AuthController::class, 'signoutPostback' ])->name('signout_postback');
 
 //////////Route Login //////////////
 Route::get('/login-form',[LoginController::class,'loginForm'])->name('login_form');
