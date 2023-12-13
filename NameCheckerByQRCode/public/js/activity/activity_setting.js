@@ -413,8 +413,9 @@ function changeSystem(clickedId_ChangeSystem) {
         let changeSystem = document.getElementById(clickedId_ChangeSystem);
         let changeColorText1 = document.getElementById('text1');
         let changeColorText2 = document.getElementById('text2');
-        let prInSides = document.getElementById('prInSide')
-        let prOutSides = document.getElementById('prOutSide')
+        let prInSides = document.getElementById('prInSide');
+        let prOutSides = document.getElementById('prOutSide');
+        let changeSystemValue = document.getElementById('getValueMode_sys');
         if (changeSystem.classList.contains('fa-arrow-left')) {
             changeSystem.classList.remove('fa-arrow-left');
             changeSystem.classList.add('fa-arrow-right');
@@ -422,6 +423,8 @@ function changeSystem(clickedId_ChangeSystem) {
             changeColorText2.classList.add('text-success');
             prInSides.classList.add('d-none')
             prOutSides.classList.remove('d-none');
+            changeSystemValue.value = 'outSide';
+            console.log('changeSystem value = '+changeSystemValue.value);
         } else {
             changeSystem.classList.remove('fa-arrow-right');
             changeSystem.classList.add('fa-arrow-left');
@@ -429,6 +432,8 @@ function changeSystem(clickedId_ChangeSystem) {
             changeColorText1.classList.add('text-success');
             prOutSides.classList.add('d-none');
             prInSides.classList.remove('d-none')
+            changeSystemValue.value = 'inSide';
+            console.log('changeSystem value = '+changeSystemValue.value);
         }
     }
 }
@@ -733,8 +738,23 @@ function createSelectOptions(event) {
             const intervalOneHours = 60;
             for (let z = intervalOneHours; z <= timeDifferenceMinutes; z += intervalOneHours) {
                 var option = document.createElement('option');
-                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
-                option.textContent = 'หลังเข้าเรียน: '+(z / 60) + ' ชั่วโมง'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                // เวลาที่มีอยู่เริ่มต้น
+                let [hours, minutes] = time_start.value.split(':').map(Number);
+
+                // แปลงเวลาเป็นนาที
+                let totalMinutes = hours * 60 + minutes;
+
+                // บวก 1 ชั่วโมง (60 นาที)
+                totalMinutes += z;
+
+                // แปลงเวลากลับเป็นชั่วโมงและนาที
+                hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
+                minutes = totalMinutes % 60;
+
+                // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+                let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                option.value = newTime.toString(); 
+                option.textContent = 'หลังเข้าเรียน: '+newTime+' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
 
@@ -743,8 +763,23 @@ function createSelectOptions(event) {
             const intervalOneHours = 120;
             for (let z = intervalOneHours; z <= timeDifferenceMinutes; z += intervalOneHours) {
                 var option = document.createElement('option');
-                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
-                option.textContent = 'หลังเข้าเรียน: '+(z / 60) + ' ชั่วโมง'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                // เวลาที่มีอยู่เริ่มต้น
+                let [hours, minutes] = time_start.value.split(':').map(Number);
+
+                // แปลงเวลาเป็นนาที
+                let totalMinutes = hours * 60 + minutes;
+
+                // บวก 1 ชั่วโมง (60 นาที)
+                totalMinutes += z;
+
+                // แปลงเวลากลับเป็นชั่วโมงและนาที
+                hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
+                minutes = totalMinutes % 60;
+
+                // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+                let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                option.value = newTime.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
+                option.textContent = 'หลังเข้าเรียน: '+newTime+' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
         }
