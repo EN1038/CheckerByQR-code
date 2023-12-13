@@ -1,0 +1,46 @@
+public $appID = '1310741099';
+    public $appSecret = 'QYRKC8YD7SNUGLWUCGNE';
+    public $app;
+    public $auth;
+    public $dc;
+
+    public function __construct()
+    {
+        $this->app = new \NSRU\App($this->appID, $this->appSecret);
+        $this->auth = $this->app->createMyAuth();
+        $this->dc = $this->app->createDataCore();
+    }
+
+    protected function login()
+    {
+        $url = $this->auth->getSigninURL(route('loginpostback', ['_token' => csrf_token()]));
+        return redirect($url);
+    }
+    protected function loginpostback(Request $request)
+    {
+       if (!$request->session()->has('user')) {
+            $username_login = $request->username;
+		$staff = $this->dc->find_staff($username_login);
+		$student = $this->dc->find_student($username_login);
+		ตั้งเซกชั่นเอาเองนะ
+       }
+       return redirect()->route('index');
+    }
+    protected function logout()
+    {
+        $url = $this->auth->getSignoutURL(url('logoutpostback'), ['_token' => csrf_token()]);
+        return redirect($url);
+    }
+
+    protected function logoutpostback(Request $request)
+    {
+        $request->session()->forget('user');
+        $request->session()->forget('permission');
+        return redirect('/');
+    }
+
+--------------
+Route::get('/login', [Controller::class, 'login'])->name('login');
+Route::post('/loginpostback', [Controller::class, 'loginpostback'])->name('loginpostback');
+Route::get('/logout', [Controller::class, 'logout'])->name('logout');
+Route::get('/logoutpostback', [Controller::class, 'logoutpostback'])->name('logoutpostback');
