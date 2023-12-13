@@ -59,7 +59,9 @@ class ActivityController extends Controller
     }
 
     public function ActivitySetting(Request $request,$id){
-        
+        if($request->input('outSide')){
+            echo 'aa';
+        }
     }
 
 }

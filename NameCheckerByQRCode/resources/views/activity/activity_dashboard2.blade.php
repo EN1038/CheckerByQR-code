@@ -26,7 +26,7 @@
                             <i class="enchagne_button btn btn-success fa-solid fa-arrow-left" id="changeSystem" value="0"></i> 
                 
                         <p class="mt-2 fs-8 fw-light text-muted">Click this button for Chagne Modes</p>
-                        <input type="text" name="modeSystem" id="getValueMode_sys" value="inSide" class="d-none"></input>
+                        <input type="text" name="modeSystem" id="getValueMode_sys" value="inSide" class="d-none">
                      </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
                 </div>

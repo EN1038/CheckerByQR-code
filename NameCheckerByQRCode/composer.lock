@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf6ad19a8cb9895eb1d1446084de0fcb",
+    "content-hash": "3aeb7cbc4e30ea1ad663352ec9339ffa",
     "packages": [
         {
             "name": "brick/math",
@@ -1111,6 +1111,80 @@
                 }
             ],
             "time": "2023-08-27T10:19:19+00:00"
+        },
+        {
+            "name": "kint-php/kint",
+            "version": "3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint.git",
+                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
+                "reference": "335ac1bcaf04d87df70d8aa51e8887ba2c6d203b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^4.0",
+                "seld/phar-utils": "^1.0",
+                "symfony/finder": "^2.0 || ^3.0 || ^4.0",
+                "vimeo/psalm": "^3.0"
+            },
+            "suggest": {
+                "ext-ctype": "Simple data type tests",
+                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
+                "ext-mbstring": "Provides string encoding detection",
+                "kint-php/kint-js": "Provides a simplified dump to console.log()",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
+                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
+                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
+                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "homepage": "https://github.com/jnvsor"
+                },
+                {
+                    "name": "Rokas Šleinius",
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
+                }
+            ],
+            "description": "Kint - debugging tool for PHP developers",
+            "homepage": "https://kint-php.github.io/kint/",
+            "keywords": [
+                "debug",
+                "kint",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/kint-php/kint/issues",
+                "source": "https://github.com/kint-php/kint/tree/master"
+            },
+            "time": "2019-10-17T18:05:24+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2700,6 +2774,50 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.17.1"
             },
             "time": "2023-08-13T19:53:39+00:00"
+        },
+        {
+            "name": "nsru/core",
+            "version": "0.36.1",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/nsruaritc/core_client_for_php.git",
+                "reference": "d1199681c36a0453119333049ebcd7a59239e2b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/nsruaritc/core_client_for_php/get/d1199681c36a0453119333049ebcd7a59239e2b6.zip",
+                "reference": "d1199681c36a0453119333049ebcd7a59239e2b6",
+                "shasum": ""
+            },
+            "require": {
+                "kint-php/kint": "^3.2",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-NC-SA-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Napadon Kaengkanna",
+                    "email": "napadon@nsru.ac.th"
+                }
+            ],
+            "description": "Core client for Nakhon Sawan Rajabhat University use to access information (eg.news, event, and user authenticate).",
+            "homepage": "https://bitbucket.org/nsruaritc/core_client_for_php",
+            "support": {
+                "source": "https://bitbucket.org/nsruaritc/core_client_for_php/src/d1199681c36a0453119333049ebcd7a59239e2b6/?at=master"
+            },
+            "time": "2020-07-12T04:32:33+00:00"
         },
         {
             "name": "nunomaduro/termwind",
