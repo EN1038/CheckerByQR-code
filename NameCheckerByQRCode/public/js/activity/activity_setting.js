@@ -64,7 +64,7 @@ document.addEventListener('click', function (event) {
         let clickedId_IdsetCheckName = event.target.id;
 
         console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId_IdsetCheckName)
-        showSetCheckName(event.target.id) 
+        showSetCheckName(event.target.id)
     }
 });
 
@@ -119,13 +119,13 @@ function addInput() {
     setCheckName_div.setAttribute('class', 'd-flex');
 
     let setCheckNameAllDay_div = document.createElement('div_AllDay');
-    setCheckNameAllDay_div.setAttribute('id','CheckName_allDay'+counter);
-    setCheckNameAllDay_div.setAttribute('class','d-flex justify-content-center align-items-center div_CheckName p-5 d-none');
+    setCheckNameAllDay_div.setAttribute('id', 'CheckName_allDay' + counter);
+    setCheckNameAllDay_div.setAttribute('class', 'd-flex justify-content-center align-items-center div_CheckName p-5 d-none');
 
     let setCheckNameRoundDay_div = document.createElement('div_RoundDay');
-    setCheckNameRoundDay_div.setAttribute('id','CheckName_setCheckNameRoundDay'+counter);
-    setCheckNameRoundDay_div.setAttribute('class','d-flex flex-column align-items-center div_CheckName p-2 d-none');
-    
+    setCheckNameRoundDay_div.setAttribute('id', 'CheckName_setCheckNameRoundDay' + counter);
+    setCheckNameRoundDay_div.setAttribute('class', 'd-flex flex-column align-items-center div_CheckName p-2 d-none');
+
 
     let date_input_label = document.createElement('label');
     date_input_label.setAttribute('class', 'form-label');
@@ -169,61 +169,61 @@ function addInput() {
     timeEnd_activity_div.appendChild(timeEnd_input);
 
     let form_check_setCheckI = document.createElement('div');
-    form_check_setCheckI.setAttribute('class','form-check ms-4');
+    form_check_setCheckI.setAttribute('class', 'form-check ms-4');
     setCheckName_div.appendChild(form_check_setCheckI);
 
     let setCheckNameI_input = document.createElement('input');
-    setCheckNameI_input.setAttribute('class','form-check-input get_IdsetCheckName');
-    setCheckNameI_input.setAttribute('type','radio');
-    setCheckNameI_input.setAttribute('name','setCheckName');
-    setCheckNameI_input.setAttribute('id','setCheckNameI'+counter);
+    setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName');
+    setCheckNameI_input.setAttribute('type', 'radio');
+    setCheckNameI_input.setAttribute('name', 'setCheckName');
+    setCheckNameI_input.setAttribute('id', 'setCheckNameI' + counter);
     form_check_setCheckI.appendChild(setCheckNameI_input);
 
     let setCheckNameI_label = document.createElement('label');
-    setCheckNameI_label.setAttribute('class','form-check-label');
-    setCheckNameI_label.setAttribute('for','setCheckNameI'+counter);
+    setCheckNameI_label.setAttribute('class', 'form-check-label');
+    setCheckNameI_label.setAttribute('for', 'setCheckNameI' + counter);
     setCheckNameI_label.textContent = 'เช็คชื่อทั้งวัน';
     form_check_setCheckI.appendChild(setCheckNameI_label);
-    
+
     let form_check_setCheckII = document.createElement('div');
-    form_check_setCheckII.setAttribute('class','form-check ms-4');
+    form_check_setCheckII.setAttribute('class', 'form-check ms-4');
     setCheckName_div.appendChild(form_check_setCheckII);
 
     let setCheckNameII_input = document.createElement('input');
-    setCheckNameII_input.setAttribute('class','form-check-input get_IdsetCheckName');
-    setCheckNameII_input.setAttribute('type','radio');
-    setCheckNameII_input.setAttribute('name','setCheckName');
-    setCheckNameII_input.setAttribute('id','setCheckNameII'+counter);
+    setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName');
+    setCheckNameII_input.setAttribute('type', 'radio');
+    setCheckNameII_input.setAttribute('name', 'setCheckName');
+    setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter);
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');
-    setCheckNameII_label.setAttribute('class','form-check-label');
-    setCheckNameII_label.setAttribute('for','setCheckNameII'+counter);
+    setCheckNameII_label.setAttribute('class', 'form-check-label');
+    setCheckNameII_label.setAttribute('for', 'setCheckNameII' + counter);
     setCheckNameII_label.textContent = 'เช็คชื่อเป็นรอบ';
     form_check_setCheckII.appendChild(setCheckNameII_label);
 
     let showText_Allday = document.createElement('h1');
-    showText_Allday.setAttribute('class','fs-3 fw-bold text-center');
+    showText_Allday.setAttribute('class', 'fs-3 fw-bold text-center');
     showText_Allday.textContent = 'ระบบจะมีการเช็คชื่อตั้งแต่เวลาเริ่มจนเวลาจบ';
     setCheckNameAllDay_div.appendChild(showText_Allday);
 
     let div_detailRoundSetCheckName = document.createElement('div');
-    div_detailRoundSetCheckName.setAttribute('class','d-flex justify-content-around align-items-center w-100');
+    div_detailRoundSetCheckName.setAttribute('class', 'd-flex justify-content-around align-items-center w-100');
     setCheckNameRoundDay_div.appendChild(div_detailRoundSetCheckName);
 
     let div_setRoundCheck = document.createElement('div');
-    div_setRoundCheck.setAttribute('class','col-7 d-flex');
+    div_setRoundCheck.setAttribute('class', 'col-7 d-flex');
     div_detailRoundSetCheckName.appendChild(div_setRoundCheck);
 
     let setRound_label = document.createElement('label');
-    setRound_label.setAttribute('class','form-label w-25');
-    setRound_label.setAttribute('for','selectSetRoundCheck'+counter);
+    setRound_label.setAttribute('class', 'form-label w-25');
+    setRound_label.setAttribute('for', 'selectSetRoundCheck' + counter);
     setRound_label.textContent = 'จำนวนรอบ : ';
     div_setRoundCheck.appendChild(setRound_label);
 
     let select_setRoundCheck = document.createElement('select');
-    select_setRoundCheck.setAttribute('class','form-select h-50 w-75 me-3 get_IdselectRound');
-    select_setRoundCheck.setAttribute('id','selectSetRoundCheck'+counter);
+    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-75 me-3 get_IdselectRound');
+    select_setRoundCheck.setAttribute('id', 'selectSetRoundCheck' + counter);
     div_setRoundCheck.appendChild(select_setRoundCheck);
 
     let option_setRoundCheck_0 = document.createElement('option');
@@ -241,7 +241,7 @@ function addInput() {
     option_setRoundCheck_2.textContent = 'จำนวน 2 รอบ';
     option_setRoundCheck_2.value = '2';
     select_setRoundCheck.appendChild(option_setRoundCheck_2);
-    
+
     let option_setRoundCheck_3 = document.createElement('option');
     option_setRoundCheck_3.textContent = 'จำนวน 3 รอบ';
     option_setRoundCheck_3.value = '3';
@@ -258,18 +258,18 @@ function addInput() {
     select_setRoundCheck.appendChild(option_setRoundCheck_5);
 
     let div_selectTimeCheck = document.createElement('div');
-    div_selectTimeCheck.setAttribute('class','col-5 d-flex flex-column ps-5');
+    div_selectTimeCheck.setAttribute('class', 'col-5 d-flex flex-column ps-5');
     div_detailRoundSetCheckName.appendChild(div_selectTimeCheck);
 
     let selectTimeCheck_label = document.createElement('label');
-    selectTimeCheck_label.setAttribute('class','form-label');
-    selectTimeCheck_label.setAttribute('for','selectTimeCheck'+counter);
+    selectTimeCheck_label.setAttribute('class', 'form-label');
+    selectTimeCheck_label.setAttribute('for', 'selectTimeCheck' + counter);
     selectTimeCheck_label.textContent = 'จำนวนระยะเวลาที่เช็ค';
     div_selectTimeCheck.appendChild(selectTimeCheck_label);
 
     let selectTimeCheck_input = document.createElement('select');
-    selectTimeCheck_input.setAttribute('class','form-select w-75');
-    selectTimeCheck_input.setAttribute('id','selectTimeCheck'+counter);
+    selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck');
+    selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
 
     let option_setTimeCheck_0 = document.createElement('option');
@@ -287,7 +287,7 @@ function addInput() {
     option_setTimeCheck_2.textContent = '30 นาที';
     option_setTimeCheck_2.value = '30';
     selectTimeCheck_input.appendChild(option_setTimeCheck_2);
-    
+
     let option_setTimeCheck_3 = document.createElement('option');
     option_setTimeCheck_3.textContent = '45 นาที';
     option_setTimeCheck_3.value = '45';
@@ -309,17 +309,17 @@ function addInput() {
     selectTimeCheck_input.appendChild(option_setTimeCheck_6);
 
     let box_div_showTime_showActiveTime = document.createElement('div');
-    box_div_showTime_showActiveTime.setAttribute('class','d-flex my-2 w-100')
+    box_div_showTime_showActiveTime.setAttribute('class', 'd-flex my-2 w-100')
     setCheckNameRoundDay_div.appendChild(box_div_showTime_showActiveTime);
 
     let div_showTime = document.createElement('div');
-    div_showTime.setAttribute('class','col-6 d-flex flex-column my-2 border border-danger');
-    div_showTime.setAttribute('id','divShowTimeToUser');
+    div_showTime.setAttribute('class', 'col-6 d-flex flex-column my-2');
+    div_showTime.setAttribute('id', 'divShowTimeToUser' + counter);
     box_div_showTime_showActiveTime.appendChild(div_showTime);
 
     let div_showActiveTime = document.createElement('div');
-    div_showActiveTime.setAttribute('class','col-6 d-flex flex-column my-2 border border-primary pt-2 px-5');
-    div_showActiveTime.setAttribute('id','divShowActiveTimeToUser');
+    div_showActiveTime.setAttribute('class', 'col-6 d-flex flex-column my-2 pt-2 px-5');
+    div_showActiveTime.setAttribute('id', 'divShowActiveTimeToUser' + counter);
     box_div_showTime_showActiveTime.appendChild(div_showActiveTime);
 
 
@@ -492,25 +492,23 @@ function showFormLogin(clickedId_showImg_Login) {
 }
 
 function showSetCheckName(clickedId_IdsetCheckName) {
-    
+
     if (isNaN(clickedId_IdsetCheckName)) {
         let getIdlinks = clickedId_IdsetCheckName.match(/\d+/g);
-        console.log('inif = ' + clickedId_IdsetCheckName);
-        console.log(' = ' + getIdlinks);
         let setCheckName = document.getElementById(clickedId_IdsetCheckName);
-        let div_Rounddays = document.getElementById('CheckName_setCheckNameRoundDay'+getIdlinks);
-        let div_Alldays = document.getElementById('CheckName_allDay'+getIdlinks);
+        let div_Rounddays = document.getElementById('CheckName_setCheckNameRoundDay' + getIdlinks);
+        let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
         console.log(setCheckName.id);
-        if(setCheckName.id === 'setCheckNameI' + getIdlinks){
+        if (setCheckName.id === 'setCheckNameI' + getIdlinks) {
             div_Alldays.classList.remove('d-none');
             div_Rounddays.classList.add('d-none');
-        }else if(setCheckName.id === 'setCheckNameII' + getIdlinks){  
+        } else if (setCheckName.id === 'setCheckNameII' + getIdlinks) {
             div_Rounddays.classList.remove('d-none');
             div_Alldays.classList.add('d-none');
-        }else{
+        } else {
             console.log('error');
         }
-        
+
     }
 }
 
@@ -530,18 +528,22 @@ document.addEventListener('change', function (event) {
 
         addOption(event);
         addSelected(event);
-    } else if(event.target.classList.contains('get_IdselectRound')) {
-        
+    } else if (event.target.classList.contains('get_IdselectRound')) {
+
         let changedId_IdselectRound = event.target;
         console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_IdselectRound);
 
         createSelectOptions(event);
-    }else if(event.target.classList.contains('get_IdInputTime')) {
-        
-        let changedId_IdselectRound = event.target;
-        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_IdselectRound);
+    } else if (event.target.classList.contains('get_IdInputTime')) {
 
-        getTime(changedId_IdselectRound);
+        let get_InputTime = event.target;
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + get_InputTime);
+
+        getTime(get_InputTime);
+    } else if (event.target.classList.contains('dynamicSelects')) {
+        let get_Selects = event.target;
+        console.log('ไอดี: ' + get_Selects);
+        showResult(get_Selects);
     }
 });
 
@@ -570,9 +572,9 @@ function addSelected(event) {
     console.log(selectedOptionId);
     if (selectedOptionId === 'mySelect') {
         let div_Support = document.getElementById('selectSupport');
-        if (selectedOptions === 'เลือกสังกัดหรือเลือกทั้งหมด'){
+        if (selectedOptions === 'เลือกสังกัดหรือเลือกทั้งหมด') {
             divNewSelecte.removeChild(div_Support);
-        }else if (!div_Support) {
+        } else if (!div_Support) {
             let div_Select = document.createElement('select');
             div_Select.setAttribute('class', 'select-upgrade select-major');
             div_Select.setAttribute('id', 'selectSupport');
@@ -644,83 +646,187 @@ function addSelected(event) {
                     console.error('There was a problem with the fetch operation:', error);
                 });
         }
-    }else if(selectedOptionId === 'selectSupport'){
+    } else if (selectedOptionId === 'selectSupport') {
         console.log(':#')
     }
 
 }
 
+let globalIdlinks;
+
 function createSelectOptions(event) {
-    // เลือก element ที่มี id เพื่อนำมาลบทิ้ง (ถ้ามี)
-    let divShowTimeToUsers = document.getElementById('divShowTimeToUser');
+    let IdselectRound = event.target.id;
+    let getIdlinks = IdselectRound.match(/\d+/g);
+    let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + getIdlinks);
+    var div_ShowOutput = document.getElementById('divShowActiveTimeToUser' + getIdlinks);
+
     // ลบ select ที่มี id เป็น dynamicSelect ทิ้งทั้งหมด
-    var existingSelects = document.querySelectorAll('[id^=dynamicSelect]');
-    existingSelects.forEach(select => {
-        select.remove();
-    });
+    if (divShowTimeToUsers.id === 'divShowTimeToUser' + getIdlinks) {
+        var selectAndLabels = divShowTimeToUsers.querySelectorAll('select, label,input');
+        var inputBoxs = div_ShowOutput.querySelectorAll('input');
+        // วนลูปผ่าน select และ label แล้วลบทุกตัว
+        selectAndLabels.forEach(element => {
+            element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+        });
+        inputBoxs.forEach(element => {
+            element.remove(); // ลบ input ทั้งหมดออกจาก DOM
+        });
+    }
+    let time_check = document.getElementById('selectTimeCheck' + getIdlinks).value;
+    let time_start = document.getElementById('timeStart_input' + getIdlinks);
+    let time_end = document.getElementById('timeEnd_input' + getIdlinks);
 
-    // ลบ label ที่มี id เป็น dynamicLabel ทิ้งทั้งหมด
-    var existingLabels = document.querySelectorAll('[id^=dynamicLabel]');
-    existingLabels.forEach(label => {
-        label.remove();
-    });
+    let [startHour, startMinute] = time_start.value.split(':').map(Number);
+    let [endHour, endMinute] = time_end.value.split(':').map(Number);
 
-    // ลบ inputBox ที่มี id เป็น dynamicBoxinput ทิ้งทั้งหมด
-    var existingBoxInput = document.querySelectorAll('[id^=dynamicBoxinput]');
-    existingBoxInput.forEach(input => {
-        input.remove();
-    });
+    let startTotalMinutes = startHour * 60 + startMinute; // เวลาเริ่มต้นในรูปแบบนาที
+    let endTotalMinutes = endHour * 60 + endMinute; // เวลาสิ้นสุดในรูปแบบนาที
+
+    let timeDifferenceMinutes = Math.abs(endTotalMinutes - startTotalMinutes); // ละยะห่างของเวลาในนาที
 
 
-  
     let valueIdselectRound = event.target.value;
-    var select = document.createElement('select');
-    select.id = 'dynamicSelect'+x;
 
-    var div_Showinput = document.getElementById('divShowActiveTimeToUser');
-    for(var x = 0; x <= (valueIdselectRound-1);x++){
+    var input_timeStart = document.createElement('input');
+    input_timeStart.setAttribute('class', 'd-none');
+    input_timeStart.setAttribute('id', 'input_timeStart'+getIdlinks);
+    input_timeStart.value = time_start.value;
+
+    var input_timeCheck = document.createElement('input');
+    input_timeCheck.setAttribute('class', 'd-none');
+    input_timeCheck.setAttribute('id', 'input_timeCheck'+getIdlinks);
+    input_timeCheck.value = time_check;
+
+
+    divShowTimeToUsers.appendChild(input_timeStart);
+    divShowTimeToUsers.appendChild(input_timeCheck);
+
+
+
+    for (var x = 0; x <= (valueIdselectRound - 1); x++) {
 
         var label = document.createElement('label');
-        label.setAttribute('class','form-label fw-bold text-green');
-        label.setAttribute('for','dynamicSelect'+x);
-        label.id = 'dynamicLabel'+x;
-        label.textContent = 'การเช็คชื่อรอบที่ '+ (x+1);
+        label.setAttribute('class', 'form-label fw-bold text-green');
+        label.setAttribute('for', 'dynamicSelect' + x);
+        label.id = 'dynamicLabel' + x;
+        label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
 
         var select = document.createElement('select');
-        select.setAttribute('class','form-select mb-3 w-75 ms-3');
-        select.id = 'dynamicSelect'+x;
+        select.setAttribute('class', 'form-select mb-3 w-75 ms-3 dynamicSelects');
+        select.id = 'dynamicSelect' + x;
 
         var optionTitle = document.createElement('option');
         optionTitle.value = 0;
         optionTitle.text = 'หลังเข้าเรียน';
         select.appendChild(optionTitle);
 
-
         var inputBox = document.createElement('input');
-        inputBox.setAttribute('class','form-control my-4 bg-disable')
+        inputBox.setAttribute('class', 'form-control my-4 bg-disable')
         inputBox.disabled = true;
-        inputBox.value = "รอแปปนะ";
-        inputBox.id = 'dynamicBoxinput'+x;
-        div_Showinput.appendChild(inputBox);
+        inputBox.value = 'จะเริ่มเช็คชื่อเมื่อเวลา:';
+        inputBox.id = 'dynamicBoxinput'+getIdlinks+x;
+        div_ShowOutput.appendChild(inputBox);
 
-        for (var i = 1; i <= valueIdselectRound; i++) {
-            var option = document.createElement('option');
-            option.value = i;
-            option.text = 'ถึงเวลา '+i;
-            select.appendChild(option);
-          }
-          divShowTimeToUsers.appendChild(label);
-          divShowTimeToUsers.appendChild(select);
+
+        if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
+            console.log('Option ที่ถูกเลือก: ' + time_check);
+            const intervalOneHours = 60;
+            for (let z = intervalOneHours; z <= timeDifferenceMinutes; z += intervalOneHours) {
+                var option = document.createElement('option');
+                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
+                option.textContent = 'หลังเข้าเรียน: '+(z / 60) + ' ชั่วโมง'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                select.appendChild(option);
+            }
+
+        } else if (time_check === '90' || time_check === '120') {
+            console.log('Option ที่ถูกเลือก: ' + time_check);
+            const intervalOneHours = 120;
+            for (let z = intervalOneHours; z <= timeDifferenceMinutes; z += intervalOneHours) {
+                var option = document.createElement('option');
+                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
+                option.textContent = 'หลังเข้าเรียน: '+(z / 60) + ' ชั่วโมง'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                select.appendChild(option);
+            }
+        }
+
+
+        divShowTimeToUsers.appendChild(label);
+        divShowTimeToUsers.appendChild(select);
+
+       
+    }
+    globalIdlinks = getIdlinks;
+}
+
+
+function getTime(get_InputTime) {
+    let getIdlinks = get_InputTime.id.match(/\d+/g);
+    let time_start = document.getElementById('timeStart_input' + getIdlinks);
+    let time_end = document.getElementById('timeEnd_input' + getIdlinks);
+
+
+    if (time_start.value > time_end.value) {
+        console.log('Time Start is more than Time End');
+        console.log('time_start = ' + time_start.value + ' of ' + time_start.id);
+        console.log('time_end = ' + time_end.value + ' of ' + time_end.id);
+
+        // เพิ่มคลาสสีแดงในช่องเวลาจบ
+        time_end.classList.add('red-border');
+        // เคลียร์ค่าในช่องเวลาจบ
+        time_end.value = '';
+    } else if (time_start.value < time_end.value) {
+        console.log('Time End is more than Time Start');
+        console.log('time_start = ' + time_start.value + ' of ' + time_start.id);
+        console.log('time_end = ' + time_end.value + ' of ' + time_end.id);
+
+        // ลบคลาสสีแดงออกจากช่องเวลาจบ (ถ้ามี)
+        time_end.classList.remove('red-border');
+    } else {
+        console.log('Both times are the same');
     }
 
-  }
 
-function getTime(changedId_IdselectRound){
-    let allTime = changedId_IdselectRound.id;
-    let valueAllTime = changedId_IdselectRound.value;
-    console.log('id = '+allTime);
-    console.log('value = '+valueAllTime);
 }
+
+
+
+function showResult(get_Selects) {
+    console.log(globalIdlinks);
+    let getIdselects = get_Selects.id.match(/\d+/g);
+    let getValue = parseInt(get_Selects.value);
+    let get_valueTimeStart = document.getElementById('input_timeStart'+globalIdlinks).value;
+    let get_valueTimeCheck = document.getElementById('input_timeCheck'+globalIdlinks).value;
+    let intValueTimeCheck = parseInt(get_valueTimeCheck);
+    let get_idDynamicBox = document.getElementById('dynamicBoxinput'+globalIdlinks+getIdselects)
+
+
+        // เวลาที่มีอยู่เริ่มต้น
+        let [hours, minutes] = get_valueTimeStart.split(':').map(Number);
+
+        // แปลงเวลาเป็นนาที
+        let totalMinutes = hours * 60 + minutes;
+
+        // บวก 1 ชั่วโมง (60 นาที)
+        totalMinutes += getValue;
+
+        // แปลงเวลากลับเป็นชั่วโมงและนาที
+        hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
+        minutes = totalMinutes % 60;
+
+        // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+        let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+        let durationTime = totalMinutes + intValueTimeCheck;
+        // แปลงเวลากลับเป็นชั่วโมงและนาที
+        hours_duration = Math.floor(durationTime / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
+        minutes_duration = durationTime % 60;
+
+        // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+        let duration_Time = `${hours_duration.toString().padStart(2, '0')}:${minutes_duration.toString().padStart(2, '0')}`;
+
+        get_idDynamicBox.value = newTime +' - '+duration_Time;
+}
+
 //api fetch
 
 fetch('/api/agency-data')
