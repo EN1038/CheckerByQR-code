@@ -57,4 +57,9 @@ class ActivityController extends Controller
     public function showActivityMakeForm($activity_id){
         return view('activity.activity_table');
     }
+
+    public function ActivitySetting(Request $request,$id){
+        
+    }
+
 }
