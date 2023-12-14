@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Activity;
+use App\Models\activity_setting;
 use App\Models\CheckerForm;
+use App\Models\activity_day_maker;
 use Illuminate\Support\Facades\Auth;
 use Psy\VersionUpdater\Checker;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -28,7 +30,7 @@ class ActivityController extends Controller
     public function deleteActivity($activity_id){
         $activity_data = Activity::where('id','=',$activity_id)->first();
         if($activity_data->user_id != Auth::user()->id){
-            return redirect('/');
+            return redirect('/x');
         }else{
             $delete_activity = Activity::where('id','=',$activity_id)->update([
                 'status' => 'delete'
@@ -58,9 +60,19 @@ class ActivityController extends Controller
         return view('activity.activity_table');
     }
 
-    public function ActivitySetting(Request $request,$id){
-        if($request->input('outSide')){
-            echo 'aa';
+    public function ActivitySetting(Request $request,$activity_id){
+        dd($request);
+
+        if($request->people_side_mode == 'outSide' and $request->list_of_name_mode == "1"){
+            $activity_setting = activity_setting::create([
+                'activity_id' => $activity_id,
+                'people_side_mode_id' => $request->people_side_mode,
+                'list_of_name_mode' => $request->list_of_name_mode,
+            ]);
+            $activity_day_maker = activity_day_maker::create([
+                'form_name' => $request->date_input,
+                ''
+            ]);
         }
     }
 

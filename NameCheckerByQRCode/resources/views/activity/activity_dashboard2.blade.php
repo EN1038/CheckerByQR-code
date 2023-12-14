@@ -26,7 +26,7 @@
                             <i class="enchagne_button btn btn-success fa-solid fa-arrow-left" id="changeSystem" value="0"></i> 
                 
                         <p class="mt-2 fs-8 fw-light text-muted">Click this button for Chagne Modes</p>
-                        <input type="text" name="modeSystem" id="getValueMode_sys" value="inSide" class="d-none">
+                        <input type="text" name="people_side_mode" id="getValueMode_sys" value="inSide" class="d-none">
                      </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
                 </div>
@@ -34,13 +34,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="radiosIS" id="radiosISHaveData" value="option1" checked>
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISHaveData" value="1" checked>
                         <label class="form-check-label fs-5" for="radiosISHaveData">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="radiosIS" id="radiosISnoHaveData" value="option2">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosISnoHaveData">
                           ไม่มีรายชื่อ
                         </label>
@@ -74,13 +74,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="radiosOS" id="radiosOSHaveData" value="option1" checked>
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="list_of_name_mode" id="radiosOSHaveData" value="1" checked>
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="radiosOS" id="radiosOSnoHaveData" value="option2">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="list_of_name_mode" id="radiosOSnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
                         </label>
