@@ -32,14 +32,14 @@
                 </div>
                 <div class="d-flex flex-column mx-5" id="prInSide">
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
-                <div class="col d-flex flex-row align-items-center justify-content-center">
-                    <div class="form-check col ps-5">
+                <div class="col d-flex flex-row align-items-center justify-content-start">
+                    <div class="form-check col-3 ps-5">
                         <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="radiosIS" id="radiosISHaveData" value="option1" checked>
                         <label class="form-check-label fs-5" for="radiosISHaveData">
                           มีรายชื่อ
                         </label>
                       </div>
-                      <div class="form-check col">
+                      <div class="form-check col-3">
                         <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="radiosIS" id="radiosISnoHaveData" value="option2">
                         <label class="form-check-label fs-5" for="radiosISnoHaveData">
                           ไม่มีรายชื่อ

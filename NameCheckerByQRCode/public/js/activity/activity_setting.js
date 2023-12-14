@@ -4,6 +4,7 @@ document.addEventListener('click', function (event) {
         let clickedId = event.target.id;
         console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId);
 
+
         addInput(event.target);
         var bottom = document.documentElement.scrollHeight - window.innerHeight;
         window.scrollTo({
@@ -124,7 +125,7 @@ function addInput() {
 
     let setCheckNameRoundDay_div = document.createElement('div_RoundDay');
     setCheckNameRoundDay_div.setAttribute('id', 'CheckName_setCheckNameRoundDay' + counter);
-    setCheckNameRoundDay_div.setAttribute('class', 'd-flex flex-column align-items-center div_CheckName p-2 d-none');
+    setCheckNameRoundDay_div.setAttribute('class', 'd-flex flex-column div_CheckName p-2 d-none');
 
 
     let date_input_label = document.createElement('label');
@@ -308,19 +309,10 @@ function addInput() {
     option_setTimeCheck_6.value = '120';
     selectTimeCheck_input.appendChild(option_setTimeCheck_6);
 
-    let box_div_showTime_showActiveTime = document.createElement('div');
-    box_div_showTime_showActiveTime.setAttribute('class', 'd-flex my-2 w-100')
-    setCheckNameRoundDay_div.appendChild(box_div_showTime_showActiveTime);
-
     let div_showTime = document.createElement('div');
-    div_showTime.setAttribute('class', 'col-6 d-flex flex-column my-2');
+    div_showTime.setAttribute('class', 'col d-flex flex-column my-2');
     div_showTime.setAttribute('id', 'divShowTimeToUser' + counter);
-    box_div_showTime_showActiveTime.appendChild(div_showTime);
-
-    let div_showActiveTime = document.createElement('div');
-    div_showActiveTime.setAttribute('class', 'col-6 d-flex flex-column my-2 pt-2 px-5');
-    div_showActiveTime.setAttribute('id', 'divShowActiveTimeToUser' + counter);
-    box_div_showTime_showActiveTime.appendChild(div_showActiveTime);
+    setCheckNameRoundDay_div.appendChild(div_showTime);
 
 
     $(document).ready(function () {
@@ -424,7 +416,7 @@ function changeSystem(clickedId_ChangeSystem) {
             prInSides.classList.add('d-none')
             prOutSides.classList.remove('d-none');
             changeSystemValue.value = 'outSide';
-            console.log('changeSystem value = '+changeSystemValue.value);
+            console.log('changeSystem value = ' + changeSystemValue.value);
         } else {
             changeSystem.classList.remove('fa-arrow-right');
             changeSystem.classList.add('fa-arrow-left');
@@ -433,7 +425,7 @@ function changeSystem(clickedId_ChangeSystem) {
             prOutSides.classList.add('d-none');
             prInSides.classList.remove('d-none')
             changeSystemValue.value = 'inSide';
-            console.log('changeSystem value = '+changeSystemValue.value);
+            console.log('changeSystem value = ' + changeSystemValue.value);
         }
     }
 }
@@ -516,6 +508,7 @@ function showSetCheckName(clickedId_IdsetCheckName) {
 
     }
 }
+
 
 
 
@@ -663,18 +656,13 @@ function createSelectOptions(event) {
     let IdselectRound = event.target.id;
     let getIdlinks = IdselectRound.match(/\d+/g);
     let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + getIdlinks);
-    var div_ShowOutput = document.getElementById('divShowActiveTimeToUser' + getIdlinks);
 
     // ลบ select ที่มี id เป็น dynamicSelect ทิ้งทั้งหมด
     if (divShowTimeToUsers.id === 'divShowTimeToUser' + getIdlinks) {
-        var selectAndLabels = divShowTimeToUsers.querySelectorAll('select, label,input');
-        var inputBoxs = div_ShowOutput.querySelectorAll('input');
+        var selectAndLabels = divShowTimeToUsers.querySelectorAll('select, label,input,div');
         // วนลูปผ่าน select และ label แล้วลบทุกตัว
         selectAndLabels.forEach(element => {
             element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
-        });
-        inputBoxs.forEach(element => {
-            element.remove(); // ลบ input ทั้งหมดออกจาก DOM
         });
     }
     let time_check = document.getElementById('selectTimeCheck' + getIdlinks).value;
@@ -694,12 +682,12 @@ function createSelectOptions(event) {
 
     var input_timeStart = document.createElement('input');
     input_timeStart.setAttribute('class', 'd-none');
-    input_timeStart.setAttribute('id', 'input_timeStart'+getIdlinks);
+    input_timeStart.setAttribute('id', 'input_timeStart' + getIdlinks);
     input_timeStart.value = time_start.value;
 
     var input_timeCheck = document.createElement('input');
     input_timeCheck.setAttribute('class', 'd-none');
-    input_timeCheck.setAttribute('id', 'input_timeCheck'+getIdlinks);
+    input_timeCheck.setAttribute('id', 'input_timeCheck' + getIdlinks);
     input_timeCheck.value = time_check;
 
 
@@ -707,30 +695,29 @@ function createSelectOptions(event) {
     divShowTimeToUsers.appendChild(input_timeCheck);
 
 
-
     for (var x = 0; x <= (valueIdselectRound - 1); x++) {
+        var div_row = document.createElement('div');
+        div_row.setAttribute('class','d-flex justify-content-start align-items-center');
+        div_row.id = 'div_row'+x;
 
         var label = document.createElement('label');
-        label.setAttribute('class', 'form-label fw-bold text-green');
+        label.setAttribute('class', 'col-2 form-label fw-bold text-green');
         label.setAttribute('for', 'dynamicSelect' + x);
         label.id = 'dynamicLabel' + x;
         label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
 
         var select = document.createElement('select');
-        select.setAttribute('class', 'form-select mb-3 w-75 ms-3 dynamicSelects');
-        select.id = 'dynamicSelect' + x;
+        select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start');
+        select.id = 'dynamicSelect' + x + counter;
+
+        var div = document.createElement('div');
+        div.setAttribute('class', 'col-6  d-flex my-2 ms-3 justify-content-center');
+        div.id = 'divSpace' + x + counter;
 
         var optionTitle = document.createElement('option');
         optionTitle.value = 0;
         optionTitle.text = 'หลังเข้าเรียน';
         select.appendChild(optionTitle);
-
-        var inputBox = document.createElement('input');
-        inputBox.setAttribute('class', 'form-control my-4 bg-disable')
-        inputBox.disabled = true;
-        inputBox.value = 'จะเริ่มเช็คชื่อเมื่อเวลา:';
-        inputBox.id = 'dynamicBoxinput'+getIdlinks+x;
-        div_ShowOutput.appendChild(inputBox);
 
 
         if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
@@ -753,8 +740,8 @@ function createSelectOptions(event) {
 
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                option.value = newTime.toString(); 
-                option.textContent = 'หลังเข้าเรียน: '+newTime+' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                option.value = z.toString();
+                option.textContent = 'หลังเข้าเรียน: ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
 
@@ -778,17 +765,19 @@ function createSelectOptions(event) {
 
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                option.value = newTime.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
-                option.textContent = 'หลังเข้าเรียน: '+newTime+' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
+                option.textContent = 'หลังเข้าเรียน: ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
         }
 
 
-        divShowTimeToUsers.appendChild(label);
-        divShowTimeToUsers.appendChild(select);
+        divShowTimeToUsers.appendChild(div_row);
+        div_row.appendChild(label);
+        div_row.appendChild(select);
+        div_row.appendChild(div);
 
-       
+
     }
     globalIdlinks = getIdlinks;
 }
@@ -826,41 +815,68 @@ function getTime(get_InputTime) {
 
 
 function showResult(get_Selects) {
-    console.log(globalIdlinks);
     let getIdselects = get_Selects.id.match(/\d+/g);
     let getValue = parseInt(get_Selects.value);
-    let get_valueTimeStart = document.getElementById('input_timeStart'+globalIdlinks).value;
-    let get_valueTimeCheck = document.getElementById('input_timeCheck'+globalIdlinks).value;
+    let get_idDivSpace = document.getElementById('divSpace' + getIdselects);
+    let get_valueTimeStart = document.getElementById('input_timeStart' + globalIdlinks).value;
+    let get_valueTimeCheck = document.getElementById('input_timeCheck' + globalIdlinks).value;
     let intValueTimeCheck = parseInt(get_valueTimeCheck);
-    let get_idDynamicBox = document.getElementById('dynamicBoxinput'+globalIdlinks+getIdselects)
 
+    console.log(get_idDivSpace);
+    if (get_idDivSpace.id === 'divSpace' + getIdselects) {
+        var selectAndLabels = get_idDivSpace.querySelectorAll('input');
+        // วนลูปผ่าน select และ label แล้วลบทุกตัว
+        selectAndLabels.forEach(element => {
+            element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+        });
+    }
+    // เวลาที่มีอยู่เริ่มต้น
+    let [hours, minutes] = get_valueTimeStart.split(':').map(Number);
 
-        // เวลาที่มีอยู่เริ่มต้น
-        let [hours, minutes] = get_valueTimeStart.split(':').map(Number);
+    // แปลงเวลาเป็นนาที
+    let totalMinutes = hours * 60 + minutes;
 
-        // แปลงเวลาเป็นนาที
-        let totalMinutes = hours * 60 + minutes;
+    // บวก 1 ชั่วโมง (60 นาที)
+    totalMinutes += getValue;
 
-        // บวก 1 ชั่วโมง (60 นาที)
-        totalMinutes += getValue;
+    // แปลงเวลากลับเป็นชั่วโมงและนาที
+    hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
+    minutes = totalMinutes % 60;
 
-        // แปลงเวลากลับเป็นชั่วโมงและนาที
-        hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
-        minutes = totalMinutes % 60;
+    // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+    let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
 
-        // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
-        let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    let durationTime = totalMinutes + intValueTimeCheck;
+    // แปลงเวลากลับเป็นชั่วโมงและนาที
+    hours_duration = Math.floor(durationTime / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
+    minutes_duration = durationTime % 60;
 
-        let durationTime = totalMinutes + intValueTimeCheck;
-        // แปลงเวลากลับเป็นชั่วโมงและนาที
-        hours_duration = Math.floor(durationTime / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
-        minutes_duration = durationTime % 60;
+    // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+    let duration_Time = `${hours_duration.toString().padStart(2, '0')}:${minutes_duration.toString().padStart(2, '0')}`;
 
-        // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
-        let duration_Time = `${hours_duration.toString().padStart(2, '0')}:${minutes_duration.toString().padStart(2, '0')}`;
+    let Box = document.createElement('input');
+    Box.setAttribute('class', 'my-4 bg-disable w-75 border-0')
+    Box.disabled = true;
+    Box.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + newTime + ' - ' + duration_Time;
+    Box.id = 'Boxinput' + getIdselects;
+    get_idDivSpace.appendChild(Box);
 
-        get_idDynamicBox.value = newTime +' - '+duration_Time;
+    let roundStart_time = document.createElement('input');
+    roundStart_time.classList.add('d-none');
+    roundStart_time.value = newTime;
+    roundStart_time.id = 'roundStart_timex'+ getIdselects;
+    roundStart_time.setAttribute('name','roundStart_timex[]');
+    get_idDivSpace.appendChild(roundStart_time);
+
+    let roundEnd_time = document.createElement('input');
+    roundEnd_time.classList.add('d-none');
+    roundEnd_time.value = duration_Time;
+    roundEnd_time.id = 'roundEnd_timex'+ getIdselects;
+    roundEnd_time.setAttribute('name','roundEnd_timex[]');
+    get_idDivSpace.appendChild(roundEnd_time);
+
 }
+
 
 //api fetch
 
