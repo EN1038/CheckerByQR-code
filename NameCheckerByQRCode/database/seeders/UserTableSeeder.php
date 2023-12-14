@@ -15,18 +15,21 @@ class UserTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'id' => '2',
+            [
+                'id' => '2',
             'name' => 'กมลาส กลิ่นด้วง',
             'student_id' => '63113532008',
             'password' => Hash::make('123456')
-        ],
-        [
-            'id' => '1',
+            ],
+            [
+                'id' => '1',
             'name' => 'เริงชัย บุตรม้วย',
             'student_id' => '63113532037',
             'password' => Hash::make('123456')
+            ]
+            
         ],
- 
+       
     );
     DB::table('activities')->insert([
     
