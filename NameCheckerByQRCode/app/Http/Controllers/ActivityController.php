@@ -9,6 +9,7 @@ use App\Models\activity_setting;
 use App\Models\CheckerForm;
 use App\Models\activity_day_maker;
 use Illuminate\Support\Facades\Auth;
+use League\Flysystem\AsyncAwsS3\AsyncAwsS3Adapter;
 use Psy\VersionUpdater\Checker;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -80,6 +81,15 @@ class ActivityController extends Controller
 
             //     ])
             // }
+            $date_data = $request->input('date_input');
+            foreach($date_data as $item){
+                $activity_day_maker = activity_day_maker::create([
+                    'form_name' => $item,
+                    'form_date' => $request->date,
+                    'form_start_time' => $request->timeStart_input,
+                    'timeEnd_input' => $request->timeEnd_input,
+                ]);
+            }
         }
     }
 }
