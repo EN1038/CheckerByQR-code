@@ -11,38 +11,39 @@ use App\Models\activity_day_maker;
 use Illuminate\Support\Facades\Auth;
 use Psy\VersionUpdater\Checker;
 use RealRashid\SweetAlert\Facades\Alert;
+
 class ActivityController extends Controller
 {
-    public function updateActivityName(Request $request,$activity_id){
+    public function updateActivityName(Request $request, $activity_id)
+    {
         $validate = $request->validate([
             'activity_name' => 'required'
         ]);
-        
-        $update_activity_name = Activity::where('id','=',$activity_id)->update([
+
+        $update_activity_name = Activity::where('id', '=', $activity_id)->update([
             'activity_name' => $request->activity_name
         ]);
-        if($update_activity_name){
-            Alert::success('success','update is successfully');
-            return redirect()->route('show_activity_profile');
-            
-        } 
-    }
-    public function deleteActivity($activity_id){
-        $activity_data = Activity::where('id','=',$activity_id)->first();
-        if($activity_data->user_id != Auth::user()->id){
-            return redirect('/x');
-        }else{
-            $delete_activity = Activity::where('id','=',$activity_id)->update([
-                'status' => 'delete'
-            ]);
-            Alert::success('success','delete is successfully!');
+        if ($update_activity_name) {
+            Alert::success('success', 'update is successfully');
             return redirect()->route('show_activity_profile');
         }
-
-       
     }
-    public function makeCheckerForm(Request $request,$activity_id){
-        
+    public function deleteActivity($activity_id)
+    {
+        $activity_data = Activity::where('id', '=', $activity_id)->first();
+        if ($activity_data->user_id != Auth::user()->id) {
+            return redirect('/x');
+        } else {
+            $delete_activity = Activity::where('id', '=', $activity_id)->update([
+                'status' => 'delete'
+            ]);
+            Alert::success('success', 'delete is successfully!');
+            return redirect()->route('show_activity_profile');
+        }
+    }
+    public function makeCheckerForm(Request $request, $activity_id)
+    {
+
         dd($request);
         // foreach($dynamicInputs as $input){
         //     dd($input);
@@ -56,24 +57,29 @@ class ActivityController extends Controller
         // }
     }
 
-    public function showActivityMakeForm($activity_id){
+    public function showActivityMakeForm($activity_id)
+    {
         return view('activity.activity_table');
     }
 
-    public function ActivitySetting(Request $request,$activity_id){
+    public function ActivitySetting(Request $request, $activity_id)
+    {
         dd($request);
 
-        if($request->people_side_mode == 'outSide' and $request->list_of_name_mode == "1"){
+        if ($request->people_side_mode == 'outSide' and $request->list_of_name_mode == "1") {
             $activity_setting = activity_setting::create([
                 'activity_id' => $activity_id,
                 'people_side_mode_id' => $request->people_side_mode,
                 'list_of_name_mode' => $request->list_of_name_mode,
             ]);
-            $activity_day_maker = activity_day_maker::create([
-                'form_name' => $request->date_input,
-                ''
-            ]);
+
+
+            // $date_data = $request->input('date');
+            // foreach( $date_data as $item){
+            //     activity_setting::crerat([
+
+            //     ])
+            // }
         }
     }
-
 }
