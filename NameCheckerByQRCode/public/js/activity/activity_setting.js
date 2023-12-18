@@ -408,14 +408,28 @@ function changeSystem(clickedId_ChangeSystem) {
         let prInSides = document.getElementById('prInSide');
         let prOutSides = document.getElementById('prOutSide');
         let changeSystemValue = document.getElementById('getValueMode_sys');
+        let div_HaDataIS = document.getElementById('div_HavedataIS');
+        let div_noHaDataIS = document.getElementById('noDiv_HavedataIS');
+        let div_HaDataOS = document.getElementById('div_HavedataOS');
+        let div_noHaDataOS = document.getElementById('noDiv_HavedataOS');
         if (changeSystem.classList.contains('fa-arrow-left')) {
             changeSystem.classList.remove('fa-arrow-left');
             changeSystem.classList.add('fa-arrow-right');
             changeColorText1.classList.remove('text-success');
             changeColorText2.classList.add('text-success');
             prInSides.classList.add('d-none')
+            prInSides.disabled = true;
             prOutSides.classList.remove('d-none');
+            prOutSides.disabled = false;
             changeSystemValue.value = 'outSide';
+            div_HaDataIS.classList.add('d-none');
+            div_HaDataIS.disabled = true;
+            div_noHaDataIS.classList.add('d-none');
+            div_noHaDataIS.disabled = true;
+            div_HaDataOS.classList.add('d-none');
+            div_HaDataOS.disabled = true;
+            div_noHaDataOS.classList.add('d-none');
+            div_noHaDataOS.disabled = true;
             console.log('changeSystem value = ' + changeSystemValue.value);
         } else {
             changeSystem.classList.remove('fa-arrow-right');
@@ -423,8 +437,14 @@ function changeSystem(clickedId_ChangeSystem) {
             changeColorText2.classList.remove('text-success');
             changeColorText1.classList.add('text-success');
             prOutSides.classList.add('d-none');
-            prInSides.classList.remove('d-none')
+            prOutSides.disabled = true;
+            prInSides.classList.remove('d-none');
+            prInSides.disabled = false;
             changeSystemValue.value = 'inSide';
+            div_HaDataIS.classList.add('d-none');
+            div_HaDataIS.disabled = true;
+            div_noHaDataIS.classList.add('d-none');
+            div_noHaDataIS.disabled = true;
             console.log('changeSystem value = ' + changeSystemValue.value);
         }
     }
@@ -439,11 +459,15 @@ function chooseModeTypeDatasIS(clickedId_chMTypeDataIS) {
         if (chooseMoTpDataIS === (id = radiosISHaveData)) {
             console.log('yes')
             div_HaDataIS.classList.remove('d-none');
+            div_HaDataIS.disabled = false;
             div_noHaDataIS.classList.add('d-none');
+            div_noHaDataIS.disabled = true;
         } else if (chooseMoTpDataIS === (id = radiosISnoHaveData)) {
             console.log('no')
             div_noHaDataIS.classList.remove('d-none');
+            div_noHaDataIS.disabled = false;
             div_HaDataIS.classList.add('d-none');
+            div_HaDataIS.disabled = true;
         }
     }
 }
@@ -456,11 +480,15 @@ function chooseModeTypeDatasOS(clickedId_chMTypeDataOS) {
         if (chooseMoTpDataOS === (id = radiosOSHaveData)) {
             console.log('yes')
             div_HaDataOS.classList.remove('d-none');
+            div_HaDataOS.disabled = false;
             div_noHaDataOS.classList.add('d-none');
+            div_noHaDataOS.disabled = true;
         } else if (chooseMoTpDataOS === (id = radiosOSnoHaveData)) {
             console.log('no')
             div_noHaDataOS.classList.remove('d-none');
+            div_noHaDataOS.disabled = false;
             div_HaDataOS.classList.add('d-none');
+            div_HaDataOS.disabled = true;
         }
     }
 }
@@ -542,6 +570,77 @@ document.addEventListener('change', function (event) {
         let get_Selects = event.target;
         console.log('ไอดี: ' + get_Selects);
         showResult(get_Selects);
+    } else if (event.target.classList.contains('formFileList')) {
+        let get_formfile = event.target;
+        const file = get_formfile.files[0];
+        if (file) {
+            const fileName = file.name;
+            const extension = fileName.split('.').pop().toLowerCase();
+            const id_fileName = get_formfile.id;;
+            console.log(id_fileName);
+            if (extension !== 'xlsx' && extension !== 'xls') {
+                if(id_fileName === 'formFileIS'){
+                    let get_idDivFormFileIS = document.getElementById('divFileIS');
+                    if (get_idDivFormFileIS.id === 'divFileIS') {
+                        var Labels = get_idDivFormFileIS.querySelectorAll('label');
+                        // วนลูปผ่าน select และ label แล้วลบทุกตัว
+                        Labels.forEach(element => {
+                            element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                        });
+                    }
+
+                    let alert_text = document.createElement('label');
+                    alert_text.setAttribute('class','text-danger fs-6 fw-bold')
+                    alert_text.textContent = 'โปรดเลือกไฟล์ที่มีนามสกุล .xlsx หรือ .xls เท่านั้น';
+                    get_idDivFormFileIS.appendChild(alert_text);
+                    get_formfile.value = '';
+                }else if(id_fileName === 'formFileOS'){
+                    let get_idDivFormFileOS = document.getElementById('divFileOS');
+                    if (get_idDivFormFileOS.id === 'divFileOS') {
+                        var Labels = get_idDivFormFileOS.querySelectorAll('label');
+                        // วนลูปผ่าน select และ label แล้วลบทุกตัว
+                        Labels.forEach(element => {
+                            element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                        });
+                    }
+
+                    let alert_text = document.createElement('label');
+                    alert_text.setAttribute('class','text-danger fs-6 fw-bold')
+                    alert_text.textContent = 'โปรดเลือกไฟล์ที่มีนามสกุล .xlsx หรือ .xls เท่านั้น';
+                    get_idDivFormFileOS.appendChild(alert_text);
+                    get_formfile.value = '';
+                }
+                
+            }else if(id_fileName === 'formFileIS'){
+                let get_idDivFormFileIS = document.getElementById('divFileIS');
+                if (get_idDivFormFileIS.id === 'divFileIS') {
+                    var Labels = get_idDivFormFileIS.querySelectorAll('label');
+                    // วนลูปผ่าน select และ label แล้วลบทุกตัว
+                    Labels.forEach(element => {
+                        element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                    });
+                }
+
+                    let alert_text = document.createElement('label');
+                    alert_text.setAttribute('class','text-success fs-6 fw-bold')
+                    alert_text.textContent = 'เลือกไฟล์ Excel สำเร็จ';
+                    get_idDivFormFileIS.appendChild(alert_text);
+            }else if(id_fileName === 'formFileOS'){
+                let get_idDivFormFileOS = document.getElementById('divFileOS');
+                if (get_idDivFormFileOS.id === 'divFileOS') {
+                    var Labels = get_idDivFormFileOS.querySelectorAll('label');
+                    // วนลูปผ่าน select และ label แล้วลบทุกตัว
+                    Labels.forEach(element => {
+                        element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                    });
+                }
+
+                let alert_text = document.createElement('label');
+                alert_text.setAttribute('class','text-success fs-6 fw-bold')
+                alert_text.textContent = 'เลือกไฟล์ Excel สำเร็จ';
+                get_idDivFormFileOS.appendChild(alert_text);
+            }
+        }
     }
 });
 
@@ -697,8 +796,8 @@ function createSelectOptions(event) {
 
     for (var x = 0; x <= (valueIdselectRound - 1); x++) {
         var div_row = document.createElement('div');
-        div_row.setAttribute('class','d-flex justify-content-start align-items-center');
-        div_row.id = 'div_row'+x;
+        div_row.setAttribute('class', 'd-flex justify-content-start align-items-center');
+        div_row.id = 'div_row' + x;
 
         var label = document.createElement('label');
         label.setAttribute('class', 'col-2 form-label fw-bold text-green');
@@ -864,15 +963,15 @@ function showResult(get_Selects) {
     let roundStart_time = document.createElement('input');
     roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
-    roundStart_time.id = 'roundStart_timex'+ getIdselects;
-    roundStart_time.setAttribute('name','roundStart_timex[]');
+    roundStart_time.id = 'roundStart_timex' + getIdselects;
+    roundStart_time.setAttribute('name', 'roundStart_timex[]');
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
     roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
-    roundEnd_time.id = 'roundEnd_timex'+ getIdselects;
-    roundEnd_time.setAttribute('name','roundEnd_timex[]');
+    roundEnd_time.id = 'roundEnd_timex' + getIdselects;
+    roundEnd_time.setAttribute('name', 'roundEnd_timex[]');
     get_idDivSpace.appendChild(roundEnd_time);
 
 }
