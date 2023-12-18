@@ -34,19 +34,19 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISHaveData" value="1" checked>
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosISHaveData">
                           มีรายชื่อ
                         </label>
                       </div>
-                      <div class="form-check col-3">
+                      <div class="form-check col">
                         <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosISnoHaveData">
                           ไม่มีรายชื่อ
                         </label>
                       </div>
                 </div>
-                <div class="col my-4" id="div_HavedataIS">
+                <div class="col my-4 d-none" id="div_HavedataIS">
                     <span class="fw-bold">ข้อมูลมีรายชื่อ</span>
                     <i class="fa-solid fa-question fa-beat-fade fs-5 fw-bold show-imageHelper" id="imgHelpIS"></i>
                     <div class="my-2 text-center d-none" id="img-helperIS">
@@ -54,12 +54,13 @@
                     </div>
                       
                     <div class="my-3">
-                        <label for="formFile" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4" type="file" id="formFile">
+                        <label for="formFileIS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileIS">
+                        <div id="divFileIS" class="ms-4"> </div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
                 </div>
-                <div class="col d-none my-4" id="noDiv_HavedataIS">
+                <div class="col d-none my-4 d-none" id="noDiv_HavedataIS">
                     <span class="fs-5">สังกัด : </span>
                     <select class="select-upgrade select-agency" id="mySelect">
                         <option value="เลือกสังกัดหรือเลือกทั้งหมด">เลือกสังกัด หรือ เลือกทั้งหมด</option>
@@ -74,7 +75,7 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="list_of_name_mode" id="radiosOSHaveData" value="1" checked>
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="list_of_name_mode" id="radiosOSHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
@@ -86,16 +87,17 @@
                         </label>
                       </div>
                 </div>
-                <div class="col my-4" id="div_HavedataOS">
+                <div class="col my-4 d-none" id="div_HavedataOS">
                     <span class="fw-bold">ข้อมูลมีรายชื่อ</span>
                     <i class="fa-solid fa-question fa-beat-fade fs-5 fw-bold show-imageHelper" id="imgHelpOS"></i>
                     <div class="my-2 text-center d-none" id="img-helperOS">
                         <img src="{{asset('img/cat-ชานมไข่มุก.gif')}}" class="border border-danger">
                     </div>
                       
-                    <div class="my-3">
-                        <label for="formFile" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4" type="file" id="formFile">
+                    <div class="my-3" >
+                        <label for="formFileOS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileOS">
+                        <div id="divFileOS" class="ms-4"></div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
                 </div>
