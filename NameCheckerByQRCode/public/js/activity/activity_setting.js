@@ -180,6 +180,7 @@ function addInput() {
 
     let setCheckNameI_input = document.createElement('input');
     setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
+    setCheckNameI_input.disabled = true;
     setCheckNameI_input.setAttribute('type', 'radio');
     setCheckNameI_input.setAttribute('value', 'check_all_time_in_day');
     setCheckNameI_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
@@ -198,6 +199,7 @@ function addInput() {
 
     let setCheckNameII_input = document.createElement('input');
     setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
+    setCheckNameII_input.disabled = true;
     setCheckNameII_input.setAttribute('type', 'radio');
     setCheckNameII_input.setAttribute('value', 'check_round_per_day');
     setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
@@ -230,7 +232,8 @@ function addInput() {
     div_setRoundCheck.appendChild(setRound_label);
 
     let select_setRoundCheck = document.createElement('select');
-    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-75 me-3 get_IdselectRound');
+    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-75 me-3 get_IdselectRound fake-disable');
+    select_setRoundCheck.disabled = true;
     select_setRoundCheck.setAttribute('id', 'selectSetRoundCheck' + counter);
     div_setRoundCheck.appendChild(select_setRoundCheck);
 
@@ -276,7 +279,7 @@ function addInput() {
     div_selectTimeCheck.appendChild(selectTimeCheck_label);
 
     let selectTimeCheck_input = document.createElement('select');
-    selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck');
+    selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck fake-disable');
     selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
     
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
@@ -572,8 +575,9 @@ document.addEventListener('change', function (event) {
     } else if (event.target.classList.contains('get_IdselectRound')) {
 
         let changedId_IdselectRound = event.target;
-        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_IdselectRound);
-
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_IdselectRound.classList);
+        changedId_IdselectRound.classList.remove('fake-disable');
+        changedId_IdselectRound.classList.add('revese-fake-disable');
         createSelectOptions(event);
     } else if (event.target.classList.contains('get_IdInputTime')) {
 
@@ -584,6 +588,8 @@ document.addEventListener('change', function (event) {
     } else if (event.target.classList.contains('dynamicSelects')) {
         let get_Selects = event.target;
         console.log('ไอดี: ' + get_Selects);
+        get_Selects.classList.remove('fake-disable');
+        get_Selects.classList.add('revese-fake-disable');
         showResult(get_Selects);
     } else if (event.target.classList.contains('formFileList')) {
         let get_formfile = event.target;
@@ -656,6 +662,16 @@ document.addEventListener('change', function (event) {
                 get_idDivFormFileOS.appendChild(alert_text);
             }
         }
+    }else if(event.target.classList.contains('getId_selectTimeCheck')){
+        let get_selectTimeCheck = event.target;
+        console.log('คุณมีการเปลี่ยนแปลงที่ 661 : ' + get_selectTimeCheck.id);
+
+        get_selectTimeCheck.classList.remove('fake-disable');
+        get_selectTimeCheck.classList.add('revese-fake-disable');
+
+        let getIdlinks = get_selectTimeCheck.id.match(/\d+/g);
+        let get_selectSetRoundCheck = document.getElementById('selectSetRoundCheck'+getIdlinks)
+        get_selectSetRoundCheck.disabled = false;
     }
 });
 
@@ -821,7 +837,7 @@ function createSelectOptions(event) {
         label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
 
         var select = document.createElement('select');
-        select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start');
+        select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start fake-disable');
         select.id = 'dynamicSelect' + x + counter;
 
         var div = document.createElement('div');
@@ -901,6 +917,9 @@ function getTime(get_InputTime) {
     let getIdlinks = get_InputTime.id.match(/\d+/g);
     let time_start = document.getElementById('timeStart_input' + getIdlinks);
     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
+    let get_setCheckNameI = document.getElementById('setCheckNameI' + getIdlinks);
+    let get_setCheckNameII = document.getElementById('setCheckNameII' + getIdlinks);
+
     time_start.classList.remove('fake-disable');
     time_start.classList.add('revese-fake-disable');
     if (time_start.value >= time_end.value) {
@@ -921,6 +940,8 @@ function getTime(get_InputTime) {
         // ลบคลาสสีแดงออกจากช่องเวลาจบ (ถ้ามี)
         time_end.classList.remove('red-border');
         time_end.classList.add('revese-fake-disable');
+        get_setCheckNameI.disabled = false;
+        get_setCheckNameII.disabled = false;
     } else {
         console.log('Both times are the same');
     }
