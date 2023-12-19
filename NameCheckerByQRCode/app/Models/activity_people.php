@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class activity_people extends Model
 {
     use HasFactory;
+
+    
 }

@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Imports\ActivityPeopleImport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\activity_setting;
 use App\Models\CheckerForm;
 use App\Models\activity_day_maker;
+use App\Models\activity_rounde_checker;
+use App\Models\rounde_checker_relate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use League\Flysystem\AsyncAwsS3\AsyncAwsS3Adapter;
 use Psy\VersionUpdater\Checker;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -47,21 +50,61 @@ class ActivityController extends Controller
     }
     public function makeCheckerForm(Request $request, $activity_id)
     {
-        dd($request);
-        // if($request->input('activity.setting.side') == "inSide" and $request->input('activity.setting.have_list_of_name') == "yes"){
-        //    dd($request->input('file.excel'));
-        //     Excel::import(new ActivityPeopleImport($activity_id),$request->input('file.excel'));
-        //     return redirect()->back();
-        // }
+       
+        
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
-        if($side == 'outside' and $have_list_of_name == 'no'){
-            $date_maker = activity_day_maker::create([
-                
-            ]);
-        }
         
+        if($side == 'outSide' and $have_list_of_name == 'no'){
+            $date_num = $request->input('activity.date_add');
+        //    dd($date_num);
+        $i = 1;
+           foreach($date_num as $items){
+            
+            $carbon_date = Carbon::parse($items['date']);
+            $date_format =  $carbon_date->format('Y:m:d');
+            $form_name = "Day".$i." ". $date_format;
+
+            $carbon_time_start = Carbon::parse($items['time']['time_start']);
+            $time_start_format = $carbon_time_start->format('H:i:s');
+
+            $carbon_time_expried = Carbon::parse($items['time']['time_expried']);
+            $time_expried_format = $carbon_time_expried->format('H:i:s');
+            
+            $activity_date_maker = activity_day_maker::create([
+                
+                'form_name' =>$form_name,
+                'date' => $date_format,
+                'time_start' => $time_start_format,
+                'time_expried' => $time_expried_format,
+            ]);
+            if($items['round_setting'] == 'check_all_time_in_day'){
+
+            $activity_round_checker = activity_rounde_checker::create([
+                'rounde_name' => 'เช็คทั้งวัน',
+                'rounde_checker_time_start' => $time_start_format,
+                'rounde_checker_time_expried' => $time_expried_format,
+            ]); 
+
+            $activity_round_checker_relate = rounde_checker_relate::crate([
+                'activity_id' => $activity_id,
+                'activity_date_maker_id' => $activity_date_maker->id,
+                'activity_rounde_check_id' => $activity_round_checker->id,
+            ]);
+           }
+           $i++;
+        }
+        return redirect()->back();
+
+            
+      
+        }
+            
     }
+
+        
+       
+    
 
     public function showActivityMakeForm($activity_id)
     {
