@@ -360,3 +360,27 @@ a{
   background: rgb(255, 255, 255, 0.1);
   color: #22b671;
 }
+
+.datepicker_costom_incorrect{
+  border-color: red;
+  text-align: center;
+}
+
+.datepicker_costom_incorrect::placeholder{
+  color: red;
+}
+
+.datepicker_costom_success{
+  border-color: #048347;
+  color: #1fac6a;
+  text-align: center;
+  font-weight: bold;
+}
+
+.fake-disable{
+  border-color: red;
+}
+
+.revese-fake-disable{
+  border-color: #048347;
+}
