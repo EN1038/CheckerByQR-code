@@ -165,7 +165,7 @@ function addInput() {
     let timeEnd_input = document.createElement('input');
     timeEnd_input.setAttribute('class', 'form-control get_IdInputTime');
     timeEnd_input.setAttribute('type', 'time');
-    timeEnd_input.setAttribute('name', `activity[date_input${counter}][time][end_time]`);
+  
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
@@ -176,7 +176,8 @@ function addInput() {
     let setCheckNameI_input = document.createElement('input');
     setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName');
     setCheckNameI_input.setAttribute('type', 'radio');
-    setCheckNameI_input.setAttribute('name', 'setCheckName');
+    setCheckNameI_input.setAttribute('value', 'check_all_time_in_day');
+    setCheckNameI_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
     setCheckNameI_input.setAttribute('id', 'setCheckNameI' + counter);
     form_check_setCheckI.appendChild(setCheckNameI_input);
 
@@ -193,8 +194,9 @@ function addInput() {
     let setCheckNameII_input = document.createElement('input');
     setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName');
     setCheckNameII_input.setAttribute('type', 'radio');
-    setCheckNameII_input.setAttribute('name', 'setCheckName');
-    setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter);
+    setCheckNameII_input.setAttribute('value', 'check_round_per_day');
+    setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
+    setCheckNameII_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');

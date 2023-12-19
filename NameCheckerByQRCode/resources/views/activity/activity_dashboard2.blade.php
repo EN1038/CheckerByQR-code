@@ -26,7 +26,7 @@
                             <i class="enchagne_button btn btn-success fa-solid fa-arrow-left" id="changeSystem" value="0"></i> 
                 
                         <p class="mt-2 fs-8 fw-light text-muted">Click this button for Chagne Modes</p>
-                        <input type="text" name="activity[setting]" id="getValueMode_sys" value="inSide" class="d-none">
+                        <input type="text" name="activity[setting][side]" id="getValueMode_sys" value="inSide" class="d-none">
                      </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
                 </div>
@@ -34,13 +34,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISHaveData" value="1">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_if_name]" id="radiosISHaveData" value="yes">
                         <label class="form-check-label fs-5" for="radiosISHaveData">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="list_of_name_mode" id="radiosISnoHaveData" value="2">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_if_name]" id="radiosISnoHaveData" value="no">
                         <label class="form-check-label fs-5" for="radiosISnoHaveData">
                           ไม่มีรายชื่อ
                         </label>
@@ -75,13 +75,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[have_list_of_name]" id="radiosOSHaveData" value="yes">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_if_name]" id="radiosOSHaveData" value="yes">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[have_list_of_name]" id="radiosOSnoHaveData" value="no">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_if_name]" id="radiosOSnoHaveData" value="no">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
                         </label>
@@ -96,7 +96,7 @@
                       
                     <div class="my-3" >
                         <label for="formFileOS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileOS">
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileOS" name="activity[file][excel]">
                         <div id="divFileOS" class="ms-4"></div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>

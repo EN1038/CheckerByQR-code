@@ -46,16 +46,10 @@ class ActivityController extends Controller
     {
 
         dd($request);
-        // foreach($dynamicInputs as $input){
-        //     dd($input);
-        //     // $insert_checker = CheckerForm::create([
-        //     //     'date' => $input->date,
-        //     //     'start_time' => $input->start_time,
-        //     //     'end_time' => $input->end_time,
-        //     //     'activity_id' => $activity_id,
-        //     //     'status' => 'on'
-        //     // ]);
-        // }
+        
+        if($request->input('activity.setting.side') == "inSide" and $request->input('activity.setting.have_list_of_name') == "yes"){
+            foreach()
+        }
     }
 
     public function showActivityMakeForm($activity_id)
