@@ -64,8 +64,8 @@ document.addEventListener('click', function (event) {
     } else if (event.target.classList.contains('get_IdsetCheckName')) {
         let clickedId_IdsetCheckName = event.target.id;
 
-        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId_IdsetCheckName)
-        showSetCheckName(event.target.id)
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + clickedId_IdsetCheckName);
+        showSetCheckName(event.target.id);
     }
 });
 
@@ -118,6 +118,7 @@ function addInput() {
 
     let setCheckName_div = document.createElement('div_SetCheckName');
     setCheckName_div.setAttribute('class', 'd-flex');
+    setCheckName_div.setAttribute('id', 'div_SetCheckNamex' + counter);
 
     let setCheckNameAllDay_div = document.createElement('div_AllDay');
     setCheckNameAllDay_div.setAttribute('id', 'CheckName_allDay' + counter);
@@ -149,21 +150,25 @@ function addInput() {
     setCheckName_div.appendChild(setCheckName_label);
 
     let date_input = document.createElement('input');
-    date_input.setAttribute('class', 'form-control datepicker');
+    date_input.setAttribute('class', 'form-control datepicker getDate datepicker_costom_incorrect');
     date_input.setAttribute('type', 'text');
     date_input.setAttribute('name', `activity[date_input${counter}][date]`);
     date_input.setAttribute('id', 'date_input' + counter);
+    date_input.setAttribute('placeholder', 'โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น')
+    date_input.onchange = getDate;
     date_activity_div.appendChild(date_input);
 
     let timeStart_input = document.createElement('input');
-    timeStart_input.setAttribute('class', 'form-control get_IdInputTime');
+    timeStart_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
+    timeStart_input.disabled = true;
     timeStart_input.setAttribute('type', 'time');
     timeStart_input.setAttribute('name', `activity[date_input${counter}][time][start_time]`);
     timeStart_input.setAttribute('id', 'timeStart_input' + counter);
     timeStart_activity_div.appendChild(timeStart_input);
 
     let timeEnd_input = document.createElement('input');
-    timeEnd_input.setAttribute('class', 'form-control get_IdInputTime');
+    timeEnd_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
+    timeEnd_input.disabled = true;
     timeEnd_input.setAttribute('type', 'time');
   
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
@@ -174,7 +179,8 @@ function addInput() {
     setCheckName_div.appendChild(form_check_setCheckI);
 
     let setCheckNameI_input = document.createElement('input');
-    setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName');
+    setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
+    setCheckNameI_input.disabled = true;
     setCheckNameI_input.setAttribute('type', 'radio');
     setCheckNameI_input.setAttribute('value', 'check_all_time_in_day');
     setCheckNameI_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
@@ -192,7 +198,8 @@ function addInput() {
     setCheckName_div.appendChild(form_check_setCheckII);
 
     let setCheckNameII_input = document.createElement('input');
-    setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName');
+    setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
+    setCheckNameII_input.disabled = true;
     setCheckNameII_input.setAttribute('type', 'radio');
     setCheckNameII_input.setAttribute('value', 'check_round_per_day');
     setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
@@ -225,7 +232,8 @@ function addInput() {
     div_setRoundCheck.appendChild(setRound_label);
 
     let select_setRoundCheck = document.createElement('select');
-    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-75 me-3 get_IdselectRound');
+    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-75 me-3 get_IdselectRound fake-disable');
+    select_setRoundCheck.disabled = true;
     select_setRoundCheck.setAttribute('id', 'selectSetRoundCheck' + counter);
     div_setRoundCheck.appendChild(select_setRoundCheck);
 
@@ -271,7 +279,7 @@ function addInput() {
     div_selectTimeCheck.appendChild(selectTimeCheck_label);
 
     let selectTimeCheck_input = document.createElement('select');
-    selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck');
+    selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck fake-disable');
     selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
     
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
@@ -527,7 +535,13 @@ function showSetCheckName(clickedId_IdsetCheckName) {
         let setCheckName = document.getElementById(clickedId_IdsetCheckName);
         let div_Rounddays = document.getElementById('CheckName_setCheckNameRoundDay' + getIdlinks);
         let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
-        console.log(setCheckName.id);
+        if(setCheckName){
+            let checkNameAlldays = document.getElementById('setCheckNameI' + getIdlinks);
+            let checkNameRounddays = document.getElementById('setCheckNameII' + getIdlinks);
+            checkNameAlldays.classList.remove('fake-disable');
+            checkNameRounddays.classList.remove('fake-disable');
+        }
+        
         if (setCheckName.id === 'setCheckNameI' + getIdlinks) {
             div_Alldays.classList.remove('d-none');
             div_Rounddays.classList.add('d-none');
@@ -561,8 +575,9 @@ document.addEventListener('change', function (event) {
     } else if (event.target.classList.contains('get_IdselectRound')) {
 
         let changedId_IdselectRound = event.target;
-        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_IdselectRound);
-
+        console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + changedId_IdselectRound.classList);
+        changedId_IdselectRound.classList.remove('fake-disable');
+        changedId_IdselectRound.classList.add('revese-fake-disable');
         createSelectOptions(event);
     } else if (event.target.classList.contains('get_IdInputTime')) {
 
@@ -573,6 +588,8 @@ document.addEventListener('change', function (event) {
     } else if (event.target.classList.contains('dynamicSelects')) {
         let get_Selects = event.target;
         console.log('ไอดี: ' + get_Selects);
+        get_Selects.classList.remove('fake-disable');
+        get_Selects.classList.add('revese-fake-disable');
         showResult(get_Selects);
     } else if (event.target.classList.contains('formFileList')) {
         let get_formfile = event.target;
@@ -583,7 +600,7 @@ document.addEventListener('change', function (event) {
             const id_fileName = get_formfile.id;;
             console.log(id_fileName);
             if (extension !== 'xlsx' && extension !== 'xls') {
-                if(id_fileName === 'formFileIS'){
+                if (id_fileName === 'formFileIS') {
                     let get_idDivFormFileIS = document.getElementById('divFileIS');
                     if (get_idDivFormFileIS.id === 'divFileIS') {
                         var Labels = get_idDivFormFileIS.querySelectorAll('label');
@@ -594,11 +611,11 @@ document.addEventListener('change', function (event) {
                     }
 
                     let alert_text = document.createElement('label');
-                    alert_text.setAttribute('class','text-danger fs-6 fw-bold')
+                    alert_text.setAttribute('class', 'text-danger fs-6 fw-bold')
                     alert_text.textContent = 'โปรดเลือกไฟล์ที่มีนามสกุล .xlsx หรือ .xls เท่านั้น';
                     get_idDivFormFileIS.appendChild(alert_text);
                     get_formfile.value = '';
-                }else if(id_fileName === 'formFileOS'){
+                } else if (id_fileName === 'formFileOS') {
                     let get_idDivFormFileOS = document.getElementById('divFileOS');
                     if (get_idDivFormFileOS.id === 'divFileOS') {
                         var Labels = get_idDivFormFileOS.querySelectorAll('label');
@@ -609,13 +626,13 @@ document.addEventListener('change', function (event) {
                     }
 
                     let alert_text = document.createElement('label');
-                    alert_text.setAttribute('class','text-danger fs-6 fw-bold')
+                    alert_text.setAttribute('class', 'text-danger fs-6 fw-bold')
                     alert_text.textContent = 'โปรดเลือกไฟล์ที่มีนามสกุล .xlsx หรือ .xls เท่านั้น';
                     get_idDivFormFileOS.appendChild(alert_text);
                     get_formfile.value = '';
                 }
-                
-            }else if(id_fileName === 'formFileIS'){
+
+            } else if (id_fileName === 'formFileIS') {
                 let get_idDivFormFileIS = document.getElementById('divFileIS');
                 if (get_idDivFormFileIS.id === 'divFileIS') {
                     var Labels = get_idDivFormFileIS.querySelectorAll('label');
@@ -625,11 +642,11 @@ document.addEventListener('change', function (event) {
                     });
                 }
 
-                    let alert_text = document.createElement('label');
-                    alert_text.setAttribute('class','text-success fs-6 fw-bold')
-                    alert_text.textContent = 'เลือกไฟล์ Excel สำเร็จ';
-                    get_idDivFormFileIS.appendChild(alert_text);
-            }else if(id_fileName === 'formFileOS'){
+                let alert_text = document.createElement('label');
+                alert_text.setAttribute('class', 'text-success fs-6 fw-bold')
+                alert_text.textContent = 'เลือกไฟล์ Excel สำเร็จ';
+                get_idDivFormFileIS.appendChild(alert_text);
+            } else if (id_fileName === 'formFileOS') {
                 let get_idDivFormFileOS = document.getElementById('divFileOS');
                 if (get_idDivFormFileOS.id === 'divFileOS') {
                     var Labels = get_idDivFormFileOS.querySelectorAll('label');
@@ -640,11 +657,21 @@ document.addEventListener('change', function (event) {
                 }
 
                 let alert_text = document.createElement('label');
-                alert_text.setAttribute('class','text-success fs-6 fw-bold')
+                alert_text.setAttribute('class', 'text-success fs-6 fw-bold')
                 alert_text.textContent = 'เลือกไฟล์ Excel สำเร็จ';
                 get_idDivFormFileOS.appendChild(alert_text);
             }
         }
+    }else if(event.target.classList.contains('getId_selectTimeCheck')){
+        let get_selectTimeCheck = event.target;
+        console.log('คุณมีการเปลี่ยนแปลงที่ 661 : ' + get_selectTimeCheck.id);
+
+        get_selectTimeCheck.classList.remove('fake-disable');
+        get_selectTimeCheck.classList.add('revese-fake-disable');
+
+        let getIdlinks = get_selectTimeCheck.id.match(/\d+/g);
+        let get_selectSetRoundCheck = document.getElementById('selectSetRoundCheck'+getIdlinks)
+        get_selectSetRoundCheck.disabled = false;
     }
 });
 
@@ -810,7 +837,7 @@ function createSelectOptions(event) {
         label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
 
         var select = document.createElement('select');
-        select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start');
+        select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start fake-disable');
         select.id = 'dynamicSelect' + x + counter;
 
         var div = document.createElement('div');
@@ -890,14 +917,18 @@ function getTime(get_InputTime) {
     let getIdlinks = get_InputTime.id.match(/\d+/g);
     let time_start = document.getElementById('timeStart_input' + getIdlinks);
     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
+    let get_setCheckNameI = document.getElementById('setCheckNameI' + getIdlinks);
+    let get_setCheckNameII = document.getElementById('setCheckNameII' + getIdlinks);
 
-
-    if (time_start.value > time_end.value) {
+    time_start.classList.remove('fake-disable');
+    time_start.classList.add('revese-fake-disable');
+    if (time_start.value >= time_end.value) {
         console.log('Time Start is more than Time End');
         console.log('time_start = ' + time_start.value + ' of ' + time_start.id);
         console.log('time_end = ' + time_end.value + ' of ' + time_end.id);
 
         // เพิ่มคลาสสีแดงในช่องเวลาจบ
+        time_end.classList.remove('revese-fake-disable');
         time_end.classList.add('red-border');
         // เคลียร์ค่าในช่องเวลาจบ
         time_end.value = '';
@@ -908,13 +939,28 @@ function getTime(get_InputTime) {
 
         // ลบคลาสสีแดงออกจากช่องเวลาจบ (ถ้ามี)
         time_end.classList.remove('red-border');
+        time_end.classList.add('revese-fake-disable');
+        get_setCheckNameI.disabled = false;
+        get_setCheckNameII.disabled = false;
     } else {
         console.log('Both times are the same');
     }
-
-
 }
 
+function getDate() {
+    let getDate = document.getElementById('date_input' + (counter - 1));
+    let get_timeStart = document.getElementById('timeStart_input' + (counter - 1));
+    let get_timeEnd = document.getElementById('timeEnd_input' + (counter - 1));
+    console.log(getDate.value);
+    if (getDate != '') {
+        getDate.classList.remove('datepicker_costom_incorrect');
+        getDate.classList.add('datepicker_costom_success');
+        get_timeStart.disabled = false;
+        get_timeEnd.disabled = false;
+    } else {
+        alert('zzzz');
+    }
+}
 
 
 function showResult(get_Selects) {
