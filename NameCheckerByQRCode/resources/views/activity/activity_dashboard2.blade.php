@@ -75,13 +75,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_if_name]" id="radiosOSHaveData" value="yes">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSHaveData" value="yes">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_if_name]" id="radiosOSnoHaveData" value="no">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSnoHaveData" value="no">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
                         </label>

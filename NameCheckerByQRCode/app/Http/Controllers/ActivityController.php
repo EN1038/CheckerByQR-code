@@ -53,6 +53,13 @@ class ActivityController extends Controller
         //     Excel::import(new ActivityPeopleImport($activity_id),$request->input('file.excel'));
         //     return redirect()->back();
         // }
+        $side = $request->input('activity.setting.side');
+        $have_list_of_name = $request->input('activity.setting.have_list_of_name');
+        if($side == 'outside' and $have_list_of_name == 'no'){
+            $date_maker = activity_day_maker::create([
+                
+            ]);
+        }
         
     }
 

@@ -163,7 +163,7 @@ function addInput() {
     timeStart_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeStart_input.disabled = true;
     timeStart_input.setAttribute('type', 'time');
-    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][start_time]`);
+    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][time_start]`);
     timeStart_input.setAttribute('id', 'timeStart_input' + counter);
     timeStart_activity_div.appendChild(timeStart_input);
 
@@ -171,7 +171,7 @@ function addInput() {
     timeEnd_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeEnd_input.disabled = true;
     timeEnd_input.setAttribute('type', 'time');
-
+    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][time_expried]`);
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
