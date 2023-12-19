@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class activity_rounde_checker extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'rounde_name',
+        'rounde_checker_time_start',
+        'rounde_checker_time_expried',
+    ];
 }

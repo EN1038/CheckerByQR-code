@@ -153,7 +153,7 @@ function addInput() {
     let date_input = document.createElement('input');
     date_input.setAttribute('class', 'form-control datepicker getDate datepicker_costom_incorrect');
     date_input.setAttribute('type', 'text');
-    date_input.setAttribute('name', `activity[date_input${counter}][date]`);
+    date_input.setAttribute('name', `activity[date_add][date_input${counter}][date]`);
     date_input.setAttribute('id', 'date_input' + counter);
     date_input.setAttribute('placeholder', 'โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น')
     date_input.onchange = getDate;
@@ -163,7 +163,7 @@ function addInput() {
     timeStart_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeStart_input.disabled = true;
     timeStart_input.setAttribute('type', 'time');
-    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][time_start]`);
+    timeStart_input.setAttribute('name', `activity[date_add][date_input${counter}][time][time_start]`);
     timeStart_input.setAttribute('id', 'timeStart_input' + counter);
     timeStart_activity_div.appendChild(timeStart_input);
 
@@ -172,6 +172,7 @@ function addInput() {
     timeEnd_input.disabled = true;
     timeEnd_input.setAttribute('type', 'time');
     timeEnd_input.setAttribute('name', `activity[date_input${counter}][time][time_expried]`);
+    
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
@@ -184,7 +185,7 @@ function addInput() {
     setCheckNameI_input.disabled = true;
     setCheckNameI_input.setAttribute('type', 'radio');
     setCheckNameI_input.setAttribute('value', 'check_all_time_in_day');
-    setCheckNameI_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
+    setCheckNameI_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting]`);
     setCheckNameI_input.setAttribute('id', 'setCheckNameI' + counter);
     form_check_setCheckI.appendChild(setCheckNameI_input);
 
@@ -203,8 +204,10 @@ function addInput() {
     setCheckNameII_input.disabled = true;
     setCheckNameII_input.setAttribute('type', 'radio');
     setCheckNameII_input.setAttribute('value', 'check_round_per_day');
+    setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
+    setCheckNameII_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting][round${counter}]`);
     setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter)
-    setCheckNameII_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
+    
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');

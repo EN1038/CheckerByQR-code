@@ -26,7 +26,7 @@ class people_side_mode extends Seeder
             ],
             [
                 'id' => '3',
-                'people_side_name' => 'outside',
+                'people_side_name' => 'all_side',
                 'status' => 'on',
             ],
             ]);
