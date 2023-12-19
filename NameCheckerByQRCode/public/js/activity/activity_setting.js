@@ -948,10 +948,10 @@ function getTime(get_InputTime) {
 }
 
 function getDate() {
-    let getDate = document.getElementById('date_input' + (counter - 1));
-    let get_timeStart = document.getElementById('timeStart_input' + (counter - 1));
-    let get_timeEnd = document.getElementById('timeEnd_input' + (counter - 1));
-    console.log(getDate.value);
+    let getDate = this;
+    let getIdlinks = getDate.id.match(/\d+/g);
+    let get_timeStart = document.getElementById('timeStart_input' + getIdlinks);
+    let get_timeEnd = document.getElementById('timeEnd_input' + getIdlinks);
     if (getDate != '') {
         getDate.classList.remove('datepicker_costom_incorrect');
         getDate.classList.add('datepicker_costom_success');
