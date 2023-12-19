@@ -46,16 +46,10 @@ class ActivityController extends Controller
     {
 
         dd($request);
-        // foreach($dynamicInputs as $input){
-        //     dd($input);
-        //     // $insert_checker = CheckerForm::create([
-        //     //     'date' => $input->date,
-        //     //     'start_time' => $input->start_time,
-        //     //     'end_time' => $input->end_time,
-        //     //     'activity_id' => $activity_id,
-        //     //     'status' => 'on'
-        //     // ]);
-        // }
+        
+        if($request->input('activity.setting.side') == "inSide" and $request->input('activity.setting.have_list_of_name') == "yes"){
+            foreach()
+        }
     }
 
     public function showActivityMakeForm($activity_id)
@@ -65,31 +59,6 @@ class ActivityController extends Controller
 
     public function ActivitySetting(Request $request, $activity_id)
     {
-        dd($request);
-
-        if ($request->people_side_mode == 'outSide' and $request->list_of_name_mode == "1") {
-            $activity_setting = activity_setting::create([
-                'activity_id' => $activity_id,
-                'people_side_mode_id' => $request->people_side_mode,
-                'list_of_name_mode' => $request->list_of_name_mode,
-            ]);
-
-
-            // $date_data = $request->input('date');
-            // foreach( $date_data as $item){
-            //     activity_setting::crerat([
-
-            //     ])
-            // }
-            $date_data = $request->input('date_input');
-            foreach($date_data as $item){
-                $activity_day_maker = activity_day_maker::create([
-                    'form_name' => $item,
-                    'form_date' => $request->date,
-                    'form_start_time' => $request->timeStart_input,
-                    'timeEnd_input' => $request->timeEnd_input,
-                ]);
-            }
-        }
+        
     }
 }

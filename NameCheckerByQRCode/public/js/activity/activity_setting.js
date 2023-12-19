@@ -152,7 +152,7 @@ function addInput() {
     let date_input = document.createElement('input');
     date_input.setAttribute('class', 'form-control datepicker getDate datepicker_costom_incorrect');
     date_input.setAttribute('type', 'text');
-    date_input.setAttribute('name', 'date_input[' + counter + ']');
+    date_input.setAttribute('name', `activity[date_input${counter}][date]`);
     date_input.setAttribute('id', 'date_input' + counter);
     date_input.setAttribute('placeholder', 'โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น')
     date_input.onchange = getDate;
@@ -162,7 +162,7 @@ function addInput() {
     timeStart_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeStart_input.disabled = true;
     timeStart_input.setAttribute('type', 'time');
-    timeStart_input.setAttribute('name', 'timeStart_input[' + counter + ']');
+    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][start_time]`);
     timeStart_input.setAttribute('id', 'timeStart_input' + counter);
     timeStart_activity_div.appendChild(timeStart_input);
 
@@ -170,7 +170,7 @@ function addInput() {
     timeEnd_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeEnd_input.disabled = true;
     timeEnd_input.setAttribute('type', 'time');
-    timeEnd_input.setAttribute('name', 'timeEnd_input[' + counter + ']');
+  
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
@@ -181,7 +181,8 @@ function addInput() {
     let setCheckNameI_input = document.createElement('input');
     setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
     setCheckNameI_input.setAttribute('type', 'radio');
-    setCheckNameI_input.setAttribute('name', 'setCheckName');
+    setCheckNameI_input.setAttribute('value', 'check_all_time_in_day');
+    setCheckNameI_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
     setCheckNameI_input.setAttribute('id', 'setCheckNameI' + counter);
     form_check_setCheckI.appendChild(setCheckNameI_input);
 
@@ -198,8 +199,9 @@ function addInput() {
     let setCheckNameII_input = document.createElement('input');
     setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
     setCheckNameII_input.setAttribute('type', 'radio');
-    setCheckNameII_input.setAttribute('name', 'setCheckName');
-    setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter);
+    setCheckNameII_input.setAttribute('value', 'check_round_per_day');
+    setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
+    setCheckNameII_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');
@@ -276,12 +278,14 @@ function addInput() {
     let selectTimeCheck_input = document.createElement('select');
     selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck');
     selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
+    
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
 
     let option_setTimeCheck_0 = document.createElement('option');
     option_setTimeCheck_0.selected = true;
     option_setTimeCheck_0.disabled = true;
     option_setTimeCheck_0.textContent = 'เลือกเวลา';
+    
     selectTimeCheck_input.appendChild(option_setTimeCheck_0);
 
     let option_setTimeCheck_1 = document.createElement('option');
@@ -989,14 +993,14 @@ function showResult(get_Selects) {
     roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
-    roundStart_time.setAttribute('name', 'roundStart_timex[]');
+    roundStart_time.setAttribute('name', `activity[date_input${counter-1}][round][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
     roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
-    roundEnd_time.setAttribute('name', 'roundEnd_timex[]');
+    roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
 
 }
