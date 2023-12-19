@@ -91,9 +91,10 @@ function addInput() {
     titleDiv.setAttribute('class', 'd-flex flex-row justify-content-between align-items-center mb-3 ');
     inputWrapper.appendChild(titleDiv);
 
-    let showDateform = document.createElement('a');
-    showDateform.setAttribute('class', 'fs-5 fw-bold text-decoration-none');
-    showDateform.textContent = 'Form : ' + (counter + 1);
+    let showDateform = document.createElement('input');
+    showDateform.setAttribute('class', 'fs-5 fw-bold input-title-form');
+    showDateform.id = 'formDate';
+    showDateform.value = 'Form : ' + (counter + 1);
     titleDiv.appendChild(showDateform);
 
     let closeIcon = document.createElement('i');
@@ -170,7 +171,7 @@ function addInput() {
     timeEnd_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeEnd_input.disabled = true;
     timeEnd_input.setAttribute('type', 'time');
-  
+
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
@@ -202,7 +203,7 @@ function addInput() {
     setCheckNameII_input.disabled = true;
     setCheckNameII_input.setAttribute('type', 'radio');
     setCheckNameII_input.setAttribute('value', 'check_round_per_day');
-    setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
+    setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter)
     setCheckNameII_input.setAttribute('name', `activity[date_input${counter}][round_setting]`);
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
@@ -281,14 +282,14 @@ function addInput() {
     let selectTimeCheck_input = document.createElement('select');
     selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck fake-disable');
     selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
-    
+
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
 
     let option_setTimeCheck_0 = document.createElement('option');
     option_setTimeCheck_0.selected = true;
     option_setTimeCheck_0.disabled = true;
     option_setTimeCheck_0.textContent = 'เลือกเวลา';
-    
+
     selectTimeCheck_input.appendChild(option_setTimeCheck_0);
 
     let option_setTimeCheck_1 = document.createElement('option');
@@ -329,7 +330,7 @@ function addInput() {
 
     $(document).ready(function () {
         $('.datepicker').datepicker({
-            format: "dd-mm-yyyy",
+            format: "yyyy-mm-dd",
             language: "th",
             startDate: '0d',
 
@@ -398,6 +399,7 @@ function deleteDiv(clickedId_deleteDiv) {
         let getIdlinks = clickedId_deleteDiv.match(/\d+/g);
         let deleteDiv = document.getElementById('input-warpper' + getIdlinks);
         let previousDiv = document.getElementById('input-warpper' + (getIdlinks - 1));
+        let get_date = document.getElementById('date_input' + getIdlinks);
         if (deleteDiv && previousDiv) {
             if (previousDiv) {
                 console.log(previousDiv)
@@ -406,8 +408,18 @@ function deleteDiv(clickedId_deleteDiv) {
                 previousDiv.classList.remove('border-3');
             }
         }
+        selectedDates = selectedDates.filter(item => item !== get_date.value);
+        console.log(selectedDates);
         deleteDiv.remove();
         counter--;
+        // ดึง elements ที่มี ID เป็น "formDate" ทั้งหมด
+        let formDateElements = document.querySelectorAll('[id="formDate"]');
+        let countForm = 1;
+        // เพิ่มตัวเลขลงใน value ของทุก element ที่พบ
+        formDateElements.forEach(element => {
+            element.value = 'Form : '+countForm ;
+            countForm++;
+        });
     }
 }
 
@@ -535,13 +547,13 @@ function showSetCheckName(clickedId_IdsetCheckName) {
         let setCheckName = document.getElementById(clickedId_IdsetCheckName);
         let div_Rounddays = document.getElementById('CheckName_setCheckNameRoundDay' + getIdlinks);
         let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
-        if(setCheckName){
+        if (setCheckName) {
             let checkNameAlldays = document.getElementById('setCheckNameI' + getIdlinks);
             let checkNameRounddays = document.getElementById('setCheckNameII' + getIdlinks);
             checkNameAlldays.classList.remove('fake-disable');
             checkNameRounddays.classList.remove('fake-disable');
         }
-        
+
         if (setCheckName.id === 'setCheckNameI' + getIdlinks) {
             div_Alldays.classList.remove('d-none');
             div_Rounddays.classList.add('d-none');
@@ -662,7 +674,7 @@ document.addEventListener('change', function (event) {
                 get_idDivFormFileOS.appendChild(alert_text);
             }
         }
-    }else if(event.target.classList.contains('getId_selectTimeCheck')){
+    } else if (event.target.classList.contains('getId_selectTimeCheck')) {
         let get_selectTimeCheck = event.target;
         console.log('คุณมีการเปลี่ยนแปลงที่ 661 : ' + get_selectTimeCheck.id);
 
@@ -670,7 +682,7 @@ document.addEventListener('change', function (event) {
         get_selectTimeCheck.classList.add('revese-fake-disable');
 
         let getIdlinks = get_selectTimeCheck.id.match(/\d+/g);
-        let get_selectSetRoundCheck = document.getElementById('selectSetRoundCheck'+getIdlinks)
+        let get_selectSetRoundCheck = document.getElementById('selectSetRoundCheck' + getIdlinks)
         get_selectSetRoundCheck.disabled = false;
     }
 });
@@ -952,13 +964,60 @@ function getDate() {
     let getIdlinks = getDate.id.match(/\d+/g);
     let get_timeStart = document.getElementById('timeStart_input' + getIdlinks);
     let get_timeEnd = document.getElementById('timeEnd_input' + getIdlinks);
-    if (getDate != '') {
+    if (checkUniqueDate(getDate) && checkMinDate(getDate)) {
+        // เพิ่มวันที่ลงใน array เมื่อผ่านเงื่อนไขทั้งสอง
+        selectedDates.push(getDate.value);
         getDate.classList.remove('datepicker_costom_incorrect');
         getDate.classList.add('datepicker_costom_success');
         get_timeStart.disabled = false;
         get_timeEnd.disabled = false;
+        console.log("วันที่ที่ถูกเลือก:", selectedDates);
     } else {
-        alert('zzzz');
+        // ล้างค่าวันที่ใน input หากมีข้อผิดพลาด
+        getDate.value = '';
+    }
+
+
+}
+
+// สร้าง array เพื่อเก็บวันที่ที่เลือกไว้แล้ว
+var selectedDates = [];
+
+function checkUniqueDate(dateValue) {
+    let getIdlinks = dateValue.id.match(/\d+/g);
+    let get_dateinput = document.getElementById('date_input'+getIdlinks);
+    // ตรวจสอบว่าวันที่ที่ผู้ใช้เลือกนี้ซ้ำกับวันที่อื่นหรือไม่
+    if (selectedDates.includes(dateValue.value)) {
+        get_dateinput.placeholder = 'วันที่นี้มีอยู่แล้ว โปรดเลือกวันที่อื่น';
+        // alert("วันที่นี้มีอยู่แล้ว โปรดเลือกวันที่อื่น");
+        return false; // ยกเลิกการเพิ่มวันที่ซ้ำ
+    }
+    return true; // วันที่ไม่ซ้ำกับที่มีอยู่แล้ว
+}
+
+
+function checkMinDate(dateValue) {
+    let getIdlinks = dateValue.id.match(/\d+/g);
+    let get_dateinput = document.getElementById('date_input'+getIdlinks);
+    var regEx = /^\d{4}-\d{2}-\d{2}$/; // รูปแบบ YYYY-MM-DD
+    var isValidFormat = dateValue.value.match(regEx) !== null;
+    if (isValidFormat) {
+        var selectedDate = new Date(dateValue.value); // วันที่ที่ผู้ใช้เลือก
+
+        // เทียบวันที่ที่ผู้ใช้เลือกกับวันที่อยู่ในอาเรย์เพื่อตรวจสอบว่าน้อยกว่าหรือไม่
+        for (var i = 0; i < selectedDates.length; i++) {
+            var storedDate = new Date(selectedDates[i]);
+            if (selectedDate < storedDate) {
+                get_dateinput.placeholder = 'ขออภัย ไม่สามารถเลือกวันที่น้อยกว่าวันที่มีอยู่แล้วได้';
+                // alert("ไม่สามารถเลือกวันที่น้อยกว่าวันที่มีอยู่แล้วได้");
+                return false; // ไม่ให้เลือกวันที่น้อยกว่าวันที่อยู่ในอาเรย์
+            }
+        }
+
+        return true; // ให้เลือกวันที่
+    } else {
+        alert("รูปแบบวันที่ไม่ถูกต้อง");
+        return false; // ไม่ให้เลือกเนื่องจากรูปแบบวันที่ไม่ถูกต้อง
     }
 }
 
