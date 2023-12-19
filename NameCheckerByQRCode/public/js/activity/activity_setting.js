@@ -151,21 +151,21 @@ function addInput() {
     let date_input = document.createElement('input');
     date_input.setAttribute('class', 'form-control datepicker');
     date_input.setAttribute('type', 'text');
-    date_input.setAttribute('name', 'date_input[' + counter + ']');
+    date_input.setAttribute('name', `activity[date_input${counter}][date]`);
     date_input.setAttribute('id', 'date_input' + counter);
     date_activity_div.appendChild(date_input);
 
     let timeStart_input = document.createElement('input');
     timeStart_input.setAttribute('class', 'form-control get_IdInputTime');
     timeStart_input.setAttribute('type', 'time');
-    timeStart_input.setAttribute('name', 'timeStart_input[' + counter + ']');
+    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][start_time]`);
     timeStart_input.setAttribute('id', 'timeStart_input' + counter);
     timeStart_activity_div.appendChild(timeStart_input);
 
     let timeEnd_input = document.createElement('input');
     timeEnd_input.setAttribute('class', 'form-control get_IdInputTime');
     timeEnd_input.setAttribute('type', 'time');
-    timeEnd_input.setAttribute('name', 'timeEnd_input[' + counter + ']');
+    timeEnd_input.setAttribute('name', `activity[date_input${counter}][time][end_time]`);
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
@@ -271,12 +271,14 @@ function addInput() {
     let selectTimeCheck_input = document.createElement('select');
     selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck');
     selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
+    
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
 
     let option_setTimeCheck_0 = document.createElement('option');
     option_setTimeCheck_0.selected = true;
     option_setTimeCheck_0.disabled = true;
     option_setTimeCheck_0.textContent = 'เลือกเวลา';
+    
     selectTimeCheck_input.appendChild(option_setTimeCheck_0);
 
     let option_setTimeCheck_1 = document.createElement('option');
@@ -964,14 +966,14 @@ function showResult(get_Selects) {
     roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
-    roundStart_time.setAttribute('name', 'roundStart_timex[]');
+    roundStart_time.setAttribute('name', `activity[date_input${counter-1}][round][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
     roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
-    roundEnd_time.setAttribute('name', 'roundEnd_timex[]');
+    roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
 
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TestController;
 use App\Models\Activity;
 
 
@@ -69,4 +70,8 @@ Route::post('admin/table/activity/edit/{id}',[AdminController::class,"editActivi
 Route::post('admin/table/activity/delete/{id}',[AdminController::class,"deleteActivity"])->name('delete_activity');
 
 
+
+//// LAB TEST ////
+Route::get('test/array',[TestController::class,'formArrayRequest'])->name('test_form_array_request');
+Route::post('test/array/post',[TestController::class,'PostformArrayRequest'])->name('post_test_form_array_request');
 
