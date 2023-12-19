@@ -384,3 +384,11 @@ a{
 .revese-fake-disable{
   border-color: #048347;
 }
+
+.input-title-form{
+  border: none;
+  background-color: rgb(255, 255, 255, 0.1);
+  pointer-events: none;
+  color: #1fac6a;
+}
+
