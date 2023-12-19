@@ -171,7 +171,7 @@ function addInput() {
     timeEnd_input.setAttribute('class', 'form-control get_IdInputTime fake-disable');
     timeEnd_input.disabled = true;
     timeEnd_input.setAttribute('type', 'time');
-    timeStart_input.setAttribute('name', `activity[date_input${counter}][time][time_expried]`);
+    timeEnd_input.setAttribute('name', `activity[date_input${counter}][time][time_expried]`);
     timeEnd_input.setAttribute('id', 'timeEnd_input' + counter);
     timeEnd_activity_div.appendChild(timeEnd_input);
 
