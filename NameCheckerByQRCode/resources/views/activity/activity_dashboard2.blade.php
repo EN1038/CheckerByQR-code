@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col">
             {{-- activity detail   --}}
-            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="POST">
+            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="post"    >
                 @csrf
                 <div class="mb-3">
                     <label class="label-form">รายละเอียดกิจกรรม</label>
@@ -34,13 +34,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_if_name]" id="radiosISHaveData" value="yes">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_of_name]" id="radiosISHaveData" value="yes">
                         <label class="form-check-label fs-5" for="radiosISHaveData">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_if_name]" id="radiosISnoHaveData" value="no">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_of_name]" id="radiosISnoHaveData" value="no">
                         <label class="form-check-label fs-5" for="radiosISnoHaveData">
                           ไม่มีรายชื่อ
                         </label>
@@ -55,7 +55,7 @@
                       
                     <div class="my-3">
                         <label for="formFileIS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileIS">
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" name="excel"  id="formFileIS">
                         <div id="divFileIS" class="ms-4"> </div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
@@ -96,7 +96,7 @@
                       
                     <div class="my-3" >
                         <label for="formFileOS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileOS" name="activity[file][excel]">
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileOS" name="excel" value="{{ csrf_token() }}">
                         <div id="divFileOS" class="ms-4"></div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
@@ -128,7 +128,7 @@
                         
                 
                     </div>
-                <button class="btn btn-success">SUBMIT</button>
+                <button type="submit" class="btn btn-success">SUBMIT</button>
             
             </form>
 

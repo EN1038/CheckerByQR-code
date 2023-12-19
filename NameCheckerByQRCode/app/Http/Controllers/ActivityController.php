@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\ActivityPeopleImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\activity_setting;
@@ -44,12 +47,13 @@ class ActivityController extends Controller
     }
     public function makeCheckerForm(Request $request, $activity_id)
     {
-
         dd($request);
+        // if($request->input('activity.setting.side') == "inSide" and $request->input('activity.setting.have_list_of_name') == "yes"){
+        //    dd($request->input('file.excel'));
+        //     Excel::import(new ActivityPeopleImport($activity_id),$request->input('file.excel'));
+        //     return redirect()->back();
+        // }
         
-        if($request->input('activity.setting.side') == "inSide" and $request->input('activity.setting.have_list_of_name') == "yes"){
-            foreach()
-        }
     }
 
     public function showActivityMakeForm($activity_id)
