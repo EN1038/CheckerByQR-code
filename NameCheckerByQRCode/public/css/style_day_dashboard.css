@@ -1,0 +1,23 @@
+table.dataTable {
+    border-collapse: collapse;
+    font-size: 18px;
+    border: 0px solid white;
+  }
+
+  table.dataTable tbody tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+
+  table.dataTable thead th {
+    background-color: #ff0000;
+    color: #fff;
+    border: 0px solid #ddd;
+    border-radius: 15px;
+    padding: 8px;
+  }
+
+  table.dataTable tbody td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
