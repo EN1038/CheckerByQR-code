@@ -128,7 +128,7 @@ class ActivityController extends Controller
         $activity_setting = activity_setting::where('id','=',$activity_id)->first();
         $activity_description = activity::where('id','=',$activity_id)->pluck('activity_description')->first();
 
-foreach ($activity_relate as $items) {
+    foreach ($activity_relate as $items) {
     $activity_day_id = $items->activity_day_maker_id;
     
     $activity_day_select = activity_day_maker::where('id','=',$activity_day_id)->get();
@@ -150,5 +150,19 @@ foreach ($activity_relate as $items) {
 
         // dd($activity_day);
         return view('activity.activity_day_dashboard',compact('activity_day_array','activity_setting','activity_description'));
+    }
+
+    public function showRoundCheck($activity_id,$date_id){
+        $round_check_relate = rounde_checker_relate::where('activity_id','=',$activity_id)->where('activity_day_maker_id','=',$date_id)->get();
+        
+        // dd($round_check_relate);
+        foreach($round_check_relate as $items){
+            
+            $get_round_check = activity_rounde_checker::where('id','=',$items->rounde_checker_id)->get();
+            $round_check_data[] = $get_round_check;
+        }
+
+        // dd($round_check_data);
+        return view('activity.daycheck.daycheck',compact('round_check_data'));
     }
 }
