@@ -243,6 +243,7 @@ function addInput() {
     let option_setRoundCheck_0 = document.createElement('option');
     option_setRoundCheck_0.selected = true;
     option_setRoundCheck_0.disabled = true;
+    option_setRoundCheck_0.hidden = true;
     option_setRoundCheck_0.textContent = 'เลือกจำนวนรอบ';
     select_setRoundCheck.appendChild(option_setRoundCheck_0);
 
@@ -290,6 +291,7 @@ function addInput() {
     let option_setTimeCheck_0 = document.createElement('option');
     option_setTimeCheck_0.selected = true;
     option_setTimeCheck_0.disabled = true;
+    option_setTimeCheck_0.hidden = true;
     option_setTimeCheck_0.textContent = 'เลือกเวลา';
 
     selectTimeCheck_input.appendChild(option_setTimeCheck_0);
@@ -419,7 +421,7 @@ function deleteDiv(clickedId_deleteDiv) {
         let countForm = 1;
         // เพิ่มตัวเลขลงใน value ของทุก element ที่พบ
         formDateElements.forEach(element => {
-            element.value = 'Form : '+countForm ;
+            element.value = 'Form : ' + countForm;
             countForm++;
         });
     }
@@ -605,6 +607,7 @@ document.addEventListener('change', function (event) {
         get_Selects.classList.remove('fake-disable');
         get_Selects.classList.add('revese-fake-disable');
         showResult(get_Selects);
+        disableOptionsResult(get_Selects);
     } else if (event.target.classList.contains('formFileList')) {
         let get_formfile = event.target;
         const file = get_formfile.files[0];
@@ -808,6 +811,7 @@ function createSelectOptions(event) {
         selectAndLabels.forEach(element => {
             element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
         });
+        clearArrayValues()
     }
     let time_check = document.getElementById('selectTimeCheck' + getIdlinks).value;
     let time_start = document.getElementById('timeStart_input' + getIdlinks);
@@ -859,15 +863,18 @@ function createSelectOptions(event) {
         div.id = 'divSpace' + x + counter;
 
         var optionTitle = document.createElement('option');
-        optionTitle.value = 0;
-        optionTitle.text = 'หลังเข้าเรียน';
+        optionTitle.disabled = true;
+        optionTitle.selected = true;
+        optionTitle.hidden = true;
+        optionTitle.value = 'xx';
+        optionTitle.text = 'หลังเวลาเริ่ม';
         select.appendChild(optionTitle);
 
 
         if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
-            console.log('Option ที่ถูกเลือก: ' + time_check);
+            // console.log('Option ที่ถูกเลือก: ' + time_check);
             const intervalOneHours = 60;
-            for (let z = intervalOneHours; z <= timeDifferenceMinutes; z += intervalOneHours) {
+            for (let z = 0; z <= timeDifferenceMinutes; z += intervalOneHours) {
                 var option = document.createElement('option');
                 // เวลาที่มีอยู่เริ่มต้น
                 let [hours, minutes] = time_start.value.split(':').map(Number);
@@ -885,14 +892,14 @@ function createSelectOptions(event) {
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
                 option.value = z.toString();
-                option.textContent = 'หลังเข้าเรียน: ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
 
         } else if (time_check === '90' || time_check === '120') {
-            console.log('Option ที่ถูกเลือก: ' + time_check);
+            // console.log('Option ที่ถูกเลือก: ' + time_check);
             const intervalOneHours = 120;
-            for (let z = intervalOneHours; z <= timeDifferenceMinutes; z += intervalOneHours) {
+            for (let z = 0; z <= timeDifferenceMinutes; z += intervalOneHours) {
                 var option = document.createElement('option');
                 // เวลาที่มีอยู่เริ่มต้น
                 let [hours, minutes] = time_start.value.split(':').map(Number);
@@ -910,7 +917,7 @@ function createSelectOptions(event) {
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
                 option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
-                option.textContent = 'หลังเข้าเรียน: ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
         }
@@ -985,9 +992,13 @@ function getDate() {
 // สร้าง array เพื่อเก็บวันที่ที่เลือกไว้แล้ว
 var selectedDates = [];
 
+function clearArrayValues() {
+    selectedOptions = {}; // ลบค่าทั้งหมดในอาเรย์
+  }
+
 function checkUniqueDate(dateValue) {
     let getIdlinks = dateValue.id.match(/\d+/g);
-    let get_dateinput = document.getElementById('date_input'+getIdlinks);
+    let get_dateinput = document.getElementById('date_input' + getIdlinks);
     // ตรวจสอบว่าวันที่ที่ผู้ใช้เลือกนี้ซ้ำกับวันที่อื่นหรือไม่
     if (selectedDates.includes(dateValue.value)) {
         get_dateinput.placeholder = 'วันที่นี้มีอยู่แล้ว โปรดเลือกวันที่อื่น';
@@ -1000,7 +1011,7 @@ function checkUniqueDate(dateValue) {
 
 function checkMinDate(dateValue) {
     let getIdlinks = dateValue.id.match(/\d+/g);
-    let get_dateinput = document.getElementById('date_input'+getIdlinks);
+    let get_dateinput = document.getElementById('date_input' + getIdlinks);
     var regEx = /^\d{4}-\d{2}-\d{2}$/; // รูปแบบ YYYY-MM-DD
     var isValidFormat = dateValue.value.match(regEx) !== null;
     if (isValidFormat) {
@@ -1032,7 +1043,6 @@ function showResult(get_Selects) {
     let get_valueTimeCheck = document.getElementById('input_timeCheck' + globalIdlinks).value;
     let intValueTimeCheck = parseInt(get_valueTimeCheck);
 
-    console.log(get_idDivSpace);
     if (get_idDivSpace.id === 'divSpace' + getIdselects) {
         var selectAndLabels = get_idDivSpace.querySelectorAll('input');
         // วนลูปผ่าน select และ label แล้วลบทุกตัว
@@ -1064,6 +1074,7 @@ function showResult(get_Selects) {
     // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
     let duration_Time = `${hours_duration.toString().padStart(2, '0')}:${minutes_duration.toString().padStart(2, '0')}`;
 
+
     let Box = document.createElement('input');
     Box.setAttribute('class', 'my-4 bg-disable w-75 border-0')
     Box.disabled = true;
@@ -1086,6 +1097,47 @@ function showResult(get_Selects) {
     get_idDivSpace.appendChild(roundEnd_time);
 
 }
+
+let selectedOptions = {};
+
+function disableOptionsResult(selectElement) {
+    const selectedOption = selectElement.value;
+    
+    // ตรวจสอบว่า option ได้ถูกเลือกไว้แล้วหรือไม่
+  if (selectedOptions[selectedOption]) {
+    // alert("Option already selected in another select!");
+    selectElement.value = ''; // ล้างการเลือก
+  } else {
+    const previousValue = Object.keys(selectedOptions).find(
+      key => selectedOptions[key] === selectElement
+    );
+    
+    if (previousValue) {
+      delete selectedOptions[previousValue];
+    }
+    
+    // บันทึก option ที่ถูกเลือก
+    selectedOptions[selectedOption] = selectElement;
+  }
+
+    // อัปเดตสถานะของ options ในทุกช่อง select
+    updateOptionsAvailability();
+}
+
+function updateOptionsAvailability() {
+    let divShowTimeToUser = document.getElementById('divShowTimeToUser' + globalIdlinks);
+    let allSelects = divShowTimeToUser.querySelectorAll('select');
+  
+    allSelects.forEach(select => {
+      const selectedOption = select.value;
+  
+      // ปรับปรุง options ในทุกช่องตาม option ที่ถูกเลือก
+      const options = select.querySelectorAll('option');
+      options.forEach(option => {
+        option.disabled = selectedOptions[option.value];
+      });
+    });
+  }
 
 
 //api fetch
