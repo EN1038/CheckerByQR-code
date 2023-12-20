@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('activity_day_makers', function (Blueprint $table) {
             $table->id();
-            $table->string('form_name');
-            $table->string('form_date');
-            $table->timestamp('form_start_time');
-            $table->timestamp('form_time_expried');
+            $table->string('form_name')->nullable();
+            $table->string('form_date')->nullable();
+            $table->timestamp('form_start_time')->nullable();
+            $table->timestamp('form_time_expried')->nullable();
             $table->timestamps();
         });
     }

@@ -138,5 +138,5 @@
 </div>
 
 
-
+<script src="{{asset('js/activity/activity_setting.js')}}"></script>
 @endsection
