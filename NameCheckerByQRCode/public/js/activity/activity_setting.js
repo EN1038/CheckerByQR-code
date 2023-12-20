@@ -449,7 +449,7 @@ function changeSystem(clickedId_ChangeSystem) {
             prInSides.disabled = true;
             prOutSides.classList.remove('d-none');
             prOutSides.disabled = false;
-            changeSystemValue.value = 'outSide';
+            changeSystemValue.value = '2';
             div_HaDataIS.classList.add('d-none');
             div_HaDataIS.disabled = true;
             div_noHaDataIS.classList.add('d-none');
@@ -468,7 +468,7 @@ function changeSystem(clickedId_ChangeSystem) {
             prOutSides.disabled = true;
             prInSides.classList.remove('d-none');
             prInSides.disabled = false;
-            changeSystemValue.value = 'inSide';
+            changeSystemValue.value = '1';
             div_HaDataIS.classList.add('d-none');
             div_HaDataIS.disabled = true;
             div_noHaDataIS.classList.add('d-none');

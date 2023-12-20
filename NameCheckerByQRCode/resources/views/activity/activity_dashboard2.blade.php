@@ -26,7 +26,7 @@
                             <i class="enchagne_button btn btn-success fa-solid fa-arrow-left" id="changeSystem" value="0"></i> 
                 
                         <p class="mt-2 fs-8 fw-light text-muted">Click this button for Chagne Modes</p>
-                        <input type="text" name="activity[setting][side]" id="getValueMode_sys" value="inSide" class="d-none">
+                        <input type="text" name="activity[setting][side]" id="getValueMode_sys" value="1" class="d-none">
                      </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
                 </div>
@@ -34,13 +34,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_of_name]" id="radiosISHaveData" value="yes">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_of_name]" id="radiosISHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosISHaveData">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_of_name]" id="radiosISnoHaveData" value="no">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasIS" type="radio" name="activity[setting][have_list_of_name]" id="radiosISnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosISnoHaveData">
                           ไม่มีรายชื่อ
                         </label>
@@ -75,13 +75,13 @@
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSHaveData" value="yes">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col">
-                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSnoHaveData" value="no">
+                        <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
                         </label>

@@ -53,8 +53,15 @@ class ActivityController extends Controller
        
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
+        dd($request);
+        $activity_setting = activity_setting::create([
+            'activity_id' => $activity_id,
+            'people_side_mode_id' => $request->input('activity.setting.side'),
+            'list_of_name_id' => $request->input('activity.setting.have_list_of_name'),
+        ]);
         
-        if($side == 'outSide' and $have_list_of_name == 'no'){
+        
+        if($side == '2' and $have_list_of_name == '2'){
             $date_num = $request->input('activity.date_add');
         //    dd($date_num);
         $i = 1;
@@ -118,12 +125,14 @@ class ActivityController extends Controller
 
     public function showDayCheckerList($activity_id){
         $activity_relate = rounde_checker_relate::where('activity_id', '=', $activity_id)->get();
+        $activity_setting = activity_setting::where('id','=',$activity_id)->first();
+        $activity_description = activity::where('id','=',$activity_id)->pluck('activity_description')->first();
 
 foreach ($activity_relate as $items) {
     $activity_day_id = $items->activity_day_maker_id;
     
     $activity_day_select = activity_day_maker::where('id','=',$activity_day_id)->get();
-    $activity_data[] = $activity_day_select;
+    $activity_day_array[] = $activity_day_select;
     // Example: Print the activity_day for each iteration
     
 }
@@ -140,6 +149,6 @@ foreach ($activity_relate as $items) {
 // }
 
         // dd($activity_day);
-        return view('activity.activity_day_dashboard',compact('activity_data'));
+        return view('activity.activity_day_dashboard',compact('activity_day_array','activity_setting','activity_description'));
     }
 }
