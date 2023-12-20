@@ -54,6 +54,7 @@ Route::post('activity-update-name/{id}',[ActivityController::class,'updateActivi
 Route::get('activity-delete/{id}',[ActivityController::class,'deleteActivity'])->name('delete_activity');
 Route::post('activity-make-checker-form/{id}',[ActivityController::class,'makeCheckerForm'])->name('make-checker-form');
 Route::post('activity-seting/{id}',[ActivityController::class,'ActivitySetting'])->name('activity_seting');
+Route::get('activity/day-chcker-list/dashboard/{id}',[ActivityController::class,'showDayCheckerList'])->name('show_day_checker_list');
 //activity-form
 // Route::get('activity-make-form/{id}',[ActivityController::class,'showActivityMakeForm'])->name('activity-make-form');
 

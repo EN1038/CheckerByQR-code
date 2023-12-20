@@ -51,7 +51,6 @@ class ActivityController extends Controller
     public function makeCheckerForm(Request $request, $activity_id)
     {
        
-        
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
         
@@ -85,12 +84,13 @@ class ActivityController extends Controller
                 'rounde_checker_time_start' => $time_start_format,
                 'rounde_checker_time_expried' => $time_expried_format,
             ]); 
-
-            $activity_round_checker_relate = rounde_checker_relate::crate([
+            // dd($activity_id);
+            $activity_round_checker_relate = rounde_checker_relate::create([
                 'activity_id' => $activity_id,
-                'activity_date_maker_id' => $activity_date_maker->id,
-                'activity_rounde_check_id' => $activity_round_checker->id,
+                'activity_day_maker_id' => $activity_date_maker->id,
+                'rounde_checker_id' => $activity_round_checker->id,
             ]);
+            
            }
            $i++;
         }
@@ -114,5 +114,11 @@ class ActivityController extends Controller
     public function ActivitySetting(Request $request, $activity_id)
     {
         
+    }
+
+    public function showDayCheckerList($activity_id){
+        $activity_day = rounde_checker_relate::where('activity_id','=',$activity_id)->get();
+
+        return view('activity.activity_day_dashboard',compact('activity_day'));
     }
 }
