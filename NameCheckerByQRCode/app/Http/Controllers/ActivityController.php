@@ -117,8 +117,29 @@ class ActivityController extends Controller
     }
 
     public function showDayCheckerList($activity_id){
-        $activity_day = rounde_checker_relate::where('activity_id','=',$activity_id)->get();
+        $activity_relate = rounde_checker_relate::where('activity_id', '=', $activity_id)->get();
 
-        return view('activity.activity_day_dashboard',compact('activity_day'));
+foreach ($activity_relate as $items) {
+    $activity_day_id = $items->activity_day_maker_id;
+    
+    $activity_day_select = activity_day_maker::where('id','=',$activity_day_id)->get();
+    $activity_data[] = $activity_day_select;
+    // Example: Print the activity_day for each iteration
+    
+}
+// dd($activity_data);
+
+// If you want to use a for loop instead
+// for ($i = 0; $i < count($activity_relate); $i++) {
+//     $activity_day = $activity_relate[$i]->activity_day_maker_id;
+
+//     // Your code for each iteration...
+
+//     // Example: Print the activity_day for each iteration
+//     echo $activity_day . '<br>';
+// }
+
+        // dd($activity_day);
+        return view('activity.activity_day_dashboard',compact('activity_data'));
     }
 }
