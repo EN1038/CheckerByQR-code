@@ -29,7 +29,5 @@ function clickTr(id){
     
 }
 
- function get_URL(){
-    let url = window.location.href;
-    console.log('URL = '+ url);
-}
+
+  
