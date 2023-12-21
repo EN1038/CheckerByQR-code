@@ -53,7 +53,7 @@ class ActivityController extends Controller
        
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
-        dd($request);
+        // dd($request);
         $activity_setting = activity_setting::create([
             'activity_id' => $activity_id,
             'people_side_mode_id' => $request->input('activity.setting.side'),

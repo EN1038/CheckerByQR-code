@@ -1,33 +1,49 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <!-- JavaScript -->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-    <link rel="stylesheet" href="{{ asset('css/style_day_dashboard.css') }}">
-    <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success">ตั้งค่ากิจกรรม</a> 
+  <link rel="stylesheet" href="{{ asset('css/style_day_dashboard.css') }}">
     
-    @if($activity_setting->PeopleSideMode->id == 2)
-    <div>บุคคลภายนอก</div>
-    @elseif ($activity_setting->PeopleSideMode->id == 1)
-    <div>บุคคลภายใน</div>
-    @endif
-    @if ($activity_setting->ListOfNameMode->id == 2)
-        <div>ไม่มีรายชื่อ</div>
-    @elseif ($activity_setting->ListOfNameMode->id == 1)
-        <div>มีรายชื่อ</div>
-    @endif
-
-    <p>{{$activity_description}}</p>
+     
+    <div class="d-flex flex-column">
+        <p class="fs-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
+    <div class="col d-flex px-5 detailSetting">
+        <div class="col text-start ">
+        @if($activity_setting->PeopleSideMode->id == 2)
+        <p>อณุญาติการเข้าใช้งานจาก : <span>บุคคลภายนอก</span></p>
+        @elseif ($activity_setting->PeopleSideMode->id == 1)
+        <p>อณุญาติการเข้าใช้งานจาก : <span>บุคคลภายใน</span></p>
+        @endif
+        </div>
+        <div class="col text-start">
+            @if ($activity_setting->ListOfNameMode->id == 2)
+        <p>ระบบการเช็คชื่อแบบ : <span>ไม่มีรายชื่อ</span></p>
+        @elseif ($activity_setting->ListOfNameMode->id == 1)
+        <p>ระบบการเช็คชื่อแบบ : <span>มีรายชื่อ</span></p>
+        @endif
+        </div>
+    </div>
+    <div class="col">
+        
+    </div>
+    <div class="col detailActivity">
+        <h5>รายละเอียดกิจกรรม : </h5>
+        <p id="detailText">{{$activity_description}}</p>
+    </div>
+    <div class="col d-flex justify-content-end">
+        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can "></i> Delete</a>
+        <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-5 rounded-3 btn-setting" id="btnSetting"><i class="fa-solid fa-list-check"></i> ตั้งค่ากิจกรรม</a>
+    </div>
     
+    </div>
+  
     {{-- <div>บุคคล{{$activity_setting->PeopleSideMode->people_side_name}}</div> --}}
     
-    <div class="container p-5">
-        <table class="table" id="myDataTable">
+    
+    <div class="container px-5 pb-4 pt-3">
+        <table class="table text-center" id="myDataTable">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col" style="width: 30px;"><i class="fa-solid fa-list-check"></i></th>
+                    <th scope="col" style="width: 30px;">ID</th>
                     <th scope="col">ชื่อวันที่</th>
                     <th scope="col">วัน</th>
                     <th scope="col">เวลาเริ่ม</th>
@@ -37,7 +53,8 @@
             <tbody>
                 @foreach ($activity_day_array as $row)
                     @foreach ($row as $data)
-                        <tr>
+                        <tr class="get_IdTr" id="idTr{{ $data->id }}" onclick="clickTr('{{ $data->id }}')">
+                            <td scope='row'><input type="checkbox" class="select-row form-check-input" id="idInput{{ $data->id }}"></td>
                             <td scope="row">{{ $data->id }}</td>
                             <td scope="row">{{ $data->form_name }}</td>
                             <td>{{ $data->date }}</td>
@@ -50,6 +67,8 @@
 
             </tbody>
         </table>
+
+          
     </div>
 
 

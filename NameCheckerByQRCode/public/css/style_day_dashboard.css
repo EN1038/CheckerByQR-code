@@ -1,35 +1,111 @@
-table.dataTable {
-    border-collapse: collapse;
-    font-size: 18px;
-    border: 0px solid white;
-  }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  table.dataTable tbody tr:hover {
-    background-color: #ddd;
+.detailActivity{
+    margin: 5px 40px 5px 40px;
+    padding: 5px 10px 5px 10px;
+}
+
+.detailActivity p{
+    height: 41px;
+    width: 690px;
+    margin: 2px 20px 2px 20px;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid #adffd9;
+    border-radius: 10px;
+    white-space: nowrap;
+    overflow: hidden; /* ซ่อนข้อความที่เกินขอบเขต */
+    text-overflow: ellipsis; /* แสดงเครื่องหมาย elipsis (...) เมื่อข้อความเกิน */
     cursor: pointer;
-  }
+    transition: all 0.3s;
+}
 
-  table.dataTable thead th {
-    background-color: #ff0000;
+.detailActivity p:hover{
+    border: 1px solid #fff;
+    background-color: #22b671;
     color: #fff;
-    border: 0px solid #ddd;
-    border-radius: 15px;
-    padding: 8px;
-  }
+    transform: translateX(200px) scale(1.4);
+}
 
-  table.dataTable tbody td {
-    border: 0px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
+.detailActivity h5{
+    font-weight: bold;
+    color: #22b671;
+    font-size: 18px;
+}
 
-  div.dataTables_wrapper input[type="search"] {
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  div.dataTables_wrapper select option{
-    border: 1px solid rgb(209, 0, 0);
-    border-radius: 10px;
-    margin-bottom: 10px;
-    background-color: #ff0000;
-  }
+.detailSetting div p{
+    font-weight: bold;
+    color: #22b671;
+    font-size: 18px;
+}
+
+.detailSetting div p span{
+    font-weight: lighter;
+    color: #000
+}
+
+.btn-setting{
+    transition: all 0.3s;
+}
+
+.btn-setting:hover{
+    font-weight: bolder;
+    transform: translateX(10px);
+}
+
+.btn-setting:hover i{
+    transform: translateY(-1px);
+}
+
+.btn-delete{
+    transition: all 0.3s;
+}
+.btn-delete:hover{
+    font-weight: bolder;
+    transform: translateX(10px);
+}
+.btn-delete:hover i{
+    transform: translateY(-1px);
+}
+
+.table thead tr th{
+    background-color: rgb(255, 255, 255, 0.5);
+    color: #22b671;
+    font-size: 20px;
+}
+
+.table tbody tr td{
+    border: 0px solid #000;
+    background-color: rgb(255, 255, 255, 0.5);
+}
+.table tbody tr{
+    transition: all 0.5s;
+}
+
+.table tbody tr:hover{
+    background-color: #016b3a;
+    transform: scale(1.03);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.table tbody tr:hover td{
+    border: 0px solid #000;
+    color: #fff;
+}
+
+
+  
+@media (max-width: 1440px) {
+
+    .detailActivity p{
+        border: 1px solid #000000;
+    }
+    
+    .detailActivity p:hover{
+        transform: translateX(110px) scale(1.2);
+    }
+}
