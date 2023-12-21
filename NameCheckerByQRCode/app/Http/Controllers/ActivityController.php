@@ -175,9 +175,18 @@ class ActivityController extends Controller
     
     public function returnCheckerForm($activity_id){
 
-        // $activity_setting = activity_setting::
+        $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+       
+        if($activity_setting->list_of_name_mode_id == "2"){
+            return view('activity.QRcode.input_name_form');
+        }else{
+            return view('activity.daycheck.RoundCheck.nsru_core_login');
+        }
 
-        return view('activity.QRcode.input_name_form');
+        
+    }
+    public function inputFormCheckerPost($activity_id){
+        
     }
 
 }
