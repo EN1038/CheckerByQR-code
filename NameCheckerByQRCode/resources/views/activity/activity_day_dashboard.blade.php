@@ -29,7 +29,7 @@
         <p id="detailText">{{$activity_description}}</p>
     </div>
     <div class="col d-flex justify-content-end">
-        <a onclick="get_URL()" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode"></i> QR-Code</a>
+        <a class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode"></i> QR-Code</a>
         <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can "></i> ลบกิจกรรม</a>
         <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-5 rounded-3 btn-setting" id="btnSetting"><i class="fa-solid fa-list-check"></i> ตั้งค่ากิจกรรม</a>
     </div>
@@ -37,8 +37,7 @@
     </div>
   
     {{-- <div>บุคคล{{$activity_setting->PeopleSideMode->people_side_name}}</div> --}}
-    
-    
+
     <div class="container px-5 pb-4 pt-3">
         <table class="table text-center">
             <thead>
@@ -74,9 +73,6 @@
 
           
     </div>
-
-
-
 
 <script src="{{ asset('js/activity/activity_day_dashboard.js') }}"></script>
 @endsection
