@@ -83,12 +83,12 @@
 <div class="modal fade" id="showQRcode" tabindex="-1" aria-labelledby="showQRcode" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header p-0">
-          <h5 class="modal-title fw-bold" id="showQRcode">QR-CODE</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header p-0 border-0 ">
+          <h5 class="modal-title title_modal" id="showQRcode"><i class="fa-solid fa-qrcode fa-beat-fade"></i> QR-CODE</h5>
+          <button type="button" class="btn-close fs-6 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <img src="{{url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=".env('IPV4_HOST ')."/activity/form-checker/".request()->route()->id)}}" alt="">
+        <div class="modal-body d-flex justify-content-center">
+          <img src="{{url("https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=".env('IPV4_HOST ')."/activity/form-checker/".request()->route()->id)}}" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
