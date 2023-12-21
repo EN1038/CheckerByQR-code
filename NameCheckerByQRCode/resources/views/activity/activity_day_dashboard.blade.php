@@ -48,6 +48,7 @@
                     <th scope="col">วัน</th>
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
+                    <th scope="col">ดูรอบเช็คชื่อ</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +61,8 @@
                             <td>{{ $data->date }}</td>
                             <td>{{ $data->time_start }}</td>
                             <td>{{ $data->time_expried }}</td>
+                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$data->id])}}" class="btn btn-success">ดูรอบเช็คชื่อ</a></td>
+                            
                         </tr>
                     @endforeach
                 @endforeach

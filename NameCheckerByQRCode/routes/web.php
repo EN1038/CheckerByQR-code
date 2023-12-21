@@ -58,6 +58,9 @@ Route::get('activity/day-chcker-list/dashboard/{id}',[ActivityController::class,
 //activity-form
 // Route::get('activity-make-form/{id}',[ActivityController::class,'showActivityMakeForm'])->name('activity-make-form');
 
+//// round check ////
+
+Route::get('activity/daycheck/round-check/{activity_id}/{date_id}',[ActivityController::class,'showRoundCheck'])->name('show_round_check');
 
 // Admin //
 Route::get('/admin',[AdminController::class,'showAdminPage'])->name('show_admin_page');
