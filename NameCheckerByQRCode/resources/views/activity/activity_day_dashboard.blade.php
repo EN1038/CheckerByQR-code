@@ -29,7 +29,8 @@
         <p id="detailText">{{$activity_description}}</p>
     </div>
     <div class="col d-flex justify-content-end">
-        <a onclick="get_URL()" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode"></i> QR-Code</a>
+        
+        <button data-bs-toggle="modal" type="button"  data-bs-target="#showQRcode"   onclick="get_URL()" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode"></i> QR-Code</button>
         <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can "></i> ลบกิจกรรม</a>
         <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-5 rounded-3 btn-setting" id="btnSetting"><i class="fa-solid fa-list-check"></i> ตั้งค่ากิจกรรม</a>
     </div>
@@ -76,7 +77,24 @@
     </div>
 
 
-
+    
 
 <script src="{{ asset('js/activity/activity_day_dashboard.js') }}"></script>
 @endsection
+<div class="modal fade" id="showQRcode" tabindex="-1" aria-labelledby="showQRcode" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="showQRcode">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="{{url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://10.115.2.53:8000/activity/form-checker/".request()->route()->id)}}" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

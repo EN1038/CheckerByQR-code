@@ -175,6 +175,7 @@ class ActivityController extends Controller
     
     public function returnCheckerForm($activity_id){
 
+        // $activity_setting = activity_setting::
 
         return view('activity.QRcode.input_name_form');
     }
