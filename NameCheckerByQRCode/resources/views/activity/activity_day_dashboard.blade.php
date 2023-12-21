@@ -89,7 +89,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src="{{url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://10.115.2.53:8000/activity/form-checker/".request()->route()->id)}}" alt="">
+          <img src="{{url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=".{{env('IPV4_HOST ')}}."/activity/form-checker/".request()->route()->id)}}" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
