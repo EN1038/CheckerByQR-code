@@ -55,7 +55,7 @@
                       
                     <div class="my-3">
                         <label for="formFileIS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" name="excel"  id="formFileIS">
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" name="activity[excel]"  id="" accept=".xlsx,xls">
                         <div id="divFileIS" class="ms-4"> </div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>
@@ -96,7 +96,7 @@
                       
                     <div class="my-3" >
                         <label for="formFileOS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="formFileOS" name="excel" value="{{ csrf_token() }}">
+                        <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="" name="excel" value="" accept=".xlsx,xls">
                         <div id="divFileOS" class="ms-4"></div>
                         <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                     </div>

@@ -58,10 +58,13 @@ Route::get('activity/day-chcker-list/dashboard/{id}',[ActivityController::class,
 //activity-form
 // Route::get('activity-make-form/{id}',[ActivityController::class,'showActivityMakeForm'])->name('activity-make-form');
 
+
+///QR
+Route::get('activity/form-checker',[ActivityController::class,'returnCheckerForm'])->name('return_check_form');
 //// round check ////
 
-Route::get('activity/daycheck/round-check-list/{activity_id}/{date_id}',[ActivityController::class,'showRoundCheck'])->name('show_round_check');
-// Route::get('activity/daycheck/round-check/{activity_id}/{date_id}/{round_id}',[ActivityController::class,'showR'])
+Route::get('activity/daycheck/round-check-list/{activity_id}/{date_id}',[ActivityController::class,'showRoundCheckList'])->name('show_round_check');
+Route::get('activity/daycheck/round-check-page/{activity_id}/{date_id}/{round_id}',[ActivityController::class,'showRoundCheckPage'])->name('show_round_check_page');
 // Admin //
 Route::get('/admin',[AdminController::class,'showAdminPage'])->name('show_admin_page');
 Route::get('/admin/table-menu',[AdminController::class,'showAdminTableMenu'])->name('show_admin_table_menu');
@@ -71,7 +74,7 @@ Route::get('/admin/table-menu',[AdminController::class,'showAdminTableMenu'])->n
 
 Route::get('/admin/table/activity',[AdminController::class,"showTableActivityPage"])->name('show_activity_table');
 Route::post('admin/table/activity/edit/{id}',[AdminController::class,"editActivity"])->name('edit_activity');
-Route::post('admin/table/activity/delete/{id}',[AdminController::class,"deleteActivity"])->name('delete_activity');
+Route::post('admin/table/activity/delete/{id}',[AdminController::class,"deleteActivity"])->name('delete_activity_by_admin');
 
 
 
