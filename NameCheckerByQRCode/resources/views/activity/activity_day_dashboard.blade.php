@@ -2,7 +2,8 @@
 @section('content_body')
   <link rel="stylesheet" href="{{ asset('css/style_day_dashboard.css') }}">
     
-     
+  
+
     <div class="d-flex flex-column">
         <p class="fs-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
     <div class="col d-flex px-5 detailSetting">
@@ -22,7 +23,7 @@
         </div>
     </div>
     <div class="col">
-        
+       
     </div>
     <div class="col detailActivity">
         <h5>รายละเอียดกิจกรรม : </h5>
@@ -88,7 +89,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src="{{url("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=".env('IPV4_HOST ')."/activity/form-checker/".request()->route()->id)}}" alt="">
+            @php
+                $url = env('IPV4_HOST')."/activity/form-checker/".request()->route()->id
+            @endphp
+          
+          <img src="{{url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.$url)}}" alt="">
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
