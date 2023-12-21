@@ -60,8 +60,8 @@ Route::get('activity/day-chcker-list/dashboard/{id}',[ActivityController::class,
 
 //// round check ////
 
-Route::get('activity/daycheck/round-check/{activity_id}/{date_id}',[ActivityController::class,'showRoundCheck'])->name('show_round_check');
-
+Route::get('activity/daycheck/round-check-list/{activity_id}/{date_id}',[ActivityController::class,'showRoundCheck'])->name('show_round_check');
+// Route::get('activity/daycheck/round-check/{activity_id}/{date_id}/{round_id}',[ActivityController::class,'showR'])
 // Admin //
 Route::get('/admin',[AdminController::class,'showAdminPage'])->name('show_admin_page');
 Route::get('/admin/table-menu',[AdminController::class,'showAdminTableMenu'])->name('show_admin_table_menu');
