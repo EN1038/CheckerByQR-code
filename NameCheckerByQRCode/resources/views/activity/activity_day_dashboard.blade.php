@@ -90,7 +90,7 @@
         </div>
         <div class="modal-body d-flex justify-content-center">
             @php
-                $url = env('LOCALHOST_TEST ')."/activity/form-checker/".request()->route()->id
+                $url = env('IPV4_HOST')."/activity/form-checker/".request()->route()->id
             @endphp
           
           <img src="{{url('https://api.qrserver.com/v1/create-qr-code/?size=450x450&data='.$url)}}" alt="">
