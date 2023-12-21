@@ -29,7 +29,8 @@
         <p id="detailText">{{$activity_description}}</p>
     </div>
     <div class="col d-flex justify-content-end">
-        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can "></i> Delete</a>
+        <a onclick="get_URL()" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode"></i> QR-Code</a>
+        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can "></i> ลบกิจกรรม</a>
         <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-5 rounded-3 btn-setting" id="btnSetting"><i class="fa-solid fa-list-check"></i> ตั้งค่ากิจกรรม</a>
     </div>
     
@@ -39,7 +40,7 @@
     
     
     <div class="container px-5 pb-4 pt-3">
-        <table class="table text-center" id="myDataTable">
+        <table class="table text-center">
             <thead>
                 <tr>
                     <th scope="col" style="width: 30px;"><i class="fa-solid fa-list-check"></i></th>
@@ -61,7 +62,7 @@
                             <td>{{ $data->date }}</td>
                             <td>{{ $data->time_start }}</td>
                             <td>{{ $data->time_expried }}</td>
-                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$data->id])}}" class="btn btn-success">ดูรอบเช็คชื่อ</a></td>
+                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$data->id])}}" class="btn btn-success btn-viewlistround"><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
                             
                         </tr>
                     @endforeach
