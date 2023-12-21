@@ -23,7 +23,6 @@
                 <td>{{$row->rounde_checker_time_expried}}</td>
                 <td>{{$row->rounde_checker_time_expried}}</td>
                 <td><a href="" class="btn btn-success">ดูข้อมูล</a></td>
-                
             </tr>
             @endforeach
        
