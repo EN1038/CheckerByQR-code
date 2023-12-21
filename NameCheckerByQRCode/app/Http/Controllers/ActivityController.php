@@ -50,7 +50,8 @@ class ActivityController extends Controller
     }
     public function makeCheckerForm(Request $request, $activity_id)
     {
-       
+       dd($request);
+
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
         // dd($request);
@@ -152,7 +153,7 @@ class ActivityController extends Controller
         return view('activity.activity_day_dashboard',compact('activity_day_array','activity_setting','activity_description'));
     }
 
-    public function showRoundCheck($activity_id,$date_id){
+    public function showRoundCheckList($activity_id,$date_id){
         $round_check_relate = rounde_checker_relate::where('activity_id','=',$activity_id)->where('activity_day_maker_id','=',$date_id)->get();
         
         // dd($round_check_relate);
@@ -165,4 +166,18 @@ class ActivityController extends Controller
         // dd($round_check_data);
         return view('activity.daycheck.daycheck',compact('round_check_data'));
     }
+
+    public function showRoundCheckPage($activity_id,$date_id,$round_id){
+
+
+        return view('activity.daycheck.RoundCheck.round_check_page');
+    }
+    
+    public function returnCheckerForm($activity_id){
+
+        // $activity_setting = activity_setting::
+
+        return view('activity.QRcode.input_name_form');
+    }
+
 }

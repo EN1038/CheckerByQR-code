@@ -22,7 +22,8 @@
                 <td>{{$row->rounde_name}}</td>
                 <td>{{$row->rounde_checker_time_start}}</td>
                 <td>{{$row->rounde_checker_time_expried}}</td>
-                <td><a href="" class="btn btn-success">ดูข้อมูล</a></td>
+                <td>{{$row->rounde_checker_time_expried}}</td>
+                <td><a href="{{route('show_round_check_page',['activity_id' => request()->route()->activity_id,'date_id' => request()->route()->date_id,'round_id' => $row->id])}}" class="btn btn-success">ดูข้อมูล</a></td>
             </tr>
             @endforeach
        
