@@ -83,8 +83,8 @@
 <div class="modal fade" id="showQRcode" tabindex="-1" aria-labelledby="showQRcode" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="showQRcode">Modal title</h5>
+        <div class="modal-header p-0">
+          <h5 class="modal-title fw-bold" id="showQRcode">QR-CODE</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
