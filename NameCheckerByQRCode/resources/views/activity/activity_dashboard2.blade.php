@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col">
             {{-- activity detail   --}}
-            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="post"    >
+            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="post"  id="formNaJa">
                 @csrf
                 <div class="mb-3">
                     <label class="label-form">รายละเอียดกิจกรรม</label>
@@ -128,7 +128,7 @@
                         
                 
                     </div>
-                <button type="submit" class="btn btn-success">SUBMIT</button>
+                <button type="submit" class="btn btn-success" id="submit">SUBMIT</button>
             
             </form>
 

@@ -549,7 +549,7 @@ function showSetCheckName(clickedId_IdsetCheckName) {
         let setCheckName = document.getElementById(clickedId_IdsetCheckName);
         let div_Rounddays = document.getElementById('CheckName_setCheckNameRoundDay' + getIdlinks);
         let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
-        
+
         if (setCheckName) {
             let checkNameAlldays = document.getElementById('setCheckNameI' + getIdlinks);
             let checkNameRounddays = document.getElementById('setCheckNameII' + getIdlinks);
@@ -560,18 +560,18 @@ function showSetCheckName(clickedId_IdsetCheckName) {
         if (setCheckName.id === 'setCheckNameI' + getIdlinks) {
             div_Alldays.classList.remove('d-none');
             div_Rounddays.classList.add('d-none');
-        //     let inputEnd = document.getElementById('input_EndTime' + getIdlinks);
-        // if (inputEnd) {
-        //     inputEnd.remove();
-        // }
-        //     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
-        //     let input_EndTime = document.createElement('input');
-        //     input_EndTime.class ='d-none';
-        //     input_EndTime.value = time_end.value;
-        //     input_EndTime.id = 'input_EndTime' + getIdlinks;
-        //     input_EndTime.name = 'TimeEndofAlldays';
-        //     div_Alldays.append(input_EndTime);
-        
+            //     let inputEnd = document.getElementById('input_EndTime' + getIdlinks);
+            // if (inputEnd) {
+            //     inputEnd.remove();
+            // }
+            //     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
+            //     let input_EndTime = document.createElement('input');
+            //     input_EndTime.class ='d-none';
+            //     input_EndTime.value = time_end.value;
+            //     input_EndTime.id = 'input_EndTime' + getIdlinks;
+            //     input_EndTime.name = 'TimeEndofAlldays';
+            //     div_Alldays.append(input_EndTime);
+
         } else if (setCheckName.id === 'setCheckNameII' + getIdlinks) {
             div_Rounddays.classList.remove('d-none');
             div_Alldays.classList.add('d-none');
@@ -700,6 +700,20 @@ document.addEventListener('change', function (event) {
         let getIdlinks = get_selectTimeCheck.id.match(/\d+/g);
         let get_selectSetRoundCheck = document.getElementById('selectSetRoundCheck' + getIdlinks)
         get_selectSetRoundCheck.disabled = false;
+
+
+        let get_Selects = document.getElementById('selectSetRoundCheck' + getIdlinks);
+        let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + getIdlinks);
+        // ลบ select ที่มี id เป็น dynamicSelect ทิ้งทั้งหมด
+        if (divShowTimeToUsers.id === 'divShowTimeToUser' + getIdlinks) {
+            var selectAndLabels = divShowTimeToUsers.querySelectorAll('select, label,input,div');
+            // วนลูปผ่าน select และ label แล้วลบทุกตัว
+            selectAndLabels.forEach(element => {
+                element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+            });
+            clearArrayValues();
+            get_Selects.selectedIndex = 0;
+        }
     }
 });
 
@@ -878,7 +892,7 @@ function createSelectOptions(event) {
         optionTitle.selected = true;
         optionTitle.hidden = true;
         optionTitle.value = 'xx';
-        optionTitle.text = 'หลังเวลาเริ่ม';
+        optionTitle.text = 'หลังเวลา';
         select.appendChild(optionTitle);
 
 
@@ -903,7 +917,7 @@ function createSelectOptions(event) {
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
                 option.value = newTime.toString();
-                option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                option.textContent = 'หลังเวลา : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
 
@@ -928,7 +942,7 @@ function createSelectOptions(event) {
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
                 option.value = newTime.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
-                option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
+                option.textContent = 'หลังเวลา : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
         }
@@ -1122,27 +1136,46 @@ function showResult(get_Selects) {
     roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
 
-    if (get_Selects.id === 'dynamicSelect10') {
-        console.log(getIdselects);
+    console.log(get_Selects.id);
+    if (get_Selects.id === 'dynamicSelect10' || get_Selects.id === 'dynamicSelect20' || get_Selects.id === 'dynamicSelect30' || get_Selects.id === 'dynamicSelect40' || get_Selects.id === 'dynamicSelect50') {
         let roundDuration_time = document.createElement('input');
+        roundDuration_time.classList.add = 'd-none';
         roundDuration_time.value = get_valueTimeEnd;
         roundDuration_time.id = 'roundDuration_timx' + getIdselects;
         roundDuration_time.name = 'roundDuration_time';
         get_idDivSpace.appendChild(roundDuration_time);
+        let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
+        if (get_roundDuration) {
+            get_roundDuration.remove();
+            let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
+            let roundDuration_time = document.createElement('input');
+            roundDuration_time.classList.add = 'd-none';
+            roundDuration_time.value = get_Selects.value;
+            roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
+            roundDuration_time.name = 'roundDuration_time';
+            get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
+        }
     } else {
-        let get_dynamicSelects = document.getElementById('dynamicSelect' + (intgetIdselects - 1))
+        let get_dynamicSelects = document.getElementById('dynamicSelect' + (intgetIdselects - 1));
         let roundDuration_times = document.createElement('input');
+        roundDuration_times.classList.add = 'd-none';
         roundDuration_times.value = get_dynamicSelects.value;
         roundDuration_times.id = 'roundDuration_timx' + getIdselects;
         roundDuration_times.name = 'roundDuration_times';
         get_idDivSpace.appendChild(roundDuration_times);
+        let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
+        if (get_roundDuration) {
+            get_roundDuration.remove();
+            let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
+            let roundDuration_time = document.createElement('input');
+            roundDuration_time.classList.add = 'd-none';
+            roundDuration_time.value = get_Selects.value;
+            roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
+            roundDuration_time.name = 'roundDuration_time';
+            get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
+        }
     }
-
-    // let roundDuration_time = document.createElement('input');
-    // roundDuration_time.value = get_Selects.value;
-    // roundDuration_time.id = 'roundDuration_timx'+getIdselects;
-    // roundDuration_time.name = 'roundDuration_time';
-    // get_idDivSpace.appendChild(roundDuration_time);
+    check_inputforSubmit();
 }
 
 let selectedOptions = {};
@@ -1185,6 +1218,8 @@ function updateOptionsAvailability() {
         });
     });
 }
+
+
 
 
 //api fetch
