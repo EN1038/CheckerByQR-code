@@ -1042,7 +1042,6 @@ function showResult(get_Selects) {
     let get_valueTimeStart = document.getElementById('input_timeStart' + globalIdlinks).value;
     let get_valueTimeCheck = document.getElementById('input_timeCheck' + globalIdlinks).value;
     let intValueTimeCheck = parseInt(get_valueTimeCheck);
-
     if (get_idDivSpace.id === 'divSpace' + getIdselects) {
         var selectAndLabels = get_idDivSpace.querySelectorAll('input');
         // วนลูปผ่าน select และ label แล้วลบทุกตัว
@@ -1050,23 +1049,25 @@ function showResult(get_Selects) {
             element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
         });
     }
+    // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
+    let newTime = get_Selects.value;
+
     // เวลาที่มีอยู่เริ่มต้น
-    let [hours, minutes] = get_valueTimeStart.split(':').map(Number);
+    let [hours, minutes] = newTime.split(':').map(Number);
 
     // แปลงเวลาเป็นนาที
     let totalMinutes = hours * 60 + minutes;
 
     // บวก 1 ชั่วโมง (60 นาที)
-    totalMinutes += getValue;
+    totalMinutes += intValueTimeCheck;
 
     // แปลงเวลากลับเป็นชั่วโมงและนาที
     hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
-    minutes = totalMinutes % 60;
+    minutes = totalMinutes % 60
 
-    // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
-    let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-
-    let durationTime = totalMinutes + intValueTimeCheck;
+    let durationTime = totalMinutes;
+    // console.log(durationTime)
+    
     // แปลงเวลากลับเป็นชั่วโมงและนาที
     hours_duration = Math.floor(durationTime / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
     minutes_duration = durationTime % 60;
@@ -1083,14 +1084,14 @@ function showResult(get_Selects) {
     get_idDivSpace.appendChild(Box);
 
     let roundStart_time = document.createElement('input');
-    roundStart_time.classList.add('d-none');
+    // roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
     roundStart_time.setAttribute('name', `activity[date_input${counter-1}][round][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
-    roundEnd_time.classList.add('d-none');
+    // roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
     roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
