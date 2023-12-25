@@ -93,11 +93,11 @@
                 $url = env('IPV4_HOST')."/activity/form-checker/".request()->route()->id
             @endphp
           
-          <img src="{{url('https://api.qrserver.com/v1/create-qr-code/?size=450x450&data='.$url)}}" alt="">
+          <img src="{{url('https://api.qrserver.com/v1/create-qr-code/?size=450x450&data='.$url)}}" alt="" id="qr_code" target_black>
           
         </div>
-        <div class="modal-footer">
-          <a type="button" class="btn btn-success" onclick="downloadQR()">Download</a>
+        <div class="modal-footer border-0">
+          <a type="button" class="btn btn-success" onclick="downloadQR()"><i class="fa-solid fa-expand fa-spin"></i> ขยายจอ</a>
         </div>
       </div>
     </div>

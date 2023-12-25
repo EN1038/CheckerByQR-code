@@ -891,7 +891,7 @@ function createSelectOptions(event) {
 
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                option.value = z.toString();
+                option.value = newTime.toString();
                 option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
@@ -916,7 +916,7 @@ function createSelectOptions(event) {
 
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
+                option.value = newTime.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
                 option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
@@ -1035,68 +1035,14 @@ function checkMinDate(dateValue) {
 }
 
 
-function showResult(get_Selects) {
-    let getIdselects = get_Selects.id.match(/\d+/g);
-    let getValue = parseInt(get_Selects.value);
-    let get_idDivSpace = document.getElementById('divSpace' + getIdselects);
-    let get_valueTimeStart = document.getElementById('input_timeStart' + globalIdlinks).value;
-    let get_valueTimeCheck = document.getElementById('input_timeCheck' + globalIdlinks).value;
-    let intValueTimeCheck = parseInt(get_valueTimeCheck);
 
-    if (get_idDivSpace.id === 'divSpace' + getIdselects) {
-        var selectAndLabels = get_idDivSpace.querySelectorAll('input');
-        // วนลูปผ่าน select และ label แล้วลบทุกตัว
-        selectAndLabels.forEach(element => {
-            element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
-        });
-    }
-    // เวลาที่มีอยู่เริ่มต้น
-    let [hours, minutes] = get_valueTimeStart.split(':').map(Number);
-
-    // แปลงเวลาเป็นนาที
-    let totalMinutes = hours * 60 + minutes;
-
-    // บวก 1 ชั่วโมง (60 นาที)
-    totalMinutes += getValue;
-
-    // แปลงเวลากลับเป็นชั่วโมงและนาที
-    hours = Math.floor(totalMinutes / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
-    minutes = totalMinutes % 60;
-
-    // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
-    let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-
-    let durationTime = totalMinutes + intValueTimeCheck;
-    // แปลงเวลากลับเป็นชั่วโมงและนาที
-    hours_duration = Math.floor(durationTime / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
-    minutes_duration = durationTime % 60;
-
-    // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
-    let duration_Time = `${hours_duration.toString().padStart(2, '0')}:${minutes_duration.toString().padStart(2, '0')}`;
-
-
-    let Box = document.createElement('input');
-    Box.setAttribute('class', 'my-4 bg-disable w-75 border-0')
-    Box.disabled = true;
-    Box.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + newTime + ' - ' + duration_Time;
-    Box.id = 'Boxinput' + getIdselects;
-    get_idDivSpace.appendChild(Box);
-
-    let roundStart_time = document.createElement('input');
-    roundStart_time.classList.add('d-none');
-    roundStart_time.value = newTime;
-    roundStart_time.id = 'roundStart_timex' + getIdselects;
-    roundStart_time.setAttribute('name', `activity[date_input${counter-1}][round][round_start]`);
-    get_idDivSpace.appendChild(roundStart_time);
-
-    let roundEnd_time = document.createElement('input');
-    roundEnd_time.classList.add('d-none');
-    roundEnd_time.value = duration_Time;
-    roundEnd_time.id = 'roundEnd_timex' + getIdselects;
-    roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
-    get_idDivSpace.appendChild(roundEnd_time);
-
-}
+// let get_valueDynamic = document.getElementById('dynamicSelect'+getIdselects);
+    
+    // let roundEndDuration_time = document.createElement('input');
+    // roundEndDuration_time.classList.add('d-none');
+    // roundEndDuration_time.value = get_valueDynamic.value;
+    // roundEndDuration_time.setAttribute('name','xxx');
+    // get_idDivSpace.appendChild(roundEndDuration_time);
 
 let selectedOptions = {};
 
