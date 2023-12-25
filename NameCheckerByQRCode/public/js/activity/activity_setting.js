@@ -203,10 +203,8 @@ function addInput() {
     setCheckNameII_input.disabled = true;
     setCheckNameII_input.setAttribute('type', 'radio');
     setCheckNameII_input.setAttribute('value', 'check_round_per_day');
-    setCheckNameII_input.setAttribute('id','setCheckNameII' + counter)
-    setCheckNameII_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting][round${counter}]`);
     setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter)
-    
+    setCheckNameII_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting][round${counter}]`);
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');
@@ -551,6 +549,7 @@ function showSetCheckName(clickedId_IdsetCheckName) {
         let setCheckName = document.getElementById(clickedId_IdsetCheckName);
         let div_Rounddays = document.getElementById('CheckName_setCheckNameRoundDay' + getIdlinks);
         let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
+        
         if (setCheckName) {
             let checkNameAlldays = document.getElementById('setCheckNameI' + getIdlinks);
             let checkNameRounddays = document.getElementById('setCheckNameII' + getIdlinks);
@@ -561,6 +560,18 @@ function showSetCheckName(clickedId_IdsetCheckName) {
         if (setCheckName.id === 'setCheckNameI' + getIdlinks) {
             div_Alldays.classList.remove('d-none');
             div_Rounddays.classList.add('d-none');
+        //     let inputEnd = document.getElementById('input_EndTime' + getIdlinks);
+        // if (inputEnd) {
+        //     inputEnd.remove();
+        // }
+        //     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
+        //     let input_EndTime = document.createElement('input');
+        //     input_EndTime.class ='d-none';
+        //     input_EndTime.value = time_end.value;
+        //     input_EndTime.id = 'input_EndTime' + getIdlinks;
+        //     input_EndTime.name = 'TimeEndofAlldays';
+        //     div_Alldays.append(input_EndTime);
+        
         } else if (setCheckName.id === 'setCheckNameII' + getIdlinks) {
             div_Rounddays.classList.remove('d-none');
             div_Alldays.classList.add('d-none');
@@ -828,10 +839,10 @@ function createSelectOptions(event) {
 
     let valueIdselectRound = event.target.value;
 
-    var input_timeStart = document.createElement('input');
-    input_timeStart.setAttribute('class', 'd-none');
-    input_timeStart.setAttribute('id', 'input_timeStart' + getIdlinks);
-    input_timeStart.value = time_start.value;
+    var input_timeEnd = document.createElement('input');
+    input_timeEnd.setAttribute('class', 'd-none');
+    input_timeEnd.setAttribute('id', 'input_timeEnd' + getIdlinks);
+    input_timeEnd.value = time_end.value;
 
     var input_timeCheck = document.createElement('input');
     input_timeCheck.setAttribute('class', 'd-none');
@@ -839,7 +850,7 @@ function createSelectOptions(event) {
     input_timeCheck.value = time_check;
 
 
-    divShowTimeToUsers.appendChild(input_timeStart);
+    divShowTimeToUsers.appendChild(input_timeEnd);
     divShowTimeToUsers.appendChild(input_timeCheck);
 
 
@@ -856,11 +867,11 @@ function createSelectOptions(event) {
 
         var select = document.createElement('select');
         select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start fake-disable');
-        select.id = 'dynamicSelect' + x + counter;
+        select.id = 'dynamicSelect' + counter + x;
 
         var div = document.createElement('div');
         div.setAttribute('class', 'col-6  d-flex my-2 ms-3 justify-content-center');
-        div.id = 'divSpace' + x + counter;
+        div.id = 'divSpace' + counter + x;
 
         var optionTitle = document.createElement('option');
         optionTitle.disabled = true;
@@ -940,6 +951,17 @@ function getTime(get_InputTime) {
     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
     let get_setCheckNameI = document.getElementById('setCheckNameI' + getIdlinks);
     let get_setCheckNameII = document.getElementById('setCheckNameII' + getIdlinks);
+    let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
+    // let inputEnd = document.getElementById('input_EndTime' + getIdlinks);
+    // if (inputEnd) {
+    //     inputEnd.remove();
+    // }
+    //     let input_EndTime = document.createElement('input');
+    //     input_EndTime.classList.add('d-none');
+    //     input_EndTime.value = time_end.value;
+    //     input_EndTime.id = 'input_EndTime' + getIdlinks;
+    //     input_EndTime.name = 'TimeEndofAlldays';
+    //     div_Alldays.append(input_EndTime);
 
     time_start.classList.remove('fake-disable');
     time_start.classList.add('revese-fake-disable');
@@ -966,6 +988,8 @@ function getTime(get_InputTime) {
     } else {
         console.log('Both times are the same');
     }
+
+
 }
 
 function getDate() {
@@ -994,7 +1018,7 @@ var selectedDates = [];
 
 function clearArrayValues() {
     selectedOptions = {}; // ลบค่าทั้งหมดในอาเรย์
-  }
+}
 
 function checkUniqueDate(dateValue) {
     let getIdlinks = dateValue.id.match(/\d+/g);
@@ -1037,11 +1061,12 @@ function checkMinDate(dateValue) {
 
 function showResult(get_Selects) {
     let getIdselects = get_Selects.id.match(/\d+/g);
-    let getValue = parseInt(get_Selects.value);
     let get_idDivSpace = document.getElementById('divSpace' + getIdselects);
-    let get_valueTimeStart = document.getElementById('input_timeStart' + globalIdlinks).value;
+    let get_valueTimeEnd = document.getElementById('input_timeEnd' + globalIdlinks).value;
     let get_valueTimeCheck = document.getElementById('input_timeCheck' + globalIdlinks).value;
     let intValueTimeCheck = parseInt(get_valueTimeCheck);
+    let intgetIdselects = parseInt(getIdselects);
+    // console.log(get_Selects.id);
     if (get_idDivSpace.id === 'divSpace' + getIdselects) {
         var selectAndLabels = get_idDivSpace.querySelectorAll('input');
         // วนลูปผ่าน select และ label แล้วลบทุกตัว
@@ -1067,7 +1092,7 @@ function showResult(get_Selects) {
 
     let durationTime = totalMinutes;
     // console.log(durationTime)
-    
+
     // แปลงเวลากลับเป็นชั่วโมงและนาที
     hours_duration = Math.floor(durationTime / 60) % 24; // เพื่อให้เวลาไม่เกิน 24 ชั่วโมง
     minutes_duration = durationTime % 60;
@@ -1097,29 +1122,50 @@ function showResult(get_Selects) {
     roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
 
+    if (get_Selects.id === 'dynamicSelect10') {
+        console.log(getIdselects);
+        let roundDuration_time = document.createElement('input');
+        roundDuration_time.value = get_valueTimeEnd;
+        roundDuration_time.id = 'roundDuration_timx' + getIdselects;
+        roundDuration_time.name = 'roundDuration_time';
+        get_idDivSpace.appendChild(roundDuration_time);
+    } else {
+        let get_dynamicSelects = document.getElementById('dynamicSelect' + (intgetIdselects - 1))
+        let roundDuration_times = document.createElement('input');
+        roundDuration_times.value = get_dynamicSelects.value;
+        roundDuration_times.id = 'roundDuration_timx' + getIdselects;
+        roundDuration_times.name = 'roundDuration_times';
+        get_idDivSpace.appendChild(roundDuration_times);
+    }
+
+    // let roundDuration_time = document.createElement('input');
+    // roundDuration_time.value = get_Selects.value;
+    // roundDuration_time.id = 'roundDuration_timx'+getIdselects;
+    // roundDuration_time.name = 'roundDuration_time';
+    // get_idDivSpace.appendChild(roundDuration_time);
 }
 
 let selectedOptions = {};
 
 function disableOptionsResult(selectElement) {
     const selectedOption = selectElement.value;
-    
+
     // ตรวจสอบว่า option ได้ถูกเลือกไว้แล้วหรือไม่
-  if (selectedOptions[selectedOption]) {
-    // alert("Option already selected in another select!");
-    selectElement.value = ''; // ล้างการเลือก
-  } else {
-    const previousValue = Object.keys(selectedOptions).find(
-      key => selectedOptions[key] === selectElement
-    );
-    
-    if (previousValue) {
-      delete selectedOptions[previousValue];
+    if (selectedOptions[selectedOption]) {
+        // alert("Option already selected in another select!");
+        selectElement.value = ''; // ล้างการเลือก
+    } else {
+        const previousValue = Object.keys(selectedOptions).find(
+            key => selectedOptions[key] === selectElement
+        );
+
+        if (previousValue) {
+            delete selectedOptions[previousValue];
+        }
+
+        // บันทึก option ที่ถูกเลือก
+        selectedOptions[selectedOption] = selectElement;
     }
-    
-    // บันทึก option ที่ถูกเลือก
-    selectedOptions[selectedOption] = selectElement;
-  }
 
     // อัปเดตสถานะของ options ในทุกช่อง select
     updateOptionsAvailability();
@@ -1128,17 +1174,17 @@ function disableOptionsResult(selectElement) {
 function updateOptionsAvailability() {
     let divShowTimeToUser = document.getElementById('divShowTimeToUser' + globalIdlinks);
     let allSelects = divShowTimeToUser.querySelectorAll('select');
-  
+
     allSelects.forEach(select => {
-      const selectedOption = select.value;
-  
-      // ปรับปรุง options ในทุกช่องตาม option ที่ถูกเลือก
-      const options = select.querySelectorAll('option');
-      options.forEach(option => {
-        option.disabled = selectedOptions[option.value];
-      });
+        const selectedOption = select.value;
+
+        // ปรับปรุง options ในทุกช่องตาม option ที่ถูกเลือก
+        const options = select.querySelectorAll('option');
+        options.forEach(option => {
+            option.disabled = selectedOptions[option.value];
+        });
     });
-  }
+}
 
 
 //api fetch
