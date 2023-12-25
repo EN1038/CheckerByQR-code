@@ -965,7 +965,7 @@ function getTime(get_InputTime) {
     let time_end = document.getElementById('timeEnd_input' + getIdlinks);
     let get_setCheckNameI = document.getElementById('setCheckNameI' + getIdlinks);
     let get_setCheckNameII = document.getElementById('setCheckNameII' + getIdlinks);
-    let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
+    // let div_Alldays = document.getElementById('CheckName_allDay' + getIdlinks);
     // let inputEnd = document.getElementById('input_EndTime' + getIdlinks);
     // if (inputEnd) {
     //     inputEnd.remove();
@@ -976,6 +976,18 @@ function getTime(get_InputTime) {
     //     input_EndTime.id = 'input_EndTime' + getIdlinks;
     //     input_EndTime.name = 'TimeEndofAlldays';
     //     div_Alldays.append(input_EndTime);
+
+    let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + getIdlinks);
+
+    // ลบ select ที่มี id เป็น dynamicSelect ทิ้งทั้งหมด
+    if (divShowTimeToUsers.id === 'divShowTimeToUser' + getIdlinks) {
+        var selectAndLabels = divShowTimeToUsers.querySelectorAll('select, label,input,div');
+        // วนลูปผ่าน select และ label แล้วลบทุกตัว
+        selectAndLabels.forEach(element => {
+            element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+        });
+        clearArrayValues()
+    }
 
     time_start.classList.remove('fake-disable');
     time_start.classList.add('revese-fake-disable');
@@ -1175,7 +1187,7 @@ function showResult(get_Selects) {
             get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
         }
     }
-    check_inputforSubmit();
+    
 }
 
 let selectedOptions = {};
