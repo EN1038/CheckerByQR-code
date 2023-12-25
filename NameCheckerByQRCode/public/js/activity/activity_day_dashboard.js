@@ -32,10 +32,10 @@ function clickTr(id){
 
 function downloadQR(){
     let qr_code = document.getElementById('qr_code');
-    console.log(qr_code.src)
      // สร้างองค์ประกอบ <a> เพื่อดาวน์โหลด
      let link = document.createElement("a");
      link.href = qr_code.src;
+     link.target = '_black';
      link.download = "qr_code.png"; // ชื่อที่จะให้ไฟล์ QR Code ถูกบันทึกเป็น
  
      // ใส่องค์ประกอบลงใน DOM และคลิก

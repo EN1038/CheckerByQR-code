@@ -891,7 +891,7 @@ function createSelectOptions(event) {
 
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                option.value = z.toString();
+                option.value = newTime.toString();
                 option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
@@ -916,7 +916,7 @@ function createSelectOptions(event) {
 
                 // แปลงเวลากลับเป็นรูปแบบ 'hh:mm'
                 let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-                option.value = z.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
+                option.value = newTime.toString(); // แปลงเป็น string และกำหนดค่าให้กับ option
                 option.textContent = 'หลังเวลาเริ่ม : ' + newTime + ' นาที'; // สร้างเนื้อหาของ option โดยใช้ฟังก์ชัน formatTime ที่คุณจะต้องสร้างขึ้น
                 select.appendChild(option);
             }
@@ -1095,8 +1095,6 @@ function showResult(get_Selects) {
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
     roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
-    // let roundEnd_time = document.createElement('input');let roundEnd_time = document.createElement('input');
-   
 
 }
 

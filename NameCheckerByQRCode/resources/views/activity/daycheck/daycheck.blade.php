@@ -3,15 +3,16 @@
 <link rel="stylesheet" href="{{asset('css/style_dayCheck.css')}}">
 <div class="container px-5 pb-4 pt-3">
   <div class="row row-cols-1">
-    <div class="col border border-danger my-4">
+    <div class="col my-4">
       <table class="table text-center">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col">Action</th>
+            <th scope="col"></th>
+            <th scope="col">รูปแบบการเช็ค</th>
+            <th scope="col">เวลาเริ่มการเช็ค</th>
+            <th scope="col">เวลาจบการเช็ค</th>
+            <th scope="col">ระยะเวลาการเช็คชื่อ</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +32,26 @@
         </tbody>
     </table>
     </div>
-    <div class="col border border-primary my-3">
-      
+    <div class="col my-3">
+      <div class="d-flex flex-row-reverse">
+        <span class="icon-search ms-2">ค้นหา</span><input type="text" id="searchInput" class="searchInput" placeholder="ค้นหาชื่อ...">
+      </div>
+      <table id="dataTable" class="table">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)">ชื่อ</th>
+            <th onclick="sortTable(1)">สถานะ</th>
+            <!-- Add other table headers -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Add your data here -->
+        </tbody>
+      </table>
+      <div class="d-flex flex-row-reverse">
+        <ul class="pagination" id="pagination"></ul>
+      </div>
+
   </div>
     
   
