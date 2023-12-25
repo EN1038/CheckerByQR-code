@@ -1095,6 +1095,12 @@ function showResult(get_Selects) {
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
     roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
+    // let roundEnd_time = document.createElement('input');let roundEnd_time = document.createElement('input');
+    roundEnd_time.classList.add('d-none');
+    roundEnd_time.value = duration_Time;
+    roundEnd_time.id = 'roundEnd_timex' + getIdselects;
+    roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
+    get_idDivSpace.appendChild(roundEnd_time);
 
 }
 
