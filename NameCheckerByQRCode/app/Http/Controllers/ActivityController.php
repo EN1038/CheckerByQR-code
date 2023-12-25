@@ -50,15 +50,15 @@ class ActivityController extends Controller
     }
     public function makeCheckerForm(Request $request, $activity_id)
     {
-       
+       dd($request);
 
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
-        // dd($have_list_of_name);
+        // dd($request);
         $activity_setting = activity_setting::create([
             'activity_id' => $activity_id,
             'people_side_mode_id' => $request->input('activity.setting.side'),
-            'list_of_name_mode_id' => $request->input('activity.setting.have_list_of_name'),
+            'list_of_name_id' => $request->input('activity.setting.have_list_of_name'),
         ]);
         
         
@@ -175,8 +175,6 @@ class ActivityController extends Controller
     
     public function returnCheckerForm($activity_id){
 
-        // dd($activity_id);
-
         $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
        
         if($activity_setting->list_of_name_mode_id == "2"){
@@ -187,30 +185,8 @@ class ActivityController extends Controller
 
         
     }
-    public function inputFormCheckerPost(Request $request,$activity_id){
-    //    dd($request);
-        $select_day= activity_day_maker::where('activity_id','=',$activity_id)->where('date','=',$request->input('date'))
-        ->first();
-        $current_time = '13:50:00';
-
-        // dd($select_day);
-        // $round_test = activity_rounde_checker::where('id','=',28)->first();
-        // dd($round_test);
-        // dd($current_time);
+    public function inputFormCheckerPost($activity_id){
         
-        $round = activity_rounde_checker::where('date_id','=',$select_day->id)
-        ->where('rounde_checker_time_start','<=',$current_time)
-        
-        ->where('activity_end_time','>=',$current_time)
-        ->get();
+    }
 
-        dd($round);
-
-
-        // $select_round_id = activity_rounde_checker::where('date_id','=',$select_day->id)
-        // ->where('rounde_start_checker_time_start','>',$request->input('timestamp'))->where('rounde')->first();
-        // $currentDateTime = now('H:i:s');
-
-
-}
 }
