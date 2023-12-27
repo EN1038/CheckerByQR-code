@@ -25,7 +25,7 @@
     /* Disable horizontal scroll */
     padding-top: 20px;
     /* Place content 60px from the top */
-    transition: 0.4s;
+    transition: all 0.4s;
     margin: 20px;
     border-radius: 15px;
 }
@@ -164,3 +164,82 @@
 .fs-8{
   font-size: 13px;
 }
+
+.text-logo{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.nav-link-create{
+  font-size: 17px;
+  text-decoration: none;
+  display: none;
+}
+
+.nav-link2-check{
+  font-size: 17px;
+  text-decoration: none;
+  display: none;
+}
+
+.nav-link3-data{
+  font-size: 17px;
+  text-decoration: none;
+  display: none;
+}
+
+.text-icon-toggle{
+  color: #212529;
+}
+
+.text-logout{
+  color: #d3d3d3;
+}
+.text-logout:hover{
+  color: #22b671;
+}
+
+@media (max-width: 1440px) { 
+  .text-logo{
+    font-size: 20px;
+    font-weight: bold;
+  }
+ }
+
+ @media (max-width: 1220px) { 
+  .sidenav{
+    display: none;
+    width: 0px;
+  }
+  
+  #main{
+   margin-left: 30px;
+  }
+
+  .nav-link-create{
+    display:inline;
+  }
+  
+  .nav-link2-check{
+    display:inline;
+  }
+  
+  .nav-link3-data{
+    display:inline;
+  }
+  
+  .text-icon-toggle{
+    display: none;
+  }
+
+  .text-logo{
+    font-size: 18px;
+    font-weight: bold;
+  }
+ }
+
+ @media (max-width: 700px) { 
+  .text-logo{
+    display: none;
+  }
+ }

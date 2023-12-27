@@ -4,7 +4,7 @@
 <head>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
-<div class="row ">
+<div class="row my-5">
     <div class="col">
         <div class="row">
         <div class="col d-flex justify-content-center">

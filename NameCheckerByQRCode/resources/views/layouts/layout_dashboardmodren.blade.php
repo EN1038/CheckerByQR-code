@@ -130,45 +130,42 @@
                 <i class="bi bi-box-arrow-left"></i>
               </div>
               <div class="col d-flex align-items-center justify-content-center fs-7">
-                <span class="divToHide ">ออกจากระบบ</span>
+                <a href="{{route('logout')}}" class="text-decoration-none text-logout"><span class="divToHide" > ออกจากระบบ</span></a>
               </div>
           </div>
         </a>
       </div>
     </div>
     {{-- End_SideBar --}}
-    {{-- Start_main --}}
     <div class="box " id="main">
         {{-- Start_sidenav --}}
         <div class="row border-bottom content-segment">
-            <div class="col-3 p-0">
-              <div class="fs-4 fw-semibold">
-                <span class="text-end" id="openNavButton" onclick="toggleNav()" style="cursor: pointer;">
+            <div class="col-3 p-0 d-flex align-items-center">
+           
+                <div class="text-end text-icon-toggle" id="openNavButton" onclick="toggleNav()" style="cursor: pointer;">
                   <span class="scale-icon-nav " id="openNavIcon" onclick="openNav()"> 
                     <i class="bi bi-caret-right-fill" ></i> 
                   </span>
                   <span class="scale-icon-nav " id="closeNavIcon" onclick="closeNav()"> 
                     <i class="bi bi-caret-left-fill"></i>  
                   </span>
-                </span>
-                  <span class="m-0 text-success">QR-Code Checker</span>
-              </div>
+                </div>
+                <div class="div">
+                  <span class="text-success text-logo">QR-Code Checker</span> 
+                </div>
+              
             </div>
             <div class="col-9 ">
                 <div class="d-flex flex-row justify-content-end">
-                    <div class="search mx-3 py-3">
-                        <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control rounded-4" placeholder="Search" aria-label="Username"
-                                    aria-describedby="basic-addon1" id="search-input">
-                                <a href="#" class="input-group-text btn btn-link-dark rounded-3" id="basic-addon1"><i
-                                        class="bi bi-search"></i></a>
-                            </div>
-                        </form>
-                    </div>
                     <div class="user ms-3 py-4">
-                        
+                
                             @if(Auth::check())
+                            <a href="" 
+                            class='link-body-emphasis link-offset-2 mx-2 nav-link-create'>สร้างกิจกรรม</a>
+                            <a href="{{route('show_activity_profile')}}" 
+                            class='link-body-emphasis link-offset-2 mx-2 nav-link2-check'>เช็คกิจกรรม</a>
+                            <a href="" 
+                            class='link-body-emphasis link-offset-2 mx-2 nav-link3-data'>ดูผลสถิติ</a>
                             <a href="{{route('logout')}}"
                             class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Logout</a>
                             @else
