@@ -183,7 +183,7 @@ function addInput() {
     setCheckNameI_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
     setCheckNameI_input.disabled = true;
     setCheckNameI_input.setAttribute('type', 'radio');
-    setCheckNameI_input.setAttribute('value', 'check_all_time_in_day');
+    setCheckNameI_input.setAttribute('value', '1');
     setCheckNameI_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting]`);
     setCheckNameI_input.setAttribute('id', 'setCheckNameI' + counter);
     form_check_setCheckI.appendChild(setCheckNameI_input);

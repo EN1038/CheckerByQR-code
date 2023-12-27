@@ -12,7 +12,8 @@ class activity_setting extends Model
     protected $fillable = [
         'activity_id',
         'people_side_mode_id',
-        'list_of_name_mode_id'
+        'list_of_name_mode_id',
+        'round_mode'
     ];
 
     public function Activity(){

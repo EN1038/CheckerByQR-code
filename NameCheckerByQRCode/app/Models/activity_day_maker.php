@@ -13,6 +13,7 @@ class activity_day_maker extends Model
         'form_name',
         'date',
         'time_start',
-        'time_expried'
+        'time_expried',
+        'activity_id'
     ];
 }

@@ -15,12 +15,13 @@
         @endif
         </div>
         <div class="col text-start">
-            @if ($activity_setting->ListOfNameMode->id == 2)
+        @if ($activity_setting->ListOfNameMode->id == 2)
         <p>ระบบการเช็คชื่อแบบ : <span>ไม่มีรายชื่อ</span></p>
         @elseif ($activity_setting->ListOfNameMode->id == 1)
         <p>ระบบการเช็คชื่อแบบ : <span>มีรายชื่อ</span></p>
         @endif
         </div>
+       
     </div>
     <div class="col">
        
