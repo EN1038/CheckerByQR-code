@@ -9,13 +9,14 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\activity_setting;
+use App\Models\activity_people_register;
 use App\Models\CheckerForm;
 use App\Models\activity_day_maker;
 use App\Models\activity_rounde_checker;
 use App\Models\rounde_checker_relate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
-use League\Flysystem\AsyncAwsS3\AsyncAwsS3Adapter;
+
 use Psy\VersionUpdater\Checker;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -50,19 +51,21 @@ class ActivityController extends Controller
     }
     public function makeCheckerForm(Request $request, $activity_id)
     {
-       dd($request);
+       
 
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
+       
         // dd($request);
         $activity_setting = activity_setting::create([
             'activity_id' => $activity_id,
             'people_side_mode_id' => $request->input('activity.setting.side'),
-            'list_of_name_id' => $request->input('activity.setting.have_list_of_name'),
+            'list_of_name_mode_id' => $request->input('activity.setting.have_list_of_name'),
+            
         ]);
         
         
-        if($side == '2' and $have_list_of_name == '2'){
+        if($side == '2' and $have_list_of_name == '2' ){
             $date_num = $request->input('activity.date_add');
         //    dd($date_num);
         $i = 1;
@@ -84,14 +87,20 @@ class ActivityController extends Controller
                 'date' => $date_format,
                 'time_start' => $time_start_format,
                 'time_expried' => $time_expried_format,
+                'activity_id' => $activity_id
             ]);
-            if($items['round_setting'] == 'check_all_time_in_day'){
+            if($items['round_setting'] == '1'){
 
             $activity_round_checker = activity_rounde_checker::create([
                 'rounde_name' => 'เช็คทั้งวัน',
                 'rounde_checker_time_start' => $time_start_format,
                 'rounde_checker_time_expried' => $time_expried_format,
-            ]); 
+                'date_id' =>  $activity_date_maker->id
+                
+            ]);
+            $add_round_setting_mode = activity_setting::where('activity_id','=',$activity_id)->update([
+                'round_mode' => '1'
+            ]);
             // dd($activity_id);
             $activity_round_checker_relate = rounde_checker_relate::create([
                 'activity_id' => $activity_id,
@@ -126,9 +135,9 @@ class ActivityController extends Controller
 
     public function showDayCheckerList($activity_id){
         $activity_relate = rounde_checker_relate::where('activity_id', '=', $activity_id)->get();
-        $activity_setting = activity_setting::where('id','=',$activity_id)->first();
+        $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
         $activity_description = activity::where('id','=',$activity_id)->pluck('activity_description')->first();
-
+        
     foreach ($activity_relate as $items) {
     $activity_day_id = $items->activity_day_maker_id;
     
@@ -185,8 +194,26 @@ class ActivityController extends Controller
 
         
     }
-    public function inputFormCheckerPost($activity_id){
-        
+    public function inputFormCheckerPost(Request $request,$activity_id){
+        $select_activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+
+        if($select_activity_setting->people_side_mode_id == 2 and $select_activity_setting-> list_of_name_mode_id and $select_activity_setting-> round_mode == 1){
+            $current_date = Carbon::now()->format('Y-m-d');
+            $select_day = activity_day_maker::where('activity_id','=',$activity_id)->where('date','=',$current_date)->first();
+            $date_id = $select_day->id;
+            $select_round_checker = activity_rounde_checker::where('date_id','=',$date_id)->first();
+            
+            $input_name_checker = activity_people_register::create([
+                'name' => $request->name,
+                'activity_id' => $activity_id,
+                'date_id' => $date_id,
+                'round_id' => $select_round_checker->id,
+            ]);
+            if($input_name_checker){
+                Alert::success('เช็คชื่อสำเร็จ!');
+                return view('activity.alert_view.success_view');
+            }
+        }
     }
 
 }
