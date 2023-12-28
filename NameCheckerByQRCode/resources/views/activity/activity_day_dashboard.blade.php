@@ -7,7 +7,7 @@
     <div class="d-flex flex-column">
         <p class="fs-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
     <div class="col d-flex px-5 detailSetting">
-        <div class="col text-start ">
+        {{-- <div class="col text-start ">
         @if($activity_setting->PeopleSideMode->id == 2)
         <p>อณุญาติการเข้าใช้งานจาก : <span>บุคคลภายนอก</span></p>
         @elseif ($activity_setting->PeopleSideMode->id == 1)
@@ -20,7 +20,7 @@
         @elseif ($activity_setting->ListOfNameMode->id == 1)
         <p>ระบบการเช็คชื่อแบบ : <span>มีรายชื่อ</span></p>
         @endif
-        </div>
+        </div> --}}
        
     </div>
     <div class="col">
@@ -52,6 +52,7 @@
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
                     <th scope="col">ดูรอบเช็คชื่อ</th>
+                    <th scope="col">id</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,8 +65,8 @@
                             <td>{{ $data->date }}</td>
                             <td>{{ $data->time_start }}</td>
                             <td>{{ $data->time_expried }}</td>
-                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$data->id])}}" class="btn btn-success btn-viewlistround"><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
-                            
+                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$data->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
+                            <td>{{$data->activity_id}}</td>
                         </tr>
                     @endforeach
                 @endforeach

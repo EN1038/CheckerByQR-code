@@ -12,14 +12,12 @@ class Activity extends Model
     protected $fillable = [
         'activity_name',
         'user_id',
-        'status'
+        'status',
+        'activity_description'
     ];
 
-    public function User(){
+    public function User()
+    {
         return $this->belongsTo(User::class);
     }
-
-
 }
-
-

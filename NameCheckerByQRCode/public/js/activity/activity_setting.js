@@ -202,9 +202,9 @@ function addInput() {
     setCheckNameII_input.setAttribute('class', 'form-check-input get_IdsetCheckName fake-disable');
     setCheckNameII_input.disabled = true;
     setCheckNameII_input.setAttribute('type', 'radio');
-    setCheckNameII_input.setAttribute('value', 'check_round_per_day');
+    setCheckNameII_input.setAttribute('value', '2');
     setCheckNameII_input.setAttribute('id', 'setCheckNameII' + counter)
-    setCheckNameII_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting][round${counter}]`);
+    setCheckNameII_input.setAttribute('name', `activity[date_add][date_input${counter}][round_setting]`);
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');

@@ -3,7 +3,7 @@
 @section('content_body')
 
 
-<div class="text-center">
+<div class="text-center mt-4">
     <h1 class="text-greenlight"><i class="fa-solid fa-gear"></i>ตั้งค่ากิจกรรม</h1>
     <span class="fw-bold fs-2">{{$activity_data->activity_name}}</span>
 </div>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col">
             {{-- activity detail   --}}
-            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="post"  id="formNaJa">
+            <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="post"  id="formNaJa" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="label-form">รายละเอียดกิจกรรม</label>
