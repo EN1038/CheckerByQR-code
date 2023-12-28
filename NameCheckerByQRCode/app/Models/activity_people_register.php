@@ -11,7 +11,9 @@ class activity_people_register extends Model
 
     protected $fillable=[
         'name',
+        'last_name',
         'activity_id',
+        'status',
         'date_id',
         'round_id',
     ];

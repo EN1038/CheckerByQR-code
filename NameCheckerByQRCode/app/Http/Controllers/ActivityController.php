@@ -96,7 +96,8 @@ class ActivityController extends Controller
                         'rounde_checker_time_start' => $time_start_format,
                         'rounde_checker_time_expried' => $time_expried_format,
                         'date_id' =>  $activity_date_maker->id,
-                        'activity_id' => $activity_id
+                        'activity_id' => $activity_id,
+                        'activity_end_time' => $time_expried_format,
 
                     ]);
                     $add_round_setting_mode = activity_setting::where('activity_id', '=', $activity_id)->update([
@@ -108,7 +109,7 @@ class ActivityController extends Controller
                         'activity_day_maker_id' => $activity_date_maker->id,
                         'rounde_checker_id' => $activity_round_checker->id,
                     ]);
-                }else{
+                }elseif($items['round_setting'] == '2'){
                     $round_count = 0;
                     foreach($items['round'] as $round){
                         // dd($round['round_start']);
@@ -116,6 +117,7 @@ class ActivityController extends Controller
                             'rounde_name' => 'รอบ'.$round['round_start'].'ถึง'.$round['round_end'],
                             'rounde_checker_time_start' => $round['round_start'],
                             'rounde_checker_time_expried' => $round['round_end'],
+                            'activity_end_time' => $time_expried_format,
                             'date_id' => $activity_date_maker->id,
                             'activity_id' => $activity_id,
                        ]);
@@ -123,6 +125,7 @@ class ActivityController extends Controller
                         'activity_id' => $activity_id,
                         'activity_day_maker_id' => $activity_date_maker->id,
                         'rounde_checker_id' => $activity_round_checker->id,
+                        
                     ]);
                     }
                     $add_round_setting_mode = activity_setting::where('activity_id', '=', $activity_id)->update([
@@ -150,32 +153,11 @@ class ActivityController extends Controller
 
     public function showDayCheckerList($activity_id)
     {
-        $activity_day_array = [];
-        $activity_relate = rounde_checker_relate::where('activity_id', '=', $activity_id)->get();
-        $activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
-        $activity_description = activity::where('id', '=', $activity_id)->pluck('activity_description')->first();
+        
+       $activity_day_array = activity_day_maker::where('activity_id','=',$activity_id)->get();
+       $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+       $activity_description = activity::where('id','=',$activity_id)->pluck('activity_description')->first();
 
-        foreach ($activity_relate as $items) {
-            $activity_day_id = $items->activity_day_maker_id;
-
-            $activity_day_select = activity_day_maker::where('id', '=', $activity_day_id)->get();
-            $activity_day_array[] = $activity_day_select;
-            // Example: Print the activity_day for each iteration
-
-        }
-        // dd($activity_data);
-
-        // If you want to use a for loop instead
-        // for ($i = 0; $i < count($activity_relate); $i++) {
-        //     $activity_day = $activity_relate[$i]->activity_day_maker_id;
-
-        //     // Your code for each iteration...
-
-        //     // Example: Print the activity_day for each iteration
-        //     echo $activity_day . '<br>';
-        // }
-
-        // dd($activity_day);
         return view('activity.activity_day_dashboard', compact('activity_day_array', 'activity_setting', 'activity_description'));
     }
 
@@ -219,16 +201,36 @@ class ActivityController extends Controller
         // dd($request->all());
         $select_activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
 
-        if ($select_activity_setting->people_side_mode_id == 2 and $select_activity_setting->list_of_name_mode_id and $select_activity_setting->round_mode == 1) {
+        if ($select_activity_setting->people_side_mode_id == 2 and $select_activity_setting->list_of_name_mode_id ) {
             $current_date = Carbon::now()->format('Y-m-d');
             $select_day = activity_day_maker::where('activity_id', '=', $activity_id)->where('date', '=', $current_date)->first();
             if($select_day){
-                $date_id = $select_day->id;
-            $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->first();
+            $date_id = $select_day->id;
+            if($select_activity_setting->round_mode == 1){
+                $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->first();
+                $checker_status = 'normal';
+            }else{
+                // dd($date_id);
+                $current_time = Carbon::now()->format('H:i:s');
+                
+                $select_round_checker = activity_rounde_checker::where('date_id','=',$date_id)
+                ->where('rounde_checker_time_start','<=',$current_time)
+                ->where('rounde_checker_time_expried','>=',$current_time)
+                ->where('activity_end_time','>=',$current_time)->first();
+                
+                if($current_time > $select_round_checker->rounde_checker_time_expried){
+                    $checker_status = 'late';
+                }else{
+                    $checker_status = 'normal';
+                }
+            }
+          
 
             $input_name_checker = activity_people_register::create([
                 'name' => $request->name,
+                'last_name' => $request->last_name,
                 'activity_id' => $activity_id,
+                'status' => $checker_status,
                 'date_id' => $date_id,
                 'round_id' => $select_round_checker->id,
             ]);
@@ -236,9 +238,11 @@ class ActivityController extends Controller
                 Alert::success('เช็คชื่อสำเร็จ!');
                 return view('activity.alert_view.success_view');
             }
-            }else{
-                return view('activity.alert_view.no_success');
-            }  
+        }else{
+            return view('activity.alert_view.no_success');
+        }  
+        
+        
         }
     }
 }

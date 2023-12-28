@@ -14,6 +14,7 @@ class activity_rounde_checker extends Model
         'rounde_checker_time_start',
         'rounde_checker_time_expried',
         'date_id',
-        'activity_id'
+        'activity_id',
+        'activity_end_time',
     ];
 }

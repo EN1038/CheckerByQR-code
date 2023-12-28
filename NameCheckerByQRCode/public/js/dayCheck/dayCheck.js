@@ -195,8 +195,19 @@ function searchTable() {
 document.getElementById('searchInput').addEventListener('keyup', searchTable);
 // Initial display
 
-function showDetail(){
-  let btn_detail = document.getElementById('btn_detail');
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('getid')) {
+        // เข้าถึง id ของสิ่งที่ถูกคลิก
+        let get = event.target;
+        // console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + get);
+        showDetail(get);
+       
+    }
+})
+
+function showDetail(get){
+  let btn_detail = get;
+  console.log(btn_detail);
   let btn_detail_id = btn_detail.dataset.id;
   let btn_detail_iddate = btn_detail.dataset.iddate;
   let btn_detail_idactivity = btn_detail.dataset.idactivity;

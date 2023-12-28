@@ -34,7 +34,7 @@
                         <input type="input" name="name" class="form-control" id="inputFirstName" placeholder="กรุณากรอกชื่อจริง">
                         <p id="text-alert-firstname" class="text-alert"></p>
                         <label for="floatingInput">กรุณากรอกนามสกุล</label>
-                        <input type="input" name="name" class="form-control" id="inputLastName" placeholder="กรุณากรอกนามสกุล">
+                        <input type="input" name="last_name" class="form-control" id="inputLastName" placeholder="กรุณากรอกนามสกุล">
                         <p id="text-alert-lastname" class="text-alert"></p>
                       </div>
                       <div class="d-flex justify-content-center align-items-center">

@@ -25,7 +25,7 @@
                 <td>{{$row->rounde_checker_time_expried}}</td>
                 <td>{{$row->activity_end_time}}</td>
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
-                <td><a href='#' class="btn btn-success" onclick="showDetail()" id="btn_detail" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}">ดูข้อมูล</a></td>
+                <td><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}">ดูข้อมูล</a></td>
             </tr>
             @endforeach
        

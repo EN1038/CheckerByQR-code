@@ -57,18 +57,18 @@
             </thead>
             <tbody>
                 @foreach ($activity_day_array as $row)
-                    @foreach ($row as $data)
-                        <tr class="get_IdTr" id="idTr{{ $data->id }}" onclick="clickTr('{{ $data->id }}')">
-                            <td scope='row'><input type="checkbox" class="select-row form-check-input" id="idInput{{ $data->id }}"></td>
-                            <td scope="row">{{ $data->id }}</td>
-                            <td scope="row">{{ $data->form_name }}</td>
-                            <td>{{ $data->date }}</td>
-                            <td>{{ $data->time_start }}</td>
-                            <td>{{ $data->time_expried }}</td>
-                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$data->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
-                            <td>{{$data->activity_id}}</td>
+                    
+                        <tr class="get_IdTr" id="idTr{{ $row->id }}" onclick="clickTr('{{ $row->id }}')">
+                            <td scope='row'><input type="checkbox" class="select-row form-check-input" id="idInput{{ $row->id }}"></td>
+                            <td scope="row">{{ $row->id }}</td>
+                            <td scope="row">{{ $row->form_name }}</td>
+                            <td>{{ $row->date }}</td>
+                            <td>{{ $row->time_start }}</td>
+                            <td>{{ $row->time_expried }}</td>
+                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
+                            <td>{{$row->activity_id}}</td>
                         </tr>
-                    @endforeach
+                    row
                 @endforeach
 
 

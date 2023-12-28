@@ -33,8 +33,10 @@ class ApiController extends Controller
 
    public function getNameRegister($activity_id, $date_id, $round_id)
    {
-      $name_register_data = activity_people_register::where('activity_id', '=', $activity_id)->where('date_id', '=', $date_id)->where('round_id', '=', $round_id)
-         ->get();
+      $name_register_data = activity_people_register::where('activity_id', '=', $activity_id)
+      ->where('date_id', '=', $date_id)
+      ->where('round_id', '=', $round_id)->get();
+      dd($name_register_data);
 
       return response()->json($name_register_data);
    }
