@@ -244,10 +244,41 @@ a{
 
 
 .scrollButton {
-  position: fixed;
-  width: 150px;
+  width: 200px;
   height: auto;
-  bottom: 40px;
+  background-color: #3a3a3a;
+  color: #ffffff;
+  padding: 10px 5px 10px 5px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.scrollButton:hover{
+  background-color: #5c5c5c;
+  font-weight: bold;
+  transform: translateX(10px);
+}
+
+.btn-submit-setting{
+  width: 100%;
+  border: 0px solid black;
+  text-align: center;
+  padding: 10px 20px 10px 20px;
+  background: #048347;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.btn-submit-setting:hover{
+  background: #00532d;
+  font-weight: bold;
+  transform: translateX(-10px);
 }
 
 .iconClose{

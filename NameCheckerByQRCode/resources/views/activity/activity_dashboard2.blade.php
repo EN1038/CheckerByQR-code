@@ -3,9 +3,9 @@
 @section('content_body')
 
 
-<div class="text-center mt-4">
-    <h1 class="text-greenlight"><i class="fa-solid fa-gear"></i>ตั้งค่ากิจกรรม</h1>
-    <span class="fw-bold fs-2">{{$activity_data->activity_name}}</span>
+<div class="text-center mt-5">
+    <h1 class="text-greenlight fw-bold"><i class="fa-solid fa-gear fa-spin"></i> ตั้งค่ากิจกรรม</h1>
+    <span class="fw-light fs-2">ชื่อกิจกรรม : {{$activity_data->activity_name}}</span>
 </div>
 
 <div class="container">
@@ -15,11 +15,11 @@
             {{-- activity detail   --}}
             <form action="{{route('make-checker-form',request()->route()->id)}}" class="row" method="post"  id="formNaJa" enctype="multipart/form-data">
                 @csrf
-                <div class="mb-3">
-                    <label class="label-form">รายละเอียดกิจกรรม</label>
-                    <textarea class="form-control" name="activity[detail]" id="" cols="30" rows="5"></textarea>
+                <div class="mb-3 mt-4">
+                    <label class="label-form fs-5">รายละเอียดกิจกรรม <i class="fa-regular fa-message"></i></label>
+                    <textarea class="form-control rounded-4" name="activity[detail]" id="" cols="30" rows="5"></textarea>
                 </div>
-                <div class="buttom my-5 d-flex flex-row align-items-center text-center">
+                {{-- <div class="buttom my-5 d-flex flex-row align-items-center text-center">
                     <div class="col fw-bold text-success" id="text1"><h2>บุคคลภายใน</h2></div>
                     <div class="col ">
                       
@@ -29,8 +29,9 @@
                         <input type="text" name="activity[setting][side]" id="getValueMode_sys" value="1" class="d-none">
                      </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
-                </div>
-                <div class="d-flex flex-column mx-5" id="prInSide">
+                </div> --}}
+
+                {{-- <div class="d-flex flex-column mx-5" id="prInSide">
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
@@ -70,17 +71,19 @@
                     </div>
                       <div id="myInput" class="box-inputOp border w-75"></div>
                 </div>
-            </div>
-                <div class="d-flex flex-column mx-5 d-none" id="prOutSide">
-                    <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
-                <div class="col d-flex flex-row align-items-center justify-content-center">
-                    <div class="form-check col ps-5">
+            </div> --}}
+
+                <div class="d-flex flex-column mx-5" id="prOutSide">
+                    {{-- <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>   --}}
+                    <a class="fw-bold fs-3 text-decoration-none mt-5 mb-3">มีข้อมูลรายชื่อหรือไม่ <i class="fa-solid fa-circle-question"></i></a>  
+                <div class="col d-flex flex-row align-items-center justify-content-start pt-3">
+                    <div class="form-check col-3 ps-5">
                         <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
-                      <div class="form-check col">
+                      <div class="form-check col-3">
                         <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
@@ -88,7 +91,7 @@
                       </div>
                 </div>
                 <div class="col my-4 d-none" id="div_HavedataOS">
-                    <span class="fw-bold">ข้อมูลมีรายชื่อ</span>
+                    <span class="fw-bold fs-5">ข้อมูลมีรายชื่อ</span>
                     <i class="fa-solid fa-question fa-beat-fade fs-5 fw-bold show-imageHelper" id="imgHelpOS"></i>
                     <div class="my-2 text-center d-none" id="img-helperOS">
                         <img src="{{asset('img/cat-ชานมไข่มุก.gif')}}" class="border border-danger">
@@ -102,37 +105,41 @@
                     </div>
                 </div>
                 <div class="col my-4 d-none" id="noDiv_HavedataOS">
-                    <span class="fw-bold">ไม่มีข้อมูลมีรายชื่อ</span>
+                    <span class="fw-bold fs-5">ไม่มีข้อมูลมีรายชื่อ</span>
                     <div class="form-check ms-3 mt-2">
-                        <input class="form-check-input showImg_Login" type="checkbox" value="1" id="checkForm">
+                        {{-- <input class="form-check-input showImg_Login" type="checkbox" value="1" id="checkForm">
                         <label class="form-check-label" for="checkForm">
                           เก็บแบบฟอร์ม
                         </label>
                         <div class="my-2 d-none" id="showImgLogin">
                             <img src="{{asset('img/image-login.gif')}}" alt="">
-                        </div>
+                        </div> --}}
+                        <p class="fs-4">กรอกชื่อและนามสกุล</p>
                       </div>
-                      <div class="form-check ms-3 mt-2">
+                      {{-- <div class="form-check ms-3 mt-2">
                         <input class="form-check-input mt-3" type="checkbox" value="2" id="checkThaID">
                         <label class="form-check-label thaID" for="checkThaID">
                           <span class="">Tha<span class="yellow-text"><i class="fa-solid fa-person"></i>D</span></span>
                         </label>
-                      </div>
+                      </div> --}}
                 </div>
-            </div>
-                <div class="mb-3">
-                    <span class="fw-bold fs-5">วันจัดกิจกรรม</span>
-                </div>         
-                    <a class="btn btn-success scrollButton btnNewInput_GetId" id="scrollButton"><i class="fa-solid fa-calendar-days"></i> สร้างวันเช็คชื่อ</a>
-                    <div id="inputContainer">
-                        
+                <div class="col mt-3 mb-4">
+                    <span class="fw-bold fs-4 text-green">วันจัดกิจกรรม <i class="fa-regular fa-calendar-days"></i></span>
+                </div>
                 
-                    </div>
-                <button type="submit" class="btn btn-success" id="submit">SUBMIT</button>
-            
+            </div>
+            <div id="inputContainer">
+                        {{-- java create --}}
+            </div>
+            <div class="d-flex justify-content-start aling-items-center mb-5">
+                <div class="col d-flex">
+                    <a class="scrollButton btnNewInput_GetId" id="scrollButton"><i class="fa-solid fa-calendar-plus"></i> สร้างวันเช็คชื่อ</a>
+                </div>
+                <div class="col d-flex flex-row-reverse">
+                    <button type="submit" class="btn-submit-setting " id="submit"><i class="fa-solid fa-cloud-arrow-up"></i> บันทึกการตั้งค่า</button>
+                </div>
+            </div>      
             </form>
-
-            {{-- ------------------- --}}
         </div>
     </div>
 </div>
