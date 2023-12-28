@@ -52,7 +52,7 @@ class ActivityController extends Controller
     public function makeCheckerForm(Request $request, $activity_id)
     {
 
-
+       
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
 
@@ -107,6 +107,26 @@ class ActivityController extends Controller
                         'activity_id' => $activity_id,
                         'activity_day_maker_id' => $activity_date_maker->id,
                         'rounde_checker_id' => $activity_round_checker->id,
+                    ]);
+                }else{
+                    $round_count = 0;
+                    foreach($items['round'] as $round){
+                        // dd($round['round_start']);
+                       $activity_round_checker = activity_rounde_checker::create([
+                            'rounde_name' => 'รอบ'.$round['round_start'].'ถึง'.$round['round_end'],
+                            'rounde_checker_time_start' => $round['round_start'],
+                            'rounde_checker_time_expried' => $round['round_end'],
+                            'date_id' => $activity_date_maker->id,
+                            'activity_id' => $activity_id,
+                       ]);
+                       $activity_round_checker_relate = rounde_checker_relate::create([
+                        'activity_id' => $activity_id,
+                        'activity_day_maker_id' => $activity_date_maker->id,
+                        'rounde_checker_id' => $activity_round_checker->id,
+                    ]);
+                    }
+                    $add_round_setting_mode = activity_setting::where('activity_id', '=', $activity_id)->update([
+                        'round_mode' => '2'
                     ]);
                 }
                 $i++;
