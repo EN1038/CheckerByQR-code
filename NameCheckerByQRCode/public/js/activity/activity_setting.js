@@ -1236,26 +1236,26 @@ function updateOptionsAvailability() {
 
 //api fetch
 
-fetch('/api/agency-data')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // แปลงข้อมูลที่ได้รับเป็น JSON
-    })
-    .then(data => {
-        const select = document.getElementById('mySelect'); // เลือกตัว element select จาก ID
+// fetch('/api/agency-data')
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         return response.json(); // แปลงข้อมูลที่ได้รับเป็น JSON
+//     })
+//     .then(data => {
+//         const select = document.getElementById('mySelect'); // เลือกตัว element select จาก ID
 
-        data.agency_data.forEach(agency => {
-            // สร้างตัวเลือก option ใหม่
-            const option = document.createElement('option');
-            option.value = agency.id; // กำหนดค่า value ของ option เป็น ID ของ agency
-            option.textContent = agency.Agency_name; // กำหนดข้อความใน option เป็นชื่อของ agency
+//         data.agency_data.forEach(agency => {
+//             // สร้างตัวเลือก option ใหม่
+//             const option = document.createElement('option');
+//             option.value = agency.id; // กำหนดค่า value ของ option เป็น ID ของ agency
+//             option.textContent = agency.Agency_name; // กำหนดข้อความใน option เป็นชื่อของ agency
 
-            select.appendChild(option); // เพิ่ม option เข้าไปใน select
-        });
-    })
-    .catch(error => {
-        // จัดการเมื่อเกิดข้อผิดพลาด
-        console.error('There was a problem with the fetch operation:', error);
-    });
+//             select.appendChild(option); // เพิ่ม option เข้าไปใน select
+//         });
+//     })
+//     .catch(error => {
+//         // จัดการเมื่อเกิดข้อผิดพลาด
+//         console.error('There was a problem with the fetch operation:', error);
+//     });

@@ -19,7 +19,7 @@
                     <label class="label-form">รายละเอียดกิจกรรม</label>
                     <textarea class="form-control" name="activity[detail]" id="" cols="30" rows="5"></textarea>
                 </div>
-                <div class="buttom my-5 d-flex flex-row align-items-center text-center">
+                {{-- <div class="buttom my-5 d-flex flex-row align-items-center text-center">
                     <div class="col fw-bold text-success" id="text1"><h2>บุคคลภายใน</h2></div>
                     <div class="col ">
                       
@@ -29,8 +29,9 @@
                         <input type="text" name="activity[setting][side]" id="getValueMode_sys" value="1" class="d-none">
                      </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
-                </div>
-                <div class="d-flex flex-column mx-5" id="prInSide">
+                </div> --}}
+
+                {{-- <div class="d-flex flex-column mx-5" id="prInSide">
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายใน</a>  
                 <div class="col d-flex flex-row align-items-center justify-content-center">
                     <div class="form-check col ps-5">
@@ -70,17 +71,18 @@
                     </div>
                       <div id="myInput" class="box-inputOp border w-75"></div>
                 </div>
-            </div>
-                <div class="d-flex flex-column mx-5 d-none" id="prOutSide">
+            </div> --}}
+
+                <div class="d-flex flex-column mx-5" id="prOutSide">
                     <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>  
-                <div class="col d-flex flex-row align-items-center justify-content-center">
-                    <div class="form-check col ps-5">
+                <div class="col d-flex flex-row align-items-center justify-content-start pt-3">
+                    <div class="form-check col-3 ps-5">
                         <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
-                      <div class="form-check col">
+                      <div class="form-check col-3">
                         <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
