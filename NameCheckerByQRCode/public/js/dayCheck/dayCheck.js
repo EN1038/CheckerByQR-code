@@ -200,7 +200,9 @@ function showDetail(){
   let btn_detail_id = btn_detail.dataset.id;
   let btn_detail_iddate = btn_detail.dataset.iddate;
   let btn_detail_idactivity = btn_detail.dataset.idactivity;
+  let bg_showDetail = document.getElementById('bg-showSolution');
   console.log(btn_detail)
+  bg_showDetail.classList.add('d-none')
   let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
   
   getDataofRound(textApi);
