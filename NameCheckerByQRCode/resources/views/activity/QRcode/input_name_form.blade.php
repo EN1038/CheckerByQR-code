@@ -34,7 +34,7 @@
                         <input type="input" name="name" class="form-control" id="floatingInput" placeholder="กรุณากรอกชื่อจริงและนามสกุล">
                         
                       </div>
-                 <button type="submit" class="btn btn-success">บันทึก</button>
+                 <button type="submit" class="btn btn-success custom-btn">บันทึก</button>
                  </form>
             </div>
         </div>
