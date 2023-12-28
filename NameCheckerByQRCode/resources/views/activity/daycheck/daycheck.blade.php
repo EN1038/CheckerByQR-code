@@ -37,11 +37,12 @@
       <div class="d-flex flex-row-reverse">
         <span class="icon-search ms-2">ค้นหา</span><input type="text" id="searchInput" class="searchInput" placeholder="ค้นหาชื่อ...">
       </div>
-      <table id="dataTable" class="table">
+      <table id="dataTable" class="table text-center">
         <thead>
           <tr>
-            <th>ชื่อ</th>
-            <th>เวลาที่เข้าเช็คชื่อ</th>
+            <th style="width: 35%">ชื่อจริง</th>
+            <th style="width: 35%">นามสกุล</th>
+            <th style="width: auto">เวลาที่เข้าเช็คชื่อ</th>
             <!-- Add other table headers -->
           </tr>
         </thead>
@@ -49,6 +50,9 @@
           <!-- Add your data here -->
         </tbody>
       </table>
+      <div class="text-center bg-showSolution" id="bg-showSolution">
+        <p class="fs-1 fw-bold text-success p-5">กดปุ่มดูข้อมูลข้างบนเพื่อโชวรายละเอียด</p>
+      </div>
       <div class="d-flex flex-row-reverse">
         <ul class="pagination" id="pagination"></ul>
       </div>
