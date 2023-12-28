@@ -92,13 +92,13 @@ function addInput() {
     inputWrapper.appendChild(titleDiv);
 
     let showDateform = document.createElement('input');
-    showDateform.setAttribute('class', 'fs-5 fw-bold input-title-form');
+    showDateform.setAttribute('class', 'fs-4 fw-bold input-title-form');
     showDateform.id = 'formDate';
-    showDateform.value = 'Form : ' + (counter + 1);
+    showDateform.value = 'วันที่ : ' + (counter + 1);
     titleDiv.appendChild(showDateform);
 
     let closeIcon = document.createElement('i');
-    closeIcon.setAttribute('class', 'fs-7 fw-bold text-decoration-none fa-solid fa-trash iconClose');
+    closeIcon.setAttribute('class', 'fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose');
     closeIcon.setAttribute('id', 'iconClose' + counter);
     titleDiv.appendChild(closeIcon);
 
@@ -131,22 +131,22 @@ function addInput() {
 
 
     let date_input_label = document.createElement('label');
-    date_input_label.setAttribute('class', 'form-label');
-    date_input_label.textContent = "วันเดือนปี";
+    date_input_label.setAttribute('class', 'form-label fs-5');
+    date_input_label.textContent = "วัน/เดือน/ปี";
     date_activity_div.appendChild(date_input_label)
 
     let timeStart_input_label = document.createElement('label');
-    timeStart_input_label.setAttribute('class', 'form-label');
+    timeStart_input_label.setAttribute('class', 'form-label fs-5');
     timeStart_input_label.textContent = "เวลาเริ่ม";
     timeStart_activity_div.appendChild(timeStart_input_label)
 
     let timeEnd_input_label = document.createElement('label');
-    timeEnd_input_label.setAttribute('class', 'form-label');
+    timeEnd_input_label.setAttribute('class', 'form-label fs-5');
     timeEnd_input_label.textContent = "เวลาจบ";
     timeEnd_activity_div.appendChild(timeEnd_input_label);
 
     let setCheckName_label = document.createElement('label');
-    setCheckName_label.setAttribute('class', 'form-label');
+    setCheckName_label.setAttribute('class', 'form-label fs-5');
     setCheckName_label.textContent = "ตั้งค่าการเช็คชื่อ : ";
     setCheckName_div.appendChild(setCheckName_label);
 
@@ -189,7 +189,7 @@ function addInput() {
     form_check_setCheckI.appendChild(setCheckNameI_input);
 
     let setCheckNameI_label = document.createElement('label');
-    setCheckNameI_label.setAttribute('class', 'form-check-label');
+    setCheckNameI_label.setAttribute('class', 'form-check-label fs-5');
     setCheckNameI_label.setAttribute('for', 'setCheckNameI' + counter);
     setCheckNameI_label.textContent = 'เช็คชื่อทั้งวัน';
     form_check_setCheckI.appendChild(setCheckNameI_label);
@@ -208,7 +208,7 @@ function addInput() {
     form_check_setCheckII.appendChild(setCheckNameII_input);
 
     let setCheckNameII_label = document.createElement('label');
-    setCheckNameII_label.setAttribute('class', 'form-check-label');
+    setCheckNameII_label.setAttribute('class', 'form-check-label fs-5');
     setCheckNameII_label.setAttribute('for', 'setCheckNameII' + counter);
     setCheckNameII_label.textContent = 'เช็คชื่อเป็นรอบ';
     form_check_setCheckII.appendChild(setCheckNameII_label);
@@ -227,7 +227,7 @@ function addInput() {
     div_detailRoundSetCheckName.appendChild(div_setRoundCheck);
 
     let setRound_label = document.createElement('label');
-    setRound_label.setAttribute('class', 'form-label w-25');
+    setRound_label.setAttribute('class', 'form-label w-25 fs-5');
     setRound_label.setAttribute('for', 'selectSetRoundCheck' + counter);
     setRound_label.textContent = 'จำนวนรอบ : ';
     div_setRoundCheck.appendChild(setRound_label);
@@ -275,7 +275,7 @@ function addInput() {
     div_detailRoundSetCheckName.appendChild(div_selectTimeCheck);
 
     let selectTimeCheck_label = document.createElement('label');
-    selectTimeCheck_label.setAttribute('class', 'form-label');
+    selectTimeCheck_label.setAttribute('class', 'form-label fs-5');
     selectTimeCheck_label.setAttribute('for', 'selectTimeCheck' + counter);
     selectTimeCheck_label.textContent = 'จำนวนระยะเวลาที่เช็ค';
     div_selectTimeCheck.appendChild(selectTimeCheck_label);
@@ -874,7 +874,7 @@ function createSelectOptions(event) {
         div_row.id = 'div_row' + x;
 
         var label = document.createElement('label');
-        label.setAttribute('class', 'col-2 form-label fw-bold text-green');
+        label.setAttribute('class', 'col-2 form-label fw-bold text-green fs-5');
         label.setAttribute('for', 'dynamicSelect' + x);
         label.id = 'dynamicLabel' + x;
         label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
@@ -1134,21 +1134,21 @@ function showResult(get_Selects) {
 
 
     let Box = document.createElement('input');
-    Box.setAttribute('class', 'my-4 bg-disable w-75 border-0')
+    Box.setAttribute('class', 'my-4 bg-disable w-75 border-0 fs-5')
     Box.disabled = true;
     Box.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + newTime + ' - ' + duration_Time;
     Box.id = 'Boxinput' + getIdselects;
     get_idDivSpace.appendChild(Box);
 
     let roundStart_time = document.createElement('input');
-    // roundStart_time.classList.add('d-none');
+    roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
     roundStart_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
-    // roundEnd_time.classList.add('d-none');
+    roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
     roundEnd_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_end]`);
@@ -1157,7 +1157,7 @@ function showResult(get_Selects) {
     console.log(get_Selects.id);
     if (get_Selects.id === 'dynamicSelect10' || get_Selects.id === 'dynamicSelect20' || get_Selects.id === 'dynamicSelect30' || get_Selects.id === 'dynamicSelect40' || get_Selects.id === 'dynamicSelect50') {
         let roundDuration_time = document.createElement('input');
-        roundDuration_time.classList.add = 'd-none';
+        roundDuration_time.classList.add('d-none');
         roundDuration_time.value = get_valueTimeEnd;
         roundDuration_time.id = 'roundDuration_timx' + getIdselects;
         roundDuration_time.name = 'roundDuration_time';
@@ -1167,7 +1167,7 @@ function showResult(get_Selects) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
             let roundDuration_time = document.createElement('input');
-            roundDuration_time.classList.add = 'd-none';
+            roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
             roundDuration_time.name = 'roundDuration_time';
@@ -1176,7 +1176,7 @@ function showResult(get_Selects) {
     } else {
         let get_dynamicSelects = document.getElementById('dynamicSelect' + (intgetIdselects - 1));
         let roundDuration_times = document.createElement('input');
-        roundDuration_times.classList.add = 'd-none';
+        roundDuration_times.classList.add('d-none');
         roundDuration_times.value = get_dynamicSelects.value;
         roundDuration_times.id = 'roundDuration_timx' + getIdselects;
         roundDuration_times.name = 'roundDuration_times';
@@ -1186,7 +1186,7 @@ function showResult(get_Selects) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
             let roundDuration_time = document.createElement('input');
-            roundDuration_time.classList.add = 'd-none';
+            roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
             roundDuration_time.name = 'roundDuration_time';
