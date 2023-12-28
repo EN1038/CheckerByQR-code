@@ -95,7 +95,8 @@ class ActivityController extends Controller
                         'rounde_name' => 'เช็คทั้งวัน',
                         'rounde_checker_time_start' => $time_start_format,
                         'rounde_checker_time_expried' => $time_expried_format,
-                        'date_id' =>  $activity_date_maker->id
+                        'date_id' =>  $activity_date_maker->id,
+                        'activity_id' => $activity_id
 
                     ]);
                     $add_round_setting_mode = activity_setting::where('activity_id', '=', $activity_id)->update([
