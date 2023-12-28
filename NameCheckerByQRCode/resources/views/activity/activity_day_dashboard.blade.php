@@ -87,7 +87,7 @@
     <div class="modal-dialog modal-fullscreen-sm-down">
       <div class="modal-content">
         <div class="modal-header p-0 border-0 ">
-          <h5 class="modal-title title_modal" id="showQRcode"><i class="fa-solid fa-qrcode fa-beat-fade"></i> QR-CODE</h5>
+          <h5 class="modal-title title_modal m-4" id="showQRcode"><i class="fa-solid fa-qrcode fa-beat-fade"></i> QR-CODE</h5>
           <button type="button" class="btn-close fs-6 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body d-flex justify-content-center">

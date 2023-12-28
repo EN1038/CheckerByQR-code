@@ -201,7 +201,7 @@ function showDetail(){
   let btn_detail_iddate = btn_detail.dataset.iddate;
   let btn_detail_idactivity = btn_detail.dataset.idactivity;
   console.log(btn_detail)
-  let textApi = `/api/activity/people-name-register-data/4/${btn_detail_iddate}/${btn_detail_id}`;
+  let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
   
   getDataofRound(textApi);
 }

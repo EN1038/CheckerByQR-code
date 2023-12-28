@@ -22,22 +22,32 @@
         <li></li>
         <li></li>
       </ul>
-      <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100 border border-danger">
-        <div class="d-flex justify-content-center align-items-center border border-success w-75 ">
+      <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
+        <div class="d-flex justify-content-center align-items-center w-75 ">
             <div class="glassmorphism-body p-5">
-                <p class="fs-1 fw-bold text-center text-success"><i class="fa-solid fa-lock-open"></i> ฟอร์มกรอกชื่อ</p>
-                <p class="fs-2 fw-semi text-center text-success">กิจกรรม : {{$activity_data}}</p>
+                <p class="costome-font-title fw-bold text-center text-success"><i class="fa-solid fa-lock-open" id="unlock"></i><i class="fa-solid fa-lock d-none" id="lock"></i> ฟอร์มกรอกชื่อ</p>
+                <p class="costome-font-activity fw-semi text-center text-success">กิจกรรม : {{$activity_data}}</p>
                 <form action="{{route('input_form_checker_post',request()->route()->activity_id)}}" method="post">
                     @csrf
                     <div class="custom-input my-5">
-                        <label for="floatingInput">กรุณากรอกชื่อจริงและนามสกุล</label>
-                        <input type="input" name="name" class="form-control" id="floatingInput" placeholder="กรุณากรอกชื่อจริงและนามสกุล">
-                        
+                        <label for="floatingInput">กรุณากรอกชื่อจริง</label>
+                        <input type="input" name="name" class="form-control" id="inputFirstName" placeholder="กรุณากรอกชื่อจริง">
+                        <p id="text-alert-firstname" class="text-alert"></p>
+                        <label for="floatingInput">กรุณากรอกนามสกุล</label>
+                        <input type="input" name="name" class="form-control" id="inputLastName" placeholder="กรุณากรอกนามสกุล">
+                        <p id="text-alert-lastname" class="text-alert"></p>
                       </div>
-                 <button type="submit" class="btn btn-success custom-btn">บันทึก</button>
+                      <div class="d-flex justify-content-center align-items-center">
+                        <div class="col-1"><i class="fa-solid fa-clock fa-shake costome-icon-clock"></i></div>
+                        <div id="current-time" class="col current-time ps-4">00:00:00</div>
+                        <div class="col d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success custom-btn" id="btn-submit" disabled>บันทึก</button>
+                        </div>
+                      </div>
                  </form>
             </div>
         </div>
       </div>
     
 </div>
+<script src='{{asset('js/inputFormQr/inputFormQr.js')}}'></script>
