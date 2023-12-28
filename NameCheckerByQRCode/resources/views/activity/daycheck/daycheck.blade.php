@@ -40,9 +40,10 @@
       <table id="dataTable" class="table text-center">
         <thead>
           <tr>
-            <th style="width: 35%">ชื่อจริง</th>
-            <th style="width: 35%">นามสกุล</th>
-            <th style="width: auto">เวลาที่เข้าเช็คชื่อ</th>
+            <th style="width: 25%">ชื่อจริง</th>
+            <th style="width: 25%">นามสกุล</th>
+            <th style="width: 25%">เวลาที่เข้าเช็คชื่อ</th>
+            <th style="width: 25%">สถานะ</th>
             <!-- Add other table headers -->
           </tr>
         </thead>

@@ -11,8 +11,10 @@ function displayPage(pageNumber, data) {
   
   for (let i = startIndex; i < endIndex && i < data.length; i++) {
       const row = tableBody.insertRow();
-      const nameCell = row.insertCell(0);
-      const dateCell = row.insertCell(1);
+      const namefsCell = row.insertCell(0);
+      const namelasCell = row.insertCell(1);
+      const dateCell = row.insertCell(2);
+      const statusCell = row.insertCell(3);
 
       let createdAt = new Date(data[i].created_at); // แปลงเวลาให้อยู่ในรูปแบบของ Object Date
       let hours = createdAt.getHours().toString().padStart(2, '0');
@@ -20,8 +22,10 @@ function displayPage(pageNumber, data) {
       let seconds = createdAt.getSeconds().toString().padStart(2, '0');
       let time = hours + ':' + minutes + ':' + seconds;
 
-      nameCell.textContent = data[i].name;
+      namefsCell.textContent = data[i].name;
+      namelasCell.textContent = data[i].last_name;
       dateCell.textContent = time;
+      statusCell.textContent = data[i].status;
       // console.log(data[i].created_at);
   }
 }

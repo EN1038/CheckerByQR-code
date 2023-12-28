@@ -25,9 +25,9 @@
                       
                             <i class="enchagne_button btn btn-success fa-solid fa-arrow-left" id="changeSystem" value="0"></i> 
                 
-                        <p class="mt-2 fs-8 fw-light text-muted">Click this button for Chagne Modes</p>
-                        <input type="text" name="activity[setting][side]" id="getValueMode_sys" value="1" class="d-none">
-                     </div>
+                        <p class="mt-2 fs-8 fw-light text-muted">Click this button for Chagne Modes</p> --}}
+                        <input type="hidden" name="activity[setting][side]" id="getValueMode_sys" value="2" class="">
+                     {{-- </div>
                     <div class="col fw-bold"  id="text2"><h2>บุคคลภายนอก</h2></div>
                 </div> --}}
 
