@@ -1087,6 +1087,12 @@ function checkMinDate(dateValue) {
 
 function showResult(get_Selects) {
     let getIdselects = get_Selects.id.match(/\d+/g);
+    let lastDigit;
+    if (getIdselects && getIdselects[0]) {getIdselects
+        lastDigit = getIdselects[0].charAt(getIdselects[0].length - 1);
+       // ผลลัพธ์: "3"
+    }
+    console.log(lastDigit);
     let get_idDivSpace = document.getElementById('divSpace' + getIdselects);
     let get_valueTimeEnd = document.getElementById('input_timeEnd' + globalIdlinks).value;
     let get_valueTimeCheck = document.getElementById('input_timeCheck' + globalIdlinks).value;
@@ -1138,14 +1144,14 @@ function showResult(get_Selects) {
     // roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
-    roundStart_time.setAttribute('name', `activity[date_input${counter-1}][round][round_start]`);
+    roundStart_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
     // roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
-    roundEnd_time.setAttribute('name', `activity[date_input${counter-1}][round][round_end]`);
+    roundEnd_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
 
     console.log(get_Selects.id);
