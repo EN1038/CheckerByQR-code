@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('activity_peoples', function (Blueprint $table) {
-            $table->id();
-            $table->integer("student_id");
-            $table->string("check");
-            $table->string("activity_id");
-            
-            $table->string("status");
-            $table->timestamps();
+        Schema::table('activity_rounde_checkers', function (Blueprint $table) {
+            $table->string('activity_id')->after('date_id');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('activity_peoples');
+        Schema::table('activity_rounde_checkers', function (Blueprint $table) {
+            //
+        });
     }
 };

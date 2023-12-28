@@ -201,7 +201,8 @@ class ActivityController extends Controller
         if ($select_activity_setting->people_side_mode_id == 2 and $select_activity_setting->list_of_name_mode_id and $select_activity_setting->round_mode == 1) {
             $current_date = Carbon::now()->format('Y-m-d');
             $select_day = activity_day_maker::where('activity_id', '=', $activity_id)->where('date', '=', $current_date)->first();
-            $date_id = $select_day->id;
+            if($select_day){
+                $date_id = $select_day->id;
             $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->first();
 
             $input_name_checker = activity_people_register::create([
@@ -214,6 +215,9 @@ class ActivityController extends Controller
                 Alert::success('เช็คชื่อสำเร็จ!');
                 return view('activity.alert_view.success_view');
             }
+            }else{
+                return view('activity.alert_view.no_success');
+            }  
         }
     }
 }
