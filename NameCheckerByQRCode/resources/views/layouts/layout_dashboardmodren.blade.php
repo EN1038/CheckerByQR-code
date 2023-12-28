@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
     {{-- Icon_Bootstraps --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    {{-- font awesome --}}
     <script src="https://kit.fontawesome.com/4af39d0791.js" crossorigin="anonymous"></script>
     {{-- End_Icon_Bootstraps --}}
     <!-- ตัวอย่างการโหลด jQuery และ jQuery UI จาก CDN -->
