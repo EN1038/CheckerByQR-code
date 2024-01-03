@@ -62,6 +62,8 @@ Route::get('activity/day-chcker-list/dashboard/{id}', [ActivityController::class
 ///QR
 Route::get('activity/form-checker/{activity_id}', [ActivityController::class, 'returnCheckerForm'])->name('return_check_form');
 Route::post('activity/form-checker-post/{activity_id}', [ActivityController::class, 'inputFormCheckerPost'])->name('input_form_checker_post');
+Route::post('activity/form-checker-post/{activity_id}',[ActivityController::class,'inputFormCheckerPost2'])->name('input_form_checker_postV2');
+
 //// round check ////
 
 Route::get('activity/daycheck/round-check-list/{activity_id}/{date_id}', [ActivityController::class, 'showRoundCheckList'])->name('show_round_check');

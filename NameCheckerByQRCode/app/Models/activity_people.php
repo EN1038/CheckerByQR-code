@@ -9,5 +9,10 @@ class activity_people extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = [
+        'student_id',
+        'name',
+        'activity_id',
+        'status',
+    ];
 }
