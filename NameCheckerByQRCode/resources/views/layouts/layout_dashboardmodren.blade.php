@@ -71,6 +71,7 @@
           </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-3">
+          
           <div class="col-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/694px-Unknown_person.jpg" alt="" class="user-img-scale rounded-3" id="profiles">
           </div>
@@ -82,11 +83,12 @@
               
               @else
               <div class="col"><span >USERNAME</span></div>
-              <div class="col"><span >STUDENT_ID</span></div>
+              <div class="col"><span >USERS_ID</span></div>
               @endif
             </div>
           </div>
         </div>
+        @if(Auth::check())
         <div class="text-start ps-1 mb-2">
           <span class="text-title ">TITLE</span>
         </div>
@@ -125,25 +127,44 @@
         <div class="text-start ps-1 mb-2">
           <span class="text-title ">COSTOM</span>
         </div>
-        <a href="#" class="text-decoration-none">
-          <div class="hover-btn-logout d-flex flex-row rounded-3  align-items-center">
+        <div class="text-decoration-none">
+          
+          <a href="{{route('logout')}}" class="hover-btn-logout d-flex flex-row rounded-3  align-items-center">
               <div class="col-2 fs-4 text-center">
                 <i class="bi bi-box-arrow-left"></i>
               </div>
               <div class="col d-flex align-items-center justify-content-center fs-7">
-                <a href="{{route('logout')}}" class="text-decoration-none text-logout"><span class="divToHide" > ออกจากระบบ</span></a>
+                <span class="divToHide ">ออกจากระบบ</span>
               </div>
-          </div>
-        </a>
+            </a>
+          @else
+          <a href="{{route('login_form')}}" class="hover-btn-logout d-flex flex-row rounded-3  align-items-center my-3">
+              <div class="col-2 fs-4 text-center">
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center fs-7">
+                <span class="divToHide ">เข้าสู่ระบบ</span>
+              </div>
+          </a>
+          <a href="{{route('register_form')}}" class="hover-btn-logout d-flex flex-row rounded-3  align-items-center">
+              <div class="col-2 fs-4 text-center">
+                <i class="fa-solid fa-circle-up"></i>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center fs-7">
+                <span class="divToHide ">สมัครการเข้าใช้งาน</span>
+              </div>
+            </a>
+          @endif
+        </div>
       </div>
     </div>
     {{-- End_SideBar --}}
     <div class="box " id="main">
         {{-- Start_sidenav --}}
-        <div class="row border-bottom content-segment">
-            <div class="col-3 p-0 d-flex align-items-center">
+        <div class="row border-bottom ">
+            <div class="d-none d-md-flex col-3 p-0 d-flex align-items-center">
            
-                <div class="text-end text-icon-toggle" id="openNavButton" onclick="toggleNav()" style="cursor: pointer;">
+                <div class=" text-end text-icon-toggle" id="openNavButton" onclick="toggleNav()" style="cursor: pointer;">
                   <span class="scale-icon-nav " id="openNavIcon" onclick="openNav()"> 
                     <i class="bi bi-caret-right-fill" ></i> 
                   </span>
@@ -151,37 +172,69 @@
                     <i class="bi bi-caret-left-fill"></i>  
                   </span>
                 </div>
-                <div class="div">
+                <div class="col">
                   <span class="text-success text-logo">QR-Code Checker</span> 
                 </div>
               
             </div>
-            <div class="col-9 ">
-                <div class="d-flex flex-row justify-content-end">
-                    <div class="user ms-3 py-4">
-                
+            <div class="col ">
+                <div class=" d-none d-sm-flex justify-content-sm-center justify-content-md-end">
+                    <div class="ms-3 py-4 nav-link">
                             @if(Auth::check())
+                            
                             <a href="" 
-                            class='link-body-emphasis link-offset-2 mx-2 nav-link-create'>สร้างกิจกรรม</a>
+                            class=' mx-2'><i class="bi bi-plus-circle-fill "></i> สร้างกิจกรรม</a>
+                            
                             <a href="{{route('show_activity_profile')}}" 
-                            class='link-body-emphasis link-offset-2 mx-2 nav-link2-check'>เช็คกิจกรรม</a>
+                            class=' mx-2'><i class="bi bi-clipboard2-check-fill"></i> เช็คกิจกรรม</a>
+                            
                             <a href="" 
-                            class='link-body-emphasis link-offset-2 mx-2 nav-link3-data'>ดูผลสถิติ</a>
+                            class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a>
+                            
                             <a href="{{route('logout')}}"
-                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Logout</a>
+                            class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
                             @else
+                            
                             <a href="{{route('login_form')}}"
-                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-3">Login</a>
+                    class=" mx-3 "><i class="fa-solid fa-circle-up"></i> Login</a>
+                            
                             <a href="{{route('register_form')}}"
-                            class="link-body-emphasis link-offset-2 link-underline-opacity-0 mx-2">Register</a>
+                            class=" mx-2 "><i class="fa-solid fa-circle-up"></i> Register</a>
                             @endif
-                        </div>
+                    </div>
+                    
+                </div>
+                <div class="list-nav-sidebar d-flex d-sm-none justify-content-between ms-3 py-sm-4 ">
+                  <span class="text-success fw-bold">QR-Code Checker</span> 
+                  <div class="dropdown">
+                  <button class="dropdown-btn"><i class="fa-solid fa-bars fs-4 "></i></button>
+                  <div class="dropdown-content">
+                    @if(Auth::check())
+
+                    <a href="" 
+                    class=' mx-2 '><i class="bi bi-plus-circle-fill "></i> สร้างกิจกรรม</a>
+                    
+                    <a href="{{route('show_activity_profile')}}" 
+                    class=' mx-2'><i class="bi bi-clipboard2-check-fill"></i> เช็คกิจกรรม</a>
+
+                    <a href="" 
+                    class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a>
+                    <a href="{{route('logout')}}"
+                    class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
+                    @else
+                    <a href="{{route('login_form')}}"
+                    class=" mx-3 ">Login</a>
+                    <a href="{{route('register_form')}}"
+                    class=" mx-2 ">Register</a>
+                    @endif
+                  </div>
+                </div>
                 </div>
             </div>
         </div>
         {{-- End_sidenav --}}
         {{-- body --}}
-        <div class="body content-segment glassmorphism-body mt-4">
+        <div class="body glassmorphism-body mt-4">
           @yield('content_body')
         </div>
         {{-- End_body --}}
