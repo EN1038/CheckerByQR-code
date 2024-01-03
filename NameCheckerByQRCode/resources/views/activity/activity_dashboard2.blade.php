@@ -73,17 +73,20 @@
                 </div>
             </div> --}}
 
-                <div class="d-flex flex-column mx-5" id="prOutSide">
+                <div class="d-flex flex-column mx-3 mx-lg-5 " id="prOutSide">
                     {{-- <a class="fw-bold fs-3 text-decoration-none">บุคคลภายนอก</a>   --}}
-                    <a class="fw-bold fs-3 text-decoration-none mt-5 mb-3">มีข้อมูลรายชื่อหรือไม่ <i class="fa-solid fa-circle-question"></i></a>  
-                <div class="col d-flex flex-row align-items-center justify-content-start pt-3">
-                    <div class="form-check col-3 ps-5">
+                    <div class="text-start">
+                        <a class="fw-bold fs-3 text-decoration-none mt-5 mb-1 mb-lg-3">มีข้อมูลรายชื่อหรือไม่ <i class="fa-solid fa-circle-question"></i></a>
+                    </div>
+                      
+                <div class="col d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-center justify-content-lg-start pt-3">
+                    <div class="form-check col-12 col-lg-3 ps-4 ps-lg-5">
                         <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSHaveData" value="1">
                         <label class="form-check-label fs-5" for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
-                      <div class="form-check col-3">
+                      <div class="form-check col-12 col-lg-3">
                         <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" name="activity[setting][have_list_of_name]" id="radiosOSnoHaveData" value="2">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
@@ -131,8 +134,8 @@
             <div id="inputContainer">
                         {{-- java create --}}
             </div>
-            <div class="d-flex justify-content-start aling-items-center mb-5">
-                <div class="col d-flex">
+            <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
+                <div class="col-12 col-lg d-flex">
                     <a class="scrollButton btnNewInput_GetId" id="scrollButton"><i class="fa-solid fa-calendar-plus"></i> สร้างวันเช็คชื่อ</a>
                 </div>
                 <div class="col d-flex flex-row-reverse">

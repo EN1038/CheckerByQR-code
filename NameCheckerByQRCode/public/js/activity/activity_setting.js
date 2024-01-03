@@ -103,22 +103,22 @@ function addInput() {
     titleDiv.appendChild(closeIcon);
 
     let inputDive1 = document.createElement('div');
-    inputDive1.setAttribute('class', 'd-flex flex-row justify-content-center align-items-center mb-3');
+    inputDive1.setAttribute('class', 'd-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-start align-items-lg-center mb-3');
 
     let inputDive2 = document.createElement('div');
     inputDive2.setAttribute('class', 'd-flex flex-column mb-3');
 
     let date_activity_div = document.createElement('div_date');
-    date_activity_div.setAttribute('class', 'col-6');
+    date_activity_div.setAttribute('class', 'col-12  col-lg-6 ');
 
     let timeStart_activity_div = document.createElement('div_time_start');
-    timeStart_activity_div.setAttribute('class', 'col-3 px-3');
+    timeStart_activity_div.setAttribute('class', 'col-12 col-lg-3 px-0 px-lg-3');
 
     let timeEnd_activity_div = document.createElement('div_time_start');
-    timeEnd_activity_div.setAttribute('class', 'col-3 px-3');
+    timeEnd_activity_div.setAttribute('class', 'col-12 col-lg-3 px-0 px-lg-3');
 
     let setCheckName_div = document.createElement('div_SetCheckName');
-    setCheckName_div.setAttribute('class', 'd-flex');
+    setCheckName_div.setAttribute('class', 'd-flex flex-column flex-lg-row');
     setCheckName_div.setAttribute('id', 'div_SetCheckNamex' + counter);
 
     let setCheckNameAllDay_div = document.createElement('div_AllDay');
@@ -127,7 +127,7 @@ function addInput() {
 
     let setCheckNameRoundDay_div = document.createElement('div_RoundDay');
     setCheckNameRoundDay_div.setAttribute('id', 'CheckName_setCheckNameRoundDay' + counter);
-    setCheckNameRoundDay_div.setAttribute('class', 'd-flex flex-column div_CheckName p-2 d-none');
+    setCheckNameRoundDay_div.setAttribute('class', 'd-flex flex-column div_CheckName p-0 p-lg-2 d-none');
 
 
     let date_input_label = document.createElement('label');
@@ -219,21 +219,21 @@ function addInput() {
     setCheckNameAllDay_div.appendChild(showText_Allday);
 
     let div_detailRoundSetCheckName = document.createElement('div');
-    div_detailRoundSetCheckName.setAttribute('class', 'd-flex justify-content-around align-items-center w-100');
+    div_detailRoundSetCheckName.setAttribute('class', 'd-flex flex-column-reverse flex-lg-row justify-content-start justify-content-lg-around align-itens-start align-items-lg-center w-100');
     setCheckNameRoundDay_div.appendChild(div_detailRoundSetCheckName);
 
     let div_setRoundCheck = document.createElement('div');
-    div_setRoundCheck.setAttribute('class', 'col-7 d-flex');
+    div_setRoundCheck.setAttribute('class', 'col-12 col-lg-7 d-flex flex-column flex-lg-row');
     div_detailRoundSetCheckName.appendChild(div_setRoundCheck);
 
     let setRound_label = document.createElement('label');
-    setRound_label.setAttribute('class', 'form-label w-25 fs-5');
+    setRound_label.setAttribute('class', 'form-label w-100 w-lg-25 fs-5');
     setRound_label.setAttribute('for', 'selectSetRoundCheck' + counter);
     setRound_label.textContent = 'จำนวนรอบ : ';
     div_setRoundCheck.appendChild(setRound_label);
 
     let select_setRoundCheck = document.createElement('select');
-    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-75 me-3 get_IdselectRound fake-disable');
+    select_setRoundCheck.setAttribute('class', 'form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound fake-disable');
     select_setRoundCheck.disabled = true;
     select_setRoundCheck.setAttribute('id', 'selectSetRoundCheck' + counter);
     div_setRoundCheck.appendChild(select_setRoundCheck);
@@ -271,17 +271,17 @@ function addInput() {
     select_setRoundCheck.appendChild(option_setRoundCheck_5);
 
     let div_selectTimeCheck = document.createElement('div');
-    div_selectTimeCheck.setAttribute('class', 'col-5 d-flex flex-column ps-5');
+    div_selectTimeCheck.setAttribute('class', 'col-12 col-lg-5 d-flex flex-column ps-0 ps-lg-5');
     div_detailRoundSetCheckName.appendChild(div_selectTimeCheck);
 
     let selectTimeCheck_label = document.createElement('label');
-    selectTimeCheck_label.setAttribute('class', 'form-label fs-5');
+    selectTimeCheck_label.setAttribute('class', 'form-label fs-5 me-4 me-lg-0');
     selectTimeCheck_label.setAttribute('for', 'selectTimeCheck' + counter);
-    selectTimeCheck_label.textContent = 'จำนวนระยะเวลาที่เช็ค';
+    selectTimeCheck_label.textContent = 'ระยะเวลาที่เช็ค';
     div_selectTimeCheck.appendChild(selectTimeCheck_label);
 
     let selectTimeCheck_input = document.createElement('select');
-    selectTimeCheck_input.setAttribute('class', 'form-select w-75 getId_selectTimeCheck fake-disable');
+    selectTimeCheck_input.setAttribute('class', 'form-select w-100 w-lg-75 getId_selectTimeCheck fake-disable');
     selectTimeCheck_input.setAttribute('id', 'selectTimeCheck' + counter);
 
     div_selectTimeCheck.appendChild(selectTimeCheck_input);
@@ -870,21 +870,21 @@ function createSelectOptions(event) {
 
     for (var x = 0; x <= (valueIdselectRound - 1); x++) {
         var div_row = document.createElement('div');
-        div_row.setAttribute('class', 'd-flex justify-content-start align-items-center');
+        div_row.setAttribute('class', 'd-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center');
         div_row.id = 'div_row' + x;
 
         var label = document.createElement('label');
-        label.setAttribute('class', 'col-2 form-label fw-bold text-green fs-5');
+        label.setAttribute('class', 'col-12 col-lg-2 form-label fw-bold text-green fs-5');
         label.setAttribute('for', 'dynamicSelect' + x);
         label.id = 'dynamicLabel' + x;
         label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
 
         var select = document.createElement('select');
-        select.setAttribute('class', 'col form-select mb-3 mx-2 h-25 dynamicSelects d-flex justify-content-start fake-disable');
+        select.setAttribute('class', 'col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start fake-disable');
         select.id = 'dynamicSelect' + counter + x;
 
         var div = document.createElement('div');
-        div.setAttribute('class', 'col-6  d-flex my-2 ms-3 justify-content-center');
+        div.setAttribute('class', 'col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center');
         div.id = 'divSpace' + counter + x;
 
         var optionTitle = document.createElement('option');
@@ -1134,7 +1134,7 @@ function showResult(get_Selects) {
 
 
     let Box = document.createElement('input');
-    Box.setAttribute('class', 'my-4 bg-disable w-75 border-0 fs-5')
+    Box.setAttribute('class', ' my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5')
     Box.disabled = true;
     Box.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + newTime + ' - ' + duration_Time;
     Box.id = 'Boxinput' + getIdselects;

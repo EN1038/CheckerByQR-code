@@ -41,14 +41,14 @@
   
     {{-- <div>บุคคล{{$activity_setting->PeopleSideMode->people_side_name}}</div> --}}
 
-    <div class="container px-5 pb-4 pt-3">
+    <div class="px-3 px-lg-5 pb-4 pt-3">
         <table class="table text-center">
             <thead>
                 <tr>
                     <th scope="col" style="width: 30px;"><i class="fa-solid fa-list-check"></i></th>
                     <th scope="col" style="width: 30px;">ID</th>
-                    <th scope="col">ชื่อวันที่</th>
-                    <th scope="col">วัน</th>
+                    {{-- <th scope="col">ชื่อวันที่</th> --}}
+                    <th scope="col">วันที่</th>
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
                     <th scope="col">ดูรอบเช็คชื่อ</th>
@@ -59,13 +59,14 @@
                 @foreach ($activity_day_array as $row)
                     
                         <tr class="get_IdTr" id="idTr{{ $row->id }}" onclick="clickTr('{{ $row->id }}')">
-                            <td scope='row'><input type="checkbox" class="select-row form-check-input" id="idInput{{ $row->id }}"></td>
-                            <td scope="row">{{ $row->id }}</td>
-                            <td scope="row">{{ $row->form_name }}</td>
-                            <td>{{ $row->date }}</td>
-                            <td>{{ $row->time_start }}</td>
-                            <td>{{ $row->time_expried }}</td>
-                            <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
+                            <td >วันที่ {{ $row->date }}</td>
+                            <td scope='row' data-label="CheckBox"><input type="checkbox" class="select-row form-check-input" id="idInput{{ $row->id }}"></td>
+                            <td scope="row" data-label="ID Date">{{ $row->id }}</td>
+                            {{-- <td scope="row">{{ $row->form_name }}</td> --}}
+                            <td data-label="วันที่">{{ $row->date }}</td>
+                            <td data-label="เวลาเริ่ม">{{ $row->time_start }}</td>
+                            <td data-label="เวลาจบ">{{ $row->time_expried }}</td>
+                            <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
                             
                         </tr>
                     row
@@ -84,7 +85,7 @@
 <script src="{{ asset('js/activity/activity_day_dashboard.js') }}"></script>
 @endsection
 <div class="modal fade" id="showQRcode" tabindex="-1" aria-labelledby="showQRcode" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen-sm-down">
+    <div class="modal-dialog modal-fullscreen-down">
       <div class="modal-content">
         <div class="modal-header p-0 border-0 ">
           <h5 class="modal-title title_modal m-4" id="showQRcode"><i class="fa-solid fa-qrcode fa-beat-fade"></i> QR-CODE</h5>
@@ -95,7 +96,7 @@
                 $url = env('IPV4_HOST')."/activity/form-checker/".request()->route()->id
             @endphp
           
-          <img src="{{url('https://api.qrserver.com/v1/create-qr-code/?size=450x450&data='.$url)}}" alt="" id="qr_code" target_black>
+          <img class="edit-qr-code" src="{{url('https://api.qrserver.com/v1/create-qr-code/?size=450x450&data='.$url)}}" alt="" id="qr_code" target_black>
           
         </div>
         <div class="modal-footer border-0">

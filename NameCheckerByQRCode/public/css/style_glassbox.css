@@ -12,7 +12,7 @@
 
   .glassmorphism-body{
     width: 100%;
-    height: 100%;
+    height: auto;
     border-top: 2px solid #ffffff75;
     border-left: 2px solid #ffffff75;
     box-shadow: 5px 5px 12px #00000035;

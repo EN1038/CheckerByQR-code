@@ -423,3 +423,9 @@ a{
   color: #1fac6a;
 }
 
+@media (max-width: 992px) {
+  .scrollButton{
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+  }
+}

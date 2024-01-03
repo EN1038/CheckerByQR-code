@@ -20,13 +20,17 @@ let detailText = document.getElementById('detailText');
 
 function clickTr(id){
     const checkbox = document.getElementById('idInput'+id);
-    console.log("ไอดีของ <tr> คือ: "+checkbox.checked);
+    const idTr = document.getElementById('idTr'+id);
+    console.log("ไอดีของ <tr> คือ: "+checkbox.id);
+    console.log("ไอดีของ <tr> คือ: "+idTr.classList);
+    idTr.classList.toggle('active');
     if (checkbox.checked === false) {
         checkbox.checked = true;
+        // idTr.classList.add = ('active');
     } else {
         checkbox.checked = false;
+        // idTr.classList.remove = ('active');
     }
-    
 }
 
 

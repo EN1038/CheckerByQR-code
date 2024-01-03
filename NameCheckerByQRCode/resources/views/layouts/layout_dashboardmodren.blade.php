@@ -196,7 +196,7 @@
                             @else
                             
                             <a href="{{route('login_form')}}"
-                    class=" mx-3 "><i class="fa-solid fa-circle-up"></i> Login</a>
+                    class=" mx-3 "><i class="fa-solid fa-right-to-bracket"></i> Login</a>
                             
                             <a href="{{route('register_form')}}"
                             class=" mx-2 "><i class="fa-solid fa-circle-up"></i> Register</a>
@@ -223,9 +223,9 @@
                     class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
                     @else
                     <a href="{{route('login_form')}}"
-                    class=" mx-3 ">Login</a>
+                    class=" mx-3 "><i class="fa-solid fa-right-to-bracket"></i> Login</a>
                     <a href="{{route('register_form')}}"
-                    class=" mx-2 ">Register</a>
+                    class=" mx-2 "><i class="fa-solid fa-circle-up"></i> Register</a>
                     @endif
                   </div>
                 </div>
