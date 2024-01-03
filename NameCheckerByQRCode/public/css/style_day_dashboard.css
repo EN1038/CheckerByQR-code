@@ -5,7 +5,7 @@
 }
 
 .detailActivity{
-    margin: 5px 40px 5px 40px;
+    margin: 5px 40px 20px 40px;
     padding: 5px 10px 5px 10px;
 }
 
@@ -16,7 +16,6 @@
     padding: 10px 20px 10px 20px;
     border: 1px solid #adffd9;
     border-radius: 10px;
-    white-space: nowrap;
     overflow: hidden; /* ซ่อนข้อความที่เกินขอบเขต */
     text-overflow: ellipsis; /* แสดงเครื่องหมาย elipsis (...) เมื่อข้อความเกิน */
     cursor: pointer;
@@ -71,6 +70,7 @@
     transform: translateY(-1px);
 }
 
+
 .table thead tr th{
     background-color: rgb(255, 255, 255, 0.5);
     color: #22b671;
@@ -124,13 +124,82 @@
 }
   
 @media (max-width: 1440px) {
-
-    .detailActivity p{
-        border: 1px solid #000000;
-    }
     
     .detailActivity p:hover{
         transform: translateX(110px) scale(1.2);
     }
 }
+@media (max-width: 1300px) {
+    
+    .detailActivity p:hover{
+        transform: translateX(50px) scale(1.1);
+    }
+}
+@media (max-width: 1250px) {
+    
+    .detailActivity p:hover{
+        transform: translateX(20px) scale(1.1);
+    }
+}
+@media (max-width: 1220px) {
+    
+    .detailActivity p:hover{
+        transform: translateX(70px) scale(1.1);
+    }
+}
+@media (max-width: 1110px) {
+    
+    .detailActivity p:hover{
+        transform: translateX(40px) scale(1.1);
+    }
+}
+@media (max-width: 990px) {
+    .detailActivity p{
+        width: 600px;
+    }
+
+    .detailActivity p:hover{
+        transform: translateX(10px) scale(1.1);
+    }
+}
+@media (max-width: 840px) {
+    .detailActivity p{
+        width: 450px;
+    }
+
+    .detailActivity p:hover{
+        transform: translateX(10px) scale(1.1);
+    }
+}
+@media (max-width: 690px) {
+    .detailActivity p{
+        width: 250px;
+    }
+
+    .detailActivity p:hover{
+        transform: translateX(10px) scale(1.1);
+    }
+}
+@media (max-width: 573px) {
+
+    .detailActivity{
+        margin: 5px 10px 20px 10px;
+    }
+
+    .detailActivity p{
+        width: auto;
+        margin-left: 0;
+    }
+
+    .detailActivity h5{
+        font-size: 14px;
+    }
+
+    .detailActivity p:hover{
+        transform: translateX(10px) scale(1.1);
+    }
+}
+
+
+
 

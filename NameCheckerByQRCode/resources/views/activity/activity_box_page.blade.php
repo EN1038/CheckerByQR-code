@@ -4,9 +4,9 @@
     <h1 class="text-greenlight fw-bold"><i class="bi bi-clipboard me-3"></i>List Activity</h1>
     <div class="row">
         {{-- Card-Activity --}}
-        <div class="row">
+        <div class="row mb-4">
           <div class="col">
-            <span class="fs-3">โปรไฟล์กิจกรรมของคุณ</span>
+            <span class="fs-4 fs-sm-3 ms-4">โปรไฟล์กิจกรรมของคุณ</span>
           </div>
         </div>
 
@@ -41,7 +41,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="{{"activity_".$row->id}}">Modal title</h1>
+        <h1 class="modal-title fs-5" id="{{"activity_".$row->id}}">แก้ไขชื่อกิจกรรม</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

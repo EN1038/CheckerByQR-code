@@ -5,7 +5,7 @@
   
 
     <div class="d-flex flex-column">
-        <p class="fs-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
+        <p class="fs-4 fs-sm-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
     <div class="col d-flex px-5 detailSetting">
         {{-- <div class="col text-start ">
         @if($activity_setting->PeopleSideMode->id == 2)
@@ -24,17 +24,17 @@
        
     </div>
     <div class="col">
-       
+    
     </div>
     <div class="col detailActivity">
         <h5>รายละเอียดกิจกรรม : </h5>
         <p id="detailText">{{$activity_description}}</p>
     </div>
-    <div class="col d-flex justify-content-end">
+    <div class="col d-flex justify-content-end mb-3">
         
-        <button data-bs-toggle="modal" type="button"  data-bs-target="#showQRcode" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode"></i> QR-Code</button>
-        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can "></i> ลบกิจกรรม</a>
-        <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-5 rounded-3 btn-setting" id="btnSetting"><i class="fa-solid fa-list-check"></i> ตั้งค่ากิจกรรม</a>
+        <button data-bs-toggle="modal" type="button"  data-bs-target="#showQRcode" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">QR-Code</span></button>
+        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ลบกิจกรรม</span></a>
+        <a href="{{route('show_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-3 me-sm-5 rounded-3 btn-setting " id="btnSetting"><i class="fa-solid fa-list-check py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ตั้งค่ากิจกรรม</span></a>
     </div>
     
     </div>
@@ -52,7 +52,7 @@
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
                     <th scope="col">ดูรอบเช็คชื่อ</th>
-                    <th scope="col">id</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -66,7 +66,7 @@
                             <td>{{ $row->time_start }}</td>
                             <td>{{ $row->time_expried }}</td>
                             <td><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
-                            <td>{{$row->activity_id}}</td>
+                            
                         </tr>
                     row
                 @endforeach
