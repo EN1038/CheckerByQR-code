@@ -8,15 +8,17 @@ use Maatwebsite\Excel\Concerns\ToModel;
 class ActivityPeopleImport implements ToModel
 {
     protected $activity_id;
-   public function __construct($activity_id)
-   {
-    $this->activity_id = $activity_id;
-   }
+    
+
+    public function __construct($activity_id)
+    {
+        $this->activity_id = $activity_id;
+    }
     public function model(array $row)
     {
         return new activity_people([
             'student_id' => $row[0],
-            'email' => $row[1],
+            'name' => $row[1],
             'activity_id' => $this->activity_id,
             'status' => 'on'
         ]);
