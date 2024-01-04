@@ -97,18 +97,6 @@ function getDataofRound(url) {
       });
 }
 
-// getDataofRound('/api/activity/people-name-register-data/3/46/33')
-//   .then(data => {
-//     if (data) {
-//         displayPage(1, data);
-//         updatePagination(data);
-//     } else {
-//         console.error('Unable to fetch data. Please try again later.');
-//     }
-//   })
-//   .catch(error => {
-//     console.error('There was a problem:', error);
-//   });
 
 
 // Function to update pagination links
@@ -261,7 +249,7 @@ function showDetail(get){
   let btn_detail_iddate = btn_detail.dataset.iddate;
   let btn_detail_idactivity = btn_detail.dataset.idactivity;
   let bg_showDetail = document.getElementById('bg-showSolution');
-  console.log(btn_detail)
+  // console.log(btn_detail)
   bg_showDetail.classList.add('d-none')
   let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
   
