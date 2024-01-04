@@ -44,7 +44,7 @@
                 <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
                 <td data-label="ระยะเวลาการเช็ค">{{$row->activity_end_time}}</td>
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
-                <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}">ดูข้อมูล</a></td>
+                <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
             </tr>
             @endforeach
        
@@ -59,6 +59,8 @@
       <table id="dataTable" class="tableII text-center">
         <thead>
           <tr>
+            
+            <th style="width: 25%" class="">รหัสประจำตัว</th>
             <th style="width: 25%">ชื่อจริง</th>
             <th style="width: 25%">นามสกุล</th>
             <th style="width: 25%">เวลาที่เข้าเช็คชื่อ</th>

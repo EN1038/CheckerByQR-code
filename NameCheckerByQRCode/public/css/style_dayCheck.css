@@ -140,6 +140,10 @@
     display: none;
 }
 
+.tableII tr td:nth-child(6){
+    display: none;
+}
+
 @media (max-width:1000px){
     .table thead tr th {
         font-size: 15px;
@@ -248,4 +252,6 @@
     .tableII tr td:nth-child(5){
         display: none;
     }
+    
+    
 }
