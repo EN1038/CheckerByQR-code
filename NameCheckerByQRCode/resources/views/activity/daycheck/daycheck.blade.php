@@ -21,7 +21,7 @@
             <tr>
                 <td>
                   <?php
-                    if ($row->rounde_name === 'เช็คชื่อทั้งวัน') {
+                    if ($row->rounde_name === 'เช็คทั้งวัน') {
                       echo 'รูปแบบการเช็คชื่อทั้งวัน';
                     } else {
                       echo 'รูปแบบการเช็คชื่อเป็นรอบ';
@@ -32,7 +32,7 @@
                 <td data-label="ID">{{$row->id}}</td>
                 <td data-label="รูปแบบการเช็ค">
                   <?php
-                    if ($row->rounde_name === 'เช็คชื่อทั้งวัน') {
+                    if ($row->rounde_name === 'เช็คทั้งวัน') {
                       echo 'เช็คชื่อทั้งวัน';
                     } else {
                       echo 'เช็คชื่อเป็นรอบ';
