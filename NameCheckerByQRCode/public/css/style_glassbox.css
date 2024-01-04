@@ -21,3 +21,16 @@
     overflow: hidden;
     backdrop-filter: blur(4px);
   }
+
+
+  .glassmorphism-body-circle{
+    width: 100%;
+    height: auto;
+    border-top: 2px solid #ffffff75;
+    border-left: 2px solid #ffffff75;
+    box-shadow: 5px 5px 12px #00000035;
+    background: rgb(255, 255, 255, 0.5);
+    border-radius: 20%;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+  }

@@ -1,6 +1,6 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
-    <div class="container">
+    <div class="container my-4 mx-4">
         <h1>สร้างกิจกรรม</h1>
         <div class="row">
             <div class="col">
@@ -12,7 +12,7 @@
                     </div>
                     
                     <div class="mb-3 col-6">
-                        <button class="btn btn-success">สร้าง</button>
+                        <button class="btn btn-success rounded-5 "><i class="fa-solid fa-calendar-plus"></i> สร้าง</button>
                     </div>
                 </form>
             </div>
