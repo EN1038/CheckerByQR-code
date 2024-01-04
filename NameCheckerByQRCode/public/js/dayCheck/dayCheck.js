@@ -11,10 +11,11 @@ function displayPage(pageNumber, data) {
   
   for (let i = startIndex; i < endIndex && i < data.length; i++) {
       const row = tableBody.insertRow();
-      const namefsCell = row.insertCell(0);
-      const namelasCell = row.insertCell(1);
-      const dateCell = row.insertCell(2);
-      const statusCell = row.insertCell(3);
+      const titleResponsive = row.insertCell(0);
+      const namefsCell = row.insertCell(1);
+      const namelasCell = row.insertCell(2);
+      const dateCell = row.insertCell(3);
+      const statusCell = row.insertCell(4);
 
       let createdAt = new Date(data[i].created_at); // แปลงเวลาให้อยู่ในรูปแบบของ Object Date
       let hours = createdAt.getHours().toString().padStart(2, '0');
@@ -22,13 +23,57 @@ function displayPage(pageNumber, data) {
       let seconds = createdAt.getSeconds().toString().padStart(2, '0');
       let time = hours + ':' + minutes + ':' + seconds;
 
+      let checkstatus = data[i].status;
+      let statusNormal;
+      let statusLate;
+      let statusOn;
+
+      if(checkstatus === 'normal'){
+        statusNormal = 'เข้าเวลาปกติ';
+      }else if(checkstatus === 'late'){
+        statusLate = 'เข้าสาย';
+      }else if(checkstatus === 'on'){
+        statusOn = 'ชื่ออยู่ในระบบ';
+      }
+
+      if(statusNormal){
+        titleResponsive.textContent = 'สถานะ '+statusNormal;
+        titleResponsive.classList.add('text-success');
+      }else if(statusLate){
+        titleResponsive.textContent = 'สถานะ '+statusLate;
+        titleResponsive.classList.add('text-danger');
+      }else if(statusOn){
+        titleResponsive.textContent = 'สถานะ '+statusOn;
+        titleResponsive.classList.add('text-primary');
+      }else{
+        titleResponsive.textContent = 'Error';
+      }
+
+      
       namefsCell.textContent = data[i].name;
+      namefsCell.dataset.label = 'ชื่อจริง';
       namelasCell.textContent = data[i].last_name;
+      namelasCell.dataset.label = 'นามสกุล';
       dateCell.textContent = time;
-      statusCell.textContent = data[i].status;
+      dateCell.dataset.label = 'เวลาที่เข้าเช็ค';
+    //   statusCell.textContent = data[i].status;
+      if(statusNormal){
+        statusCell.textContent = statusNormal;
+        statusCell.classList.add('text-success');
+      }else if(statusLate){
+        statusCell.textContent = statusLate;
+        statusCell.classList.add('text-danger');
+      }else if(statusOn){
+        statusCell.textContent = statusOn;
+        statusCell.classList.add('text-primay');
+      }else{
+        statusCell.textContent = 'Error';
+      }
+      statusCell.dataset.label = 'สถานะ';
       // console.log(data[i].created_at);
   }
 }
+
 
 function getDataofRound(url) {
   return fetch(url)

@@ -239,7 +239,7 @@
         </div>
         {{-- End_body --}}
         {{-- Footer --}}
-        <footer class=" container-fluid py-3 border-top content-segment">
+        <footer class=" container-fluid py-3 content-segment">
             <div class="d-flex align-items-center justify-content-center small">
                 <div class="text-muted text-center">NSRU Nakhon Sawan Rajabhat University <br> Copyright &copy; 2023 CIT
                     NSRU All Rights Reserved</div>
