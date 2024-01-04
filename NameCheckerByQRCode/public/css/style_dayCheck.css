@@ -94,3 +94,158 @@
 .bg-showSolution{
     background-color: #77777750;
 }
+
+.table tr td:nth-child(1){
+    display: none;
+}
+
+.tableII{
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.tableII thead tr th{
+    border-bottom: 1px solid #20b670;
+    background-color: rgb(255, 255, 255, 0.5);
+    font-size: 17px;
+    font-weight: bold;
+    color: #22b671;
+    padding: 10px 5px 10px 5px;
+}
+
+.tableII tbody tr td {
+    border: 0px solid #000;
+    background-color: rgb(255, 255, 255, 0.5);
+    padding: 10px 5px 10px 5px;
+}
+
+.tableII tbody tr {
+    transition: all 0.5s;
+}
+
+.tableII tbody tr:hover {
+    background-color: #016b3a;
+    transform: scale(1.03);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.tableII tbody tr:hover td {
+    border: 0px solid #000;
+    color: #fff;
+}
+
+.tableII tr td:nth-child(1){
+    display: none;
+}
+
+@media (max-width:1000px){
+    .table thead tr th {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 700px){
+
+    .searchInput{
+        width: 70%;
+    }
+
+    .table thead{
+        display: none;
+    }
+
+    .table tbody tr td{
+        border-bottom: 1px solid #aaaaaa;
+        text-align: right;
+        position: relative;
+    }
+
+    .table tr,
+    .table td{
+        display: block;
+        width: 100%;
+        
+    }
+
+    .table tr{
+        margin-bottom: 1rem;
+    }
+
+    .table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        text-align: left;
+        padding-left: 0.7rem;
+    }
+
+    .table tr td:nth-child(1){
+        display: block;
+        background-color: #016b3a;
+        text-align: center;
+        color: #fff;
+    }
+
+
+    .table tr td:nth-child(2),
+    .table tr td:nth-child(3)
+    {
+        display: none;
+    }
+
+    .table tr:hover td:nth-child(1){
+        background-color: #1b1b1b;
+        font-weight: bold;
+    }
+    
+    
+
+
+    .tableII thead{
+        display: none;
+    }
+
+    .tableII tbody tr td{
+        border-bottom: 1px solid #aaaaaa;
+        text-align: right;
+        position: relative;
+    }
+
+    .tableII tr,
+    .tableII td{
+        display: block;
+        width: 100%;
+        
+    }
+
+    .tableII tr{
+        margin-bottom: 1rem;
+    }
+
+    .tableII td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        text-align: left;
+        padding-left: 0.7rem;
+    }
+
+    .tableII tr td:nth-child(1){
+        display: block;
+        background-color: #252525;
+        text-align: center;
+    }
+
+    .tableII tr:hover td:nth-child(1){
+        background-color: #ffffff;
+        font-weight: bold;
+    }
+
+    .tableII tr td:nth-child(5){
+        display: none;
+    }
+}

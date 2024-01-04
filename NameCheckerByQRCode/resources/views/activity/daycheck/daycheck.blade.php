@@ -1,7 +1,7 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
 <link rel="stylesheet" href="{{asset('css/style_dayCheck.css')}}">
-<div class="container px-5 pb-4 pt-3">
+<div class="px-2 px-lg-5 pb-4 pt-3">
   <div class="row row-cols-1">
     <div class="col my-4">
       <table class="table text-center">
@@ -19,13 +19,32 @@
             @foreach ($round_check_data as $array)
             @foreach ( $array as $row )
             <tr>
-                <td>{{$row->id}}</td>
-                <td>{{$row->rounde_name}}</td>
-                <td>{{$row->rounde_checker_time_start}}</td>
-                <td>{{$row->rounde_checker_time_expried}}</td>
-                <td>{{$row->activity_end_time}}</td>
+                <td>
+                  <?php
+                    if ($row->rounde_name === 'เช็คชื่อทั้งวัน') {
+                      echo 'รูปแบบการเช็คชื่อทั้งวัน';
+                    } else {
+                      echo 'รูปแบบการเช็คชื่อเป็นรอบ';
+                    }
+                  ?>
+                  {{-- {{$row->rounde_name}} --}}
+                </td>
+                <td data-label="ID">{{$row->id}}</td>
+                <td data-label="รูปแบบการเช็ค">
+                  <?php
+                    if ($row->rounde_name === 'เช็คชื่อทั้งวัน') {
+                      echo 'เช็คชื่อทั้งวัน';
+                    } else {
+                      echo 'เช็คชื่อเป็นรอบ';
+                    }
+                  ?>
+                  {{-- {{$row->rounde_name}} --}}
+                </td>
+                <td data-label="เวลาเริ่มการเช็ค">{{$row->rounde_checker_time_start}}</td>
+                <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
+                <td data-label="ระยะเวลาการเช็ค">{{$row->activity_end_time}}</td>
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
-                <td><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}">ดูข้อมูล</a></td>
+                <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}">ดูข้อมูล</a></td>
             </tr>
             @endforeach
        
@@ -37,7 +56,7 @@
       <div class="d-flex flex-row-reverse">
         <span class="icon-search ms-2">ค้นหา</span><input type="text" id="searchInput" class="searchInput" placeholder="ค้นหาชื่อ...">
       </div>
-      <table id="dataTable" class="table text-center">
+      <table id="dataTable" class="tableII text-center">
         <thead>
           <tr>
             <th style="width: 25%">ชื่อจริง</th>
