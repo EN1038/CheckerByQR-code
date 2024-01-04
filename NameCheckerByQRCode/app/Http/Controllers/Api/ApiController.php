@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\activity_people;
 use Illuminate\Http\Request;
 use App\Models\Agency;
 use App\Models\activity_people_register;
@@ -39,6 +40,11 @@ class ApiController extends Controller
       
 
       return response()->json($name_register_data);
+   }
+   public function getNameRegisterV2($activity_id){
+      $activity_people = activity_people::where('activity_id','=',$activity_id)->get();
+      
+      return response()->json($activity_people);
    }
 
 }
