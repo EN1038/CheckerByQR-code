@@ -35,20 +35,27 @@ class ApiController extends Controller
 
    public function getNameRegister($activity_id, $date_id, $round_id)
    {
-      $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+      // $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
       $name_register_data = activity_people_register::where('activity_id', '=', $activity_id)
       ->where('date_id', '=', $date_id)
       ->where('round_id', '=', $round_id)->get();
       
 
-      return response()->json(['name_register_data' => $name_register_data,'activity_setting',$activity_setting]);
+      return response()->json($name_register_data);
    }
    public function getNameRegisterV2($activity_id){
-      $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+      // $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
       
       $activity_people = activity_people::where('activity_id','=',$activity_id)->get();
       
-      return response()->json(['activity_people' => $activity_people,'activity_setting' => $activity_setting]);
+      return response()->json(  $activity_people);
    }
+
+   public function getActivitySetting($activity_id){
+      $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+      return response()->json($activity_setting);
+   }
+
+
 
 }
