@@ -8,14 +8,34 @@ function displayPage(pageNumber, data) {
   const endIndex = startIndex + itemsPerPage;
   const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
   tableBody.innerHTML = '';
+  const tableThead = document.getElementById('dataTable').getElementsByTagName('thead')[0];
+  let idUser_Cells = tableThead.getElementsByTagName('th')[0];
+  let lastName_Cells = tableThead.getElementsByTagName('th')[2];
+  let num_namelasCell;
+  let num_fsName;
+  let num_idUser;
+      if(idUser_Cells.classList.contains('d-none')){
+        console.log('idUser have d-none');
+        num_namelasCell = 2;
+        num_fsName = 1;
+        num_idUser = undefined;
+      }else if(lastName_Cells.classList.contains('d-none')){
+        console.log('lastName have d-none');
+        num_fsName = 2;
+        num_namelasCell = undefined;
+        num_idUser = 1;
+      }else{
+        console.log('error')
+      }
   
   for (let i = startIndex; i < endIndex && i < data.length; i++) {
       const row = tableBody.insertRow();
-      const titleResponsive = row.insertCell(0);
-      const namefsCell = row.insertCell(1);
-      const namelasCell = row.insertCell(2);
-      const dateCell = row.insertCell(3);
-      const statusCell = row.insertCell(4);
+      const titleResponsive = row.insertCell(0); //null
+      const idUserCell = row.insertCell(num_idUser); //1
+      const namefsCell = row.insertCell(num_fsName); //2
+      const namelasCell = row.insertCell(num_namelasCell); //' '
+      const dateCell = row.insertCell(3); //3
+      const statusCell = row.insertCell(4); //4
 
       let createdAt = new Date(data[i].created_at); // แปลงเวลาให้อยู่ในรูปแบบของ Object Date
       let hours = createdAt.getHours().toString().padStart(2, '0');
@@ -49,14 +69,17 @@ function displayPage(pageNumber, data) {
         titleResponsive.textContent = 'Error';
       }
 
-      
+      idUserCell.textContent = data[i].student_id;
+      idUserCell.dataset.label = 'รหัส';
       namefsCell.textContent = data[i].name;
       namefsCell.dataset.label = 'ชื่อจริง';
+
       namelasCell.textContent = data[i].last_name;
       namelasCell.dataset.label = 'นามสกุล';
+     
       dateCell.textContent = time;
       dateCell.dataset.label = 'เวลาที่เข้าเช็ค';
-    //   statusCell.textContent = data[i].status;
+      statusCell.textContent = data[i].status;
       if(statusNormal){
         statusCell.textContent = statusNormal;
         statusCell.classList.add('text-success');
@@ -97,18 +120,6 @@ function getDataofRound(url) {
       });
 }
 
-// getDataofRound('/api/activity/people-name-register-data/3/46/33')
-//   .then(data => {
-//     if (data) {
-//         displayPage(1, data);
-//         updatePagination(data);
-//     } else {
-//         console.error('Unable to fetch data. Please try again later.');
-//     }
-//   })
-//   .catch(error => {
-//     console.error('There was a problem:', error);
-//   });
 
 
 // Function to update pagination links
@@ -261,11 +272,66 @@ function showDetail(get){
   let btn_detail_iddate = btn_detail.dataset.iddate;
   let btn_detail_idactivity = btn_detail.dataset.idactivity;
   let bg_showDetail = document.getElementById('bg-showSolution');
-  console.log(btn_detail)
+  // console.log(btn_detail_idactivity)
   bg_showDetail.classList.add('d-none')
-  let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
+
+  fetch('/api/activity-setting/'+btn_detail_idactivity)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // แปลง response เป็น JSON
+  })
+  .then(data => {
+    // ดำเนินการกับข้อมูลที่ได้รับ
+    console.log(data);
+
+    if(data.list_of_name_mode_id === '1'){
+      // console.log('/api/activity-people/v2')
+
+          fetch('/api/activity-people/v2/'+btn_detail_idactivity)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json(); // แปลง response เป็น JSON
+          })
+          .then(data => {
+            if (data) {
+              let table = document.getElementById('dataTable');
+              let thead = table.getElementsByTagName('thead')[0]; 
+              let idUser_Cells = thead.getElementsByTagName('th')[0];
+              let lastName_Cells = thead.getElementsByTagName('th')[2];
+              idUser_Cells.classList.remove('d-none');
+              lastName_Cells.classList.add('d-none');
+                displayPage(1, data);
+                updatePagination(data);
+            } else {
+                console.error('Unable to fetch data. Please try again later.');
+            }
+          })
+          .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+          });
+
+    }else if(data.list_of_name_mode_id === '2'){
+      let table = document.getElementById('dataTable');
+              let thead = table.getElementsByTagName('thead')[0]; 
+              let idUser_Cells = thead.getElementsByTagName('th')[0];
+              let lastName_Cells = thead.getElementsByTagName('th')[2];
+              idUser_Cells.classList.add('d-none');
+              lastName_Cells.classList.remove('d-none');
+      let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
+      getDataofRound(textApi);
+    }
+  })
+  .catch(error => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });
+
+
+
   
-  getDataofRound(textApi);
 }
 
 // function showAndHide(){
@@ -276,6 +342,7 @@ function showDetail(get){
 //     divData.classList.add('d-none');
 //   }
 // }
+
 
 
 
