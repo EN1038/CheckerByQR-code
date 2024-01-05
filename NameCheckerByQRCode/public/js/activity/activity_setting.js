@@ -1141,14 +1141,14 @@ function showResult(get_Selects) {
     get_idDivSpace.appendChild(Box);
 
     let roundStart_time = document.createElement('input');
-    roundStart_time.classList.add('d-none');
+    // roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
     roundStart_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
-    roundEnd_time.classList.add('d-none');
+    // roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
     roundEnd_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_end]`);
@@ -1157,7 +1157,7 @@ function showResult(get_Selects) {
     console.log(get_Selects.id);
     if (get_Selects.id === 'dynamicSelect10' || get_Selects.id === 'dynamicSelect20' || get_Selects.id === 'dynamicSelect30' || get_Selects.id === 'dynamicSelect40' || get_Selects.id === 'dynamicSelect50') {
         let roundDuration_time = document.createElement('input');
-        roundDuration_time.classList.add('d-none');
+        // roundDuration_time.classList.add('d-none');
         roundDuration_time.value = get_valueTimeEnd;
         roundDuration_time.id = 'roundDuration_timx' + getIdselects;
         roundDuration_time.name = 'roundDuration_time';
@@ -1167,7 +1167,7 @@ function showResult(get_Selects) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
             let roundDuration_time = document.createElement('input');
-            roundDuration_time.classList.add('d-none');
+            // roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
             roundDuration_time.name = 'roundDuration_time';
@@ -1176,7 +1176,7 @@ function showResult(get_Selects) {
     } else {
         let get_dynamicSelects = document.getElementById('dynamicSelect' + (intgetIdselects - 1));
         let roundDuration_times = document.createElement('input');
-        roundDuration_times.classList.add('d-none');
+        // roundDuration_times.classList.add('d-none');
         roundDuration_times.value = get_dynamicSelects.value;
         roundDuration_times.id = 'roundDuration_timx' + getIdselects;
         roundDuration_times.name = 'roundDuration_times';
@@ -1186,7 +1186,7 @@ function showResult(get_Selects) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
             let roundDuration_time = document.createElement('input');
-            roundDuration_time.classList.add('d-none');
+            // roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
             roundDuration_time.name = 'roundDuration_time';
