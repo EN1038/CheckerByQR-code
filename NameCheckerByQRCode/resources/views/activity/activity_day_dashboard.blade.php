@@ -52,6 +52,7 @@
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
                     <th scope="col">ดูรอบเช็คชื่อ</th>
+                    <th scope="col">action</th>
                     
                 </tr>
             </thead>
@@ -67,7 +68,11 @@
                             <td data-label="เวลาเริ่ม">{{ $row->time_start }}</td>
                             <td data-label="เวลาจบ">{{ $row->time_expried }}</td>
                             <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
-                            
+                            <td data-label="action">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="{{'#edit_btn_'.$row->id}}">
+                                แก้ไข
+                              </button>
+                            </td>
                         </tr>
                    
                 @endforeach
@@ -75,7 +80,7 @@
 
             </tbody>
         </table>
-
+       
           
     </div>
 
@@ -105,3 +110,27 @@
       </div>
     </div>
   </div>
+
+  {{-- @foreach ($activity_day_array as $row )
+  <div class="modal fade" id="{{'edit_btn_'.$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="{{'edit_btn_'.$row->id}}">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div id="app">
+                <edit-day id="{{'edit_btn_'.$row->id}}"></edit-day>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach --}}
+
+  

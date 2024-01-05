@@ -57,7 +57,7 @@ Route::post('activity-setting/{id}', [ActivityController::class, 'ActivitySettin
 Route::get('activity/day-chcker-list/dashboard/{id}', [ActivityController::class, 'showDayCheckerList'])->name('show_day_checker_list');
 //activity-form
 // Route::get('activity-make-form/{id}',[ActivityController::class,'showActivityMakeForm'])->name('activity-make-form');
-
+Route::get('activity-edit/{activity_id}',[ActivityController::class,'showEditActivityDashboard'])->name('show_edit_activity_dashboard');
 
 ///QR
 Route::get('activity/form-checker/{activity_id}', [ActivityController::class, 'returnCheckerForm'])->name('return_check_form');

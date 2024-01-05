@@ -56,6 +56,12 @@ class ApiController extends Controller
       return response()->json($activity_setting);
    }
 
+   public function getDayCheckerData($activity_id){
+      
+   }
+
+   
+
 
 
 }

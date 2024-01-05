@@ -25,3 +25,4 @@ Route::get('major-by-id/{id}', [ApiController::class, 'getmajorById'])->name('ge
 Route::get('activity/people-name-register-data/{activity_id}/{date_id}/{round_id}', [ApiController::class, 'getNameRegister'])->name('get_peopl_register_data');
 Route::get('activity-people/v2/{activity_id}',[ApiController::class,'getNameRegisterV2'])->name('name_register_v2');
 Route::get('activity-setting/{activity_id}',[ApiController::class,'getActivitySetting'])->name('activity_setting_api');
+Route::get('activity_daychecker/{activity_id}',[ApiController::class,'getDayCheckerData'])->name('day_checker_api');

@@ -381,4 +381,8 @@ class ActivityController extends Controller
     
 }
 
+public function showEditActivityDashboard($activity_id){
+    return view('activity.activity_crud.show_edit_activity');
+}
+
 }
