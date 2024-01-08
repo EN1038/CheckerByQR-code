@@ -1165,7 +1165,7 @@ function showResult(get_Selects) {
         roundDuration_time.name = 'roundDuration_time';
         get_idDivSpace.appendChild(roundDuration_time);
         let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
-        console.log(get_roundDuration);
+        // console.log(get_roundDuration);
         if (get_roundDuration) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
