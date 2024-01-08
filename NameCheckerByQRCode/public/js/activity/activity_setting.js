@@ -874,7 +874,7 @@ function createSelectOptions(event) {
         div_row.id = 'div_row' + x;
 
         var label = document.createElement('label');
-        label.setAttribute('class', 'col-12 col-lg-2 form-label fw-bold text-green fs-5');
+        label.setAttribute('class', 'col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5');
         label.setAttribute('for', 'dynamicSelect' + x);
         label.id = 'dynamicLabel' + x;
         label.textContent = 'การเช็คชื่อรอบที่ ' + (x + 1);
@@ -1134,50 +1134,73 @@ function showResult(get_Selects) {
 
 
     let Box = document.createElement('input');
-    Box.setAttribute('class', ' my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5')
+    Box.setAttribute('class', ' my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5 text-lg-center')
     Box.disabled = true;
     Box.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + newTime + ' - ' + duration_Time;
     Box.id = 'Boxinput' + getIdselects;
     get_idDivSpace.appendChild(Box);
 
     let roundStart_time = document.createElement('input');
-    // roundStart_time.classList.add('d-none');
+    roundStart_time.classList.add('d-none');
     roundStart_time.value = newTime;
     roundStart_time.id = 'roundStart_timex' + getIdselects;
     roundStart_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_start]`);
     get_idDivSpace.appendChild(roundStart_time);
 
     let roundEnd_time = document.createElement('input');
-    // roundEnd_time.classList.add('d-none');
+    roundEnd_time.classList.add('d-none');
     roundEnd_time.value = duration_Time;
     roundEnd_time.id = 'roundEnd_timex' + getIdselects;
     roundEnd_time.setAttribute('name', `activity[date_add][date_input${counter-1}][round][round${lastDigit}][round_end]`);
     get_idDivSpace.appendChild(roundEnd_time);
 
-    console.log(get_Selects.id);
+    // เวลาจบของแต่ละรอบไว้เช็คคนมาสายของแต่ละรอบ
+
+    // console.log(get_Selects.id);
     if (get_Selects.id === 'dynamicSelect10' || get_Selects.id === 'dynamicSelect20' || get_Selects.id === 'dynamicSelect30' || get_Selects.id === 'dynamicSelect40' || get_Selects.id === 'dynamicSelect50') {
         let roundDuration_time = document.createElement('input');
-        // roundDuration_time.classList.add('d-none');
+        roundDuration_time.classList.add('d-none');
         roundDuration_time.value = get_valueTimeEnd;
         roundDuration_time.id = 'roundDuration_timx' + getIdselects;
         roundDuration_time.name = 'roundDuration_time';
         get_idDivSpace.appendChild(roundDuration_time);
         let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
+        // console.log(get_roundDuration);
         if (get_roundDuration) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
             let roundDuration_time = document.createElement('input');
-            // roundDuration_time.classList.add('d-none');
+            roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
             roundDuration_time.name = 'roundDuration_time';
             get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
         }
     } else {
-        let get_dynamicSelects = document.getElementById('dynamicSelect' + (intgetIdselects - 1));
+        let get_roundDuration_timx = document.getElementById('roundDuration_timx' + (intgetIdselects - 1));
+        
+        let get_roundStart_timex = document.getElementById('roundStart_timex' + (intgetIdselects));
         let roundDuration_times = document.createElement('input');
-        // roundDuration_times.classList.add('d-none');
-        roundDuration_times.value = get_dynamicSelects.value;
+
+        let startTimeString = get_roundStart_timex.value; // รับค่าเวลาเป็น string
+let [hours, minutes] = startTimeString.split(':'); // แยกชั่วโมงและนาที
+
+// แปลงเป็นตัวเลข
+hours = parseInt(hours, 10);
+minutes = parseInt(minutes, 10);
+
+// สร้าง Date object จากวันที่ปัจจุบันและเวลาที่ได้
+// คำนวณเวลาหลังจากลบ 1 นาที
+let totalMinutes = hours * 60 + minutes - 1; // คำนวณเป็นนาทีทั้งหมดแล้วลบ 1 นาที
+let newHours = Math.floor(totalMinutes / 60); // หาชั่วโมงใหม่
+let newMinutes = totalMinutes % 60; // หานาทีใหม่
+// แสดงเวลาหลังจากลบ 1 นาที
+// console.log("เวลาหลังจากลบ 1 นาที:", `${newHours}:${newMinutes.toString().padStart(2, '0')}`);
+
+let timeminus1min = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
+        get_roundDuration_timx.value = timeminus1min;
+        roundDuration_times.classList.add('d-none');
+        roundDuration_times.value = get_valueTimeEnd;
         roundDuration_times.id = 'roundDuration_timx' + getIdselects;
         roundDuration_times.name = 'roundDuration_times';
         get_idDivSpace.appendChild(roundDuration_times);
@@ -1186,7 +1209,7 @@ function showResult(get_Selects) {
             get_roundDuration.remove();
             let get_idDivSpaceofget_roundDuration = document.getElementById('divSpace' + (intgetIdselects + 1));
             let roundDuration_time = document.createElement('input');
-            // roundDuration_time.classList.add('d-none');
+            roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
             roundDuration_time.name = 'roundDuration_time';
@@ -1227,15 +1250,28 @@ function updateOptionsAvailability() {
     let allSelects = divShowTimeToUser.querySelectorAll('select');
 
     allSelects.forEach(select => {
-        const selectedOption = select.value;
+        const selectedOption = parseInt(select.value);
 
-        // ปรับปรุง options ในทุกช่องตาม option ที่ถูกเลือก
         const options = select.querySelectorAll('option');
         options.forEach(option => {
-            option.disabled = selectedOptions[option.value];
+            const optionValue = parseInt(option.value);
+            let disableOption = false;
+
+            allSelects.forEach(otherSelect => {
+                if (otherSelect !== select) {
+                    const otherSelectedOption = parseInt(otherSelect.value);
+                    if (optionValue < otherSelectedOption) {
+                        disableOption = true;
+                    }
+                }
+            });
+
+            option.disabled = disableOption || (optionValue < selectedOption);
         });
     });
 }
+
+
 
 
 

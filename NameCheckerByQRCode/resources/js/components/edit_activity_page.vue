@@ -1,15 +1,25 @@
 <template>
-   <div>aaa</div>
+   <div>
+    <button @click="test()">Count : {{ count }}</button>
+   </div>
 </template>
 
 <script>
 import axios from 'axios';
     export default {
+        data() {
+    return {
+      count: 0
+    };
+  },
         mounted() {
-            console.log('Component mounted.');
+            this.test();
         },
         methods: {
-        //function
+            test(){
+                
+                this.count++;
+            }
         },
     }
     
