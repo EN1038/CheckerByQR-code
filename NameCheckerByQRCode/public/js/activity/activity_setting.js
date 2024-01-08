@@ -1162,7 +1162,7 @@ function showResult(get_Selects) {
         roundDuration_time.classList.add('d-none');
         roundDuration_time.value = get_valueTimeEnd;
         roundDuration_time.id = 'roundDuration_timx' + getIdselects;
-        roundDuration_time.name = 'roundDuration_time';
+        roundDuration_time.name = `activity[date_add][date_input${counter-1}][round][round${lastDigit}][duration_round_end]`;
         get_idDivSpace.appendChild(roundDuration_time);
         let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
         // console.log(get_roundDuration);
@@ -1173,7 +1173,7 @@ function showResult(get_Selects) {
             roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
-            roundDuration_time.name = 'roundDuration_time';
+            roundDuration_time.name = `activity[date_add][date_input${counter-1}][round][round${lastDigit}][duration_round_end]`;
             get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
         }
     } else {
@@ -1202,7 +1202,7 @@ let timeminus1min = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
         roundDuration_times.classList.add('d-none');
         roundDuration_times.value = get_valueTimeEnd;
         roundDuration_times.id = 'roundDuration_timx' + getIdselects;
-        roundDuration_times.name = 'roundDuration_times';
+        roundDuration_times.name =`activity[date_add][date_input${counter-1}][round][round${lastDigit}][duration_round_end]`;
         get_idDivSpace.appendChild(roundDuration_times);
         let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
         if (get_roundDuration) {
@@ -1212,7 +1212,7 @@ let timeminus1min = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
             roundDuration_time.classList.add('d-none');
             roundDuration_time.value = get_Selects.value;
             roundDuration_time.id = 'roundDuration_timx' + (intgetIdselects + 1);
-            roundDuration_time.name = 'roundDuration_time';
+            roundDuration_time.name = `activity[date_add][date_input${counter-1}][round][round${lastDigit}][duration_round_end]`;
             get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
         }
     }
