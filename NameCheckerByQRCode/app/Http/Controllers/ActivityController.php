@@ -292,13 +292,9 @@ class ActivityController extends Controller
                     // dd($date_id);
                     $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->where('activity_id', '=', $activity_id)
                         ->where('rounde_checker_time_start', '<=', $current_time)
-                        ->where('rounde_checker_time_expried', '>=', $current_time)->first();
+                        ->where('round_end_time', '>=', $current_time)->first();
                     // ->orwhere('activity_end_time', '>=', $current_time)->where('date_id', '=', $date_id)->first();
-                    if (!empty($select_round_checker)) {
-                        $checker_status = 'normal';
-                    } else {
-                        $checker_status = 'late';
-                    }
+                   dd($select_round_checker);
                     // if ($current_time > $select_round_checker->rounde_checker_time_expried) {
                     //     $checker_status = 'late';
                     // } else {
