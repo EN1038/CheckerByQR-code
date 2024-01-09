@@ -10,6 +10,7 @@ use App\Models\activity_setting;
 use Illuminate\Http\Request;
 use App\Models\Agency;
 use App\Models\activity_people_register;
+use App\Models\activity_rounde_checker;
 use App\Models\Major;
 
 class ApiController extends Controller
@@ -62,10 +63,11 @@ class ApiController extends Controller
 
       return response()->json($activity_days);
    }
-   // public function getActivityAllSettingForEdit($activity_id){
-   //    $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
-   //    $
-   // }
+   public function getRoundSetting($activity_id,$date_id){
+      $round_check = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->get();
+      return response()->json($round_check);
+   }
+   
 
    
 
