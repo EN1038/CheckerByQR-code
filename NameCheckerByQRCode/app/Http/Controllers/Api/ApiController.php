@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\activity_day_maker;
 use App\Models\activity_people;
 use App\Models\activity_setting;
 use Illuminate\Http\Request;
@@ -57,8 +58,14 @@ class ApiController extends Controller
    }
 
    public function getDayCheckerData($activity_id){
-      
+      $activity_days = activity_day_maker::where('activity_id','=',$activity_id)->first();
+
+      return response()->json($activity_days);
    }
+   // public function getActivityAllSettingForEdit($activity_id){
+   //    $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+   //    $
+   // }
 
    
 

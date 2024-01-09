@@ -16,5 +16,7 @@ class activity_people_register extends Model
         'status',
         'date_id',
         'round_id',
+        'people_id',
+        'ip_address'
     ];
 }

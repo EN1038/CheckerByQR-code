@@ -267,12 +267,25 @@ class ActivityController extends Controller
     {
 
         $activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
-
-        if ($activity_setting->list_of_name_mode_id == "2") {
-            $activity_data = Activity::where('id', '=', $activity_id)->pluck('activity_name')->first();
-            return view('activity.QRcode.input_name_form', compact('activity_data'));
+        $current_date = Carbon::now()->format('Y-m-d');
+        $current_time = Carbon::now()->format('H:i:s');
+        if($activity_setting->list_of_name_mode_id == "2") {
+           
+            $select_day = activity_day_maker::where('activity_id', '=', $activity_id)->where('date', '=', $current_date)->first();
+            if($select_day and $current_time < $select_day-> time_expried){
+                $activity_data = activity::where('id','=',$activity_id)->pluck('activity_name')->first();
+                return view('activity.QRcode.input_name_form', compact('activity_data'));
+            }else{
+                return view('activity.alert_view.time_out_alert');
+            }  
         } elseif ($activity_setting->list_of_name_mode_id == "1") {
-            return view('activity.QRcode.input_name_form_v2');
+            $select_day = activity_day_maker::where('activity_id', '=', $activity_id)->where('date', '=', $current_date)->first();
+            if($select_day and $current_time < $select_day-> time_expried){
+                
+                return view('activity.QRcode.input_name_form_v2');
+            }else{
+                return view('activity.alert_view.time_out_alert');
+            }
         } else {
             return view('activity.daycheck.RoundCheck.nsru_core_login');
         }
@@ -280,7 +293,7 @@ class ActivityController extends Controller
     public function inputFormCheckerPost(Request $request, $activity_id)
     {
 
-        // dd($request->all());
+       
         $select_activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
 
         if ($select_activity_setting->people_side_mode_id == 2 and $select_activity_setting->list_of_name_mode_id == 2) {
@@ -309,15 +322,21 @@ class ActivityController extends Controller
                     
                 }
 
+                $check_ip = activity_people_register::where('ip_address','=',$request->ip())->first();
+                if($check_ip){
+                    return view('activity.alert_view.recheck_alert');
+                }else{
+                    $input_name_checker = activity_people_register::create([
+                        'name' => $request->name,
+                        'last_name' => $request->last_name,
+                        'activity_id' => $activity_id,
+                        'status' => $checker_status,
+                        'date_id' => $date_id,
+                        'round_id' => $select_round_checker->id,
+                        'ip_address' => $request->ip(),
+                    ]);
+                }
                 
-                $input_name_checker = activity_people_register::create([
-                    'name' => $request->name,
-                    'last_name' => $request->last_name,
-                    'activity_id' => $activity_id,
-                    'status' => $checker_status,
-                    'date_id' => $date_id,
-                    'round_id' => $select_round_checker->id,
-                ]);
                 if ($input_name_checker) {
                     Alert::success('เช็คชื่อสำเร็จ!');
                     return view('activity.alert_view.success_view');
@@ -357,21 +376,33 @@ class ActivityController extends Controller
                 $select_activity_people = activity_people::where('activity_id', '=', $activity_id)
                     ->where('student_id', '=', $request->student_id)->first();
                 if ($select_activity_people) {
-                        $insert_people_to_register_table = activity_people_register::create([
-                            'people' => $select_activity_people->student_id,
-                            'name' =>  $request->first_name,
-                            'last_name' =>  $request->last_name,
-                            'activiy_id' => $activity_id,
-                            'date_id' => $select_day->id,
-                            'round_id' => $select_round_checker->id,
-                            'status' => $checker_status
-                        ]);
-                    if ($insert_people_to_register_table) {
+                    $check_ip = activity_people_register::where('ip_address','=',$request->ip())->first();
+                    if($check_ip){
+                        return view('activity.alert_view.success_view');
+                    }else{
+                        $check_ip = activity_people_register::where('ip_address','=',$request->ip())->first();
+                         if($check_ip){
+                        return view('activity.alert_view.recheck_alert');
+                        }else{
+                         $input_name_checker = activity_people_register::create([
+                        'name' => $request->name,
+                        'last_name' => $request->last_name,
+                        'activity_id' => $activity_id,
+                        'status' => $checker_status,
+                        'date_id' => $date_id,
+                        'round_id' => $select_round_checker->id,
+                        'ip_address' => $request->ip(),
+                    ]);
+                    if ($input_name_checker) {
                         Alert::success('เช็คชื่อสำเร็จ!');
                         return view('activity.alert_view.success_view');
                     } else {
                         return view('activity.alert_view.no_success');
                     }
+                }
+                        
+                    }
+                    
                 } else {
                     return view('activity.alert_view.no_success');
                 }
