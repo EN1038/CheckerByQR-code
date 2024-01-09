@@ -39,27 +39,30 @@ class ApiController extends Controller
    {
       // $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
       $name_register_data = activity_people_register::where('activity_id', '=', $activity_id)
-      ->where('date_id', '=', $date_id)
-      ->where('round_id', '=', $round_id)->get();
-      
+         ->where('date_id', '=', $date_id)
+         ->where('round_id', '=', $round_id)->get();
+
 
       return response()->json($name_register_data);
    }
-   public function getNameRegisterV2($activity_id){
+   public function getNameRegisterV2($activity_id)
+   {
       // $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
-      
-      $activity_people = activity_people::where('activity_id','=',$activity_id)->get();
-      
-      return response()->json(  $activity_people);
+
+      $activity_people = activity_people::where('activity_id', '=', $activity_id)->get();
+
+      return response()->json($activity_people);
    }
 
-   public function getActivitySetting($activity_id){
-      $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
+   public function getActivitySetting($activity_id)
+   {
+      $activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
       return response()->json($activity_setting);
    }
 
-   public function getDayCheckerData($activity_id){
-      $activity_days = activity_day_maker::where('activity_id','=',$activity_id)->first();
+   public function getDayCheckerData($activity_id)
+   {
+      $activity_days = activity_day_maker::where('activity_id', '=', $activity_id)->get();
 
       return response()->json($activity_days);
    }
@@ -69,7 +72,7 @@ class ApiController extends Controller
    }
    
 
-   
+
 
 
 

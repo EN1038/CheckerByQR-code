@@ -1,8 +1,12 @@
 
 
 <template>
-    <button v-on:click='clickMe'> click</button>
-    <h1>{{ activity_setting }}</h1>
+    <h5>{{ idActivity_setting = activity_setting.id }}</h5>
+    <div v-for="day in activity_days_setting" :key="day">
+        <span>{{ idDays = day.id }}</span>
+    </div>
+    {{ idActivity_setting }}
+    {{ idDays }}
 </template>
 
 <script>
@@ -14,13 +18,16 @@ export default {
 
             count: 0,
             activity_setting: [],
-            activity_days_setting: [],
+            activity_days_setting: [{}],
+            idActivity_setting: 0,
+            idDays: 0,
         };
     },
     mounted() {
         this.clickMe(),
-            this.getActivitySetting(),
-            this.getActivityDays()
+        this.getActivitySetting()
+
+
     },
     methods: {
         clickMe() {
@@ -31,15 +38,21 @@ export default {
                 this.activity_setting = res.data;
                 // console.log(this.activity_setting);
 
-            },);
-        },
-        getActivityDays() {
-            axios.get('http://127.0.0.1:8000/api/activity_daychecker/' + this.activity_id).then((res) => {
-                this.activity_setting = res.data;
-                console.log(this.activity_setting);
+            },)
 
-            },);
+            axios.get('http://127.0.0.1:8000/api/activity_daychecker/' + this.activity_id).then((res) => {
+                this.activity_days_setting = res.data;
+                console.log(this.activity_days_setting);
+
+                axios.get('http://127.0.0.1:8000/api/activity/round-checker-api/' + this.activity_id+'/'+this.idDays).then((res) => {
+                this.activity_days_setting = res.data;
+                console.log(this.activity_days_setting);
+
+            },)
+            },)
+            
         },
+
 
 
     },
