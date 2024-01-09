@@ -155,7 +155,8 @@ function addInput() {
     date_input.setAttribute('type', 'text');
     date_input.setAttribute('name', `activity[date_add][date_input${counter}][date]`);
     date_input.setAttribute('id', 'date_input' + counter);
-    date_input.setAttribute('placeholder', 'โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น')
+    date_input.setAttribute('placeholder', 'โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น');
+    date_input.autocomplete = 'off';
     date_input.onchange = getDate;
     date_activity_div.appendChild(date_input);
 
