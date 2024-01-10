@@ -16,4 +16,10 @@ class activity_day_maker extends Model
         'time_expried',
         'activity_id'
     ];
+
+
+    public function Activity()
+    {
+        return $this->hasOne(Activity::class,'id','activity_id');
+    }
 }
