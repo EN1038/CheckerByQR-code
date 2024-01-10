@@ -62,7 +62,7 @@ class ApiController extends Controller
 
    public function getDayCheckerData($activity_id)
    {
-      $activity_days = activity_day_maker::where('activity_id', '=', $activity_id)->with('Activity')->get();
+      $activity_days = activity_day_maker::where('activity_id', '=', $activity_id)->get();
 
       return response()->json($activity_days);
    }
