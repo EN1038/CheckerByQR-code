@@ -27,3 +27,4 @@ Route::get('activity-people/v2/{activity_id}',[ApiController::class,'getNameRegi
 Route::get('activity-setting/{activity_id}',[ApiController::class,'getActivitySetting'])->name('activity_setting_api');
 Route::get('activity_daychecker/{activity_id}',[ApiController::class,'getDayCheckerData'])->name('day_checker_api');
 Route::get('activity/round-checker-api/{activity_id}/{date_id}',[ApiController::class,'getRoundSetting'])->name('activity_round_cheker_api');
+Route::get('activity-data/{activity_id}',[ApiController::class,'activityData'])->name('activity_data');

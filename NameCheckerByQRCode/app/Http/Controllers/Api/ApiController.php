@@ -70,6 +70,11 @@ class ApiController extends Controller
       $round_check = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->get();
       return response()->json($round_check);
    }
+
+   public function activityData($activity_data){
+      $activity_data = Activity::where('id','=',$activity_data)->first();
+      return response()->json($activity_data);
+   }
    
 
 
