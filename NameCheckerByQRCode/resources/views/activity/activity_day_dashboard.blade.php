@@ -111,7 +111,7 @@
     </div>
   </div>
 
-  {{-- @foreach ($activity_day_array as $row )
+  @foreach ($activity_day_array as $row )
   <div class="modal fade" id="{{'edit_btn_'.$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -131,6 +131,6 @@
       </div>
     </div>
   </div>
-  @endforeach --}}
+  @endforeach
 
   
