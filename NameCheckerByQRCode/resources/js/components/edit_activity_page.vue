@@ -283,16 +283,17 @@ export default {
     },
 
     auto_click_changModeCheckName(check_mode) {
-        console.log('auto : '+check_mode);
-                if(check_mode === '1') {
-                        
-                        
-                }else if(check_mode === '2') {
-                       
-                       
-                }else {
-                    console.log('error');
+            if(check_mode){
+                if(check_mode === '1'){
+
+                }else if(check_mode === '2'){
+
+                }else{
+                    console.log('error, function auto_click_changModeCheckName ,Value no 1 and 2 ')
                 }
+            }else{
+                console.log('error, function auto_click_changModeCheckName,No have');
+            }
         },
 
     },

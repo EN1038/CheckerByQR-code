@@ -7,21 +7,6 @@
     <div class="d-flex flex-column">
         <p class="fs-4 fs-sm-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
     <div class="col d-flex px-5 detailSetting">
-        {{-- <div class="col text-start ">
-        @if($activity_setting->PeopleSideMode->id == 2)
-        <p>อณุญาติการเข้าใช้งานจาก : <span>บุคคลภายนอก</span></p>
-        @elseif ($activity_setting->PeopleSideMode->id == 1)
-        <p>อณุญาติการเข้าใช้งานจาก : <span>บุคคลภายใน</span></p>
-        @endif
-        </div>
-        <div class="col text-start">
-        @if ($activity_setting->ListOfNameMode->id == 2)
-        <p>ระบบการเช็คชื่อแบบ : <span>ไม่มีรายชื่อ</span></p>
-        @elseif ($activity_setting->ListOfNameMode->id == 1)
-        <p>ระบบการเช็คชื่อแบบ : <span>มีรายชื่อ</span></p>
-        @endif
-        </div> --}}
-       
     </div>
     <div class="col">
     
