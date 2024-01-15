@@ -89,11 +89,11 @@
 
 
 <script src="{{ asset('js/activity/activity_day_dashboard.js') }}"></script>
-@endsection
+{{-- @endsection
 
 @foreach ( as )
   
-@endforeach
+@endforeach --}}
 
 @foreach ($activity_day_array as $row )
 <div class="modal fade" id="{{'edit_btn_'.$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
