@@ -285,7 +285,7 @@ export default {
     auto_click_changModeCheckName(check_mode) {
             if(check_mode){
                 if(check_mode === '1'){
-
+                    
                 }else if(check_mode === '2'){
 
                 }else{
