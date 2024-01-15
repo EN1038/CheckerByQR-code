@@ -93,7 +93,8 @@ class ActivityController extends Controller
                     'time_start' => $time_start_format,
                     'time_expried' => $time_expried_format,
                     'activity_id' => $activity_id,
-                    'status' => 'on'
+                    'status' => 'on',
+                    'round_mode' => $items['round_setting']
                 ]);
                 if ($items['round_setting'] == '1') {
 
