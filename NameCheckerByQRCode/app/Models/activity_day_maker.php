@@ -15,7 +15,8 @@ class activity_day_maker extends Model
         'time_start',
         'time_expried',
         'activity_id',
-        'status'
+        'status',
+        'round_mode'
     ];
 
 
