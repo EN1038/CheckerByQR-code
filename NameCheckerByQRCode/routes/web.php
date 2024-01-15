@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DateController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\RoundController;
 use App\Models\Activity;
 
 
@@ -58,7 +60,14 @@ Route::get('activity/day-chcker-list/dashboard/{id}', [ActivityController::class
 //activity-form
 // Route::get('activity-make-form/{id}',[ActivityController::class,'showActivityMakeForm'])->name('activity-make-form');
 Route::get('activity-edit/{activity_id}',[ActivityController::class,'showEditActivityDashboard'])->name('show_edit_activity_dashboard');
+///activity_day_edit///
+Route::post('activity/edit/date/{date_id}',[ActivityController::class,'activityEditDayPost'])->name('activity_edit_day_post');
 
+///date//
+Route::get('activity/date/delete/{date_id}',[DateController::class,'dateDelete'])->name('date_delete');
+
+//round//
+Route::post('activity/date/round/edit/{round_id}',[RoundController::class,'editRound'])->name('round_edit');
 ///QR
 Route::get('activity/form-checker/{activity_id}', [ActivityController::class, 'returnCheckerForm'])->name('return_check_form');
 Route::post('activity/form-checker-post/{activity_id}', [ActivityController::class, 'inputFormCheckerPost'])->name('input_form_checker_post');

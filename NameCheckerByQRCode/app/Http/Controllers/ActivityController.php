@@ -92,7 +92,8 @@ class ActivityController extends Controller
                     'date' => $date_format,
                     'time_start' => $time_start_format,
                     'time_expried' => $time_expried_format,
-                    'activity_id' => $activity_id
+                    'activity_id' => $activity_id,
+                    'status' => 'on'
                 ]);
                 if ($items['round_setting'] == '1') {
 
@@ -103,6 +104,7 @@ class ActivityController extends Controller
                         'date_id' =>  $activity_date_maker->id,
                         'activity_id' => $activity_id,
                         'round_end_time' => $time_expried_format,
+                        'status' => 'on',
 
                     ]);
                     $add_round_setting_mode = activity_setting::where('activity_id', '=', $activity_id)->update([
@@ -125,6 +127,7 @@ class ActivityController extends Controller
                             'round_end_time' => $round['duration_round_end'],
                             'date_id' => $activity_date_maker->id,
                             'activity_id' => $activity_id,
+                            'status' => 'on',
                         ]);
                         $activity_round_checker_relate = rounde_checker_relate::create([
                             'activity_id' => $activity_id,
@@ -167,7 +170,8 @@ class ActivityController extends Controller
                     'date' => $date_format,
                     'time_start' => $time_start_format,
                     'time_expried' => $time_expried_format,
-                    'activity_id' => $activity_id
+                    'activity_id' => $activity_id,
+                    'status' => 'on'
                 ]);
                 if ($items['round_setting'] == '1') {
 
@@ -178,6 +182,7 @@ class ActivityController extends Controller
                         'date_id' =>  $activity_date_maker->id,
                         'activity_id' => $activity_id,
                         'round_end_time' => $time_expried_format,
+                        'status' => 'on'
 
                     ]);
                     $add_round_setting_mode = activity_setting::where('activity_id', '=', $activity_id)->update([
@@ -200,6 +205,7 @@ class ActivityController extends Controller
                             'round_end_time' => $round['duration_round_end'],
                             'date_id' => $activity_date_maker->id,
                             'activity_id' => $activity_id,
+                            'status' => 'on'
                         ]);
                         $activity_round_checker_relate = rounde_checker_relate::create([
                             'activity_id' => $activity_id,
@@ -234,7 +240,7 @@ class ActivityController extends Controller
     public function showDayCheckerList($activity_id)
     {
 
-        $activity_day_array = activity_day_maker::where('activity_id', '=', $activity_id)->get();
+        $activity_day_array = activity_day_maker::where('activity_id', '=', $activity_id)->where('status','=','on')->get();
         $activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
         $activity_description = activity::where('id', '=', $activity_id)->pluck('activity_description')->first();
 
@@ -419,6 +425,29 @@ class ActivityController extends Controller
     }
     public function showEditActivityDashboard($activity_id){
         return view('activity.activity_crud.show_edit_activity');
+    }
+
+    public function activityEditDayPost(Request $request,$date_id){
+
+
+        $select_people_register = activity_people_register::where('date_id','=',$date_id)->get();
+
+        if(empty($select_activity_people)){
+            Alert::error("ไม่สามารถแก้ไขได้มีการเช็คชื่อไปแล้ว!");
+            return redirect()->back();
+        }else{
+            $update_day = activity_day_maker::where('id','=',$date_id)->update([
+                'date' => $request->date,
+                'time_start' => $request->time_start,
+                'time_expried' => $request->time_expried
+            ]);
+            if($update_day){
+                Alert::success('แก้ไขสำเร็จ');
+                return redirect()->back();
+            }
+        }
+       
+        
     }
 }
 

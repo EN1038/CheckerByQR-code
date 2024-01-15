@@ -69,9 +69,10 @@
                             <td data-label="เวลาจบ">{{ $row->time_expried }}</td>
                             <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
                             <td data-label="action">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="{{'#edit_btn_'.$row->id}}">
+                              <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="{{'#edit_btn_'.$row->id}}">
                                 แก้ไข
                               </button>
+                              <button class="btn btn-danger" onclick="confirmDelete(`{{route('date_delete',$row->id)}}`)" >ลบ</button>
                             </td>
                         </tr>
                    
@@ -89,6 +90,50 @@
 
 <script src="{{ asset('js/activity/activity_day_dashboard.js') }}"></script>
 @endsection
+
+@foreach ( as )
+  
+@endforeach
+
+@foreach ($activity_day_array as $row )
+<div class="modal fade" id="{{'edit_btn_'.$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold text-success" id="{{'edit_btn_'.$row->id}}">แก้ไขกิจกรรม</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('activity_edit_day_post',$row->id)}}" method="POST">
+          @csrf
+          
+          <div class="mb-3">
+            <label class="form-label text-success fw-bold">วันที่</label>
+            <input name="date" type="date" class="form-control border border-success" value="{{$row->date}}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-success fw-bold">เวลาเริ่ม</label>
+          <input name="time_start" type="time" class="form-control border border-success" value="{{$row->time_start}}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-success fw-bold">เวลาจบกิจกรรม</label>
+          <input name="time_expried" type="time" class="form-control border border-success" value="{{$row->time_expried}}">
+          </div>
+          <button type="submit" class="btn btn-success">Save changes</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
+
+
+
+
 <div class="modal fade" id="showQRcode" tabindex="-1" aria-labelledby="showQRcode" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen-down">
       <div class="modal-content">
@@ -111,26 +156,5 @@
     </div>
   </div>
 
-  @foreach ($activity_day_array as $row )
-  <div class="modal fade" id="{{'edit_btn_'.$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="{{'edit_btn_'.$row->id}}">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div id="app">
-                <edit-day id="{{'edit_btn_'.$row->id}}"></edit-day>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  @endforeach
 
   

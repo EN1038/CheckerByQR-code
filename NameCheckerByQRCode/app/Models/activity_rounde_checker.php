@@ -16,5 +16,6 @@ class activity_rounde_checker extends Model
         'date_id',
         'activity_id',
         'round_end_time',
+        'status',
     ];
 }

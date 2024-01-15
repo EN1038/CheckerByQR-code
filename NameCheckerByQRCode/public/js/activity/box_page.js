@@ -12,7 +12,7 @@ function confirmDelete(url) {
         cancelButtonText: 'ยกเลิก'
     }).then((result) => {
         if (result.isConfirmed) {
-            // ทำการ redirect หรือส่ง request ลบไปยัง URL ที่กำหนด
+          
             window.location.href = url;
         }
     });
