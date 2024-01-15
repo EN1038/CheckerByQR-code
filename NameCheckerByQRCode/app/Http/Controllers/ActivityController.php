@@ -84,7 +84,7 @@ class ActivityController extends Controller
                 $carbon_time_expried = Carbon::parse($items['time']['time_expried']);
                 $time_expried_format = $carbon_time_expried->format('H:i:s');
 
-                
+               
 
                 $activity_date_maker = activity_day_maker::create([
 
@@ -164,6 +164,8 @@ class ActivityController extends Controller
 
                 $carbon_time_expried = Carbon::parse($items['time']['time_expried']);
                 $time_expried_format = $carbon_time_expried->format('H:i:s');
+
+                
 
                 $activity_date_maker = activity_day_maker::create([
 
