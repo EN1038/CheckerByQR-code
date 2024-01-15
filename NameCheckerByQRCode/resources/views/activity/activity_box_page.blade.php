@@ -22,7 +22,7 @@
                 <div class="col-4 col-md-5 content-activity-box z-2">
                     <button class="button-edit-action-activity" data-bs-toggle="modal" data-bs-target="#{{"activity_".$row->id}}" ><i class="fa-solid fa-wrench"></i></button>
                   
-                      <button type="submit" class="button-trash-action-activity" onclick="confirmDelete('/activity-delete/'+{{$row->id}})" ><i class="bi bi-trash-fill"></i></button>    
+                      <button type="submit" class="button-trash-action-activity" onclick="confirmDelete(`{{route('delete_activity',$row->id)}}`)" ><i class="bi bi-trash-fill"></i></button>    
                 </div>
             </div>
           </div>
