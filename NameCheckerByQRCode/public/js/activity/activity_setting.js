@@ -420,7 +420,7 @@ function deleteDiv(clickedId_deleteDiv) {
         let countForm = 1;
         // เพิ่มตัวเลขลงใน value ของทุก element ที่พบ
         formDateElements.forEach(element => {
-            element.value = 'Form : ' + countForm;
+            element.value = 'วันที่ : ' + countForm;
             countForm++;
         });
     }
