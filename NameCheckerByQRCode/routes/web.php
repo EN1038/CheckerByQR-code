@@ -63,6 +63,9 @@ Route::get('activity-edit/{activity_id}',[ActivityController::class,'showEditAct
 ///activity_day_edit///
 Route::post('activity/edit/date/{date_id}',[ActivityController::class,'activityEditDayPost'])->name('activity_edit_day_post');
 
+
+
+
 ///date//
 Route::get('activity/date/delete/{date_id}',[DateController::class,'dateDelete'])->name('date_delete');
 
@@ -93,6 +96,6 @@ Route::post('admin/table/activity/delete/{id}', [AdminController::class, "delete
 //// LAB TEST ////
 Route::get('test/array', [TestController::class, 'formArrayRequest'])->name('test_form_array_request');
 Route::post('test/array/post', [TestController::class, 'PostformArrayRequest'])->name('post_test_form_array_request');
-
+Route::get('test/activity/setting/{activity_id}',[TestController::class,'testActivity'])->name('test_activity');
 
 //api 

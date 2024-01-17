@@ -18,4 +18,10 @@ class TestController extends Controller
     {
         dd($request->all());
     }
+
+    public function testActivity(){
+
+        
+        return view('test.test_activity');
+    }
 }
