@@ -24,6 +24,9 @@ app.component('edit-day',edit_day);
 import edit_activity_page from './components/edit_activity_page.vue';
 app.component('edit-activity-page',edit_activity_page);
 
+import test_activity from './components/test_activity.vue';
+app.component('test-activity',test_activity);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

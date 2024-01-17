@@ -54,7 +54,7 @@ class ActivityController extends Controller
     public function makeCheckerForm(Request $request, $activity_id)
     {
 
-
+        
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
 
@@ -66,7 +66,7 @@ class ActivityController extends Controller
 
         ]);
 
-
+        
         if ($side == '2' and $have_list_of_name == '2') {
             
             $date_num = $request->input('activity.date_add');
@@ -453,6 +453,7 @@ class ActivityController extends Controller
        
         
     }
+    
 }
 
 

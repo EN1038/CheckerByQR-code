@@ -12,6 +12,7 @@ use App\Models\Agency;
 use App\Models\activity_people_register;
 use App\Models\activity_rounde_checker;
 use App\Models\Major;
+use App\Models\rounde_checker_relate;
 
 class ApiController extends Controller
 {
@@ -75,7 +76,51 @@ class ApiController extends Controller
       $activity_data = Activity::where('id','=',$activity_data)->first();
       return response()->json($activity_data);
    }
-   
+
+
+   public function superEdit(Request $request){
+      $activity = Activity::create([
+         'activity_name' => $request->activity_name,
+         'user_id' => $request->user_id,
+         'status' => $request-> status
+      ]);
+      if($activity){
+         return ["Alert" => "success"];
+      }else{
+         return ["Alert" => "error"];
+      }
+
+      
+  }
+
+  public function activityAllSettingData($activity_id){
+   $activity_data = Activity::where('id','=',$activity_id)->first();
+
+   $date_in_activity = activity_day_maker::where('activity_id','=',$activity_id)->get();
+
+   $result = [];
+
+   foreach($date_in_activity as $item){
+      $date_info = $item;
+
+      // Fetch the round data for the current date
+      $round = activity_rounde_checker::where('date_id','=',$item->id)->get();
+
+      // Include round data in date_info if found
+      if ($round) {
+         $date_info->round = $round;
+      }
+
+      // Add the date_info to the result array
+      $result[] = $date_info;
+   }
+
+   return response()->json([
+      'date_data' => $result,
+      'activity_data' => $activity_data
+   ]);
+}
+
 
 
 

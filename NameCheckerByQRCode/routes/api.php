@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,7 @@ Route::get('activity-setting/{activity_id}',[ApiController::class,'getActivitySe
 Route::get('activity_daychecker/{activity_id}',[ApiController::class,'getDayCheckerData'])->name('day_checker_api');
 Route::get('activity/round-checker-api/{activity_id}/{date_id}',[ApiController::class,'getRoundSetting'])->name('activity_round_cheker_api');
 Route::get('activity-data/{activity_id}',[ApiController::class,'activityData'])->name('activity_data');
+Route::get('activity/all-setting/{activity_id}',[ApiController::class,'activityAllSettingData'])->name('activity_all_setting_data');
+///post///
+
+Route::post('activity/super-edit',[TestController::class,'superEdit'])->name('activity_super_edit');
