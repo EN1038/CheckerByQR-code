@@ -28,13 +28,13 @@
                       
                 <div class="col d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-center justify-content-lg-start pt-3">
                     <div class="form-check col-12 col-lg-3 ps-4 ps-lg-5 text-start">
-                        <input class="form-check-input fs-5 " type="radio" name="activity[setting][have_list_of_name]" ref="radiosOSHaveData" value="1" v-on:click="chooseModeTypeDatasOS()">
+                        <input class="form-check-input fs-5 " type="radio" name="activity[setting][have_list_of_name]" ref="radiosOSHaveData" value="1" v-on:click="chooseModeTypeDatasOS">
                         <label class="form-check-label fs-5 " for="radiosOS">
                           มีรายชื่อ
                         </label>
                       </div>
                       <div class="form-check col-12 col-lg-3 text-start">
-                        <input class="form-check-input fs-5 " type="radio" name="activity[setting][have_list_of_name]" ref="radiosOSnoHaveData" value="2" v-on:click="chooseModeTypeDatasOS()">
+                        <input class="form-check-input fs-5 " type="radio" name="activity[setting][have_list_of_name]" ref="radiosOSnoHaveData" value="2" v-on:click="chooseModeTypeDatasOS">
                         <label class="form-check-label fs-5" for="radiosOS">
                           ไม่มีรายชื่อ
                         </label>
@@ -68,13 +68,13 @@
                     <p>{{ index }}</p>
                 <div class="d-flex flex-column mb-4 text-start">
                 <div class="d-flex flex-row justify-content-between align-items-center mb-3 ">
-                    <input class="fs-4 fw-bold input-title-form" type="text" name="" value="วันที่ : " :ref="'countDate'+index">
+                    <input class="fs-4 fw-bold input-title-form" type="text" name="" value="วันที่ : " :id="'countDate'+index">
                     <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose"></i>
                 </div>
                 <div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-start align-items-lg-center mb-3">
                     <div class="col-12 col-lg-6">
-                        <label class="form-label fs-5">วัน/เดือน/ปี</label>
-                        <input class="form-control datepicker getDate datepicker_costom_incorrect" type="text" name="activity[date_add][date_input0][date]" placeholder="โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น" autocomplete="off" :value="day.date" :ref="'date_input'+index">
+                        <label class="form-label fs-5">วัน/เดือน/ปี</label> 
+                        <input class="form-control datepicker getDate datepicker_costom_incorrect" type="date" name="activity" placeholder="โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น" autocomplete="off" :value="day.date" :min="currentDate" @change="checkDuplicateDate(index)">
                     </div>
                     <div class="col-12 col-lg-3 px-0 px-lg-3">
                         <label class="form-label fs-5">เวลาเริ่ม</label>
@@ -88,15 +88,16 @@
                 <div class="d-flex flex-column flex-lg-row">
                     <label class="form-label fs-5">ตั้งค่าการเช็คชื่อ : </label>
                     <div class="form-check ms-4">
-                        <input class="form-check-input fake-disable" type="radio" value="1" name="activity[date_add][date_input0][round_setting]" :ref="'setCheckNameAllday'+index" :data-index="index" v-on:click="changModeCheckName" >
+                        <input class="form-check-input fake-disable" type="radio" value="1" :name="'activity'+index" :ref="'setCheckNameAllday'+index" :data-index="index" :data-roundMode="day.round_mode" v-on:click="changModeCheckName" :id="'setCheckNameAllday'+index">
                         <label class="form-check-label fs-5" for="setCheckNameI0">เช็คชื่อทั้งวัน</label>
                     </div>
                     <div class="form-check ms-4">
-                        <input class="form-check-input fake-disable" type="radio" value="2" name="activity[date_add][date_input0][round_setting]" :ref="'setCheckNameRound'+index" :data-index="index" v-on:click="changModeCheckName">
+                        <input class="form-check-input fake-disable" type="radio" value="2" :name="'activity'+index" :ref="'setCheckNameRound'+index" :data-index="index" :data-roundMode="day.round_mode" v-on:click="changModeCheckName" :id="'setCheckNameRound'+index">
                         <label class="form-check-label fs-5" for="setCheckNameII0">เช็คชื่อเป็นรอบ</label>
                     </div>
                     
                 </div>
+                {{ auto_click_changMode(index) }}
                 <p>{{ 'div_checkAllday'+index }}</p>
                 <div class="d-flex justify-content-center align-items-center p-5 d-none" :ref="'div_checkAllday'+index" :id="'div_checkAllday'+index">
                     <h1 class="fs-3 fw-bold text-center">ระบบจะมีการเช็คชื่อตั้งแต่เวลาเริ่มจนเวลาจบ</h1>
@@ -130,8 +131,9 @@
                 </div>
                 
             </div>
+            
         </div>
-
+        
             <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
                 <div class="col-12 col-lg d-flex">
                     <a class="scrollButton" ref="btnNewInput_GetId" ><i class="fa-solid fa-calendar-plus"></i> สร้างวันเช็คชื่อ</a>
@@ -154,7 +156,7 @@
     
     <div v-if="activity_days_setting">
         <div v-for="day in activity_days_setting" :key="day">
-            <p v-if="day">{{ get_dayId(day) }}รหัสวันที่ : {{ day }}</p>
+            <p v-if="day">{{ get_dayId(day) }}รหัสวันที่ :{{ day }}</p>
             <p :id="'round' + day.id"></p>
         </div>
 
@@ -175,6 +177,7 @@ export default {
             activity_days_setting: [],
             activity_rounds_setting: [],
             url:'http://127.0.0.1:8000',
+            currentDate: new Date().toISOString().split("T")[0],
 
         };
     },
@@ -186,6 +189,7 @@ export default {
 
 
     methods: {
+        
 
         getActivitySetting() {
             axios.get(this.url+'/api/activity-data/' + this.activity_id).then((res) => {
@@ -228,73 +232,80 @@ export default {
         },
 
     chooseModeTypeDatasOS(event) {
-    if(event.target){
-        if (event.target.value === '1'||event === '1') {
-                this.$refs.div_HavedataOS.classList.remove('d-none');
-                this.$refs.noDiv_HavedataOS.classList.add('d-none');
-            } else if (event.target.value === '2'||event === '2') {
-                this.$refs.div_HavedataOS.classList.add('d-none');
-                this.$refs.noDiv_HavedataOS.classList.remove('d-none');
+            if (event) {
+                if (event.target.value === '1' || event === '1') {
+                    this.$refs.div_HavedataOS.classList.remove('d-none');
+                    this.$refs.noDiv_HavedataOS.classList.add('d-none');
+                } else if (event.target.value === '2' || event === '2') {
+                    this.$refs.div_HavedataOS.classList.add('d-none');
+                    this.$refs.noDiv_HavedataOS.classList.remove('d-none');
+                } else {
+                    console.log('error, value No 1 and 2')
+                }
             } else {
-                console.log('error, value No 1 and 2')
+                console.log('error, No have data function chooseModeTypeDatasOS')
             }
-    }else{
-        console.log('error, No have data function chooseModeTypeDatasOS')
-    }
-            
+
         },
-    
-    autoclick_list_of_name(list_name){
-        if(list_name === '1'){
-            this.$refs.radiosOSHaveData.checked = true;
-            this.chooseModeTypeDatasOS(list_name);
-        }else if(list_name === '2'){
-            this.$refs.radiosOSnoHaveData.checked = true;
-            this.chooseModeTypeDatasOS(list_name);
-        }
-        
-    },
 
-    auto_createCount_days(){
-        var countDateElement = this.$refs.countDate;
-        var countForm = 1;
-
-        countDateElement.forEach(element => {
-            element.value = 'วันที่ : ' + countForm;
-            countForm++;
-        });
-    },
+        autoclick_list_of_name(list_name) {
+            if (list_name === '1') {
+                this.$refs.radiosOSHaveData.checked = true;
+                this.chooseModeTypeDatasOS({ target: { value: '1' } });
+            } else if (list_name === '2') {
+                this.$refs.radiosOSnoHaveData.checked = true;
+                this.chooseModeTypeDatasOS({ target: { value: '2' } });
+            }
+        },
 
 
     changModeCheckName(event){
         const data_index = event.target.dataset.index;
         const div_checkAllday = document.getElementById('div_checkAllday'+data_index);
         const div_checkNameRound = document.getElementById('div_checkNameRound'+data_index);
-        console.log(div_checkAllday)
-        console.log(div_checkNameRound)
-        if(event.target.value === '1'||event === '1'){
+        if(event.target.value === '1'){
             div_checkAllday.classList.remove('d-none');
             div_checkNameRound.classList.add('d-none');
-        }else if(event.target.value === '2'||event === '2'){
+        }else if(event.target.value === '2'){
             div_checkAllday.classList.add('d-none');
             div_checkNameRound.classList.remove('d-none');
         }
         
     },
 
-    auto_click_changModeCheckName(check_mode) {
-            if(check_mode){
-                if(check_mode === '1'){
-                    
-                }else if(check_mode === '2'){
-
-                }else{
-                    console.log('error, function auto_click_changModeCheckName ,Value no 1 and 2 ')
-                }
-            }else{
-                console.log('error, function auto_click_changModeCheckName,No have');
+    auto_click_changMode(index){
+        const allDay = document.getElementById('setCheckNameAllday'+index);
+        const roundDay = document.getElementById('setCheckNameRound'+index);
+        const div_checkAllday = document.getElementById('div_checkAllday'+index);
+        const div_checkNameRound = document.getElementById('div_checkNameRound'+index);
+        if(allDay && roundDay){
+            if(allDay.dataset.roundmode === '1'){
+                allDay.checked = true;
+                div_checkAllday.classList.remove('d-none');
+                div_checkNameRound.classList.add('d-none');
+            }else if(roundDay.dataset.roundmode === '2'){
+                roundDay.checked = true;
+                div_checkAllday.classList.add('d-none');
+                div_checkNameRound.classList.remove('d-none');
             }
-        },
+        }
+    },
+
+    checkDuplicateDate(index) {
+  const selectedDate = this.activity_days_setting[index].date;
+  const duplicateIndex = this.activity_days_setting.findIndex(day => day.date === selectedDate);
+  
+  console.log("Selected Date:", selectedDate);
+  console.log("Duplicate Index:", duplicateIndex);
+  
+  if (duplicateIndex !== -1) {
+    alert('วันที่ถูกเลือกไว้แล้ว');
+  }
+}
+
+  
+    
+
 
     },
 }
