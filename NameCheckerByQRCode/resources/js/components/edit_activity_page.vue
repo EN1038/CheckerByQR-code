@@ -91,14 +91,14 @@
             <div id="inputContainer">
                    
                 <div v-for="item in items" :key="item.id" :class="{'border-bottom border-success border-3': item.id > 0}">
-      <div class="d-flex flex-row justify-content-between align-items-center mb-3">
-        <input class="fs-4 fw-bold input-title-form" :id="'formDate' + item.id" :value="'วันที่ : ' + (items.indexOf(item) + 1)">
-        <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose" :id="'iconClose' + item.id" @click="deleteInput(item.id)"></i>
-      </div>
-      <div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-start align-items-lg-center mb-3">
-        <!-- ... โค้ดส่วนที่เหลือของคุณ ... -->
-      </div>
-    </div>
+                <div class="d-flex flex-row justify-content-between align-items-center mb-3">
+                    <input class="fs-4 fw-bold input-title-form" :id="'formDate' + item.id" :value="'วันที่ : ' + (items.indexOf(item) + 1)">
+                    <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose" :id="'iconClose' + item.id" @click="deleteInput(item.id)"></i>
+                </div>
+                <div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-start align-items-lg-center mb-3">
+                    <!-- ... โค้ดส่วนที่เหลือของคุณ ... -->
+                </div>
+                </div>
 
             </div>
             <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
