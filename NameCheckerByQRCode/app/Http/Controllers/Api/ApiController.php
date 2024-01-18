@@ -95,6 +95,7 @@ class ApiController extends Controller
 
   public function activityAllSettingData($activity_id){
    $activity_data = Activity::where('id','=',$activity_id)->first();
+   $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
 
    $date_in_activity = activity_day_maker::where('activity_id','=',$activity_id)->get();
 
@@ -117,7 +118,8 @@ class ApiController extends Controller
 
    return response()->json([
       'date_data' => $result,
-      'activity_data' => $activity_data
+      'activity_data' => $activity_data,
+      'activity_setting' => $activity_setting
    ]);
 }
 
