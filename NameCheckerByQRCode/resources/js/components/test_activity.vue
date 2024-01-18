@@ -1,9 +1,9 @@
 <template>
-   <div>{{ activity_data.id }}</div>
-   <div>{{ activity_data.activity_name }}</div>
+   <div>{{ activity_data }}</div>
+   <!-- <div>{{ activity_data.activity_name }}</div>
    <div>{{ activity_data.user_id }}</div>
    <div>{{ activity_data.activity_description }}</div>
-   <div>{{ activity_data.status }}</div>
+   <div>{{ activity_data.status }}</div> -->
 
    <div class="row">
     <div class="col mb-3">
