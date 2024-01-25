@@ -18,4 +18,12 @@ class activity_rounde_checker extends Model
         'round_end_time',
         'status',
     ];
+
+    public function CountPeopleRegister(){
+        $count = activity_people_register::where('activity_id','=',$this->activity_id)->where('date_id','=',$this->date_id)->
+        where('round_id','=',$this->id)
+        ->count();
+
+        return $count;
+    }
 }

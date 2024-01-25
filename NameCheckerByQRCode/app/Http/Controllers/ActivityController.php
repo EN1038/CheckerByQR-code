@@ -253,17 +253,11 @@ class ActivityController extends Controller
 
     public function showRoundCheckList($activity_id, $date_id)
     {
-        $round_check_relate = rounde_checker_relate::where('activity_id', '=', $activity_id)->where('activity_day_maker_id', '=', $date_id)->get();
+        $round = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->get();
+        
 
-        // dd($round_check_relate);
-        foreach ($round_check_relate as $items) {
-
-            $get_round_check = activity_rounde_checker::where('id', '=', $items->rounde_checker_id)->get();
-            $round_check_data[] = $get_round_check;
-        }
-
-        // dd($round_check_data);
-        return view('activity.daycheck.daycheck', compact('round_check_data'));
+       
+        return view('activity.daycheck.daycheck', compact('round'));
     }
 
     public function showRoundCheckPage($activity_id, $date_id, $round_id)
@@ -434,16 +428,16 @@ class ActivityController extends Controller
     public function activityEditDayPost(Request $request,$date_id){
 
 
-        $select_people_register = activity_people_register::where('date_id','=',$date_id)->get();
+        $select_people_register = activity_people_register::where('date_id','=',$date_id)->first();
 
-        if(empty($select_activity_people)){
+        if(!empty($select_people_register)){
             Alert::error("ไม่สามารถแก้ไขได้มีการเช็คชื่อไปแล้ว!");
             return redirect()->back();
         }else{
             $update_day = activity_day_maker::where('id','=',$date_id)->update([
                 'date' => $request->date,
-                'time_start' => $request->time_start,
-                'time_expried' => $request->time_expried
+                // 'time_start' => $request->time_start,
+                // 'time_expried' => $request->time_expried
             ]);
             if($update_day){
                 Alert::success('แก้ไขสำเร็จ');
@@ -452,6 +446,10 @@ class ActivityController extends Controller
         }
        
         
+    }
+
+    public function activityEditAll(Request $request,$activity_id,$date_id,$round_id){
+        return ["Alert" => "success"];
     }
     
 }
