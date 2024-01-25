@@ -77,6 +77,19 @@ class ApiController extends Controller
       return response()->json($activity_data);
    }
 
+   public function checkPeopleRegister($activity_id,$date_id){
+      $check_people_data = activity_people_register::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->get();
+
+      return response()->json($check_people_data);
+   }
+   public function deleteDate(Request $request,$date_id){
+      $date_delete = activity_day_maker::where('id','=',$date_id)->update([
+         'status' => 'delete'
+      ]);
+
+      return response()->json($request->all());
+   }
+
 
    public function superEdit(Request $request){
       $activity = Activity::create([
@@ -97,7 +110,7 @@ class ApiController extends Controller
    $activity_data = Activity::where('id','=',$activity_id)->first();
    $activity_setting = activity_setting::where('activity_id','=',$activity_id)->first();
 
-   $date_in_activity = activity_day_maker::where('activity_id','=',$activity_id)->get();
+   $date_in_activity = activity_day_maker::where('activity_id','=',$activity_id)->where('status','=','on')->get();
 
    $result = [];
 

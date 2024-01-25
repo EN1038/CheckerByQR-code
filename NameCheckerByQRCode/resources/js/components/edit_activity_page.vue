@@ -202,6 +202,7 @@
  </template>
  
  <script>
+ 
  import axios from 'axios';
      export default {
          props:['activity_id'],
@@ -239,16 +240,75 @@
                  this.auto_click_list(this.activity_setting.list_of_name_mode_id);
              });
          },
-         addInput() {
+        addInput() {
+            
             this.items.push({ id: this.counter });
             this.counter++;
             // เพิ่มโค้ดที่เกี่ยวข้องกับการใส่ข้อมูลใน items ตามที่คุณต้องการ
             },
-            deleteDate(itemId) {
+        deleteDate(date_id) {
+            console.log(date_id);
+
+                axios.get('/api/activity/check-people-register/'+this.activity_id+'/'+date_id).then((res)=>{
+                    console.log(res.data);
+                    var register_data = res.data
+
+                    if(!register_data,length){
+                    this.$swal({
+                    title: "ไม่สามารถลบได้เนื่องจากมีการเช็คชื่อแล้ว !",
+                    text: "หากลบแล้วจะหายไปหมดเลยนะ !",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    
+                    confirmButtonText: "ใช่, ตกลง"
+                    })
+
+                }else{
+                    this.$swal({
+                    title: "ต้องการลบใช่หรือไม่ !",
+                    text: "หากลบแล้วจะหายไปหมดเลยนะ !",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    cancelButtonText:"ยกเลิก",
+                    confirmButtonText: "ใช่, ตกลง"
+                    }).then((result) => {
+
+                      
+                    if (result.isConfirmed) {
+                    this.$swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                    });
+
+                        axios.post('/api/activity/date/delete/'+date_id,{
+                        date_id:date_id
+                        });
+
+                        this.date_data = this.date_data.filter(item => item.id !== date_id);
+
+                    }
+
+                      
+                })
+            }
+                });
+
+                
+                
+
+                
     // เพิ่มโค้ดที่เกี่ยวข้องกับการลบ Input ตาม itemId
-            this.date_data = this.date_data.filter(item => item.id !== itemId);
+           
             },
-        auto_click_list(value){
+       
+       
+       
+            auto_click_list(value){
             if(value){
                 if(value === '1'){
                     this.$refs.haveList.checked = true;

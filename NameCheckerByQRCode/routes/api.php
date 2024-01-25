@@ -30,6 +30,9 @@ Route::get('activity_daychecker/{activity_id}',[ApiController::class,'getDayChec
 Route::get('activity/round-checker-api/{activity_id}/{date_id}',[ApiController::class,'getRoundSetting'])->name('activity_round_cheker_api');
 Route::get('activity-data/{activity_id}',[ApiController::class,'activityData'])->name('activity_data');
 Route::get('activity/all-setting/{activity_id}',[ApiController::class,'activityAllSettingData'])->name('activity_all_setting_data');
-///post///
+Route::get('activity/check-people-register/{activity_id}/{date_id}',[ApiController::class,'checkPeopleRegister'])->name('check_people_register');
 
+
+///post///
+Route::post('activity/date/delete/{date_id}',[ApiController::class,'deleteDate'])->name('delete_date_api');
 Route::post('activity/super-edit',[TestController::class,'superEdit'])->name('activity_super_edit');
