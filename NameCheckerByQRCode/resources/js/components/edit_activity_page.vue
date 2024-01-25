@@ -92,7 +92,7 @@
                 <div v-for="item in date_data" :key="item.id" :class="{'border-bottom border-success border-3 mb-4': item.id > 0}">
                 <div class="d-flex flex-row justify-content-between align-items-center mb-3">
                     <input class="fs-4 fw-bold input-title-form" :id="'formDate' + item.id" :value="'วันที่ : ' + (date_data.indexOf(item) + 1)">
-                    <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose" :id="'iconClose' + item.id" @click="deleteInput(item.id)"></i>
+                    <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose" :id="'iconClose' + item.id" @click="deleteDate(item.id)"></i>
                 </div>
                 <div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-start align-items-lg-center mb-3">
                     <div class="col-12  col-lg-6 ">
@@ -244,7 +244,7 @@
             this.counter++;
             // เพิ่มโค้ดที่เกี่ยวข้องกับการใส่ข้อมูลใน items ตามที่คุณต้องการ
             },
-            deleteInput(itemId) {
+            deleteDate(itemId) {
     // เพิ่มโค้ดที่เกี่ยวข้องกับการลบ Input ตาม itemId
             this.date_data = this.date_data.filter(item => item.id !== itemId);
             },
