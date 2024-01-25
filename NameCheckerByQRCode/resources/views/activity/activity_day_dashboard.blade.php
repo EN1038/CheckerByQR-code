@@ -93,14 +93,14 @@
             <label class="form-label text-success fw-bold">วันที่</label>
             <input name="date" type="date" class="form-control border border-success" value="{{$row->date}}">
           </div>
-          <div class="mb-3">
+          {{-- <div class="mb-3">
             <label class="form-label text-success fw-bold">เวลาเริ่ม</label>
           <input name="time_start" type="time" class="form-control border border-success" value="{{$row->time_start}}">
           </div>
           <div class="mb-3">
             <label class="form-label text-success fw-bold">เวลาจบกิจกรรม</label>
           <input name="time_expried" type="time" class="form-control border border-success" value="{{$row->time_expried}}">
-          </div>
+          </div> --}}
           <button type="submit" class="btn btn-success">Save changes</button>
         </form>
       </div>

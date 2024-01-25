@@ -63,7 +63,8 @@ Route::get('activity-edit/{activity_id}',[ActivityController::class,'showEditAct
 ///activity_day_edit///
 Route::post('activity/edit/date/{date_id}',[ActivityController::class,'activityEditDayPost'])->name('activity_edit_day_post');
 
-
+/// super edit //
+Route::post('activity/edit-all/{activity_id}',[ActivityController::class,'activityEditAll'])->name('activity_edit_all');
 
 
 ///date//

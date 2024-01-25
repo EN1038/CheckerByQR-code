@@ -11,14 +11,14 @@
             <th scope="col">รูปแบบการเช็ค</th>
             <th scope="col">เวลาเริ่มการเช็ค</th>
             <th scope="col">เวลาจบการเช็ค</th>
-            <th scope="col">ระยะเวลาการเช็คชื่อ</th>
+            <th scope="col">จำนวนคนที่เช็คชื่อ</th>
             <th scope="col">รายละเอียด</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-            @foreach ($round_check_data as $array)
-            @foreach ( $array as $row )
+            @foreach ($round as $row)
+            
             <tr>
                 <td>
                   <?php
@@ -43,17 +43,19 @@
                 </td>
                 <td data-label="เวลาเริ่มการเช็ค">{{$row->rounde_checker_time_start}}</td>
                 <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
-                <td data-label="ระยะเวลาการเช็ค">{{$row->activity_end_time}}</td>
+                <td data-label="ระยะเวลาการเช็ค">{{$row->CountPeopleRegister()}}</td>
+                
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 
                 <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
            <td>
             <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
            </td>
+           <td ><a data-label="action" href="" class="btn btn-danger">ลบ</a></td>
               </tr>
             @endforeach
        
-        @endforeach
+       
         </tbody>
     </table>
     </div>
@@ -91,7 +93,7 @@
 <script src="{{asset('js/dayCheck/dayCheck.js')}}"></script>
 @endsection
 
-@foreach ($round_check_data as $array )
+{{-- @foreach ($round_check_data as $array )
   @foreach ($array as $row )
   <div class="modal fade" id="round-edit{{$row->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -126,4 +128,4 @@
     </div>
   </div>
   @endforeach  
-@endforeach
+@endforeach --}}

@@ -14,8 +14,15 @@
             <div>{{ date.time_start }}</div>
             <div>{{ date.time_expried }}</div>
             <div>{{ date.round_mode }}</div>
+            <label>เช็คเป็นรอบ</label>
+            <input type="radio" class="form-radio">
+
+            <label>เช็คทั้งวัน</label>
+            <input type="radio" class="form-radio" ref="aa">
+            
             <div v-for="round in date.round">
                 <div>{{ round.id }}</div>
+                
                 <div>{{ round.rounde_name }}</div>
                 <div>{{ round.rounde_checker_time_start }}</div>
                 <div>{{ round.rounde_checker_time_expried }}</div>
@@ -26,8 +33,26 @@
    
 </template>
 
+<!-- <script setup>
+  import { ref, onMounted } from "vue";
+
+  // IMPORTANT: Variable should be named the same as the ref.
+  const aa = ref(null);
+
+  onMounted(() => {
+    const radio_id = aa.value;
+</script> -->
+
+
 <script>
+import { ref, onMounted } from "vue";
 import axios from 'axios';
+
+const aa = ref(null);
+
+  onMounted(() => {
+    const radio_id = aa.value.clientHeight;
+  });
     export default {
         props:['activity_id'],
         data(){
@@ -40,6 +65,8 @@ import axios from 'axios';
 
         mounted() {
             this.getDayCheckerData()
+            
+            
         },
         methods: {
         async getDayCheckerData(){
