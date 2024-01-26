@@ -6,7 +6,7 @@
     <div>{{ activity_data.status }}</div> -->
     <!-- <div>{{ activity_setting.list_of_name_mode_id }}</div> -->
 
-    <div class="row">
+    <!-- <div class="row">
      <div class="col mb-3">
          <span class="btn btn-success">วัน</span>
             <div v-for="date in date_data">
@@ -24,7 +24,7 @@
                 </div>  
             </div>
          </div>
-     </div>
+     </div> -->
      <div class="text-center mt-5">
         <h1 class="text-greenlight fw-bold"><i class="fa-solid fa-gear fa-spin"></i> ตั้งค่ากิจกรรม</h1>
         <span class="fw-light fs-2">ชื่อกิจกรรม : {{ activity_data.activity_name }}</span>
@@ -161,7 +161,7 @@
                                         <div>Total Rounds: {{ item.round.length }}</div> -->
                                         <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center" id="div_row0">
                                             <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5" for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1 }}</label>
-                                            <select class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable" id="dynamicSelect10">
+                                            <select class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable" :id="'dynamicSelect'+item.id+index">
                                                 <option :value="round.rounde_checker_time_start">หลังเวลา : {{ formatTime(round.rounde_checker_time_start) }} นาที</option>
                                             </select>
                                             <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center" :id="'divSpace'+item.id">
@@ -171,12 +171,18 @@
                                     </div>
                                 </div>
                                 <div class="d-none" :id="'divShowTimeToUserII'+item.id">
-                                    <select v-for="(selectedValue, index) in selectedValues[item.id]" :key="index" v-model="selectedValues[item.id][index]">
-                                        <option v-for="option in optionsArray" :key="option" :value="option">{{ option }}</option>
-                                    </select>
+                                        <div v-for="(selectedValue, index) in selectedValues" :key="index" class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center" id="div_row0">
+                                            <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5" for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index+1 }}</label>
+                                            <select class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable" :id="'dynamicSelect'+item.id+index">
+                                                <option v-for="option in optionsArray" :key="option.id" :value="option.time">{{ option.id }} - {{ option.time }}</option>
+                                            </select>
+                                            <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center" :id="'divSpace'+item.id">
+                                                <input class=" my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5 text-lg-center" disabled="" :id="'Boxinput'+item.id" value="1212">
+                                            </div>
+                                        </div>
+                                        
 
-                                    <button @click="resetSelectedValues(item.id)">Reset Values</button>
-                                </div>
+                                    </div> 
                                     
                             
                             </div>
@@ -221,8 +227,8 @@
                 errorInputType: null,
                 errorHTML: '',
                 selectedTime: {},
-                optionsArray: [],
-                selectedValues: {},
+                optionsArray: [{id:null,time:null}],
+                selectedValues: null,
             }
          },
  
@@ -399,13 +405,14 @@
             if(event){
                 divShowTimeToUsers.classList.add('d-none');
                 divShowTimeToUsersII.classList.remove('d-none')
+
+                const value = event.target.value;
+                const intValue = parseInt(value, 10);
+                this.selectedValues = Array(intValue).fill(null);
+                this.createDetailOption(id);
             }else{
                 console.log('error,function showSelectRound')
             }
-        },
-
-        resetSelectedValues() {
-            this.selectedValues = Array(this.selectedValues.length).fill(null);
         },
 
         effect_inputduration(event){
@@ -446,6 +453,74 @@
             return `${hours}:${minutes}`;
         },
 
+        createDetailOption(id){
+            console.log(id)
+            let time_check = document.getElementById('selectTimeCheck' + id).value;
+            let time_start = document.getElementById('timeStart_input' + id);
+            let time_end = document.getElementById('timeExpried_input' + id);
+
+            let [startHour, startMinute] = time_start.value.split(':').map(Number);
+            let [endHour, endMinute] = time_end.value.split(':').map(Number);
+
+            let startTotalMinutes = startHour * 60 + startMinute; // เวลาเริ่มต้นในรูปแบบนาที
+            let endTotalMinutes = endHour * 60 + endMinute; // เวลาสิ้นสุดในรูปแบบนาที
+
+            let timeDifferenceMinutes = Math.abs(endTotalMinutes - startTotalMinutes); // ละยะห่างของเวลาในนาที
+            let valueIdselectRound = document.getElementById('selectSetRoundCheck'+id).value;            
+            for (var x = 0; x <= (valueIdselectRound - 1); x++) {
+                if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
+                    console.log('xxxx')
+                    const intervalOneHours = 60;
+                    const newTimesArray = [];
+
+                    for (let z = 0; z <= timeDifferenceMinutes; z += intervalOneHours) {
+                        let [hours, minutes] = time_start.value.split(':').map(Number);
+                        let totalMinutes = hours * 60 + minutes;
+                        totalMinutes += z;
+                        hours = Math.floor(totalMinutes / 60) % 24;
+                        minutes = totalMinutes % 60;
+
+                        let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                        
+                        // เก็บ newTime ในอาเรย์
+                        newTimesArray.push(newTime);
+                    }
+
+                    // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
+                    this.optionsArray = newTimesArray.map((newTime, index) => {
+                        return {
+                        id: `Option ${index + 1}`,
+                        time: newTime,
+                        };
+                    });
+
+                } else if (time_check === '90' || time_check === '120') {
+                    const intervalOneHours = 120;
+                    const newTimesArray = [];
+
+                    for (let z = 0; z <= timeDifferenceMinutes; z += intervalOneHours) {
+                        let [hours, minutes] = time_start.value.split(':').map(Number);
+                        let totalMinutes = hours * 60 + minutes;
+                        totalMinutes += z;
+                        hours = Math.floor(totalMinutes / 60) % 24;
+                        minutes = totalMinutes % 60;
+
+                        let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                        
+                        // เก็บ newTime ในอาเรย์
+                        newTimesArray.push(newTime);
+                    }
+
+                    // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
+                    this.optionsArray = newTimesArray.map((newTime, index) => {
+                        return {
+                        id: `Option ${index + 1}`,
+                        time: newTime,
+                        };
+                    });
+                }
+            }
+        },
         showResult(event) {
             console.log('5555')
         },
