@@ -54,7 +54,7 @@ class ActivityController extends Controller
     public function makeCheckerForm(Request $request, $activity_id)
     {
 
-        
+
         $side = $request->input('activity.setting.side');
         $have_list_of_name = $request->input('activity.setting.have_list_of_name');
 
@@ -66,9 +66,9 @@ class ActivityController extends Controller
 
         ]);
 
-        
+
         if ($side == '2' and $have_list_of_name == '2') {
-            
+
             $date_num = $request->input('activity.date_add');
             //    dd($date_num);
             $i = 1;
@@ -84,7 +84,7 @@ class ActivityController extends Controller
                 $carbon_time_expried = Carbon::parse($items['time']['time_expried']);
                 $time_expried_format = $carbon_time_expried->format('H:i:s');
 
-               
+
 
                 $activity_date_maker = activity_day_maker::create([
 
@@ -144,10 +144,8 @@ class ActivityController extends Controller
                 $i++;
             }
             return redirect()->route('show_activity_profile');
-
-
         } elseif ($side == '2' and $have_list_of_name == '1') {
-            
+
 
             Excel::import(new ActivityPeopleImport($activity_id), $request->file('excel'));
             $date_num = $request->input('activity.date_add');
@@ -165,7 +163,7 @@ class ActivityController extends Controller
                 $carbon_time_expried = Carbon::parse($items['time']['time_expried']);
                 $time_expried_format = $carbon_time_expried->format('H:i:s');
 
-                
+
 
                 $activity_date_maker = activity_day_maker::create([
 
@@ -244,19 +242,19 @@ class ActivityController extends Controller
     public function showDayCheckerList($activity_id)
     {
 
-        $activity_day_array = activity_day_maker::where('activity_id', '=', $activity_id)->where('status','=','on')->get();
+        $activity_day_array = activity_day_maker::where('activity_id', '=', $activity_id)->where('status', '=', 'on')->get();
         $activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
-        $activity_description = activity::where('id', '=', $activity_id)->pluck('activity_description')->first();
+        $activity_data = activity::where('id', '=', $activity_id)->first();
 
-        return view('activity.activity_day_dashboard', compact('activity_day_array', 'activity_setting', 'activity_description'));
+        return view('activity.activity_day_dashboard', compact('activity_day_array', 'activity_setting', 'activity_data'));
     }
 
     public function showRoundCheckList($activity_id, $date_id)
     {
-        $round = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->get();
-        
+        $round = activity_rounde_checker::where('activity_id', '=', $activity_id)->where('date_id', '=', $date_id)->get();
 
-       
+
+
         return view('activity.daycheck.daycheck', compact('round'));
     }
 
@@ -273,21 +271,21 @@ class ActivityController extends Controller
         $activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
         $current_date = Carbon::now()->format('Y-m-d');
         $current_time = Carbon::now()->format('H:i:s');
-        if($activity_setting->list_of_name_mode_id == "2") {
-           
+        if ($activity_setting->list_of_name_mode_id == "2") {
+
             $select_day = activity_day_maker::where('activity_id', '=', $activity_id)->where('date', '=', $current_date)->first();
-            if($select_day and $current_time < $select_day-> time_expried){
-                $activity_data = activity::where('id','=',$activity_id)->pluck('activity_name')->first();
+            if ($select_day and $current_time < $select_day->time_expried) {
+                $activity_data = activity::where('id', '=', $activity_id)->pluck('activity_name')->first();
                 return view('activity.QRcode.input_name_form', compact('activity_data'));
-            }else{
+            } else {
                 return view('activity.alert_view.time_out_alert');
-            }  
+            }
         } elseif ($activity_setting->list_of_name_mode_id == "1") {
             $select_day = activity_day_maker::where('activity_id', '=', $activity_id)->where('date', '=', $current_date)->first();
-            if($select_day and $current_time < $select_day-> time_expried){
-                
+            if ($select_day and $current_time < $select_day->time_expried) {
+
                 return view('activity.QRcode.input_name_form_v2');
-            }else{
+            } else {
                 return view('activity.alert_view.time_out_alert');
             }
         } else {
@@ -297,7 +295,7 @@ class ActivityController extends Controller
     public function inputFormCheckerPost(Request $request, $activity_id)
     {
 
-       
+
         $select_activity_setting = activity_setting::where('activity_id', '=', $activity_id)->first();
 
         if ($select_activity_setting->people_side_mode_id == 2 and $select_activity_setting->list_of_name_mode_id == 2) {
@@ -312,24 +310,24 @@ class ActivityController extends Controller
                     // dd($date_id);
                     $current_time = Carbon::now()->format('H:i:s');
 
-                    $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->where('rounde_checker_time_start','<=',$current_time)
-                    ->where('round_end_time' ,'>=',$current_time)->first();
-                    
-                    if ($current_time > $select_round_checker->round_end_time) {
+                    $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->where('rounde_checker_time_start', '<=', $current_time)
+                        ->where('round_end_time', '>=', $current_time)->first();
+
+                    if ($current_time > $select_round_checker->rounde_checker_time_expried) {
                         $checker_status = 'late';
                     } else {
                         $checker_status = 'normal';
                     }
-                   
+
                     // ->orwhere('activity_end_time', '>=', $current_time)->where('date_id', '=', $date_id)->first();
-                //    dd($select_round_checker);
-                    
+                    //    dd($select_round_checker);
+
                 }
 
-                $check_ip = activity_people_register::where('ip_address','=',$request->ip())->first();
-                if($check_ip){
+                $check_ip = activity_people_register::where('ip_address', '=', $request->ip())->first();
+                if ($check_ip) {
                     return view('activity.alert_view.recheck_alert');
-                }else{
+                } else {
                     $input_name_checker = activity_people_register::create([
                         'name' => $request->name,
                         'last_name' => $request->last_name,
@@ -340,7 +338,7 @@ class ActivityController extends Controller
                         'ip_address' => $request->ip(),
                     ]);
                 }
-                
+
                 if ($input_name_checker) {
                     Alert::success('เช็คชื่อสำเร็จ!');
                     return view('activity.alert_view.success_view');
@@ -367,10 +365,10 @@ class ActivityController extends Controller
                     // dd($date_id);
                     $current_time = Carbon::now()->format('H:i:s');
 
-                    $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->where('rounde_checker_time_start','<=',$current_time)
-                    ->where('round_end_time' ,'>=',$current_time)->first();
-                    
-                    if ($current_time > $select_round_checker->round_end_time) {
+                    $select_round_checker = activity_rounde_checker::where('date_id', '=', $date_id)->where('rounde_checker_time_start', '<=', $current_time)
+                        ->where('round_end_time', '>=', $current_time)->first();
+
+                    if ($current_time > $select_round_checker->rounde_checker_time_expried) {
                         $checker_status = 'late';
                     } else {
                         $checker_status = 'normal';
@@ -380,33 +378,31 @@ class ActivityController extends Controller
                 $select_activity_people = activity_people::where('activity_id', '=', $activity_id)
                     ->where('student_id', '=', $request->student_id)->first();
                 if ($select_activity_people) {
-                    $check_ip = activity_people_register::where('ip_address','=',$request->ip())->first();
-                    if($check_ip){
-                        return view('activity.alert_view.success_view');
-                    }else{
-                        $check_ip = activity_people_register::where('ip_address','=',$request->ip())->first();
-                         if($check_ip){
-                        return view('activity.alert_view.recheck_alert');
-                        }else{
-                         $input_name_checker = activity_people_register::create([
-                        'name' => $request->name,
-                        'last_name' => $request->last_name,
-                        'activity_id' => $activity_id,
-                        'status' => $checker_status,
-                        'date_id' => $date_id,
-                        'round_id' => $select_round_checker->id,
-                        'ip_address' => $request->ip(),
-                    ]);
-                    if ($input_name_checker) {
-                        Alert::success('เช็คชื่อสำเร็จ!');
+                    $check_ip = activity_people_register::where('ip_address', '=', $request->ip())->first();
+                    if ($check_ip) {
                         return view('activity.alert_view.success_view');
                     } else {
-                        return view('activity.alert_view.no_success');
+                        $check_ip = activity_people_register::where('ip_address', '=', $request->ip())->first();
+                        if ($check_ip) {
+                            return view('activity.alert_view.recheck_alert');
+                        } else {
+                            $input_name_checker = activity_people_register::create([
+                                'name' => $request->name,
+                                'last_name' => $request->last_name,
+                                'activity_id' => $activity_id,
+                                'status' => $checker_status,
+                                'date_id' => $date_id,
+                                'round_id' => $select_round_checker->id,
+                                'ip_address' => $request->ip(),
+                            ]);
+                            if ($input_name_checker) {
+                                Alert::success('เช็คชื่อสำเร็จ!');
+                                return view('activity.alert_view.success_view');
+                            } else {
+                                return view('activity.alert_view.no_success');
+                            }
+                        }
                     }
-                }
-                        
-                    }
-                    
                 } else {
                     return view('activity.alert_view.no_success');
                 }
@@ -421,39 +417,35 @@ class ActivityController extends Controller
             }
         }
     }
-    public function showEditActivityDashboard($activity_id){
+    public function showEditActivityDashboard($activity_id)
+    {
         return view('activity.activity_crud.show_edit_activity');
     }
 
-    public function activityEditDayPost(Request $request,$date_id){
+    public function activityEditDayPost(Request $request, $date_id)
+    {
 
 
-        $select_people_register = activity_people_register::where('date_id','=',$date_id)->first();
+        $select_people_register = activity_people_register::where('date_id', '=', $date_id)->first();
 
-        if(!empty($select_people_register)){
+        if (!empty($select_people_register)) {
             Alert::error("ไม่สามารถแก้ไขได้มีการเช็คชื่อไปแล้ว!");
             return redirect()->back();
-        }else{
-            $update_day = activity_day_maker::where('id','=',$date_id)->update([
+        } else {
+            $update_day = activity_day_maker::where('id', '=', $date_id)->update([
                 'date' => $request->date,
                 // 'time_start' => $request->time_start,
                 // 'time_expried' => $request->time_expried
             ]);
-            if($update_day){
+            if ($update_day) {
                 Alert::success('แก้ไขสำเร็จ');
                 return redirect()->back();
             }
         }
-       
-        
     }
 
-    public function activityEditAll(Request $request,$activity_id,$date_id,$round_id){
+    public function activityEditAll(Request $request, $activity_id, $date_id, $round_id)
+    {
         return ["Alert" => "success"];
     }
-    
 }
-
-
-
-
