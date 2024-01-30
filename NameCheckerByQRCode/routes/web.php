@@ -62,10 +62,13 @@ Route::get('activity/day-chcker-list/dashboard/{id}', [ActivityController::class
 Route::get('activity-edit/{activity_id}',[ActivityController::class,'showEditActivityDashboard'])->name('show_edit_activity_dashboard');
 ///activity_day_edit///
 Route::post('activity/edit/date/{date_id}',[ActivityController::class,'activityEditDayPost'])->name('activity_edit_day_post');
-
+///round_delete
+Route::get('activity/round/delete/{round_id}',[RoundController::class,'deleteRound'])->name('delete_round');
 /// super edit //
 Route::post('activity/edit-all/{activity_id}',[ActivityController::class,'activityEditAll'])->name('activity_edit_all');
+// dashboard_stat
 
+Route::get('activity/dashboard-stat/{activity_id}',[ActivityController::class,'showDashboardStat'])->name('show_dashboard_stat');
 
 ///date//
 Route::get('activity/date/delete/{date_id}',[DateController::class,'dateDelete'])->name('date_delete');

@@ -43,15 +43,17 @@
                 </td>
                 <td data-label="เวลาเริ่มการเช็ค">{{$row->rounde_checker_time_start}}</td>
                 <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
-                <td data-label="ระยะเวลาการเช็ค">{{$row->CountPeopleRegister()}}</td>
+                <td >{{$row->CountPeopleRegister()}}</td>
                 
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 
                 <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
            <td>
             <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
-           </td>
-           <td ><a data-label="action" href="" class="btn btn-danger">ลบ</a></td>
+            <button class="btn btn-danger" onclick="confirmDelete(`{{route('delete_round',$row->id)}}`)" >ลบ</button>
+            
+          </td>
+          
               </tr>
             @endforeach
        
@@ -92,6 +94,48 @@
 
 <script src="{{asset('js/dayCheck/dayCheck.js')}}"></script>
 @endsection
+
+@foreach ($round as $row )
+<div class="modal fade" id="round-edit{{$row->id}}"   tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-success fw-bold" id="round-edit{{$row->id}}">แก้ไขข้อมูลรอบเช็คชื่อ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('round_edit',$row->id)}}"  method="post">
+          @csrf
+          <div class="mb-3">
+            <label for="" class="form-label">ชื่อรอบเช็คชื่อ</label>
+            <input type="text" name="round_name" value="{{$row->rounde_name}}" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">เวลาเริ่มการเช็ค</label>
+            <input type="time" id="round_start_time" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start" value="{{$row->rounde_checker_time_start}}" class="form-control border">
+            <label id="start_time_alert_text" style="font-size: 14px;"></label>
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">เวลาจบการเช็คชื่อ</label>
+            <input type="time" name="round_time_end" id="round_end_time" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start" value="{{$row->rounde_checker_time_start}}" value="{{$row->rounde_checker_time_expried}}" class="form-control border">
+            <label id="end_time_alert_text" ></label>
+          </div>
+          <button type="submit" class="btn btn-success ">Save changes</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@endforeach
+
+
+
+
 
 {{-- @foreach ($round_check_data as $array )
   @foreach ($array as $row )

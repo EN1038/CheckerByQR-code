@@ -31,7 +31,7 @@ Route::get('activity/round-checker-api/{activity_id}/{date_id}',[ApiController::
 Route::get('activity-data/{activity_id}',[ApiController::class,'activityData'])->name('activity_data');
 Route::get('activity/all-setting/{activity_id}',[ApiController::class,'activityAllSettingData'])->name('activity_all_setting_data');
 Route::get('activity/check-people-register/{activity_id}/{date_id}',[ApiController::class,'checkPeopleRegister'])->name('check_people_register');
-
+Route::get('activity/round_data/{date_id}',[ApiController::class,'roundData'])->name('round_data');
 
 ///post///
 Route::post('activity/date/delete/{date_id}',[ApiController::class,'deleteDate'])->name('delete_date_api');

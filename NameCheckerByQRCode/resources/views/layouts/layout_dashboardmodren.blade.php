@@ -264,6 +264,7 @@
     <script src="{{ asset('js/script_slide.js') }}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
     <script src="{{asset('js/activity/box_page.js')}}"></script>
+    <script src="{{asset('js/dayCheck/round_edit.js')}}"></script>
     
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"

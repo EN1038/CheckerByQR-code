@@ -253,7 +253,7 @@ class ActivityController extends Controller
 
     public function showRoundCheckList($activity_id, $date_id)
     {
-        $round = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->get();
+        $round = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->where('status','=','on')->get();
         
 
        
@@ -450,6 +450,11 @@ class ActivityController extends Controller
 
     public function activityEditAll(Request $request,$activity_id,$date_id,$round_id){
         return ["Alert" => "success"];
+    }
+
+    public function showDashboardStat($activity_id){
+
+        return view('activity.dashbord_stat.dashboard_stat');
     }
     
 }

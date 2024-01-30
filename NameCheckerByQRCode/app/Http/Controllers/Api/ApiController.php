@@ -136,6 +136,11 @@ class ApiController extends Controller
    ]);
 }
 
+public function roundData($date_id){
+   $round_data = activity_rounde_checker::where('date_id','=',$date_id)->get();
+   return response()->json($round_data);
+}
+
 
 
 
