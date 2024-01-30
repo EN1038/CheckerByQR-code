@@ -5,7 +5,7 @@
   
 
     <div class="d-flex flex-column">
-        <p class="fs-4 fs-sm-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> รายชื่อวันที่เช็คกิจกรรม</p>
+        <p class="fs-4 fs-sm-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> กิจกรรม {{$activity_data->activity_name}}</p>
     <div class="col d-flex px-5 detailSetting">
     </div>
     <div class="col">
@@ -13,7 +13,7 @@
     </div>
     <div class="col detailActivity">
         <h5>รายละเอียดกิจกรรม : </h5>
-        <p id="detailText">{{$activity_description}}</p>
+        <p id="detailText">{{$activity_data->activity_description}}</p>
     </div>
     <div class="col d-flex justify-content-end mb-3">
         
