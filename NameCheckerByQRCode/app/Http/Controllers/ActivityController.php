@@ -462,9 +462,7 @@ class ActivityController extends Controller
                                 'time_expried' => $date['time']['time_expried']
                             ]);
             }
-            if($date_update){
-                return response()->json($date_update);
-            }
+            
         }
         // if($request->input('activity_edit_data.setting.side') == 2 ){
 
