@@ -446,9 +446,45 @@ class ActivityController extends Controller
         }
     }
 
-    public function activityEditAll(Request $request, $activity_id, $date_id, $round_id)
+    public function activityEditAll(Request $request)
     {
-        return ["Alert" => "success"];
+
+        if($request->input('activity_edit_data.setting.side_change') == false){
+
+            $activity_update = Activity::where('id','=',$request->input('activity_edit_data.activity_id'))->update([
+                'activity_description' => $request->input('activity_edit_data.detail')
+            ]);
+            
+            foreach( $request->input('activity_edit_data.date_add') as $date){
+                $date_update = activity_day_maker::where('id','=',$date['date_id'])->update([
+                                'date' => $date['date'],
+                                'time_start' => $date['time']['time_start'],
+                                'time_expried' => $date['time']['time_expried']
+                            ]);
+            }
+            if($date_update){
+                return response()->json($date_update);
+            }
+        }
+        // if($request->input('activity_edit_data.setting.side') == 2 ){
+
+        //     $activity_update = Activity::where('id','=',$request->input('activity_edit_date.activity_id'))->update([
+        //         'activity_description' => $request->input('activity_edit_data.')
+        //     ]);
+
+        //     foreach($request->input('date_add') as $date){
+        //         $date_update = activity_day_maker::where('id','=',$date['date_id'])->update([
+        //             'date' => $date['date'],
+        //             'time_start' => $date['time.time_start'],
+        //             'time_expried' => $date['time.time_expried']
+        //         ]);
+
+        //         if( $date_update){
+        //             return \response()->json($date_update);
+        //         }
+        //     }
+            
+        // }
     }
 
     public function showDashboardStat($activity_id){

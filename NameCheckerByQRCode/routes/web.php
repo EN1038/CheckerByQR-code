@@ -65,7 +65,7 @@ Route::post('activity/edit/date/{date_id}',[ActivityController::class,'activityE
 ///round_delete
 Route::get('activity/round/delete/{round_id}',[RoundController::class,'deleteRound'])->name('delete_round');
 /// super edit //
-Route::post('activity/edit-all/{activity_id}',[ActivityController::class,'activityEditAll'])->name('activity_edit_all');
+
 // dashboard_stat
 
 Route::get('activity/dashboard-stat/{activity_id}',[ActivityController::class,'showDashboardStat'])->name('show_dashboard_stat');
