@@ -4,7 +4,7 @@
     <div>{{ activity_data.user_id }}</div>
     <div>{{ activity_data.activity_description }}</div>
     <div>{{ activity_data.status }}</div>
-    <div>{{ activity_setting.list_of_name_mode_id }}</div>
+    <div>{{ activity_settin.list_of_name_mode_id }}</div>
 
     <div class="row">
         <div class="col mb-3">
@@ -167,7 +167,7 @@
                                             class="form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound revese-fake-disable"
                                             :id="'selectSetRoundCheck' + item.id" :data-id="item.id"
                                             @change="showSelectRound">
-                                            <option disabled="" hidden="" value="0">เลือกจำนวนรอบ</option>
+                                            <option disabled hidden value="0">เลือกจำนวนรอบ</option>
                                             <option value="1">จำนวน 1 รอบ</option>
                                             <option value="2">จำนวน 2 รอบ</option>
                                             <option value="3">จำนวน 3 รอบ</option>
@@ -181,7 +181,7 @@
                                         <select class="form-select w-100 w-lg-75 getId_selectTimeCheck revese-fake-disable"
                                             :id="'selectTimeCheck' + item.id" :data-id="item.id"
                                             @change="effect_inputduration">
-                                            <option disabled="" hidden="">เลือกเวลา</option>
+                                            <option disabled hidden>เลือกเวลา</option>
                                             <option value="15">15 นาที</option>
                                             <option value="30">30 นาที</option>
                                             <option value="45">45 นาที</option>
@@ -230,15 +230,19 @@
                                                 }}</label>
                                             <select
                                                 class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable"
-                                                :id="'dynamicSelect' + item.id + index">
+                                                :id="'dynamicSelect' + item.id + index" :data-id="item.id" :data-id2="index" @change="changValuehide" >
                                                 <option v-for="option in optionsArray" :key="option.id"
-                                                    :value="option.time">{{ option.id }} - {{ option.time }}</option>
+                                                    :value="option.time">หลังเวลา : {{ option.time }} นาที</option>
                                             </select>
                                             <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center"
                                                 :id="'divSpace' + item.id">
                                                 <input
                                                     class=" my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5 text-lg-center"
-                                                    disabled="" :id="'Boxinput' + item.id" value="1212">
+                                                    disabled :id="'Boxinput' + item.id + index" >
+                
+                                                    <input type="text" class="d-none" :id="'timeSelect'+item.id+index" value="xxx">
+                                                    <input type="text" class="d-none" :id="'timeDuration'+item.id+index" value="zzz">
+                                                    <input type="text" class="d-none" :id="'timeEnd'+item.id+index" value="zzxxz">
                                             </div>
                                         </div>
 
@@ -288,6 +292,8 @@ export default {
             selectedTime: {},
             optionsArray: [{ id: null, time: null }],
             selectedValues: null,
+            selectOptionsRound: null,
+
         }
     },
 
@@ -587,7 +593,6 @@ export default {
             let valueIdselectRound = document.getElementById('selectSetRoundCheck' + id).value;
             for (var x = 0; x <= (valueIdselectRound - 1); x++) {
                 if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
-                    console.log('xxxx')
                     const intervalOneHours = 60;
                     const newTimesArray = [];
 
@@ -639,10 +644,79 @@ export default {
                 }
             }
         },
-        showResult(event) {
-            console.log('5555')
-        },
+        changValuehide(event){
+            const id = event.target.dataset.id;
+            const idsub = event.target.dataset.id2;
+            const valueEvent = event.target.value;
+            const timeSelect = document.getElementById('timeSelect'+id+idsub);
+            const timeDuration = document.getElementById('timeDuration'+id+idsub);
+            const timeEndofDate = document.getElementById('timeExpried_input' +id);
+            const selectTimeCheck = document.getElementById('selectTimeCheck' + id);
+            const timeEndofRound = document.getElementById('timeEnd'+id+idsub);
+            
+            timeSelect.value = valueEvent;
 
+            var splitTime = valueEvent.split(":");
+            var hours = parseInt(splitTime[0]);
+            var mins = parseInt(splitTime[1]);
+
+            mins += selectTimeCheck.value;
+
+            hours += Math.floor(mins / 60);
+            mins = mins % 60;
+
+            hours = hours % 24;
+
+            var resultHours = hours < 10 ? "0" + hours : hours;
+            var resultMins = mins < 10 ? "0" + mins : mins;
+            timeDuration.value = resultHours + ":" + resultMins;
+
+            if(timeEndofRound){
+                var splitTime = timeSelect.value.split(":");
+                var hours = parseInt(splitTime[0]);
+                var mins = parseInt(splitTime[1]);
+
+                mins -= 1;
+                        
+                // หากน้อยกว่า 0 ให้ลบชั่วโมงและปรับนาทีให้เป็นบวก
+                if (mins < 0) {
+                    hours--;
+                     mins += 60;
+                }
+
+                // หากชั่วโมงเป็นค่าลบ ให้กลับไปเป็น 23
+                if (hours < 0) {
+                     hours = 23;
+                }
+
+                // กลับไปเป็นรูปแบบเวลา
+                var resultHours = hours < 10 ? "0" + hours : hours;
+                var resultMins = mins < 10 ? "0" + mins : mins;
+                var idsubInt = parseInt(idsub);
+                var idcal = idsubInt-1;
+                const before_timeEndofRound = document.getElementById('timeEnd'+id+idcal);
+                if(before_timeEndofRound){
+                    var idsubInt = parseInt(idsub);
+                    var idcal = idsubInt+1;
+                    const after_timeEndofRound = document.getElementById('timeEnd'+id+idcal);
+                    const boxInput = document.getElementById('Boxinput' + id + idsub);
+                    if(after_timeEndofRound){
+                        before_timeEndofRound.value = resultHours + ":" + resultMins;
+                        boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
+                    }else{
+                        before_timeEndofRound.value = resultHours + ":" + resultMins;
+                        timeEndofRound.value = timeEndofDate.value;
+                        boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
+                    }
+                    
+                }else{
+                    timeEndofRound.value = timeEndofDate.value;
+                    const boxInput = document.getElementById('Boxinput' + id + idsub);
+                    boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
+                }
+                
+            }
+        },
 
     },
 
