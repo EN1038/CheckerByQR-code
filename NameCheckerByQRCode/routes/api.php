@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,5 @@ Route::get('activity/round_data/{date_id}',[ApiController::class,'roundData'])->
 ///post///
 Route::post('activity/date/delete/{date_id}',[ApiController::class,'deleteDate'])->name('delete_date_api');
 Route::post('activity/super-edit',[TestController::class,'superEdit'])->name('activity_super_edit');
+///api edit all
+Route::post('activity/edit-all',[ActivityController::class,'activityEditAll'])->name('activity_edit_all');
