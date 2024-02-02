@@ -11,7 +11,7 @@
 
 .detailActivity p{
     height: 41px;
-    width: 690px;
+    width: 1200px;
     margin: 2px 20px 2px 20px;
     padding: 10px 20px 10px 20px;
     border: 1px solid #adffd9;
@@ -26,7 +26,7 @@
     border: 1px solid #fff;
     background-color: #22b671;
     color: #fff;
-    transform: translateX(200px) scale(1.4);
+    transform: translateX(40px) scale(1.1);
 }
 
 .detailActivity h5{
@@ -134,13 +134,37 @@
     color: #22b671;
 }
 
+@media (max-width: 1670px) {
+    
+    .detailActivity p{
+        width: 1000;
+    }
+}
+
+@media (max-width: 1630px) {
+    
+    .detailActivity p{
+        width: 900;
+    }
+}
   
 @media (max-width: 1440px) {
     
     .detailActivity p:hover{
-        transform: translateX(110px) scale(1.2);
+        transform: translateX(60px) scale(1.1);
     }
 }
+
+@media (max-width: 1400px) {
+    
+    .detailActivity p{
+        width: 700;
+    }
+    .detailActivity p:hover{
+        transform: translateX(50px) scale(1.1);
+    }
+}
+
 @media (max-width: 1300px) {
     
     .detailActivity p:hover{
@@ -155,12 +179,17 @@
 }
 @media (max-width: 1220px) {
     
+    .detailActivity p{
+        width: 800;
+    }
     .detailActivity p:hover{
         transform: translateX(70px) scale(1.1);
     }
 }
 @media (max-width: 1110px) {
-    
+    .detailActivity p{
+        width: 700;
+    }
     .detailActivity p:hover{
         transform: translateX(40px) scale(1.1);
     }

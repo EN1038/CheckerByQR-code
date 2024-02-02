@@ -16,7 +16,7 @@
         <p id="detailText">{{$activity_data->activity_description}}</p>
     </div>
     <div class="col d-flex justify-content-end mb-3">
-        <a class="btn btn-info me-3 text-light btn-delete" href="{{route('show_dashboard_stat',request()->route()->id)}}"><i class="fa-solid fa-chart-simple py-2 px-1 py-sm-0 px-sm-0"></i> ดูหน้าสถิติ</a>
+        <a class="btn btn-info me-3 text-light btn-delete" href="{{route('show_dashboard_stat',request()->route()->id)}}"><i class="fa-solid fa-chart-simple py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">สถิติ</span></a>
         <button data-bs-toggle="modal" type="button"  data-bs-target="#showQRcode" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">QR-Code</span></button>
         <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ลบกิจกรรม</span></a>
         <a href="{{route('show_edit_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-3 me-sm-5 rounded-3 btn-setting " id="btnSetting"><i class="fa-solid fa-list-check py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ตั้งค่ากิจกรรม</span></a>
@@ -36,7 +36,7 @@
                     <th scope="col">วันที่</th>
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
-                    <th scope="col">ดูรอบเช็คชื่อ</th>
+                    <th scope="col">รอบเช็คชื่อ</th>
                     <th scope="col">action</th>
                     
                 </tr>
@@ -52,7 +52,7 @@
                             <td data-label="วันที่">{{ $row->date }}</td>
                             <td data-label="เวลาเริ่ม">{{ $row->time_start }}</td>
                             <td data-label="เวลาจบ">{{ $row->time_expried }}</td>
-                            <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> ดูรอบเช็คชื่อ</a></td>
+                            <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> รอบเช็คชื่อ</a></td>
                             <td data-label="action">
                               <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="{{'#edit_btn_'.$row->id}}">
                                 แก้ไข
