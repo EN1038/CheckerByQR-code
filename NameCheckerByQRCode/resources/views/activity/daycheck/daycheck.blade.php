@@ -117,7 +117,7 @@
           </div>
           <div class="mb-3">
             <label for="" class="form-label">เวลาจบการเช็คชื่อ</label>
-            <input type="time" name="round_time_end" id="round_end_time" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start" value="{{$row->rounde_checker_time_start}}" value="{{$row->rounde_checker_time_expried}}" class="form-control border">
+            <input type="time" name="round_time_end" id="round_end_time" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start"  value="{{$row->rounde_checker_time_expried}}" class="form-control border">
             <label id="end_time_alert_text" ></label>
           </div>
           <button type="submit" class="btn btn-success ">Save changes</button>

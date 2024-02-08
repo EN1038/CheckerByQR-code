@@ -130,16 +130,18 @@
 
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาเริ่ม</label>
-                                <input class="form-control get_IdInputTime revese-fake-disable" type="time"
-                                    :name="'activity[date_add][date_input'+item.id+'][time][time_start]'"
+                                <input class="form-control get_IdInputTime revese-fake-disable text-center" type="time"
+                                    name="activity[date_add][date_input0][time][time_start]"
+                                
                                     :id="'timeStart_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].start : item.time_start"
                                     @input="checkTime">
                             </div>
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาจบ</label>
-                                <input class="form-control get_IdInputTime revese-fake-disable" type="time"
-                                    :name="'activity[date_add][date_input][time][time_expried]'"
+                                <input class="form-control get_IdInputTime revese-fake-disable text-center" type="time"
+                                    name="activity[date_add][date_input0][time][time_expried]"
+                                
                                     :id="'timeExpried_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].expried : item.time_expried"
                                     @input="checkTime">
@@ -175,30 +177,30 @@
                                         <label class="form-label w-100 w-lg-25 fs-5" for="selectSetRoundCheck0">จำนวนรอบ :
                                         </label>
                                         <select
-                                            class="form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound revese-fake-disable"
+                                            class="form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound revese-fake-disable text-center"
                                             :id="'selectSetRoundCheck' + item.id" :data-id="item.id"
                                             @change="showSelectRound">
-                                            <option disabled hidden value="0">เลือกจำนวนรอบ</option>
-                                            <option value="1">จำนวน 1 รอบ</option>
-                                            <option value="2">จำนวน 2 รอบ</option>
-                                            <option value="3">จำนวน 3 รอบ</option>
-                                            <option value="4">จำนวน 4 รอบ</option>
-                                            <option value="5">จำนวน 5 รอบ</option>
+                                            <option class="text-center" disabled hidden value="0">เลือกจำนวนรอบ</option>
+                                            <option class="text-center" value="1">จำนวน 1 รอบ</option>
+                                            <option class="text-center" value="2">จำนวน 2 รอบ</option>
+                                            <option class="text-center" value="3">จำนวน 3 รอบ</option>
+                                            <option class="text-center" value="4">จำนวน 4 รอบ</option>
+                                            <option class="text-center" value="5">จำนวน 5 รอบ</option>
                                         </select>
                                     </div>
                                     <div class="col-12 col-lg-5 d-flex flex-column ps-0 ps-lg-5">
                                         <label class="form-label fs-5 me-4 me-lg-0"
                                             for="selectTimeCheck0">ระยะเวลาที่เช็ค</label>
-                                        <select class="form-select w-100 w-lg-75 getId_selectTimeCheck revese-fake-disable"
+                                        <select class="form-select w-100 w-lg-75 getId_selectTimeCheck revese-fake-disable text-center"
                                             :id="'selectTimeCheck' + item.id" :data-id="item.id"
                                             @change="effect_inputduration">
-                                            <option disabled hidden>เลือกเวลา</option>
-                                            <option value="15">15 นาที</option>
-                                            <option value="30">30 นาที</option>
-                                            <option value="45">45 นาที</option>
-                                            <option value="60">60 นาที</option>
-                                            <option value="90">90 นาที</option>
-                                            <option value="120">120 นาที</option>
+                                            <option class="text-center" disabled hidden>เลือกเวลา</option>
+                                            <option class="text-center" value="15">15 นาที</option>
+                                            <option class="text-center" value="30">30 นาที</option>
+                                            <option class="text-center" value="45">45 นาที</option>
+                                            <option class="text-center" value="60">60 นาที</option>
+                                            <option class="text-center" value="90">90 นาที</option>
+                                            <option class="text-center" value="120">120 นาที</option>
                                         </select>
                                     </div>
                                 </div>
@@ -233,17 +235,16 @@
                                         </div>
                                     </div>
                                     <div class="d-none" :id="'divShowTimeToUserII' + item.id">
-                                        <div v-for="(selectedValue, index) in selectedValues" :key="index"
-                                            class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center"
-                                            id="div_row0">
+                                        <div v-for="(selectedValue, index) in selectedValues" :key="index">
+                                            <div :id="'div_row'+item.id" class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center">
                                             <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
-                                                for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1
-                                                }}</label>
+                                                for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1}}</label>
                                             <select
-                                                class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable"
+                                            :class="'col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start fake-disable text-center'"
                                                 :id="'dynamicSelect' + item.id + index" :data-id="item.id" :data-id2="index" @change="changValuehide" >
-                                                <option v-for="option in optionsArray" :key="option.id"
-                                                    :value="option.time">หลังเวลา : {{ option.time }} นาที</option>
+                                                <option v-for="option in filteredOptions(index)" :key="option.id" :value="option.id === '0' ? '0' : option.time" :hidden="option.id === '0'">
+                                                    {{ option.id === '0' ? option.time : 'หลังเวลา : ' + option.time + ' นาที' }}
+                                                </option>
                                             </select>
                                             <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center"
                                                 :id="'divSpace' + item.id">
@@ -254,6 +255,7 @@
                                                     <input type="text" class="d-none" :id="'timeSelect'+item.id+index" value="xxx">
                                                     <input type="text" class="d-none" :id="'timeDuration'+item.id+index" value="zzz">
                                                     <input type="text" class="d-none" :id="'timeEnd'+item.id+index" value="zzxxz">
+                                            </div>
                                             </div>
                                         </div>
 
@@ -301,18 +303,9 @@ export default {
             errorInputType: null,
             errorHTML: '',
             selectedTime: {},
-            optionsArray: [{ id: null, time: null }],
+            optionsArray: [{ id: null, time: null}],
             selectedValues: null,
             selectOptionsRound: null,
-            
-            
-            /// for mocup json to post request by axios//
-
-            date_object:[{
-                
-            }]
-                
-            
 
         }
     },
@@ -460,8 +453,6 @@ export default {
 
         },
 
-
-
         auto_click_list(value) {
             if (value) {
                 if (value === '1') {
@@ -569,9 +560,9 @@ export default {
             const time_start = document.getElementById('timeStart_input' + id);
             const time_expried = document.getElementById('timeExpried_input' + id);
             const divShowTimeToUsers = document.getElementById('divShowTimeToUser' + id);
-            let divShowTimeToUsersII = document.getElementById('divShowTimeToUserII' + id);
+            const div_row = document.querySelectorAll(`[id='div_row${id}']`);
             const selectSetRoundCheck = document.getElementById('selectSetRoundCheck' + id);
-
+            
             if (time_start.value < time_expried.value) {
                 console.log('เวลาถูกต้อง');
                 this.valueError = false;
@@ -587,10 +578,19 @@ export default {
                     selectSetRoundCheck.value = "0";
                     selectSetRoundCheck.classList.remove('revese-fake-disable');
                     selectSetRoundCheck.classList.add('fake-disable');
-                } else if (divShowTimeToUsersII) {
-                    var selectAndLabelsII = divShowTimeToUsersII.querySelectorAll('select, label, input, div');
-                    selectAndLabelsII.forEach(element => {
-                        element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                } 
+                if (div_row) {
+                    div_row.forEach(div => {
+                    const selectsInDiv = div.querySelectorAll("select");
+                    const inputInDiv = div.querySelectorAll("input");
+                        selectsInDiv.forEach(select => {
+                            select.value = '0';
+                            select.classList.remove('revese-fake-disable');
+                            select.classList.add('fake-disable');
+                        });
+                        inputInDiv.forEach(input => {
+                            input.value = '';
+                        });
                     });
 
                     selectSetRoundCheck.value = "0";
@@ -611,8 +611,10 @@ export default {
             let divShowTimeToUsersII = document.getElementById('divShowTimeToUserII' + id);
 
             if (event) {
+                event.target.classList.remove('fake-disable');
+                event.target.classList.add('revese-fake-disable');
                 divShowTimeToUsers.classList.add('d-none');
-                divShowTimeToUsersII.classList.remove('d-none')
+                divShowTimeToUsersII.classList.remove('d-none');
 
                 const value = event.target.value;
                 const intValue = parseInt(value, 10);
@@ -632,20 +634,19 @@ export default {
             if (divShowTimeToUsers) {
                 var selectAndLabels = divShowTimeToUsers.querySelectorAll('select, label, input, div');
 
-                // วนลูปผ่าน select และ label แล้วลบทุกตัว
                 selectAndLabels.forEach(element => {
-                    element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                    element.remove();
                 });
 
                 selectSetRoundCheck.value = "0";
                 selectSetRoundCheck.classList.remove('revese-fake-disable');
                 selectSetRoundCheck.classList.add('fake-disable');
-            } else if (divShowTimeToUsersII) {
+            } 
+            if (divShowTimeToUsersII) {
                 var selectAndLabelsII = divShowTimeToUsersII.querySelectorAll('select, label, input, div');
                 selectAndLabelsII.forEach(element => {
-                    element.remove(); // ลบ select และ label ทั้งหมดออกจาก DOM
+                    element.remove();
                 });
-
                 selectSetRoundCheck.value = "0";
                 selectSetRoundCheck.classList.remove('revese-fake-disable');
                 selectSetRoundCheck.classList.add('fake-disable');
@@ -696,8 +697,8 @@ export default {
                     // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
                     this.optionsArray = newTimesArray.map((newTime, index) => {
                         return {
-                            id: `Option ${index + 1}`,
-                            time: newTime,
+                            id: index === 0 ? "0" : `${index+1}`,
+                            time: index === 0 ? "โปรดเลือกเวลา" : newTime,
                         };
                     });
 
@@ -721,8 +722,8 @@ export default {
                     // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
                     this.optionsArray = newTimesArray.map((newTime, index) => {
                         return {
-                            id: `Option ${index + 1}`,
-                            time: newTime,
+                            id: index === 0 ? "0" : `${index+1}`,
+                            time: index === 0 ? "โปรดเลือกเวลา" : newTime,
                         };
                     });
                 }
@@ -738,6 +739,9 @@ export default {
             const selectTimeCheck = document.getElementById('selectTimeCheck' + id);
             const timeEndofRound = document.getElementById('timeEnd'+id+idsub);
             
+            event.target.classList.remove('fake-disable')
+            event.target.classList.add('revese-fake-disable')
+
             timeSelect.value = valueEvent;
 
             var splitTime = valueEvent.split(":");
@@ -798,8 +802,27 @@ export default {
                     const boxInput = document.getElementById('Boxinput' + id + idsub);
                     boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
                 }
+
+                const selectedOption = event.target.value;
+                // ตรวจสอบว่าค่าที่เลือกมีอยู่ใน selectedValues หรือไม่
+                if (this.selectedValuesOfRound.includes(selectedOption)) {
+                    // หากมีให้แสดงข้อความเตือนหรือป้องกันการเลือกได้ตามต้องการ
+                    alert('คุณเลือกค่าที่ซ้ำกัน กรุณาเลือกค่าอื่น');
+                    event.target.value = '0';
+                    event.target.classList.remove('revese-fake-disable')
+                    event.target.classList.add('fake-disable')
+                    const editInputBox = document.getElementById('Boxinput'+id+idsub);
+                    editInputBox.value = '';
+                } else {
+                    // หากไม่มีให้เพิ่มค่าที่เลือกเข้าไปใน selectedValues
+                    this.selectedValuesOfRound[idsub] = selectedOption;
+                }
                 
             }
+        },
+        filteredOptions(index) {
+            // กรอง options ที่มีค่าซ้ำกันออกจาก optionsArray
+            return this.optionsArray.filter(option => !this.selectedValuesOfRound.some(value => value === option.id));
         },
 
     },
