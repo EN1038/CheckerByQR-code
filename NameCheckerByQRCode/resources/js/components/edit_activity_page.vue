@@ -37,7 +37,7 @@
 
                 <div class="mb-3 mt-4">
                     <label class="label-form fs-5">รายละเอียดกิจกรรม <i class="fa-regular fa-message"></i></label>
-                    <textarea class="form-control rounded-4" name="activity[detail]" id="" cols="30"
+                    <textarea class="form-control rounded-4" name="activity[detail]" id="activity_description" cols="30"
                         rows="5">{{ activity_data.activity_description }}</textarea>
                 </div>
 
@@ -51,14 +51,14 @@
                         class="col d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-center justify-content-lg-start pt-3">
 
                         <div class="form-check col-12 col-lg-3 ps-4 ps-lg-5">
-                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" v-model="selectedOption"
+                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" name="side_select" type="radio" v-model="selectedOption"
                                 value="1" ref="haveList">
                             <label class="form-check-label fs-5" for="radiosOSHaveData">
                                 มีรายชื่อ
                             </label>
                         </div>
                         <div class="form-check col-12 col-lg-3">
-                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" v-model="selectedOption"
+                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" name="side_select" type="radio" v-model="selectedOption"
                                 value="2" ref="no_haveList">
                             <label class="form-check-label fs-5" for="radiosOSnoHaveData">
                                 ไม่มีรายชื่อ
@@ -96,11 +96,12 @@
                 </div>
                 <div id="inputContainer">
 
-                    <div v-for="item in date_data" :key="item.id"
+                    <div v-for="(item, index) in date_data" :key="index"
                         :class="{ 'border-bottom border-success border-3 mb-4': item.id > 0 }">
                         <div class="d-flex flex-row justify-content-between align-items-center mb-3">
                             <input class="fs-4 fw-bold input-title-form" :id="'formDate' + item.id"
-                                :value="'วันที่ : ' + (date_data.indexOf(item) + 1)">
+                                :value="'วันที่ : ' + (date_data.indexOf(item) + 1)" >
+                                
                             <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose"
                                 :id="'iconClose' + item.id" @click="deleteDate(item.id)"></i>
                         </div>
@@ -109,18 +110,28 @@
                             <div class="col-12  col-lg-6 ">
                                 <label class="form-label fs-5">วัน/เดือน/ปี</label>
                                 <input class="form-control datepicker getDate datepicker_costom_success" type="date"
-                                    name="activity[date_add][date_input0][date]" :id="'date_input' + item.id"
+                                    
+                                    :name="'date_input'+index"
+                                    
+                                    :id="'date_input' + item.id"
                                     placeholder="โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น" autocomplete="off"
                                     :value="dateInputs[item.id] || item.date" @input="handleDateInput(item.id, $event)"
-                                    :min="getMinDate()">
+                                    :v-model="item.date"
+                                    :min="getMinDate()"
+                                    
+                                    >
+                                    
                                 <div v-if="valueError && item.id === errorInputId && errorInputType === 'time_date'"
                                     v-html="errorHTML" class="text-danger text-center fs-6 fw-bold mt-2"></div>
                                 {{ auto_validateDate(item.id, item.date) }}
                             </div>
+
+                           
+
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาเริ่ม</label>
                                 <input class="form-control get_IdInputTime revese-fake-disable" type="time"
-                                    name="activity[date_add][date_input0][time][time_start]"
+                                    :name="'activity[date_add][date_input'+item.id+'][time][time_start]'"
                                     :id="'timeStart_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].start : item.time_start"
                                     @input="checkTime">
@@ -128,7 +139,7 @@
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาจบ</label>
                                 <input class="form-control get_IdInputTime revese-fake-disable" type="time"
-                                    name="activity[date_add][date_input0][time][time_expried]"
+                                    :name="'activity[date_add][date_input][time][time_expried]'"
                                     :id="'timeExpried_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].expried : item.time_expried"
                                     @input="checkTime">
@@ -259,7 +270,7 @@
                 <div
                     class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
                     <div class="col d-flex flex-row-reverse">
-                        <button type="submit" class="btn-submit-setting " id="submit"><i
+                        <button type="submit" @click="superUpdatePost" class="btn-submit-setting " id="submit"><i
                                 class="fa-solid fa-cloud-arrow-up"></i> บันทึกการตั้งค่า</button>
                     </div>
                 </div>
@@ -293,14 +304,87 @@ export default {
             optionsArray: [{ id: null, time: null }],
             selectedValues: null,
             selectOptionsRound: null,
+            
+            
+            /// for mocup json to post request by axios//
+
+            date_object:[{
+                
+            }]
+                
+            
 
         }
     },
 
     mounted() {
         this.getDayCheckerData()
+        
+        // this.$nextTick(()=>{
+        //     this.dateValue()
+        //     console.log(this.date_object);
+        // })
+
     },
     methods: {
+
+        
+        // dateValue(value,item_id){
+            
+        
+        //     this.$set(this.date_object,item_id,{
+        //        date:item_id,
+        //        date_value:value,
+        //     });
+        
+        
+        //  console.log(this.date_object);  
+        // },
+
+        superUpdatePost(){
+            
+            axios.post('/api/activity/edit-all',{
+                "activity_edit_data":{
+        "activity_id":29,
+        "detail":"คำอธิบายกิจกรรม",
+        "setting":{
+            "side_change":false,
+            "side":"2"
+        },
+        "date_add":{
+            "date_input_0":{
+                "date_id":99,
+                "date":"2024-01-16",
+                "time":{
+                    "time_start":"09:30",
+                    "time_expried":"16:30"
+                },
+                "round_setting":1
+            },
+            "date_input1":{
+                "date_id":100,
+                "date":"2024-01-20",
+                "time":{
+                    "time_start":"09:30",
+                    "time_expried":"16:30"
+                },
+                "round_setting":1
+            }
+            
+        }
+        
+    }
+            });
+
+            this.$swal({
+                title:"add success"
+            }).then(()=>{
+                window.location.href = '/api/activity/edit-all'
+            })
+            
+        },
+        
+
         getDayCheckerData() {
             axios.get('http://127.0.0.1:8000/api/activity/all-setting/' + this.activity_id).then((res) => {
                 this.date_data = res.data.date_data;
