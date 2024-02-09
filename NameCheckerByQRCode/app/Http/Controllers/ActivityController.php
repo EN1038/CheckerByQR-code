@@ -462,7 +462,7 @@ class ActivityController extends Controller
                                 'time_expried' => $date['time']['time_expried']
                             ]);
             }
-            
+            return response()->json($date_update);
         }
         // if($request->input('activity_edit_data.setting.side') == 2 ){
 
@@ -483,6 +483,13 @@ class ActivityController extends Controller
         //     }
             
         // }
+
+        // foreach( $request-> date_data as $item){
+        //     $date_update = activity_day_maker::where('id','=',$item->id)->update([
+        //         'date' => $item['date']
+        //     ]);
+        // }
+        // return response()->json($date_update);
     }
 
     public function showDashboardStat($activity_id){
