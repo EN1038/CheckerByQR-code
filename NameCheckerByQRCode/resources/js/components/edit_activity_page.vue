@@ -103,6 +103,7 @@
                                 :value="'วันที่ : ' + (date_data.indexOf(item) + 1)">
                             <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose"
                                 :id="'iconClose' + item.id" @click="deleteDate(item.id)"></i>
+                                <button @click="disable_logined(item.id)">clickHere</button>
                         </div>
                         <div
                             class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-start align-items-lg-center mb-3">
@@ -259,6 +260,7 @@
                 <div
                     class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
                     <div class="col d-flex flex-row-reverse">
+                        
                         <button type="submit" class="btn-submit-setting " id="submit"><i
                                 class="fa-solid fa-cloud-arrow-up"></i> บันทึกการตั้งค่า</button>
                     </div>
@@ -748,6 +750,20 @@ export default {
             return this.optionsArray.filter(option => !this.selectedValuesOfRound.some(value => value === option.id));
         },
 
+        disable_logined(date_id){
+            axios.get('/api/activity/check-people-register/' + this.activity_id + '/' + date_id).then((res) => {
+                console.log(res.data);
+                var register_data = res.data
+
+                if(register_data.length){
+                    //ถ้ามีรายชื่อ
+                    //ต้องทำให้ข้อมูลเป็นdisableทั้งหมดหรือหาอะไรมาคลุม
+                }else{
+                    //ถ้าไม่มีรายชื่อ
+                    //แสดงเป็น normal
+                }
+            })
+        }
     },
 
 }
