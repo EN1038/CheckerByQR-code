@@ -15,6 +15,8 @@ setInterval(updateTime, 1000);
 // เรียกฟังก์ชันเพื่อแสดงเวลาปัจจุบันครั้งแรก
 updateTime();
 
+
+
 let inputFirstName = document.getElementById('inputFirstName');
 let inputLastName = document.getElementById('inputLastName');
 let text_alert_firstname = document.getElementById('text-alert-firstname');

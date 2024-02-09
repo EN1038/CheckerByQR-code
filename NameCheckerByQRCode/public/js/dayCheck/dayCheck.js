@@ -110,6 +110,7 @@ function getDataofRound(url) {
         if (data) {
             displayPage(1, data);
             updatePagination(data);
+            
         } else {
             console.error('Unable to fetch data. Please try again later.');
         }
@@ -288,7 +289,7 @@ function showDetail(get){
 
     if(data.list_of_name_mode_id === '1'){
       // console.log('/api/activity-people/v2')
-
+      console.log('xxxx')
           fetch('/api/activity-people/v2/'+btn_detail_idactivity)
           .then(response => {
             if (!response.ok) {
@@ -315,6 +316,7 @@ function showDetail(get){
           });
 
     }else if(data.list_of_name_mode_id === '2'){
+      console.log('zzzz')
       let table = document.getElementById('dataTable');
               let thead = table.getElementsByTagName('thead')[0]; 
               let idUser_Cells = thead.getElementsByTagName('th')[0];
@@ -323,6 +325,8 @@ function showDetail(get){
               lastName_Cells.classList.remove('d-none');
       let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
       getDataofRound(textApi);
+
+      
     }
   })
   .catch(error => {
