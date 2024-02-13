@@ -118,7 +118,7 @@
             </div>
           </div>
         </a>
-        <a href="#" class="text-decoration-none">
+        {{-- <a href="#" class="text-decoration-none">
           <div class="hover-btn d-flex flex-row mb-1 rounded-3  align-items-center">
             <div class="col-2 fs-4 text-center">
               <i class="bi bi-pie-chart-fill"></i>
@@ -127,7 +127,7 @@
               <span class="divToHide ">ดูผลสถิติของการเข้าร่วม</span>
             </div>
           </div>
-        </a>
+        </a> --}}
       </div>
       <div class="d-flex flex-column text-white px-3 ">
         <div class="text-start ps-1 mb-2">
@@ -194,8 +194,8 @@
                             <a href="{{route('show_activity_profile')}}" 
                             class=' mx-2'><i class="bi bi-clipboard2-check-fill"></i> เช็คกิจกรรม</a>
                             
-                            <a href="" 
-                            class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a>
+                            {{-- <a href="" 
+                            class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a> --}}
                             
                             <a href="{{route('logout')}}"
                             class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
@@ -223,8 +223,8 @@
                     <a href="{{route('show_activity_profile')}}" 
                     class=' mx-2'><i class="bi bi-clipboard2-check-fill"></i> เช็คกิจกรรม</a>
 
-                    <a href="" 
-                    class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a>
+                    {{-- <a href="" 
+                    class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a> --}}
                     <a href="{{route('logout')}}"
                     class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
                     @else

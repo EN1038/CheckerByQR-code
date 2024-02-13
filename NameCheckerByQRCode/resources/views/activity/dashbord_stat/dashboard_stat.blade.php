@@ -24,7 +24,7 @@
             <h1 class="text-greenlight fw-bold text-center"><i class="fa-solid fa-chart-pie"></i> สถิติกิจกรรม <p class="fs-3 text-success">{{$activity_data->activity_name}}</p></h1>
         </div>
         <div class="d-flex flex-row flex-wrap justify-content-center align-items-center mb-3 ">
-            <div class="col-12 col-md-6 col-lg p-3 ">
+            <div class="col-12 col-lg-6 p-3 ">
                 <div class="card d-flex flex-row justify-content-center align-items-center rounded-4 card-hover shadow text-warning" >
                     <div class="col py-4 ps-0 ps-xxl-4 ">
                         <p class="text-center fs-1 fw-bold m-2">{{ $activity_data->dateCount() !== null ? $activity_data->dateCount() : 0 }}</p>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg p-3">
+            <div class="col-12 col-lg-6 p-3">
                 <div class="card d-flex flex-row justify-content-center align-items-center rounded-4 card-hover shadow text-info" >
                     <div class="col py-4 ps-0 ps-xxl-4">
                         <p class="text-center fs-1 fw-bold m-2">{{ $activity_data->dateRegisterdCount() !== null ? $activity_data->dateRegisterdCount() : 0 }}</p>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg p-3">
+            <div class="col-12 col-lg-6 p-3">
                 <div class="card d-flex flex-row justify-content-center align-items-center rounded-4 card-hover shadow text-danger" >
                     <div class="col py-4 ps-0 ps-xxl-4">
                         <p class="text-center fs-1 fw-bold m-2">{{ $activity_data->dateNoRegisterCount() !== null ? $activity_data->dateNoRegisterCount() : 0 }}</p>
@@ -54,6 +54,17 @@
                     </div>
                     <div class="col d-flex justify-content-end pe-5 d-none d-xxl-flex">
                         <i class="fa-solid fa-calendar-day" style="font-size: 5.5em;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 p-3">
+                <div class="card d-flex flex-row justify-content-center align-items-center rounded-4 card-hover shadow text-success" >
+                    <div class="col py-4 ps-0 ps-xxl-4">
+                        <p class="text-center fs-1 fw-bold m-2">{{ $activity_data->countPeople() !== null ? $activity_data->countPeople() : 0 }}</p>
+                        <p class="text-center fw-bold fs-5">จำนวนคนทั้งหมด</p>
+                    </div>
+                    <div class="col d-flex justify-content-end pe-5 d-none d-xxl-flex">
+                        <i class="fa-solid fa-user-check" style="font-size: 5.5em;"></i>
                     </div>
                 </div>
             </div>
