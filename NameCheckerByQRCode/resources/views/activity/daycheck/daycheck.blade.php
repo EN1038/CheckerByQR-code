@@ -13,7 +13,7 @@
             <th scope="col">เวลาจบการเช็ค</th>
             <th scope="col">จำนวนคนที่เช็คชื่อ</th>
             <th scope="col">รายละเอียด</th>
-            <th scope="col">แก้ไข</th>
+            <th scope="col">อื่นๆ</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +48,7 @@
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 
                 <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
-           <td data-label="แก้ไข">
+           <td data-label="อื่น">
             <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
             <button class="btn btn-danger" onclick="confirmDelete(`{{route('delete_round',$row->id)}}`)" >ลบ</button>
             
