@@ -2,7 +2,7 @@
 @section('content_body')
 <style>
 .card-hover {
-    background-color: #ffffff25; 
+    background-color: #ffffff75; 
 }
 .card-hover:hover p{
     transform: scale(1.2);
