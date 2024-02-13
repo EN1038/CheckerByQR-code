@@ -13,6 +13,16 @@
   background-color: #ffffff;
 }
 
+.custom-div{
+  pointer-events: none;
+  background-color: #3a3a3a25;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.custom-make-activity{
+}
+
 .activity-box span{
   font-size: 15px;
   font-weight: bold;

@@ -42,7 +42,7 @@
                     <p class="edit-text text-primary fw-bold">เช็คชื่อสำเร็จ !</p>
                     <div class="d-flex justify-content-center align-items-center my-2">
                         <i class="fa-solid fa-clock fa-shake text-primary fs-1"></i>
-                        <div id="current-time" class="col text-primary ps-4 fs-1">00:00:00</div> 
+                        <div id="coutdown-close" class="col text-primary ps-4 fs-1">00:00</div> 
                     </div>
                     
                 </div>
@@ -52,4 +52,4 @@
       </div>
     
 </div>
-<script src='{{asset('js/inputFormQr/inputFormQr.js')}}'></script>
+<script src='{{asset('js/inputFormQr/countDownClose.js')}}'></script>
