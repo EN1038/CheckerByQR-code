@@ -494,7 +494,9 @@ class ActivityController extends Controller
 
     public function showDashboardStat($activity_id){
 
-        return view('activity.dashbord_stat.dashboard_stat');
+        $activity_data = Activity::where('id','=',$activity_id)->frist();
+
+        return view('activity.dashbord_stat.dashboard_stat',compact('activity_data'));
     }
     
 }
