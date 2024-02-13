@@ -24,4 +24,9 @@ class activity_day_maker extends Model
     {
         return $this->hasOne(Activity::class,'id','activity_id');
     }
+
+    public function dateCount(){
+        $date_count = activity_day_maker::where('activity_id','=',$this->activity_id)->count();
+        return $date_count;
+    }
 }
