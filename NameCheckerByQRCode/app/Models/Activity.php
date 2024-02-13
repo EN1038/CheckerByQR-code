@@ -43,4 +43,10 @@ class Activity extends Model
             }
         }
     }
+
+    public function countPeople(){
+        $people = activity_people_register::where('activity_id','=',$this->id)->count();
+
+        return $people;
+    }
 }
