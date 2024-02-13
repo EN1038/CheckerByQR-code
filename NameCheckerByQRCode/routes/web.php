@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DateController;
+use App\Http\Controllers\ExprotController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\RoundController;
 use App\Models\Activity;
@@ -102,4 +103,6 @@ Route::get('test/array', [TestController::class, 'formArrayRequest'])->name('tes
 Route::post('test/array/post', [TestController::class, 'PostformArrayRequest'])->name('post_test_form_array_request');
 Route::get('test/activity/setting/{activity_id}',[TestController::class,'testActivity'])->name('test_activity');
 
-//api 
+// export
+
+Route::get('register-export',[ExprotController::class,'peopleRegisterExportExcel'])->name('register_export');
