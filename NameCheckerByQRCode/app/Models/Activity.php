@@ -34,4 +34,13 @@ class Activity extends Model
         }
         return $count;
     }
+    public function dateNoRegisterCount(){
+        $date_data = activity_day_maker::where('activity_id','=',$this->id)->get();
+        $count = 0;
+        foreach($date_data as $item){
+            if(!$register = activity_people_register::where('date_id','=',$item->id)->first()){
+                $count ++; 
+            }
+        }
+    }
 }
