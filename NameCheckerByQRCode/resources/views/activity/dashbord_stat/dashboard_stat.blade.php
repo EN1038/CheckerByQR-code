@@ -7,7 +7,7 @@
         ชื่อกิจกรรม
     </div>
     <div class="col">
-        aa
+        
         
     </div>
 </div>

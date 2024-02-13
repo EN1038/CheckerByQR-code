@@ -20,4 +20,8 @@ class Activity extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function dateCount(){
+        $date_coute = activity_day_maker::where('activity_id','=',$this->id)->count();
+        return $date_coute;
+    }
 }
