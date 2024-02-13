@@ -13,7 +13,7 @@
             <th scope="col">เวลาจบการเช็ค</th>
             <th scope="col">จำนวนคนที่เช็คชื่อ</th>
             <th scope="col">รายละเอียด</th>
-            <th scope="col">Action</th>
+            <th scope="col">แก้ไข</th>
           </tr>
         </thead>
         <tbody>
@@ -43,12 +43,12 @@
                 </td>
                 <td data-label="เวลาเริ่มการเช็ค">{{$row->rounde_checker_time_start}}</td>
                 <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
-                <td >{{$row->CountPeopleRegister()}}</td>
+                <td data-label="จำนวนคนที่เช็คชื่อ">{{$row->CountPeopleRegister()}}</td>
                 
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 
                 <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
-           <td>
+           <td data-label="แก้ไข">
             <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
             <button class="btn btn-danger" onclick="confirmDelete(`{{route('delete_round',$row->id)}}`)" >ลบ</button>
             
