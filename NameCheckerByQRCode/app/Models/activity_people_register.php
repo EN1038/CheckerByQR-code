@@ -19,4 +19,9 @@ class activity_people_register extends Model
         'people_id',
         'ip_address'
     ];
+
+    public function getStatusTextAttribute()
+    {
+        return $this->status === 'late' ? 'เช็คชื่อสาย' : 'เช็คชื่อปกติ';
+    }
 }

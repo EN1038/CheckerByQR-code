@@ -255,9 +255,9 @@ class ActivityController extends Controller
 
         $round = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->where('status','=','on')->get();
         
+        $date = activity_day_maker::where('id','=',$date_id)->first();
 
-
-        return view('activity.daycheck.daycheck', compact('round'));
+        return view('activity.daycheck.daycheck', compact('round','date'));
     }
 
     public function showRoundCheckPage($activity_id, $date_id, $round_id)

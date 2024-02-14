@@ -10,7 +10,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExprotController extends Controller
 {
-    public function peopleRegisterExportExcel(){
-        return Excel::download( new RegisterExport, 'register.xlsx');
+    public function peopleRegisterExportExcel($round_id){
+        
+        return Excel::download( new RegisterExport($round_id), 'register.xlsx');
     }
 }

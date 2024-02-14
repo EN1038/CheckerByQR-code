@@ -105,4 +105,4 @@ Route::get('test/activity/setting/{activity_id}',[TestController::class,'testAct
 
 // export
 
-Route::get('register-export',[ExprotController::class,'peopleRegisterExportExcel'])->name('register_export');
+Route::get('register-export/{round_id}',[ExprotController::class,'peopleRegisterExportExcel'])->name('register_export');
