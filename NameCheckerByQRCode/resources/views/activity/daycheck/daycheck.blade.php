@@ -24,7 +24,7 @@
             <th scope="col">เวลาจบการเช็ค</th>
             <th scope="col">จำนวนคนที่เช็คชื่อ</th>
             <th scope="col">รายละเอียด</th>
-            <th scope="col">Action</th>
+            <th scope="col">อื่นๆ</th>
           </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@
                 </td>
                 <td data-label="เวลาเริ่มการเช็ค">{{$row->rounde_checker_time_start}}</td>
                 <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
-                <td >{{$row->CountPeopleRegister()}}</td>
+                <td data-label="จำนวนคนที่เช็คชื่อ">{{$row->CountPeopleRegister()}}</td>
                 
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 

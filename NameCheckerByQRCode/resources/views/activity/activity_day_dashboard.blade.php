@@ -37,7 +37,7 @@
                     <th scope="col">เวลาเริ่ม</th>
                     <th scope="col">เวลาจบ</th>
                     <th scope="col">รอบเช็คชื่อ</th>
-                    <th scope="col">action</th>
+                    <th scope="col">แก้ไข</th>
                     
                 </tr>
             </thead>
@@ -53,7 +53,7 @@
                             <td data-label="เวลาเริ่ม">{{ $row->time_start }}</td>
                             <td data-label="เวลาจบ">{{ $row->time_expried }}</td>
                             <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> รอบเช็คชื่อ</a></td>
-                            <td data-label="action">
+                            <td data-label="แก้ไข">
                               <button type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="{{'#edit_btn_'.$row->id}}">
                                 แก้ไข
                               </button>
