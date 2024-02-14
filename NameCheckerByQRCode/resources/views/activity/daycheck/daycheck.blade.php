@@ -59,8 +59,8 @@
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 
                 <td data-label="รายละเอียด"><a href='#' class="btn btn-primary text-light getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
-           <td>
-            <a href="{{route('register_export',$row->id)}}" class="btn btn-success">Excel <i class="bi bi-file-earmark-arrow-down"></i></a>
+           <td data-label="อื่นๆ">
+            <a href="{{route('register_export',$row->id)}}" class="btn btn-success">Excel</a>
             <button class="btn btn-warning text-light"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
             <button class="btn btn-danger" onclick="confirmDelete(`{{route('delete_round',$row->id)}}`)" >ลบ</button>
             
