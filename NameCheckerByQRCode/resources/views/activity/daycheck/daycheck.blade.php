@@ -3,7 +3,18 @@
 <link rel="stylesheet" href="{{asset('css/style_dayCheck.css')}}">
 <div class="px-2 px-lg-5 pb-4 pt-3">
   <div class="row row-cols-1">
+    <div class="row">
+
+      
+
+      
+    </div>
+    
     <div class="col my-4">
+      <div class="col-12 d-flex justify-content-center my-3">
+        <span class="fw-bold fs-2 text-success">วันที่ {{$date->date}}</span>
+       </div>
+
       <table class="table text-center">
         <thead>
           <tr>
@@ -47,9 +58,10 @@
                 
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
                 
-                <td data-label="รายละเอียด"><a href='#' class="btn btn-success getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
-           <td data-label="อื่น">
-            <button class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
+                <td data-label="รายละเอียด"><a href='#' class="btn btn-primary text-light getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
+           <td>
+            <a href="{{route('register_export',$row->id)}}" class="btn btn-success">Excel <i class="bi bi-file-earmark-arrow-down"></i></a>
+            <button class="btn btn-warning text-light"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
             <button class="btn btn-danger" onclick="confirmDelete(`{{route('delete_round',$row->id)}}`)" >ลบ</button>
             
           </td>
