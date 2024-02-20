@@ -255,6 +255,7 @@
                             </div>
                         </div>
                         {{ this.disable_logined(item.id) }}
+                        {{ this.mix_value(item.id) }}
                     </div>
 
                 </div>
@@ -263,7 +264,7 @@
                     class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
                     <div class="col d-flex flex-row-reverse">
                         
-                        <button type="submit" class="btn-submit-setting " id="submit"><i
+                        <button type="submit" class="btn-submit-setting " id="submit" @click="submit_api()"><i
                                 class="fa-solid fa-cloud-arrow-up"></i> บันทึกการตั้งค่า</button>
                     </div>
                 </div>
@@ -298,6 +299,10 @@ export default {
             selectedValues: null,
             selectOptionsRound: null,
             selectedValuesOfRound: [],
+            counter:0 ,
+            itemID:[] ,
+            itemOOP:{dateInput: null, idItems: null},
+            arrayItemOOP:[] ,
         }
     },
 
@@ -769,7 +774,39 @@ export default {
                     }
                 });
             });
-        }
+        },
+
+        mix_value(id){
+            this.$nextTick(() => {
+                    this.counter++;
+                    // console.log(this.counter);
+                    if (!this.itemID.includes(id)) {
+                        this.itemID.push(id);
+                    }
+                    console.log(this.itemID);
+            });
+            
+        },
+        submit_api(){
+            for (let item of this.itemID) {
+                console.log(item);
+                const input_Date = document.getElementById('date_input' + item)
+                const newItem = {
+                    dateInput: input_Date.value,
+                    idItems: item
+                };
+
+                // เพิ่ม Object ลงใน array
+                this.arrayItemOOP.push(newItem);
+
+                console.log(newItem);
+            }
+
+            // นำ array ที่มี Object ทั้งหมดไปเก็บใน this.itemOOP
+            this.itemOOP = this.arrayItemOOP;
+
+            console.log(this.itemOOP);
+        },
     },
 
 }
