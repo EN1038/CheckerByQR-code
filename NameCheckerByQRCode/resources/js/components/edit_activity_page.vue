@@ -301,7 +301,7 @@ export default {
             selectedValuesOfRound: [],
             counter:0 ,
             itemID:[] ,
-            itemOOP:{dateInput: null, idItems: null},
+            itemOOP:{},
             arrayItemOOP:[] ,
         }
     },
@@ -789,7 +789,6 @@ export default {
         },
         submit_api(){
             for (let item of this.itemID) {
-                console.log(item);
                 const input_Date = document.getElementById('date_input' + item)
                 const newItem = {
                     dateInput: input_Date.value,
@@ -798,13 +797,10 @@ export default {
 
                 // เพิ่ม Object ลงใน array
                 this.arrayItemOOP.push(newItem);
-
-                console.log(newItem);
             }
 
             // นำ array ที่มี Object ทั้งหมดไปเก็บใน this.itemOOP
             this.itemOOP = this.arrayItemOOP;
-
             console.log(this.itemOOP);
         },
     },
