@@ -37,8 +37,13 @@
 
                 <div class="mb-3 mt-4">
                     <label class="label-form fs-5">รายละเอียดกิจกรรม <i class="fa-regular fa-message"></i></label>
-                    <textarea class="form-control rounded-4" name="activity[detail]" id="" cols="30"
-                        rows="5">{{ activity_data.activity_description }}</textarea>
+                    <textarea class="form-control rounded-4" name="activity[detail]" id="activity_detail" cols="30"
+                        rows="5"
+                        v-model="activity_data.activity_description"
+                        >
+                       
+                        
+                    </textarea>
                 </div>
 
                 <div class="d-flex flex-column mx-3 mx-lg-5 " id="prOutSide">
@@ -109,7 +114,7 @@
                             <div class="col-12  col-lg-6 ">
                                 <label class="form-label fs-5">วัน/เดือน/ปี</label>
                                 <input class="form-control datepicker getDate datepicker_costom_success" type="date"
-                                    name="activity[date_add][date_input0][date]" :id="'date_input' + item.id"
+                                    name="date_input[]" :id="'date_input' + item.id"
                                     placeholder="โปรดเลือกวันที่ก่อนจะใส่ข้อมูลช่องอื่น" autocomplete="off"
                                     :value="dateInputs[item.id] || item.date" @input="handleDateInput(item.id, $event)"
                                     :min="getMinDate()">
@@ -120,7 +125,7 @@
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาเริ่ม</label>
                                 <input class="form-control get_IdInputTime revese-fake-disable text-center" type="time"
-                                    name="activity[date_add][date_input0][time][time_start]"
+                                    name="date_time_start[]"
                                     :id="'timeStart_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].start : item.time_start"
                                     @input="checkTime">
@@ -128,7 +133,7 @@
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาจบ</label>
                                 <input class="form-control get_IdInputTime revese-fake-disable text-center" type="time"
-                                    name="activity[date_add][date_input0][time][time_expried]"
+                                    name="date_time_expried[]"
                                     :id="'timeExpried_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].expried : item.time_expried"
                                     @input="checkTime">
@@ -165,7 +170,7 @@
                                         </label>
                                         <select
                                             class="form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound fake-disable text-center text-danger"
-                                            :id="'selectSetRoundCheck' + item.id" :data-id="item.id" value="6"
+                                            :id="'selectSetRoundCheck' + item.id" :data-id="item.id" value="6" name="select_round_check"
                                             @change="showSelectRound">
                                             <option class="text-center" disabled hidden value="0">เลือกจำนวนรอบ</option>
                                             <option class="text-center" value="1">จำนวน 1 รอบ</option>
@@ -208,7 +213,10 @@
                                                     }}</label>
                                                 <select
                                                     class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable"
-                                                    :id="'dynamicSelect' + item.id + index" disabled>
+                                                    :id="'dynamicSelect' + item.id + index" disabled
+                                                    name="round_input[]"
+                                                    ref="round_input_test" :data-id="item.id"
+                                                    >
                                                     <option :value="round.rounde_checker_time_start" >หลังเวลา : {{
                                                         formatTime(round.rounde_checker_time_start) }} นาที</option>
                                                 </select>
@@ -229,7 +237,7 @@
                                                 for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1}}</label>
                                             <select
                                             :class="'col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start fake-disable text-center'"
-                                                :id="'dynamicSelect' + item.id + index" :data-id="item.id" :data-id2="index" @change="changValuehide" >
+                                                :id="'dynamicSelect' + item.id + index" ref="round_input_test" :data-id="item.id" :data-id2="index" @change="changValuehide" name="round_input[]" >
                                                 <option v-for="option in filteredOptions(index)" :key="option.id" :value="option.id === '0' ? '0' : option.time" :hidden="option.id === '0'">
                                                     {{ option.id === '0' ? option.time : 'หลังเวลา : ' + option.time + ' นาที' }}
                                                 </option>
@@ -240,9 +248,9 @@
                                                     class=" my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5 text-lg-center"
                                                     disabled :id="'Boxinput' + item.id + index" >
                 
-                                                    <input type="text" class="d-none" :id="'timeSelect'+item.id+index" value="xxx">
-                                                    <input type="text" class="d-none" :id="'timeDuration'+item.id+index" value="zzz">
-                                                    <input type="text" class="d-none" :id="'timeEnd'+item.id+index" value="zzxxz">
+                                                    <input type="text" class="" :id="'timeSelect'+item.id+index" value="xxx">
+                                                    <input type="text" class="" :id="'timeDuration'+item.id+index" value="zzz">
+                                                    <input type="text" class="" :id="'timeEnd'+item.id+index" value="zzxxz">
                                             </div>
                                             </div>
                                         </div>
@@ -301,8 +309,18 @@ export default {
             selectedValuesOfRound: [],
             counter:0 ,
             itemID:[] ,
-            itemOOP:{},
-            arrayItemOOP:[] ,
+            itemOOP:[{
+
+            }],
+            activity_date_setting_for_axios_post:[
+                
+            ] ,
+            date_time_start_for_axios:[],
+            date_time_expried_for_axios:[],
+           select_round_check_for_date_id:[],
+           round_reset_boolean:false
+
+
         }
     },
 
@@ -538,6 +556,26 @@ export default {
         },
 
         showSelectRound(event) {
+            this.round_reset_boolean == true;
+    let select_round_check_for_date_id = document.querySelector('[name="select_round_check"]');
+    let round_reset_boolean = {
+    date_id: select_round_check_for_date_id.dataset.id,
+    round_reset: true
+    };
+
+
+    let isDateIdExist = Array.from(this.select_round_check_for_date_id).some(item => item.date_id === round_reset_boolean.date_id);
+
+
+    if (!isDateIdExist) {
+    this.select_round_check_for_date_id.push(round_reset_boolean);
+    }
+            
+           
+            
+
+            console.log(this.select_round_check_for_date_id)
+            
             const id = event.target.dataset.id;
             let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + id);
             let divShowTimeToUsersII = document.getElementById('divShowTimeToUserII' + id);
@@ -789,19 +827,98 @@ export default {
         },
         submit_api(){
             for (let item of this.itemID) {
+                // console.log(item);
                 const input_Date = document.getElementById('date_input' + item)
                 const newItem = {
                     dateInput: input_Date.value,
-                    idItems: item
+                    date_id: item,
+                    
                 };
 
                 // เพิ่ม Object ลงใน array
-                this.arrayItemOOP.push(newItem);
+                this.activity_date_setting_for_axios_post.push(newItem);
+
+                // console.log(newItem);
             }
+            console.log( this.activity_date_setting_for_axios_post);
+            const date_time_start = document.querySelectorAll('[name="date_time_start[]"]');
+           
+
+            date_time_start.forEach(function(e){
+                const time_start_obj = {
+                    date_id:e.dataset.id,
+                    time_start:e.value
+                };
+
+                this.date_time_start_for_axios.push(time_start_obj);
+            }.bind(this));
+
+
+            console.log(this.date_time_start_for_axios)
+
+            const date_time_expried = document.querySelectorAll('[name="date_time_expried[]"]');
+           
+
+            date_time_expried.forEach(function(e){
+                const time_expried_obj = {
+                    date_id:e.dataset.id,
+                    time_expried:e.value
+                };
+
+                this.date_time_expried_for_axios.push(time_expried_obj);
+            }.bind(this));
+
+            console.log(this.date_time_expried_for_axios)
+            // this.date_data.forEach(date => {
+            //     date.round.forEach((round , round_index )=> {
+            //         console.log(round_index)
+            //     })
+            // });
+            var round_input = document.querySelectorAll('[name="round_input[]"]')
+            var round_input_array = [];
+            
+            round_input.forEach(function(e){
+                var round_and_date_id = {
+                    date_id:e.dataset.id,
+                    round:e.value,
+                    
+                    
+                }
+                round_input_array.push(round_and_date_id)
+            });
+            console.log(round_input_array);
+
+            // console.log(round_input_array)
+            // console.log(this.round_reset_boolean_for_update)
 
             // นำ array ที่มี Object ทั้งหมดไปเก็บใน this.itemOOP
-            this.itemOOP = this.arrayItemOOP;
-            console.log(this.itemOOP);
+            // this.itemOOP = this.arrayItemOOP;
+
+            // console.log(this.activity_data);
+            // console.log(
+            //     this.itemOOP
+            //     )
+
+            axios.post('/api/activity/edit-all',
+                
+                    {   
+                        activity_all_setting:{
+                            activity_data:this.activity_data,
+                            date:this.activity_date_setting_for_axios_post,
+                            round:round_input_array,
+                            check_round_reset:this.select_round_check_for_date_id,
+                            date_time_start:this.date_time_start_for_axios,
+                            date_time_expried:this.date_time_expried_for_axios,
+                            round_reset:this.round_reset_boolean
+                        }
+                    }   
+                
+            );
+            this.$swal({
+                title:"แก้ไขสำเร็จ"
+            }).then(()=>{
+                window.location.href = "/activity/day-chcker-list/dashboard/" + this.activity_id;
+            })
         },
     },
 
