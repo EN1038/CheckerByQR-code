@@ -37,12 +37,10 @@
 
                 <div class="mb-3 mt-4">
                     <label class="label-form fs-5">รายละเอียดกิจกรรม <i class="fa-regular fa-message"></i></label>
-                    <textarea class="form-control rounded-4" name="activity[detail]" id="activity_detail" cols="30"
-                        rows="5"
-                        v-model="activity_data.activity_description"
-                        >
-                       
-                        
+                    <textarea class="form-control rounded-4" name="activity[detail]" id="activity_detail" cols="30" rows="5"
+                        v-model="activity_data.activity_description">
+
+
                     </textarea>
                 </div>
 
@@ -101,9 +99,9 @@
                 </div>
                 <div id="inputContainer">
 
-                    <div v-for="item in date_data" :key="item.id " :id="'divOfDate'+item.id"
-                    :class="' ' + (item.id > 0 ? 'border-bottom border-success border-3 mb-4' : '')">
-                        <div class="d-flex flex-row justify-content-between align-items-center mb-3" >
+                    <div v-for="item in date_data" :key="item.id" :id="'divOfDate' + item.id"
+                        :class="' ' + (item.id > 0 ? 'border-bottom border-success border-3 mb-4' : '')">
+                        <div class="d-flex flex-row justify-content-between align-items-center mb-3">
                             <input class="fs-4 fw-bold input-title-form" :id="'formDate' + item.id"
                                 :value="'วันที่ : ' + (date_data.indexOf(item) + 1)">
                             <i class="fs-3 fw-bold text-decoration-none fa-solid fa-calendar-xmark iconClose"
@@ -125,16 +123,14 @@
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาเริ่ม</label>
                                 <input class="form-control get_IdInputTime revese-fake-disable text-center" type="time"
-                                    name="date_time_start[]"
-                                    :id="'timeStart_input' + item.id" :data-id="item.id"
+                                    name="date_time_start[]" :id="'timeStart_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].start : item.time_start"
                                     @input="checkTime">
                             </div>
                             <div class="col-12 col-lg-3 px-0 px-lg-3">
                                 <label class="form-label fs-5">เวลาจบ</label>
                                 <input class="form-control get_IdInputTime revese-fake-disable text-center" type="time"
-                                    name="date_time_expried[]"
-                                    :id="'timeExpried_input' + item.id" :data-id="item.id"
+                                    name="date_time_expried[]" :id="'timeExpried_input' + item.id" :data-id="item.id"
                                     :value="selectedTime[item.id] ? selectedTime[item.id].expried : item.time_expried"
                                     @input="checkTime">
 
@@ -170,21 +166,23 @@
                                         </label>
                                         <select
                                             class="form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound fake-disable text-center text-danger"
-                                            :id="'selectSetRoundCheck' + item.id" :data-id="item.id" value="6" name="select_round_check"
-                                            @change="showSelectRound">
+                                            :id="'selectSetRoundCheck' + item.id" :data-id="item.id" value="6"
+                                            name="select_round_check" @change="showSelectRound">
                                             <option class="text-center" disabled hidden value="0">เลือกจำนวนรอบ</option>
                                             <option class="text-center" value="1">จำนวน 1 รอบ</option>
                                             <option class="text-center" value="2">จำนวน 2 รอบ</option>
                                             <option class="text-center" value="3">จำนวน 3 รอบ</option>
                                             <option class="text-center" value="4">จำนวน 4 รอบ</option>
                                             <option class="text-center" value="5">จำนวน 5 รอบ</option>
-                                            <option class="text-center text-danger" disabled hidden value="6">เลือกเพื่อแก้ไขรอบ</option>
+                                            <option class="text-center text-danger" disabled hidden value="6">
+                                                เลือกเพื่อแก้ไขรอบ</option>
                                         </select>
                                     </div>
                                     <div class="col-12 col-lg-5 d-flex flex-column ps-0 ps-lg-5">
                                         <label class="form-label fs-5 me-4 me-lg-0"
                                             for="selectTimeCheck0">ระยะเวลาที่เช็ค</label>
-                                        <select class="form-select w-100 w-lg-75 getId_selectTimeCheck revese-fake-disable text-center"
+                                        <select
+                                            class="form-select w-100 w-lg-75 getId_selectTimeCheck revese-fake-disable text-center"
                                             :id="'selectTimeCheck' + item.id" :data-id="item.id"
                                             @change="effect_inputduration">
                                             <option class="text-center" disabled hidden>เลือกเวลา</option>
@@ -213,11 +211,9 @@
                                                     }}</label>
                                                 <select
                                                     class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable"
-                                                    :id="'dynamicSelect' + item.id + index" disabled
-                                                    name="round_input[]"
-                                                    ref="round_input_test" :data-id="item.id"
-                                                    >
-                                                    <option :value="round.rounde_checker_time_start" >หลังเวลา : {{
+                                                    :id="'dynamicSelect' + item.id + index" disabled name="round_input[]"
+                                                    ref="round_input_test" :data-id="item.id">
+                                                    <option :value="round.rounde_checker_time_start">หลังเวลา : {{
                                                         formatTime(round.rounde_checker_time_start) }} นาที</option>
                                                 </select>
                                                 <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center"
@@ -231,49 +227,55 @@
                                         </div>
                                     </div>
                                     <div class="d-none" :id="'divShowTimeToUserII' + item.id">
-                                        <div v-for="(selectedValue, index) in selectedValues" :key="index">
-                                            <div :id="'div_row'+item.id" class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center">
-                                            <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
-                                                for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1}}</label>
-                                            <select
-                                            :class="'col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start fake-disable text-center'"
-                                                :id="'dynamicSelect' + item.id + index" ref="round_input_test" :data-id="item.id" :data-id2="index" @change="changValuehide" name="round_input[]" >
-                                                <option v-for="option in filteredOptions(index)" :key="option.id" :value="option.id === '0' ? '0' : option.time" :hidden="option.id === '0'">
-                                                    {{ option.id === '0' ? option.time : 'หลังเวลา : ' + option.time + ' นาที' }}
-                                                </option>
-                                            </select>
-                                            <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center"
-                                                :id="'divSpace' + item.id">
-                                                <input
-                                                    class=" my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5 text-lg-center"
-                                                    disabled :id="'Boxinput' + item.id + index" >
-                
-                                                    <input type="text" class="" :id="'timeSelect'+item.id+index" value="xxx">
-                                                    <input type="text" class="" :id="'timeDuration'+item.id+index" value="zzz">
-                                                    <input type="text" class="" :id="'timeEnd'+item.id+index" value="zzxxz">
-                                            </div>
-                                            </div>
-                                        </div>
+                                        
+                                            <!-- <div  :id="'div_row' + item.id"
+                                                class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center">
+                                                <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
+                                                    for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1 }}</label>
+                                                <select
+                                                    :class="'col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start fake-disable text-center'"
+                                                    :id="'dynamicSelect' + item.id + index" ref="round_input_test"
+                                                    :data-id="item.id" :data-id2="index" @change="changValuehide"
+                                                    name="round_input2[]">
+                                                    <option v-for="option in filteredOptions(index)" :key="option.id"
+                                                        :value="option.id === '0' ? '0' : option.time"
+                                                        :hidden="option.id === '0'">
+                                                        {{ option.id === '0' ? option.time : 'หลังเวลา : ' + option.time +'นาที' }}
+                                                    </option>
+                                                </select>
+                                                <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center"
+                                                    :id="'divSpace' + item.id">
+                                                    <input
+                                                        class=" my-1 my-lg-4 bg-disable w-100 w-lg-75 border-0 fs-6 fs-lg-5 text-lg-center"
+                                                        disabled :id="'Boxinput' + item.id + index">
 
-
-                                    </div>
-
-
+                                                    <input type="text" class="" :id="'timeSelect' + item.id + index"
+                                                        value="xxx">
+                                                    <input type="text" class="" :id="'timeDuration' + item.id + index"
+                                                        value="zzz">
+                                                    <input type="text" class="" name="time_end[]"
+                                                        :id="'timeEnd' + item.id + index" value="zzxxz">
+                                                </div>
+                                            </div> -->
+                                        
+                                    </div>          
                                 </div>
                             </div>
                         </div>
                         {{ this.disable_logined(item.id) }}
                         {{ this.mix_value(item.id) }}
+                        
                     </div>
 
                 </div>
-                
+
                 <div
                     class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start aling-items-start aling-items-lg-center mb-5">
                     <div class="col d-flex flex-row-reverse">
-                        
+
                         <button type="submit" class="btn-submit-setting " id="submit" @click="submit_api()"><i
                                 class="fa-solid fa-cloud-arrow-up"></i> บันทึกการตั้งค่า</button>
+                    
                     </div>
                 </div>
 
@@ -303,22 +305,21 @@ export default {
             errorInputType: null,
             errorHTML: '',
             selectedTime: {},
-            optionsArray: [{ id: null, time: null}],
-            selectedValues: null,
+            optionsArray: [],
+            idforselecvalues: null,
             selectOptionsRound: null,
-            selectedValuesOfRound: [],
-            counter:0 ,
-            itemID:[] ,
-            itemOOP:[{
+            counter: 0,
+            itemID: [],
+            itemOOP: [{
 
             }],
-            activity_date_setting_for_axios_post:[
-                
-            ] ,
-            date_time_start_for_axios:[],
-            date_time_expried_for_axios:[],
-           select_round_check_for_date_id:[],
-           round_reset_boolean:false
+            activity_date_setting_for_axios_post: [
+
+            ],
+            date_time_start_for_axios: [],
+            date_time_expried_for_axios: [],
+            select_round_check_for_date_id: [],
+            round_reset_boolean: false
 
 
         }
@@ -512,7 +513,7 @@ export default {
             const divShowTimeToUsers = document.getElementById('divShowTimeToUser' + id);
             const div_row = document.querySelectorAll(`[id='div_row${id}']`);
             const selectSetRoundCheck = document.getElementById('selectSetRoundCheck' + id);
-            
+
             if (time_start.value < time_expried.value) {
                 console.log('เวลาถูกต้อง');
                 this.valueError = false;
@@ -528,11 +529,11 @@ export default {
                     selectSetRoundCheck.value = "0";
                     selectSetRoundCheck.classList.remove('revese-fake-disable');
                     selectSetRoundCheck.classList.add('fake-disable');
-                } 
+                }
                 if (div_row) {
                     div_row.forEach(div => {
-                    const selectsInDiv = div.querySelectorAll("select");
-                    const inputInDiv = div.querySelectorAll("input");
+                        const selectsInDiv = div.querySelectorAll("select");
+                        const inputInDiv = div.querySelectorAll("input");
                         selectsInDiv.forEach(select => {
                             select.value = '0';
                             select.classList.remove('revese-fake-disable');
@@ -557,25 +558,26 @@ export default {
 
         showSelectRound(event) {
             this.round_reset_boolean == true;
-    let select_round_check_for_date_id = document.querySelector('[name="select_round_check"]');
-    let round_reset_boolean = {
-    date_id: select_round_check_for_date_id.dataset.id,
-    round_reset: true
-    };
-
-
-    let isDateIdExist = Array.from(this.select_round_check_for_date_id).some(item => item.date_id === round_reset_boolean.date_id);
-
-
-    if (!isDateIdExist) {
-    this.select_round_check_for_date_id.push(round_reset_boolean);
-    }
-            
+            let select_round_check_for_date_id = document.querySelector('[name="select_round_check"]');
+          
+            let round_reset_boolean = {
+                date_id: select_round_check_for_date_id.dataset.id,
+                round_reset: true
+            };
            
-            
+
+            let isDateIdExist = Array.from(this.select_round_check_for_date_id).some(item => item.date_id === round_reset_boolean.date_id);
+
+
+            if (!isDateIdExist) {
+                this.select_round_check_for_date_id.push(round_reset_boolean);
+            }
+
+
+
 
             console.log(this.select_round_check_for_date_id)
-            
+
             const id = event.target.dataset.id;
             let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + id);
             let divShowTimeToUsersII = document.getElementById('divShowTimeToUserII' + id);
@@ -586,13 +588,89 @@ export default {
                 event.target.classList.add('revese-fake-disable');
                 divShowTimeToUsers.classList.add('d-none');
                 divShowTimeToUsersII.classList.remove('d-none');
-
-                const value = event.target.value;
-                const intValue = parseInt(value, 10);
-                this.selectedValues = Array(intValue).fill(null);
+                const round = event.target.value;
                 this.createDetailOption(id);
+                this.createSelectOfRound(id,round);
             } else {
                 console.log('error,function showSelectRound')
+            }
+        },
+
+        createSelectOfRound(id, round){
+            console.log('id : '+id+' round : '+round);
+            const targetDiv = document.getElementById('divShowTimeToUserII' + id);
+            
+            while (targetDiv.firstChild) {
+                targetDiv.removeChild(targetDiv.firstChild);
+            }
+            
+
+            for(var i = 0; i < round; i++){
+                const createDiv = document.createElement('div');
+                createDiv.id = 'div_row' + id+i;
+                createDiv.classList.add('d-flex', 'flex-column', 'flex-lg-row', 'justify-content-center', 'justify-content-lg-start', 'align-items-start', 'align-items-lg-center');
+                targetDiv.appendChild(createDiv);
+
+                //ต้องเอาทุกตัวไปยัดในdivอันนี้ targetDivMain
+                const targetDivMain = document.getElementById('div_row' + id+i);
+
+                const createBoxDiv = document.createElement('div');
+                createBoxDiv.classList.add('col-12' ,'col-lg-6'  ,'d-flex' ,'flex-column','flex-lg-row','my-2' ,'ms-0' ,'ms-lg-3' ,'justify-content-center');
+                createBoxDiv.id = 'boxDiv'+id+i;
+                targetDivMain.appendChild(createBoxDiv);
+
+                const createLabel = document.createElement('label');
+                createLabel.classList.add('col-12', 'col-lg-3' ,'form-label' ,'fw-bold' ,'text-green' ,'fs-6' ,'fs-lg-5');
+                createLabel.id = 'label'+id;
+                createLabel.textContent = 'การเช็คชื่อรอบที่'+(i+1);
+                createBoxDiv.appendChild(createLabel);
+
+                const createSelect = document.createElement('select');
+                createSelect.classList.add('col' ,'form-select' ,'mb-3' ,'mx-0' ,'mx-lg-2' ,'h-25' ,'dynamicSelects' ,'d-flex' ,'justify-content-start' ,'fake-disable' ,'text-center');
+                createSelect.id = 'select'+id+i;
+                createSelect.dataset.id = id;
+                createSelect.dataset.id2 = i;
+                createSelect.name = 'round_input2[]';
+                createSelect.addEventListener('change', this.changValuehide);
+                createBoxDiv.appendChild(createSelect);
+
+                    this.optionsArray.forEach(function(option) {
+                        const createOption = document.createElement('option');
+                        createOption.value = option.id === '0' ? '0' : option.time; 
+                        createOption.textContent = option.id === '0' ? option.time : 'หลังเวลา : ' + option.time +'นาที';
+                        createOption.hidden = option.id === '0';
+                        createSelect.appendChild(createOption);
+                    });
+                
+                const div_space = document.createElement('div');
+                div_space.id = 'divSpace' + id;
+                div_space.classList.add('col-12' ,'col-lg-6'  ,'d-flex' ,'my-2' ,'ms-0' ,'ms-lg-3' ,'justify-content-center');
+                targetDivMain.appendChild(div_space);
+
+                const createInput = document.createElement('input');
+                createInput.id = 'Boxinput' + id + i;
+                createInput.classList.add('my-1' ,'my-lg-4' ,'bg-disable' ,'w-100' ,'w-lg-75' ,'border-0' ,'fs-6' ,'fs-lg-5' ,'text-lg-center');
+                createInput.disabled = true;
+                div_space.appendChild(createInput);
+
+                const createTimeSelect = document.createElement('input');
+                createTimeSelect.id = 'timeSelect' + id + i;
+                createTimeSelect.classList.add('d-none');
+                createTimeSelect.value = 'timeSelect';
+                div_space.appendChild(createTimeSelect);
+
+                const createTimeDuration = document.createElement('input');
+                createTimeDuration.id = 'timeDuration' + id + i;
+                createTimeDuration.classList.add('d-none');
+                createTimeDuration.value = 'timeDuration';
+                div_space.appendChild(createTimeDuration);
+
+                const createTimeEnd = document.createElement('input');
+                createTimeEnd.id = 'timeEnd' + id + i;
+                createTimeEnd.classList.add('d-none');
+                createTimeEnd.value = 'TimeEnd';
+                div_space.appendChild(createTimeEnd);
+
             }
         },
 
@@ -612,7 +690,7 @@ export default {
                 selectSetRoundCheck.value = "0";
                 selectSetRoundCheck.classList.remove('revese-fake-disable');
                 selectSetRoundCheck.classList.add('fake-disable');
-            } 
+            }
             if (divShowTimeToUsersII) {
                 var selectAndLabelsII = divShowTimeToUsersII.querySelectorAll('select, label, input, div');
                 selectAndLabelsII.forEach(element => {
@@ -634,7 +712,6 @@ export default {
         },
 
         createDetailOption(id) {
-            console.log(id)
             let time_check = document.getElementById('selectTimeCheck' + id).value;
             let time_start = document.getElementById('timeStart_input' + id);
             let time_end = document.getElementById('timeExpried_input' + id);
@@ -668,7 +745,7 @@ export default {
                     // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
                     this.optionsArray = newTimesArray.map((newTime, index) => {
                         return {
-                            id: index === 0 ? "0" : `${index+1}`,
+                            id: index === 0 ? "0" : `${index + 1}`,
                             time: index === 0 ? "โปรดเลือกเวลา" : newTime,
                         };
                     });
@@ -693,23 +770,24 @@ export default {
                     // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
                     this.optionsArray = newTimesArray.map((newTime, index) => {
                         return {
-                            id: index === 0 ? "0" : `${index+1}`,
+                            id: index === 0 ? "0" : `${index + 1}`,
                             time: index === 0 ? "โปรดเลือกเวลา" : newTime,
                         };
                     });
                 }
             }
+            console.log(JSON.stringify(this.optionsArray));
         },
-        changValuehide(event){
+        changValuehide(event) {
             const id = event.target.dataset.id;
             const idsub = event.target.dataset.id2;
             const valueEvent = event.target.value;
-            const timeSelect = document.getElementById('timeSelect'+id+idsub);
-            const timeDuration = document.getElementById('timeDuration'+id+idsub);
-            const timeEndofDate = document.getElementById('timeExpried_input' +id);
+            const timeSelect = document.getElementById('timeSelect' + id + idsub);
+            const timeDuration = document.getElementById('timeDuration' + id + idsub);
+            const timeEndofDate = document.getElementById('timeExpried_input' + id);
             const selectTimeCheck = document.getElementById('selectTimeCheck' + id);
-            const timeEndofRound = document.getElementById('timeEnd'+id+idsub);
-            
+            const timeEndofRound = document.getElementById('timeEnd' + id + idsub);
+
             event.target.classList.remove('fake-disable')
             event.target.classList.add('revese-fake-disable')
 
@@ -730,109 +808,106 @@ export default {
             var resultMins = mins < 10 ? "0" + mins : mins;
             timeDuration.value = resultHours + ":" + resultMins;
 
-            if(timeEndofRound){
+            if (timeEndofRound) {
                 var splitTime = timeSelect.value.split(":");
                 var hours = parseInt(splitTime[0]);
                 var mins = parseInt(splitTime[1]);
 
                 mins -= 1;
-                        
+
                 // หากน้อยกว่า 0 ให้ลบชั่วโมงและปรับนาทีให้เป็นบวก
                 if (mins < 0) {
                     hours--;
-                     mins += 60;
+                    mins += 60;
                 }
 
                 // หากชั่วโมงเป็นค่าลบ ให้กลับไปเป็น 23
                 if (hours < 0) {
-                     hours = 23;
+                    hours = 23;
                 }
 
                 // กลับไปเป็นรูปแบบเวลา
                 var resultHours = hours < 10 ? "0" + hours : hours;
                 var resultMins = mins < 10 ? "0" + mins : mins;
                 var idsubInt = parseInt(idsub);
-                var idcal = idsubInt-1;
-                const before_timeEndofRound = document.getElementById('timeEnd'+id+idcal);
-                if(before_timeEndofRound){
+                var idcal = idsubInt - 1;
+                const before_timeEndofRound = document.getElementById('timeEnd' + id + idcal);
+                if (before_timeEndofRound) {
                     var idsubInt = parseInt(idsub);
-                    var idcal = idsubInt+1;
-                    const after_timeEndofRound = document.getElementById('timeEnd'+id+idcal);
+                    var idcal = idsubInt + 1;
+                    const after_timeEndofRound = document.getElementById('timeEnd' + id + idcal);
                     const boxInput = document.getElementById('Boxinput' + id + idsub);
-                    if(after_timeEndofRound){
+                    if (after_timeEndofRound) {
                         before_timeEndofRound.value = resultHours + ":" + resultMins;
-                        boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
-                    }else{
+                        boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + timeSelect.value + ' - ' + timeDuration.value;
+                    } else {
                         before_timeEndofRound.value = resultHours + ":" + resultMins;
                         timeEndofRound.value = timeEndofDate.value;
-                        boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
+                        boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + timeSelect.value + ' - ' + timeDuration.value;
                     }
-                    
-                }else{
+
+                } else {
                     timeEndofRound.value = timeEndofDate.value;
                     const boxInput = document.getElementById('Boxinput' + id + idsub);
-                    boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : '+timeSelect.value+' - '+timeDuration.value;
+                    boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + timeSelect.value + ' - ' + timeDuration.value;
                 }
 
-                const selectedOption = event.target.value;
-                // ตรวจสอบว่าค่าที่เลือกมีอยู่ใน selectedValues หรือไม่
-                if (this.selectedValuesOfRound.includes(selectedOption)) {
-                    // หากมีให้แสดงข้อความเตือนหรือป้องกันการเลือกได้ตามต้องการ
-                    alert('คุณเลือกค่าที่ซ้ำกัน กรุณาเลือกค่าอื่น');
-                    event.target.value = '0';
-                    event.target.classList.remove('revese-fake-disable')
-                    event.target.classList.add('fake-disable')
-                    const editInputBox = document.getElementById('Boxinput'+id+idsub);
-                    editInputBox.value = '';
-                } else {
-                    // หากไม่มีให้เพิ่มค่าที่เลือกเข้าไปใน selectedValues
-                    this.selectedValuesOfRound[idsub] = selectedOption;
-                }
-                
+                // const selectedOption = event.target.value;
+                // // ตรวจสอบว่าค่าที่เลือกมีอยู่ใน selectedValues หรือไม่
+                // if (this.selectedValuesOfRound.includes(selectedOption)) {
+                //     // หากมีให้แสดงข้อความเตือนหรือป้องกันการเลือกได้ตามต้องการ
+                //     alert('คุณเลือกค่าที่ซ้ำกัน กรุณาเลือกค่าอื่น');
+                //     event.target.value = '0';
+                //     event.target.classList.remove('revese-fake-disable')
+                //     event.target.classList.add('fake-disable')
+                //     const editInputBox = document.getElementById('Boxinput' + id + idsub);
+                //     editInputBox.value = '';
+                // } else {
+                //     // หากไม่มีให้เพิ่มค่าที่เลือกเข้าไปใน selectedValues
+                //     this.selectedValuesOfRound[idsub] = selectedOption;
+                // }
+
             }
         },
-        filteredOptions(index) {
-            // กรอง options ที่มีค่าซ้ำกันออกจาก optionsArray
-            return this.optionsArray.filter(option => !this.selectedValuesOfRound.some(value => value === option.id));
-        },
 
-        disable_logined(date_id){
+
+        disable_logined(date_id) {
             this.$nextTick(() => {
                 axios.get('/api/activity/check-people-register/' + this.activity_id + '/' + date_id).then((res) => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     var register_data = res.data
-                    const div_date = document.getElementById('divOfDate'+date_id);
+                    const div_date = document.getElementById('divOfDate' + date_id);
                     const div_dayOfDate = document.getElementById('formDate' + date_id);
-                    if(register_data.length){
+                    if (register_data.length) {
                         div_dayOfDate.value = 'ไม่สามารถแก้ไขได้';
                         div_dayOfDate.classList.add('text-danger')
                         div_date.classList.add('custom-div');
-                    }else{
-                        console.log('รหัสวันที่ : '+date_id +' ไม่มีการใช้งาน')     
+                    } else {
+                        // console.log('รหัสวันที่ : ' + date_id + ' ไม่มีการใช้งาน')
                     }
                 });
             });
         },
 
-        mix_value(id){
+        mix_value(id) {
             this.$nextTick(() => {
-                    this.counter++;
-                    // console.log(this.counter);
-                    if (!this.itemID.includes(id)) {
-                        this.itemID.push(id);
-                    }
-                    console.log(this.itemID);
+                this.counter++;
+                // console.log(this.counter);
+                if (!this.itemID.includes(id)) {
+                    this.itemID.push(id);
+                }
+                console.log(this.itemID);
             });
-            
+
         },
-        submit_api(){
+        submit_api() {
             for (let item of this.itemID) {
                 // console.log(item);
                 const input_Date = document.getElementById('date_input' + item)
                 const newItem = {
                     dateInput: input_Date.value,
                     date_id: item,
-                    
+
                 };
 
                 // เพิ่ม Object ลงใน array
@@ -840,14 +915,14 @@ export default {
 
                 // console.log(newItem);
             }
-            console.log( this.activity_date_setting_for_axios_post);
+            console.log(this.activity_date_setting_for_axios_post);
             const date_time_start = document.querySelectorAll('[name="date_time_start[]"]');
-           
 
-            date_time_start.forEach(function(e){
+
+            date_time_start.forEach(function (e) {
                 const time_start_obj = {
-                    date_id:e.dataset.id,
-                    time_start:e.value
+                    date_id: e.dataset.id,
+                    time_start: e.value
                 };
 
                 this.date_time_start_for_axios.push(time_start_obj);
@@ -857,12 +932,12 @@ export default {
             console.log(this.date_time_start_for_axios)
 
             const date_time_expried = document.querySelectorAll('[name="date_time_expried[]"]');
-           
 
-            date_time_expried.forEach(function(e){
+
+            date_time_expried.forEach(function (e) {
                 const time_expried_obj = {
-                    date_id:e.dataset.id,
-                    time_expried:e.value
+                    date_id: e.dataset.id,
+                    time_expried: e.value
                 };
 
                 this.date_time_expried_for_axios.push(time_expried_obj);
@@ -874,20 +949,36 @@ export default {
             //         console.log(round_index)
             //     })
             // });
-            var round_input = document.querySelectorAll('[name="round_input[]"]')
+            var round_input = document.querySelectorAll('[name="round_input[]"]');
             var round_input_array = [];
             
-            round_input.forEach(function(e){
+            round_input.forEach(function (e) {
+
                 var round_and_date_id = {
-                    date_id:e.dataset.id,
-                    round:e.value,
-                    
-                    
+                    date_id: e.dataset.id,
+                    round: e.value,
+
                 }
                 round_input_array.push(round_and_date_id)
             });
             console.log(round_input_array);
 
+            var round_input2 = document.querySelectorAll('[name="round_input2[]"]');
+            var round_input2_array = [];
+
+            round_input2.forEach(function (e) {
+             const x = document.getElementById('timeEnd'+e.dataset.id+e.dataset.id2);
+             const y = document.getElementById('timeStart_input'+e.dataset.id);
+             
+                var round_and_date_id2 = {
+                    date_id: e.dataset.id,
+                    round: (e.value === '0') ? y.value: e.value,
+                    round_end: x.value,
+
+                }
+                round_input2_array.push(round_and_date_id2)
+            });
+            console.log(round_input2_array);
             // console.log(round_input_array)
             // console.log(this.round_reset_boolean_for_update)
 
@@ -900,26 +991,27 @@ export default {
             //     )
 
             axios.post('/api/activity/edit-all',
-                
-                    {   
-                        activity_all_setting:{
-                            activity_data:this.activity_data,
-                            date:this.activity_date_setting_for_axios_post,
-                            round:round_input_array,
-                            check_round_reset:this.select_round_check_for_date_id,
-                            date_time_start:this.date_time_start_for_axios,
-                            date_time_expried:this.date_time_expried_for_axios,
-                            round_reset:this.round_reset_boolean
-                        }
-                    }   
-                
+
+                {
+                    activity_all_setting: {
+                        activity_data: this.activity_data,
+                        date: this.activity_date_setting_for_axios_post,
+                        round: round_input_array,
+                        check_round_reset: this.select_round_check_for_date_id,
+                        date_time_start: this.date_time_start_for_axios,
+                        date_time_expried: this.date_time_expried_for_axios,
+                        round_reset: this.round_reset_boolean
+                    }
+                }
+
             );
-            this.$swal({
-                title:"แก้ไขสำเร็จ"
-            }).then(()=>{
-                window.location.href = "/activity/day-chcker-list/dashboard/" + this.activity_id;
-            })
+            // this.$swal({
+            //     title: "แก้ไขสำเร็จ"
+            // }).then(() => {
+            //     window.location.href = "/activity/day-chcker-list/dashboard/" + this.activity_id;
+            // })
         },
+
     },
 
 }
