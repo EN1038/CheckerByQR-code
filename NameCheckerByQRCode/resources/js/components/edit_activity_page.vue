@@ -308,6 +308,7 @@ export default {
             optionsArray: [],
             idforselecvalues: null,
             selectOptionsRound: null,
+            selectedValuesOfRound:[],
             counter: 0,
             itemID: [],
             itemOOP: [{
@@ -852,20 +853,20 @@ export default {
                     boxInput.value = 'จะเริ่มเช็คชื่อเมื่อเวลา : ' + timeSelect.value + ' - ' + timeDuration.value;
                 }
 
-                // const selectedOption = event.target.value;
-                // // ตรวจสอบว่าค่าที่เลือกมีอยู่ใน selectedValues หรือไม่
-                // if (this.selectedValuesOfRound.includes(selectedOption)) {
-                //     // หากมีให้แสดงข้อความเตือนหรือป้องกันการเลือกได้ตามต้องการ
-                //     alert('คุณเลือกค่าที่ซ้ำกัน กรุณาเลือกค่าอื่น');
-                //     event.target.value = '0';
-                //     event.target.classList.remove('revese-fake-disable')
-                //     event.target.classList.add('fake-disable')
-                //     const editInputBox = document.getElementById('Boxinput' + id + idsub);
-                //     editInputBox.value = '';
-                // } else {
-                //     // หากไม่มีให้เพิ่มค่าที่เลือกเข้าไปใน selectedValues
-                //     this.selectedValuesOfRound[idsub] = selectedOption;
-                // }
+                const selectedOption = event.target.value;
+                // ตรวจสอบว่าค่าที่เลือกมีอยู่ใน selectedValues หรือไม่
+                if (this.selectedValuesOfRound.includes(selectedOption)) {
+                    // หากมีให้แสดงข้อความเตือนหรือป้องกันการเลือกได้ตามต้องการ
+                    alert('คุณเลือกค่าที่ซ้ำกัน กรุณาเลือกค่าอื่น');
+                    event.target.value = '0';
+                    event.target.classList.remove('revese-fake-disable')
+                    event.target.classList.add('fake-disable')
+                    const editInputBox = document.getElementById('Boxinput' + id + idsub);
+                    editInputBox.value = '';
+                } else {
+                    // หากไม่มีให้เพิ่มค่าที่เลือกเข้าไปใน selectedValues
+                    this.selectedValuesOfRound[idsub] = selectedOption;
+                }
 
             }
         },
