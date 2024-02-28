@@ -33,7 +33,7 @@
                         <div class="col w-100">
                             <label class="form-label fw-bold fs-4">ชื่อกิจกรรม</label>
                             <input type="text" name="activity_name" class="form-control rounded-4 text-center fs-5 py-2 py-sm-3 mb-4" placeholder="ชื่อกิจกรรม">
-                            <a class="btn btn-success rounded-5 my-3 w-100 fs-5 py-2 py-sm-3"><i class="fa-solid fa-calendar-plus"></i> สร้าง</a>
+                            <button class="btn btn-success rounded-5 my-3 w-100 fs-5 py-2 py-sm-3"><i class="fa-solid fa-calendar-plus"></i> สร้าง</ิ>
                         </div>
                     </div>
                 </form>
@@ -46,5 +46,5 @@
         </ul>
         </div>
         @endif
-        
+
 @endsection

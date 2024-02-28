@@ -227,7 +227,7 @@
                                         </div>
                                     </div>
                                     <div class="d-none" :id="'divShowTimeToUserII' + item.id">
-                                        
+
                                             <!-- <div  :id="'div_row' + item.id"
                                                 class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center">
                                                 <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
@@ -257,14 +257,14 @@
                                                         :id="'timeEnd' + item.id + index" value="zzxxz">
                                                 </div>
                                             </div> -->
-                                        
-                                    </div>          
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         {{ this.disable_logined(item.id) }}
                         {{ this.mix_value(item.id) }}
-                        
+
                     </div>
 
                 </div>
@@ -275,7 +275,7 @@
 
                         <button type="submit" class="btn-submit-setting " id="submit" @click="submit_api()"><i
                                 class="fa-solid fa-cloud-arrow-up"></i> บันทึกการตั้งค่า</button>
-                    
+
                     </div>
                 </div>
 
@@ -283,7 +283,7 @@
         </div>
     </div>
 </template>
- 
+
 <script>
 
 import axios from 'axios';
@@ -559,12 +559,12 @@ export default {
         showSelectRound(event) {
             this.round_reset_boolean == true;
             let select_round_check_for_date_id = document.querySelector('[name="select_round_check"]');
-          
+
             let round_reset_boolean = {
                 date_id: select_round_check_for_date_id.dataset.id,
                 round_reset: true
             };
-           
+
 
             let isDateIdExist = Array.from(this.select_round_check_for_date_id).some(item => item.date_id === round_reset_boolean.date_id);
 
@@ -599,11 +599,11 @@ export default {
         createSelectOfRound(id, round){
             console.log('id : '+id+' round : '+round);
             const targetDiv = document.getElementById('divShowTimeToUserII' + id);
-            
+
             while (targetDiv.firstChild) {
                 targetDiv.removeChild(targetDiv.firstChild);
             }
-            
+
 
             for(var i = 0; i < round; i++){
                 const createDiv = document.createElement('div');
@@ -636,12 +636,12 @@ export default {
 
                     this.optionsArray.forEach(function(option) {
                         const createOption = document.createElement('option');
-                        createOption.value = option.id === '0' ? '0' : option.time; 
+                        createOption.value = option.id === '0' ? '0' : option.time;
                         createOption.textContent = option.id === '0' ? option.time : 'หลังเวลา : ' + option.time +'นาที';
                         createOption.hidden = option.id === '0';
                         createSelect.appendChild(createOption);
                     });
-                
+
                 const div_space = document.createElement('div');
                 div_space.id = 'divSpace' + id;
                 div_space.classList.add('col-12' ,'col-lg-6'  ,'d-flex' ,'my-2' ,'ms-0' ,'ms-lg-3' ,'justify-content-center');
@@ -896,7 +896,7 @@ export default {
                 if (!this.itemID.includes(id)) {
                     this.itemID.push(id);
                 }
-                console.log(this.itemID);
+
             });
 
         },
@@ -949,37 +949,29 @@ export default {
             //         console.log(round_index)
             //     })
             // });
-            var round_input = document.querySelectorAll('[name="round_input[]"]');
-            var round_input_array = [];
-            
-            round_input.forEach(function (e) {
 
-                var round_and_date_id = {
-                    date_id: e.dataset.id,
-                    round: e.value,
-
-                }
-                round_input_array.push(round_and_date_id)
-            });
-            console.log(round_input_array);
 
             var round_input2 = document.querySelectorAll('[name="round_input2[]"]');
             var round_input2_array = [];
 
             round_input2.forEach(function (e) {
              const x = document.getElementById('timeEnd'+e.dataset.id+e.dataset.id2);
+             const z = document.getElementById('timeDuration'+e.dataset.id+e.dataset.id2);
+
              const y = document.getElementById('timeStart_input'+e.dataset.id);
-             
+
+
                 var round_and_date_id2 = {
                     date_id: e.dataset.id,
-                    round: (e.value === '0') ? y.value: e.value,
+                    round_start: (e.value === '0') ? y.value: e.value,
+                    round_expried: z.value,
                     round_end: x.value,
 
                 }
                 round_input2_array.push(round_and_date_id2)
             });
-            console.log(round_input2_array);
-            // console.log(round_input_array)
+
+            console.log(round_input2_array)
             // console.log(this.round_reset_boolean_for_update)
 
             // นำ array ที่มี Object ทั้งหมดไปเก็บใน this.itemOOP
