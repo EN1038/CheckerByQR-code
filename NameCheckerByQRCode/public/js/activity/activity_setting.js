@@ -883,6 +883,7 @@ function createSelectOptions(event) {
         var select = document.createElement('select');
         select.setAttribute('class', 'col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start fake-disable');
         select.id = 'dynamicSelect' + counter + x;
+        select.dataset.idx = String(counter) + String(x);
 
         var div = document.createElement('div');
         div.setAttribute('class', 'col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center');
@@ -1089,9 +1090,10 @@ function checkMinDate(dateValue) {
 function showResult(get_Selects) {
     let getIdselects = get_Selects.id.match(/\d+/g);
     let lastDigit;
-    if (getIdselects && getIdselects[0]) {getIdselects
+    if (getIdselects && getIdselects[0]) {
+        getIdselects
         lastDigit = getIdselects[0].charAt(getIdselects[0].length - 1);
-       // ผลลัพธ์: "3"
+        // ผลลัพธ์: "3"
     }
     console.log(lastDigit);
     let get_idDivSpace = document.getElementById('divSpace' + getIdselects);
@@ -1179,31 +1181,31 @@ function showResult(get_Selects) {
         }
     } else {
         let get_roundDuration_timx = document.getElementById('roundDuration_timx' + (intgetIdselects - 1));
-        
+
         let get_roundStart_timex = document.getElementById('roundStart_timex' + (intgetIdselects));
         let roundDuration_times = document.createElement('input');
 
         let startTimeString = get_roundStart_timex.value; // รับค่าเวลาเป็น string
-let [hours, minutes] = startTimeString.split(':'); // แยกชั่วโมงและนาที
+        let [hours, minutes] = startTimeString.split(':'); // แยกชั่วโมงและนาที
 
-// แปลงเป็นตัวเลข
-hours = parseInt(hours, 10);
-minutes = parseInt(minutes, 10);
+        // แปลงเป็นตัวเลข
+        hours = parseInt(hours, 10);
+        minutes = parseInt(minutes, 10);
 
-// สร้าง Date object จากวันที่ปัจจุบันและเวลาที่ได้
-// คำนวณเวลาหลังจากลบ 1 นาที
-let totalMinutes = hours * 60 + minutes - 1; // คำนวณเป็นนาทีทั้งหมดแล้วลบ 1 นาที
-let newHours = Math.floor(totalMinutes / 60); // หาชั่วโมงใหม่
-let newMinutes = totalMinutes % 60; // หานาทีใหม่
-// แสดงเวลาหลังจากลบ 1 นาที
-// console.log("เวลาหลังจากลบ 1 นาที:", `${newHours}:${newMinutes.toString().padStart(2, '0')}`);
+        // สร้าง Date object จากวันที่ปัจจุบันและเวลาที่ได้
+        // คำนวณเวลาหลังจากลบ 1 นาที
+        let totalMinutes = hours * 60 + minutes - 1; // คำนวณเป็นนาทีทั้งหมดแล้วลบ 1 นาที
+        let newHours = Math.floor(totalMinutes / 60); // หาชั่วโมงใหม่
+        let newMinutes = totalMinutes % 60; // หานาทีใหม่
+        // แสดงเวลาหลังจากลบ 1 นาที
+        // console.log("เวลาหลังจากลบ 1 นาที:", `${newHours}:${newMinutes.toString().padStart(2, '0')}`);
 
-let timeminus1min = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
+        let timeminus1min = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
         get_roundDuration_timx.value = timeminus1min;
         roundDuration_times.classList.add('d-none');
         roundDuration_times.value = get_valueTimeEnd;
         roundDuration_times.id = 'roundDuration_timx' + getIdselects;
-        roundDuration_times.name =`activity[date_add][date_input${counter-1}][round][round${lastDigit}][duration_round_end]`;
+        roundDuration_times.name = `activity[date_add][date_input${counter-1}][round][round${lastDigit}][duration_round_end]`;
         get_idDivSpace.appendChild(roundDuration_times);
         let get_roundDuration = document.getElementById('roundDuration_timx' + (intgetIdselects + 1));
         if (get_roundDuration) {
@@ -1217,18 +1219,20 @@ let timeminus1min = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
             get_idDivSpaceofget_roundDuration.appendChild(roundDuration_time);
         }
     }
-    
+
 }
 
 let selectedOptions = {};
 
 function disableOptionsResult(selectElement) {
+    const lava = selectElement;
     const selectedOption = selectElement.value;
-
+    const output = document.getElementById('Boxinput' + lava.dataset.idx);
     // ตรวจสอบว่า option ได้ถูกเลือกไว้แล้วหรือไม่
     if (selectedOptions[selectedOption]) {
-        // alert("Option already selected in another select!");
-        selectElement.value = ''; // ล้างการเลือก
+        alert("โปรดเลือกเวลาอื่น เพื่อไม่ให้ซ้ำกับช่องอื่น!");
+        selectElement.value = 'xx'; // ล้างการเลือก
+        output.value = 'โปรดเลือกเวลาอื่น เพื่อไม่ให้ซ้ำกับช่องอื่น';
     } else {
         const previousValue = Object.keys(selectedOptions).find(
             key => selectedOptions[key] === selectElement
@@ -1243,7 +1247,7 @@ function disableOptionsResult(selectElement) {
     }
 
     // อัปเดตสถานะของ options ในทุกช่อง select
-    updateOptionsAvailability();
+    // updateOptionsAvailability();
 }
 
 function updateOptionsAvailability() {
