@@ -320,7 +320,8 @@ export default {
             date_time_start_for_axios: [],
             date_time_expried_for_axios: [],
             select_round_check_for_date_id: [],
-            round_reset_boolean: false
+            round_reset_boolean: false,
+            round_array_for_new_round:[]
 
 
         }
@@ -558,26 +559,26 @@ export default {
         },
 
         showSelectRound(event) {
-            this.round_reset_boolean == true;
-            let select_round_check_for_date_id = document.querySelector('[name="select_round_check"]');
+            this.round_reset_boolean = true;
+            // let select_round_check_for_date_id = document.querySelector('[name="select_round_check"]');
 
-            let round_reset_boolean = {
-                date_id: select_round_check_for_date_id.dataset.id,
-                round_reset: true
-            };
-
-
-            let isDateIdExist = Array.from(this.select_round_check_for_date_id).some(item => item.date_id === round_reset_boolean.date_id);
+            // let round_reset_boolean = {
+            //     date_id: select_round_check_for_date_id.dataset.id,
+            //     round_reset: true
+            // };
 
 
-            if (!isDateIdExist) {
-                this.select_round_check_for_date_id.push(round_reset_boolean);
-            }
+            // let isDateIdExist = Array.from(this.select_round_check_for_date_id).some(item => item.date_id === round_reset_boolean.date_id);
 
 
 
+            //     this.select_round_check_for_date_id.push(round_reset_boolean);
 
-            console.log(this.select_round_check_for_date_id)
+
+
+
+
+            // console.log(this.select_round_check_for_date_id)
 
             const id = event.target.dataset.id;
             let divShowTimeToUsers = document.getElementById('divShowTimeToUser' + id);
@@ -962,6 +963,7 @@ export default {
              const y = document.getElementById('timeStart_input'+e.dataset.id);
 
 
+
                 var round_and_date_id2 = {
                     date_id: e.dataset.id,
                     round_start: (e.value === '0') ? y.value: e.value,
@@ -969,10 +971,10 @@ export default {
                     round_end: x.value,
 
                 }
-                round_input2_array.push(round_and_date_id2)
-            });
+               this.round_array_for_new_round.push(round_and_date_id2)
+            }.bind(this));
 
-            console.log(round_input2_array)
+            console.log(this.round_array_for_new_round);
             // console.log(this.round_reset_boolean_for_update)
 
             // นำ array ที่มี Object ทั้งหมดไปเก็บใน this.itemOOP
@@ -982,14 +984,16 @@ export default {
             // console.log(
             //     this.itemOOP
             //     )
+            console.log(this.round_reset_boolean);
 
             axios.post('/api/activity/edit-all',
 
                 {
                     activity_all_setting: {
+                        activity_id:this.activity_id,
                         activity_data: this.activity_data,
                         date: this.activity_date_setting_for_axios_post,
-                        round: round_input_array,
+                        round: this.round_array_for_new_round,
                         check_round_reset: this.select_round_check_for_date_id,
                         date_time_start: this.date_time_start_for_axios,
                         date_time_expried: this.date_time_expried_for_axios,
@@ -998,11 +1002,11 @@ export default {
                 }
 
             );
-            // this.$swal({
-            //     title: "แก้ไขสำเร็จ"
-            // }).then(() => {
-            //     window.location.href = "/activity/day-chcker-list/dashboard/" + this.activity_id;
-            // })
+            this.$swal({
+                title: "แก้ไขสำเร็จ"
+            }).then(() => {
+                window.location.href = "/activity/day-chcker-list/dashboard/" + this.activity_id;
+            });
         },
 
     },

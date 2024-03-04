@@ -254,7 +254,7 @@ class ActivityController extends Controller
         $round = activity_rounde_checker::where('activity_id', '=', $activity_id)->where('date_id', '=', $date_id)->get();
 
         $round = activity_rounde_checker::where('activity_id','=',$activity_id)->where('date_id','=',$date_id)->where('status','=','on')->get();
-        
+
         $date = activity_day_maker::where('id','=',$date_id)->first();
 
         return view('activity.daycheck.daycheck', compact('round','date'));
@@ -448,23 +448,25 @@ class ActivityController extends Controller
 
     public function activityEditAll(Request $request)
     {
-        
-        
+
+
         if ($request->has('activity_all_setting.date')) {
             $date = $request->input('activity_all_setting.date');
             $date_time_start = $request->input('activity_all_setting.date_time_start');
             $date_time_expried = $request->input('activity_all_setting.date_time_expried');
             $activity_detail = $request->input('activity_all_setting.activity_data');
 
+
+
             $activity_data_update = Activity::where('id','=',$activity_detail['id'])->update([
                 'activity_description' => $activity_detail['activity_description']
             ]);
             // วนลูปเพื่อประมวลผลข้อมูล
             foreach ($date as $item) {
-                
+
                 $date_update = activity_day_maker::where('id','=',$item['date_id'])->update([
                     'date' => $item['dateInput'],
-                    
+
                     ]);
             }
 
@@ -479,6 +481,31 @@ class ActivityController extends Controller
                     'time_expried' => $item['time_expried']
                 ]);
             }
+
+            if($request->input('activity_all_setting.round_reset') == true){
+                $all_round_setting = $request->input('activity_all_setting.round');
+
+                foreach($all_round_setting as $item){
+                    $delele_old_round = activity_rounde_checker::where('date_id','=',$item['date_id'])->update([
+                        'status' => 'delete'
+                    ]);
+
+                }
+
+                foreach($all_round_setting as $item){
+                    $insert_new_round = activity_rounde_checker::create([
+                        'date_id' => $item['date_id'],
+                        'activity_id' => $request->input(('activity_all_setting.activity_id')),
+                        'rounde_name' => 'รอบ'.$item['round_start'].$item['round_expried'],
+                        'rounde_checker_time_start' => $item['round_start'],
+                        'rounde_checker_time_expried' => $item['round_expried'],
+                        'round_end_time' => $item['round_end'],
+                        'status' => 'on'
+
+                    ]);
+                }
+            }
+
             // if($request->input('activity_all_setting.round_reset') == true){
             //     foreach($request->input('activity_all_setting.check_round_reset') as $item){
             //         if($item['round_reset'] == true){
@@ -493,9 +520,9 @@ class ActivityController extends Controller
             //         }
             //     }
             // }
-                
-            
-        
+
+
+
             // ส่งคำตอบกลับไปยังผู้ใช้
          return response()->json(['message' => 'Array processed successfully'], 200);
         } else {
@@ -509,7 +536,7 @@ class ActivityController extends Controller
         //     $activity_update = Activity::where('id','=',$request->input('activity_edit_data.activity_id'))->update([
         //         'activity_description' => $request->input('activity_edit_data.detail')
         //     ]);
-            
+
         //     foreach( $request->input('activity_edit_data.date_add') as $date){
         //         $date_update = activity_day_maker::where('id','=',$date['date_id'])->update([
         //                         'date' => $date['date'],
@@ -536,7 +563,7 @@ class ActivityController extends Controller
         //             return \response()->json($date_update);
         //         }
         //     }
-            
+
         // }
 
         // foreach( $request-> date_data as $item){
@@ -553,5 +580,5 @@ class ActivityController extends Controller
 
         return view('activity.dashbord_stat.dashboard_stat',compact('activity_data'));
     }
-    
+
 }
