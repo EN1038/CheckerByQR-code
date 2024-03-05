@@ -52,7 +52,7 @@
 </head>
 
 <body>
-  
+
   <ul class="circles">
     <li></li>
     <li></li>
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-3">
-          
+
           <div class="col-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/694px-Unknown_person.jpg" alt="" class="user-img-scale rounded-3" id="profiles">
           </div>
@@ -86,7 +86,7 @@
               @if(Auth::check())
               <div class="col"><span >{{Auth::user()->name}}</span></div>
               <div class="col"><span >{{Auth::user()->student_id}}</span></div>
-              
+
               @else
               <div class="col"><span >USERNAME</span></div>
               <div class="col"><span >USERS_ID</span></div>
@@ -118,7 +118,7 @@
             </div>
           </div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="{{route('user_dashboard_stat',auth::user()->id)}}" class="text-decoration-none">
           <div class="hover-btn d-flex flex-row mb-1 rounded-3  align-items-center">
             <div class="col-2 fs-4 text-center">
               <i class="bi bi-pie-chart-fill"></i>
@@ -134,7 +134,7 @@
           <span class="text-title ">COSTOM</span>
         </div>
         <div class="text-decoration-none">
-          
+
           <a href="{{route('logout')}}" class="hover-btn-logout d-flex flex-row rounded-3  align-items-center">
               <div class="col-2 fs-4 text-center">
                 <i class="bi bi-box-arrow-left"></i>
@@ -169,61 +169,61 @@
         {{-- Start_sidenav --}}
         <div class="row border-bottom ">
             <div class="d-none d-md-flex col-3 p-0 d-flex align-items-center">
-           
+
                 <div class=" text-end text-icon-toggle" id="openNavButton" onclick="toggleNav()" style="cursor: pointer;">
-                  <span class="scale-icon-nav " id="openNavIcon" onclick="openNav()"> 
-                    <i class="bi bi-caret-right-fill" ></i> 
+                  <span class="scale-icon-nav " id="openNavIcon" onclick="openNav()">
+                    <i class="bi bi-caret-right-fill" ></i>
                   </span>
-                  <span class="scale-icon-nav " id="closeNavIcon" onclick="closeNav()"> 
-                    <i class="bi bi-caret-left-fill"></i>  
+                  <span class="scale-icon-nav " id="closeNavIcon" onclick="closeNav()">
+                    <i class="bi bi-caret-left-fill"></i>
                   </span>
                 </div>
                 <div class="col">
-                  <span class="text-success text-logo">QR-Code Checker</span> 
+                  <span class="text-success text-logo">QR-Code Checker</span>
                 </div>
-              
+
             </div>
             <div class="col ">
                 <div class=" d-none d-sm-flex justify-content-sm-center justify-content-md-end">
                     <div class="ms-3 py-4 nav-link">
                             @if(Auth::check())
-                            
-                            <a href="" 
+
+                            <a href=""
                             class=' mx-2'><i class="bi bi-plus-circle-fill "></i> สร้างกิจกรรม</a>
-                            
-                            <a href="{{route('show_activity_profile')}}" 
+
+                            <a href="{{route('show_activity_profile')}}"
                             class=' mx-2'><i class="bi bi-clipboard2-check-fill"></i> เช็คกิจกรรม</a>
-                            
-                            <a href="" 
+
+                            <a href=""
                             class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a>
-                            
+
                             <a href="{{route('logout')}}"
                             class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
                             @else
-                            
+
                             <a href="{{route('login_form')}}"
                     class=" mx-3 "><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                            
+
                             <a href="{{route('register_form')}}"
                             class=" mx-2 "><i class="fa-solid fa-circle-up"></i> Register</a>
                             @endif
                     </div>
-                    
+
                 </div>
                 <div class="list-nav-sidebar d-flex d-sm-none justify-content-between ms-3 py-sm-4 ">
-                  <span class="text-success fw-bold">QR-Code Checker</span> 
+                  <span class="text-success fw-bold">QR-Code Checker</span>
                   <div class="dropdown">
                   <button class="dropdown-btn"><i class="fa-solid fa-bars fs-4 "></i></button>
                   <div class="dropdown-content">
                     @if(Auth::check())
 
-                    <a href="" 
+                    <a href=""
                     class=' mx-2 '><i class="bi bi-plus-circle-fill "></i> สร้างกิจกรรม</a>
-                    
-                    <a href="{{route('show_activity_profile')}}" 
+
+                    <a href="{{route('show_activity_profile')}}"
                     class=' mx-2'><i class="bi bi-clipboard2-check-fill"></i> เช็คกิจกรรม</a>
 
-                    <a href="" 
+                    <a href=""
                     class=' mx-2'><i class="bi bi-pie-chart-fill"></i> ดูผลสถิติ</a>
                     <a href="{{route('logout')}}"
                     class=" mx-2 "><i class="bi bi-box-arrow-left"></i> Logout</a>
@@ -254,7 +254,7 @@
         {{-- End_Footer --}}
     </div>
     {{-- End_main --}}
-    
+
     {{-- Script --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
@@ -265,13 +265,13 @@
     <script src="{{asset('js/scripts.js')}}"></script>
     <script src="{{asset('js/activity/box_page.js')}}"></script>
     <script src="{{asset('js/dayCheck/round_edit.js')}}"></script>
-    
+
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
     integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
     crossorigin="anonymous"></script> --}}
     <!-- ICONS -->
-    
+
     {{-- End_Script --}}
 </body>
 

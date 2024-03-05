@@ -47,9 +47,9 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 ////////////////////HOME////////////////////////////////
 Route::get('make-activity-form', [HomeController::class, 'showMakeActivityFormPage'])->name('show_make_activity_form_page')->middleware('CheckLogin');
 Route::post('make-activity-post', [HomeController::class, 'makeActivity'])->name('make_activity_post');
+Route::get('dashboard-stat/{id}',[HomeController::class,'showUserDashboardStat'])->name('user_dashboard_stat');
 
-
-// activity 
+// activity
 Route::get('activity-box/{id}', [HomeController::class, 'showActivityBoxPage'])->name('show_activity_box');
 Route::get('activity-profile-page', [HomeController::class, 'showActivityProfile'])->name('show_activity_profile');
 Route::get('activity-dashboard/{id}', [HomeController::class, 'showActivityDashboard'])->name('show_activity_dashboard');
