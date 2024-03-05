@@ -897,6 +897,14 @@ function createSelectOptions(event) {
         optionTitle.text = 'หลังเวลา';
         select.appendChild(optionTitle);
 
+        var optionError = document.createElement('option');
+        optionError.disabled = true;
+        optionError.selected = true;
+        optionError.hidden = true;
+        optionError.value = 'zz';
+        optionError.text = 'โปรดเลือกเวลาอื่น';
+        select.appendChild(optionError);
+
 
         if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
             // console.log('Option ที่ถูกเลือก: ' + time_check);
@@ -1231,9 +1239,12 @@ function disableOptionsResult(selectElement) {
     // ตรวจสอบว่า option ได้ถูกเลือกไว้แล้วหรือไม่
     if (selectedOptions[selectedOption]) {
         alert("โปรดเลือกเวลาอื่น เพื่อไม่ให้ซ้ำกับช่องอื่น!");
-        selectElement.value = 'xx'; // ล้างการเลือก
+        selectElement.value = 'zz'; // ล้างการเลือก
+        selectElement.classList.add('border-danger');
         output.value = 'โปรดเลือกเวลาอื่น เพื่อไม่ให้ซ้ำกับช่องอื่น';
+        output.classList.add('text-danger');
     } else {
+        selectElement.classList.remove('border-danger');
         const previousValue = Object.keys(selectedOptions).find(
             key => selectedOptions[key] === selectElement
         );
