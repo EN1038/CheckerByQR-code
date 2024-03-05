@@ -4,9 +4,9 @@
     <div>{{ activity_data.user_id }}</div>
     <div>{{ activity_data.activity_description }}</div>
     <div>{{ activity_data.status }}</div>
-    <div>{{ activity_settin.list_of_name_mode_id }}</div>
+    <div>{{ activity_settin.list_of_name_mode_id }}</div> -->
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col mb-3">
             <span class="btn btn-success">วัน</span>
             <div v-for="date in date_data">
@@ -37,8 +37,8 @@
 
                 <div class="mb-3 mt-4">
                     <label class="label-form fs-5">รายละเอียดกิจกรรม <i class="fa-regular fa-message"></i></label>
-                    <textarea class="form-control rounded-4" name="activity[detail]" id="activity_detail" cols="30" rows="5"
-                        v-model="activity_data.activity_description">
+                    <textarea class="form-control rounded-4" name="activity[detail]" id="activity_detail" cols="30"
+                        rows="5" v-model="activity_data.activity_description">
 
 
                     </textarea>
@@ -54,15 +54,15 @@
                         class="col d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-center justify-content-lg-start pt-3">
 
                         <div class="form-check col-12 col-lg-3 ps-4 ps-lg-5">
-                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" v-model="selectedOption"
-                                value="1" ref="haveList">
+                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio"
+                                v-model="selectedOption" value="1" ref="haveList">
                             <label class="form-check-label fs-5" for="radiosOSHaveData">
                                 มีรายชื่อ
                             </label>
                         </div>
                         <div class="form-check col-12 col-lg-3">
-                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio" v-model="selectedOption"
-                                value="2" ref="no_haveList">
+                            <input class="form-check-input fs-5 chooseModeTypeDatasOS" type="radio"
+                                v-model="selectedOption" value="2" ref="no_haveList">
                             <label class="form-check-label fs-5" for="radiosOSnoHaveData">
                                 ไม่มีรายชื่อ
                             </label>
@@ -77,8 +77,8 @@
 
                         <div class="my-3">
                             <label for="formFileOS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
-                            <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="" name="excel" value=""
-                                accept=".xlsx,xls">
+                            <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="" name="excel"
+                                value="" accept=".xlsx,xls">
                             <div id="divFileOS" class="ms-4"></div>
                             <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
                         </div>
@@ -141,14 +141,14 @@
                                 <label class="form-label fs-5">ตั้งค่าการเช็คชื่อ : </label>
                                 <div class="form-check ms-4">
                                     <input class="form-check-input get_IdsetCheckName" type="radio" value="1"
-                                        :name="'activity' + item.id" :id="'setCheckName_day' + item.id" :data-id="item.id"
-                                        @click="show_divCheckName">
+                                        :name="'activity' + item.id" :id="'setCheckName_day' + item.id"
+                                        :data-id="item.id" @click="show_divCheckName">
                                     <label class="form-check-label fs-5" for="setCheckNameI0">เช็คชื่อทั้งวัน</label>
                                 </div>
                                 <div class="form-check ms-4">
                                     <input class="form-check-input get_IdsetCheckName" type="radio" value="2"
-                                        :name="'activity' + item.id" :id="'setCheckName_round' + item.id" :data-id="item.id"
-                                        @click="show_divCheckName">
+                                        :name="'activity' + item.id" :id="'setCheckName_round' + item.id"
+                                        :data-id="item.id" @click="show_divCheckName">
                                     <label class="form-check-label fs-5" for="setCheckNameII0">เช็คชื่อเป็นรอบ</label>
                                 </div>
                                 {{ auto_click_check(item.round_mode, item.id) }}
@@ -162,7 +162,8 @@
                                 <div
                                     class="d-flex flex-column-reverse flex-lg-row justify-content-start justify-content-lg-around align-itens-start align-items-lg-center w-100">
                                     <div class="col-12 col-lg-7 d-flex flex-column flex-lg-row">
-                                        <label class="form-label w-100 w-lg-25 fs-5" for="selectSetRoundCheck0">จำนวนรอบ :
+                                        <label class="form-label w-100 w-lg-25 fs-5" for="selectSetRoundCheck0">จำนวนรอบ
+                                            :
                                         </label>
                                         <select
                                             class="form-select h-50 w-100 w-lg-75 me-0 me-lg-3 get_IdselectRound fake-disable text-center text-danger"
@@ -206,15 +207,17 @@
                                         <div>Total Rounds: {{ item.round.length }}</div> -->
                                             <div class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center"
                                                 id="div_row0">
-                                                <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
-                                                    for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1
+                                                <label
+                                                    class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
+                                                    for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index +
+            1
                                                     }}</label>
                                                 <select
                                                     class="col form-select mb-3 mx-0 mx-lg-2 h-25 dynamicSelects d-flex justify-content-start revese-fake-disable"
-                                                    :id="'dynamicSelect' + item.id + index" disabled name="round_input[]"
-                                                    ref="round_input_test" :data-id="item.id">
+                                                    :id="'dynamicSelect' + item.id + index" disabled
+                                                    name="round_input[]" ref="round_input_test" :data-id="item.id">
                                                     <option :value="round.rounde_checker_time_start">หลังเวลา : {{
-                                                        formatTime(round.rounde_checker_time_start) }} นาที</option>
+            formatTime(round.rounde_checker_time_start) }} นาที</option>
                                                 </select>
                                                 <div class="col-12 col-lg-6  d-flex my-2 ms-0 ms-lg-3 justify-content-center"
                                                     :id="'divSpace' + item.id">
@@ -228,7 +231,7 @@
                                     </div>
                                     <div class="d-none" :id="'divShowTimeToUserII' + item.id">
 
-                                            <!-- <div  :id="'div_row' + item.id"
+                                        <!-- <div  :id="'div_row' + item.id"
                                                 class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-start align-items-start align-items-lg-center">
                                                 <label class="col-12 col-lg-2 form-label fw-bold text-green fs-6 fs-lg-5"
                                                     for="dynamicSelect0" id="dynamicLabel0">การเช็คชื่อรอบที่ {{ index + 1 }}</label>
@@ -308,7 +311,7 @@ export default {
             optionsArray: [],
             idforselecvalues: null,
             selectOptionsRound: null,
-            selectedValuesOfRound:[],
+            selectedValuesOfRound: [],
             counter: 0,
             itemID: [],
             itemOOP: [{
@@ -321,7 +324,7 @@ export default {
             date_time_expried_for_axios: [],
             select_round_check_for_date_id: [],
             round_reset_boolean: false,
-            round_array_for_new_round:[]
+            round_array_for_new_round: []
 
 
         }
@@ -446,6 +449,7 @@ export default {
         auto_click_check(value, id) {
             if (value) {
                 this.$nextTick(() => {
+                    console.log(value);
                     const checkName_days = document.getElementById('setCheckName_day' + id);
                     const checkName_rounds = document.getElementById('setCheckName_round' + id);
                     const div_Alldays = document.getElementById('CheckName_allDay' + id);
@@ -592,14 +596,14 @@ export default {
                 divShowTimeToUsersII.classList.remove('d-none');
                 const round = event.target.value;
                 this.createDetailOption(id);
-                this.createSelectOfRound(id,round);
+                this.createSelectOfRound(id, round);
             } else {
                 console.log('error,function showSelectRound')
             }
         },
 
-        createSelectOfRound(id, round){
-            console.log('id : '+id+' round : '+round);
+        createSelectOfRound(id, round) {
+            console.log('id : ' + id + ' round : ' + round);
             const targetDiv = document.getElementById('divShowTimeToUserII' + id);
 
             while (targetDiv.firstChild) {
@@ -607,51 +611,51 @@ export default {
             }
 
 
-            for(var i = 0; i < round; i++){
+            for (var i = 0; i < round; i++) {
                 const createDiv = document.createElement('div');
-                createDiv.id = 'div_row' + id+i;
+                createDiv.id = 'div_row' + id + i;
                 createDiv.classList.add('d-flex', 'flex-column', 'flex-lg-row', 'justify-content-center', 'justify-content-lg-start', 'align-items-start', 'align-items-lg-center');
                 targetDiv.appendChild(createDiv);
 
                 //ต้องเอาทุกตัวไปยัดในdivอันนี้ targetDivMain
-                const targetDivMain = document.getElementById('div_row' + id+i);
+                const targetDivMain = document.getElementById('div_row' + id + i);
 
                 const createBoxDiv = document.createElement('div');
-                createBoxDiv.classList.add('col-12' ,'col-lg-6'  ,'d-flex' ,'flex-column','flex-lg-row','my-2' ,'ms-0' ,'ms-lg-3' ,'justify-content-center');
-                createBoxDiv.id = 'boxDiv'+id+i;
+                createBoxDiv.classList.add('col-12', 'col-lg-6', 'd-flex', 'flex-column', 'flex-lg-row', 'my-2', 'ms-0', 'ms-lg-3', 'justify-content-center');
+                createBoxDiv.id = 'boxDiv' + id + i;
                 targetDivMain.appendChild(createBoxDiv);
 
                 const createLabel = document.createElement('label');
-                createLabel.classList.add('col-12', 'col-lg-3' ,'form-label' ,'fw-bold' ,'text-green' ,'fs-6' ,'fs-lg-5');
-                createLabel.id = 'label'+id;
-                createLabel.textContent = 'การเช็คชื่อรอบที่'+(i+1);
+                createLabel.classList.add('col-12', 'col-lg-3', 'form-label', 'fw-bold', 'text-green', 'fs-6', 'fs-lg-5');
+                createLabel.id = 'label' + id;
+                createLabel.textContent = 'การเช็คชื่อรอบที่' + (i + 1);
                 createBoxDiv.appendChild(createLabel);
 
                 const createSelect = document.createElement('select');
-                createSelect.classList.add('col' ,'form-select' ,'mb-3' ,'mx-0' ,'mx-lg-2' ,'h-25' ,'dynamicSelects' ,'d-flex' ,'justify-content-start' ,'fake-disable' ,'text-center');
-                createSelect.id = 'select'+id+i;
+                createSelect.classList.add('col', 'form-select', 'mb-3', 'mx-0', 'mx-lg-2', 'h-25', 'dynamicSelects', 'd-flex', 'justify-content-start', 'fake-disable', 'text-center');
+                createSelect.id = 'select' + id + i;
                 createSelect.dataset.id = id;
                 createSelect.dataset.id2 = i;
                 createSelect.name = 'round_input2[]';
                 createSelect.addEventListener('change', this.changValuehide);
                 createBoxDiv.appendChild(createSelect);
 
-                    this.optionsArray.forEach(function(option) {
-                        const createOption = document.createElement('option');
-                        createOption.value = option.id === '0' ? '0' : option.time;
-                        createOption.textContent = option.id === '0' ? option.time : 'หลังเวลา : ' + option.time +'นาที';
-                        createOption.hidden = option.id === '0';
-                        createSelect.appendChild(createOption);
-                    });
+                this.optionsArray.forEach(function (option) {
+                    const createOption = document.createElement('option');
+                    createOption.value = option.id === '0' ? '0' : option.time;
+                    createOption.textContent = option.id === '0' ? option.time : 'หลังเวลา : ' + option.time + 'นาที';
+                    createOption.hidden = option.id === '0';
+                    createSelect.appendChild(createOption);
+                });
 
                 const div_space = document.createElement('div');
                 div_space.id = 'divSpace' + id;
-                div_space.classList.add('col-12' ,'col-lg-6'  ,'d-flex' ,'my-2' ,'ms-0' ,'ms-lg-3' ,'justify-content-center');
+                div_space.classList.add('col-12', 'col-lg-6', 'd-flex', 'my-2', 'ms-0', 'ms-lg-3', 'justify-content-center');
                 targetDivMain.appendChild(div_space);
 
                 const createInput = document.createElement('input');
                 createInput.id = 'Boxinput' + id + i;
-                createInput.classList.add('my-1' ,'my-lg-4' ,'bg-disable' ,'w-100' ,'w-lg-75' ,'border-0' ,'fs-6' ,'fs-lg-5' ,'text-lg-center');
+                createInput.classList.add('my-1', 'my-lg-4', 'bg-disable', 'w-100', 'w-lg-75', 'border-0', 'fs-6', 'fs-lg-5', 'text-lg-center');
                 createInput.disabled = true;
                 div_space.appendChild(createInput);
 
@@ -720,16 +724,19 @@ export default {
 
             let [startHour, startMinute] = time_start.value.split(':').map(Number);
             let [endHour, endMinute] = time_end.value.split(':').map(Number);
-
+            // console.log([startHour, startMinute])
             let startTotalMinutes = startHour * 60 + startMinute; // เวลาเริ่มต้นในรูปแบบนาที
             let endTotalMinutes = endHour * 60 + endMinute; // เวลาสิ้นสุดในรูปแบบนาที
-
+            // console.log(startTotalMinutes);
+            // console.log(endTotalMinutes);
             let timeDifferenceMinutes = Math.abs(endTotalMinutes - startTotalMinutes); // ละยะห่างของเวลาในนาที
             let valueIdselectRound = document.getElementById('selectSetRoundCheck' + id).value;
+            // console.log(timeDifferenceMinutes);
+            // console.log(valueIdselectRound);
             for (var x = 0; x <= (valueIdselectRound - 1); x++) {
                 if (time_check === '15' || time_check === '30' || time_check === '45' || time_check === '60') {
                     const intervalOneHours = 60;
-                    const newTimesArray = [];
+                    const newTimesArray = [0];
 
                     for (let z = 0; z <= timeDifferenceMinutes; z += intervalOneHours) {
                         let [hours, minutes] = time_start.value.split(':').map(Number);
@@ -737,17 +744,19 @@ export default {
                         totalMinutes += z;
                         hours = Math.floor(totalMinutes / 60) % 24;
                         minutes = totalMinutes % 60;
-
+                        // console.log(hours)
+                        // console.log(minutes)
                         let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-
+                        // console.log(newTime)
                         // เก็บ newTime ในอาเรย์
                         newTimesArray.push(newTime);
+                        // console.log(newTimesArray)
                     }
 
                     // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
                     this.optionsArray = newTimesArray.map((newTime, index) => {
                         return {
-                            id: index === 0 ? "0" : `${index + 1}`,
+                            id: index === 0 ? "0" : `${index}`,
                             time: index === 0 ? "โปรดเลือกเวลา" : newTime,
                         };
                     });
@@ -772,13 +781,13 @@ export default {
                     // ในที่นี้, เราให้ optionsArray เป็น newTimesArray
                     this.optionsArray = newTimesArray.map((newTime, index) => {
                         return {
-                            id: index === 0 ? "0" : `${index + 1}`,
+                            id: index === 0 ? "0" : `${index}`,
                             time: index === 0 ? "โปรดเลือกเวลา" : newTime,
                         };
                     });
                 }
             }
-            console.log(JSON.stringify(this.optionsArray));
+            // console.log(JSON.stringify(this.optionsArray));
         },
         changValuehide(event) {
             const id = event.target.dataset.id;
@@ -795,20 +804,15 @@ export default {
 
             timeSelect.value = valueEvent;
 
-            var splitTime = valueEvent.split(":");
-            var hours = parseInt(splitTime[0]);
-            var mins = parseInt(splitTime[1]);
+            let [hour, minutes] = valueEvent.split(':').map(Number);
+            let totalMinutes = hour * 60 + minutes;
+            totalMinutes += parseInt(selectTimeCheck.value);
+            hours = Math.floor(totalMinutes / 60) % 24;
+            minutes = totalMinutes % 60;
 
-            mins += selectTimeCheck.value;
 
-            hours += Math.floor(mins / 60);
-            mins = mins % 60;
-
-            hours = hours % 24;
-
-            var resultHours = hours < 10 ? "0" + hours : hours;
-            var resultMins = mins < 10 ? "0" + mins : mins;
-            timeDuration.value = resultHours + ":" + resultMins;
+            let newTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+            timeDuration.value = newTime;
 
             if (timeEndofRound) {
                 var splitTime = timeSelect.value.split(":");
@@ -957,21 +961,21 @@ export default {
             var round_input2_array = [];
 
             round_input2.forEach(function (e) {
-             const x = document.getElementById('timeEnd'+e.dataset.id+e.dataset.id2);
-             const z = document.getElementById('timeDuration'+e.dataset.id+e.dataset.id2);
+                const x = document.getElementById('timeEnd' + e.dataset.id + e.dataset.id2);
+                const z = document.getElementById('timeDuration' + e.dataset.id + e.dataset.id2);
 
-             const y = document.getElementById('timeStart_input'+e.dataset.id);
+                const y = document.getElementById('timeStart_input' + e.dataset.id);
 
 
 
                 var round_and_date_id2 = {
                     date_id: e.dataset.id,
-                    round_start: (e.value === '0') ? y.value: e.value,
+                    round_start: (e.value === '0') ? y.value : e.value,
                     round_expried: z.value,
                     round_end: x.value,
 
                 }
-               this.round_array_for_new_round.push(round_and_date_id2)
+                this.round_array_for_new_round.push(round_and_date_id2)
             }.bind(this));
 
             console.log(this.round_array_for_new_round);
@@ -990,7 +994,7 @@ export default {
 
                 {
                     activity_all_setting: {
-                        activity_id:this.activity_id,
+                        activity_id: this.activity_id,
                         activity_data: this.activity_data,
                         date: this.activity_date_setting_for_axios_post,
                         round: this.round_array_for_new_round,
