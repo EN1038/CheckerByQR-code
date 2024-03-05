@@ -19,7 +19,7 @@
     <div class="col d-flex justify-content-end mb-3">
         <a class="btn btn-info me-3 text-light btn-delete" href="{{route('show_dashboard_stat',request()->route()->id)}}"><i class="fa-solid fa-chart-simple py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">สถิติ</span></a>
         <button data-bs-toggle="modal" type="button"  data-bs-target="#showQRcode" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">QR-Code</span></button>
-        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ลบกิจกรรม</span></a>
+        {{-- <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ลบกิจกรรม</span></a> --}}
         <a href="{{route('show_edit_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-3 me-sm-5 rounded-3 btn-setting " id="btnSetting"><i class="fa-solid fa-list-check py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ตั้งค่ากิจกรรม</span></a>
       </div>
     
