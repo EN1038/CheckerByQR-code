@@ -1,6 +1,5 @@
-
 let detailText = document.getElementById('detailText');
-  detailText.addEventListener('click', () => {
+detailText.addEventListener('click', () => {
     if (detailText.style.height === '41px' || detailText.style.height === '') {
         detailText.style.height = 'auto';
         detailText.style.whiteSpace = 'normal';
@@ -8,21 +7,21 @@ let detailText = document.getElementById('detailText');
         detailText.style.height = '41px';
         detailText.style.whiteSpace = 'nowrap';
     }
+});
+
+function deleteSelected() {
+    const checkboxes = document.querySelectorAll('.select-row:checked');
+    checkboxes.forEach(checkbox => {
+        checkbox.closest('tr').remove();
     });
+}
 
-    function deleteSelected() {
-        const checkboxes = document.querySelectorAll('.select-row:checked');
-        checkboxes.forEach(checkbox => {
-          checkbox.closest('tr').remove();
-        });
-      }
-    
 
-function clickTr(id){
-    const checkbox = document.getElementById('idInput'+id);
-    const idTr = document.getElementById('idTr'+id);
-    console.log("ไอดีของ <tr> คือ: "+checkbox.id);
-    console.log("ไอดีของ <tr> คือ: "+idTr.classList);
+function clickTr(id) {
+    const checkbox = document.getElementById('idInput' + id);
+    const idTr = document.getElementById('idTr' + id);
+    console.log("ไอดีของ <tr> คือ: " + checkbox.id);
+    console.log("ไอดีของ <tr> คือ: " + idTr.classList);
     idTr.classList.toggle('active');
     if (checkbox.checked === false) {
         checkbox.checked = true;
@@ -34,18 +33,20 @@ function clickTr(id){
 }
 
 
-function downloadQR(){
+function downloadQR() {
     let qr_code = document.getElementById('qr_code');
-     // สร้างองค์ประกอบ <a> เพื่อดาวน์โหลด
-     let link = document.createElement("a");
-     link.href = qr_code.src;
-     link.target = '_black';
-     link.download = "qr_code.png"; // ชื่อที่จะให้ไฟล์ QR Code ถูกบันทึกเป็น
- 
-     // ใส่องค์ประกอบลงใน DOM และคลิก
-     document.body.appendChild(link);
-     link.click();
- 
-     // ลบองค์ประกอบที่สร้างขึ้นหลังจากคลิก
-     document.body.removeChild(link);
+    // สร้างองค์ประกอบ <a> เพื่อดาวน์โหลด
+    let link = document.createElement("a");
+    link.href = qr_code.src;
+    link.target = '_black';
+    link.download = "qr_code.png"; // ชื่อที่จะให้ไฟล์ QR Code ถูกบันทึกเป็น
+
+    // ใส่องค์ประกอบลงใน DOM และคลิก
+    document.body.appendChild(link);
+    link.click();
+
+    // ลบองค์ประกอบที่สร้างขึ้นหลังจากคลิก
+    document.body.removeChild(link);
 }
+
+
