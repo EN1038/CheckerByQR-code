@@ -95,16 +95,30 @@
                 </div>
                 <div class="col my-4 d-none" id="div_HavedataOS">
                     <span class="fw-bold fs-5">ข้อมูลมีรายชื่อ</span>
-                    <i class="fa-solid fa-question fa-beat-fade fs-5 fw-bold show-imageHelper" id="imgHelpOS"></i>
-                    <div class="my-2 text-center d-none" id="img-helperOS">
+                    {{-- <i class="fa-solid fa-question fa-beat-fade fs-5 fw-bold " id="imgHelpOS"></i> --}}
+                    {{-- <div class="my-2 text-center d-none" id="img-helperOS">
                         <img src="{{asset('img/cat-ชานมไข่มุก.gif')}}" class="border border-danger">
-                    </div>
+                    </div> --}}
                       
                     <div class="my-3" >
                         <label for="formFileOS" class="form-label">โปรดเลือกไฟล์ Excel จากในเครื่อง</label>
                         <input class="form-control w-75 mb-2 ms-4 formFileList" type="file" id="" name="excel" value="" accept=".xlsx,xls">
                         <div id="divFileOS" class="ms-4"></div>
-                        <p>ตัวอย่างรูปแบบไฟล์Excel : <a href="#"> กดเพื่อดาวโหลดไฟล์ตัวอย่าง </a></p>
+                        <p>ตัวอย่างรูปแบบไฟล์Excel : <a id="linkForImage" onclick="showImage()" class="cursor"> กดเพื่อดูรูปไฟล์ตัวอย่าง </a></p>
+                        <style>
+                            .cursor{
+                                cursor: pointer;
+                            }
+                        </style>
+                        <div id="imageExample" class="d-none">
+                            <img src="{{asset('img/imageForExample.png')}}">
+                        </div>
+                        <script>
+                            function showImage() {
+                                const imageExample = document.getElementById('imageExample');
+                                imageExample.classList.toggle('d-none');
+                            }
+                        </script>
                     </div>
                 </div>
                 <div class="col my-4 d-none" id="noDiv_HavedataOS">
