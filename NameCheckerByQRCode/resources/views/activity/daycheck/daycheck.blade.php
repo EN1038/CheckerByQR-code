@@ -1,5 +1,9 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/th.js"></script> 
+
 <link rel="stylesheet" href="{{asset('css/style_dayCheck.css')}}">
 <div class="px-2 px-lg-5 pb-4 pt-3">
   <div class="row row-cols-1">
@@ -12,7 +16,7 @@
     
     <div class="col my-4">
       <div class="col-12 d-flex justify-content-center my-3">
-        <span class="fw-bold fs-2 text-success">วันที่ {{$date->date}}</span>
+        <span class="fw-bold fs-2 text-success" id="dateNaja">{{$date->date}}</span>
        </div>
 
       <table class="table text-center">
@@ -124,15 +128,15 @@
           </div>
           <div class="mb-3">
             <label for="" class="form-label">เวลาเริ่มการเช็ค</label>
-            <input type="time" id="round_start_time" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start" value="{{$row->rounde_checker_time_start}}" class="form-control border">
-            <label id="start_time_alert_text" style="font-size: 14px;"></label>
+            <input type="time" id="round_start_time{{$row->id}}" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start" value="{{$row->rounde_checker_time_start}}" class="form-control border">
+            <label id="start_time_alert_text{{$row->id}}" style="font-size: 14px;"></label>
           </div>
           <div class="mb-3">
             <label for="" class="form-label">เวลาจบการเช็คชื่อ</label>
-            <input type="time" name="round_time_end" id="round_end_time" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start"  value="{{$row->rounde_checker_time_expried}}" class="form-control border">
-            <label id="end_time_alert_text" ></label>
+            <input type="time" name="round_time_end" id="round_end_time{{$row->id}}" onchange="checkTimeEdit(`{{$row->id}}`,`{{request()->route()->date_id}}`)" name="round_time_start"  value="{{$row->rounde_checker_time_expried}}" class="form-control border">
+            <label id="end_time_alert_text{{$row->id}}" ></label>
           </div>
-          <button type="submit" class="btn btn-success ">Save changes</button>
+          <button type="submit" class="btn btn-success " id="button{{$row->id}}">Save changes</button>
         </form>
       </div>
       <div class="modal-footer">

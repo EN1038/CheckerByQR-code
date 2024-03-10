@@ -1,7 +1,8 @@
 @extends('layouts.layout_dashboardmodren')
 @section('content_body')
   <link rel="stylesheet" href="{{ asset('css/style_day_dashboard.css') }}">
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/th.js"></script> 
   
 
     <div class="d-flex flex-column">
@@ -18,7 +19,7 @@
     <div class="col d-flex justify-content-end mb-3">
         <a class="btn btn-info me-3 text-light btn-delete" href="{{route('show_dashboard_stat',request()->route()->id)}}"><i class="fa-solid fa-chart-simple py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">สถิติ</span></a>
         <button data-bs-toggle="modal" type="button"  data-bs-target="#showQRcode" class="btn btn-primary btn-delete me-3"><i class="fa-solid fa-qrcode py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">QR-Code</span></button>
-        <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ลบกิจกรรม</span></a>
+        {{-- <a onclick="deleteSelected()" class="btn btn-danger btn-delete me-3"><i class="fa-solid fa-trash-can py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ลบกิจกรรม</span></a> --}}
         <a href="{{route('show_edit_activity_dashboard',request()->route()->id)}}" class="btn btn-success me-3 me-sm-5 rounded-3 btn-setting " id="btnSetting"><i class="fa-solid fa-list-check py-2 px-1 py-sm-0 px-sm-0"></i> <span class="d-none d-sm-inline">ตั้งค่ากิจกรรม</span></a>
       </div>
     
@@ -45,11 +46,53 @@
                 @foreach ($activity_day_array as $row)
                     
                         <tr class="get_IdTr" id="idTr{{ $row->id }}" onclick="clickTr('{{ $row->id }}')">
-                            <td >วันที่ {{ $row->date }}</td>
+                            <td id="dateResponsive{{$row->id}}">{{ $row->date }}</td>
                             <td scope='row' data-label="CheckBox"><input type="checkbox" class="select-row form-check-input" id="idInput{{ $row->id }}"></td>
-                            <td scope="row" data-label="ID Date">{{ $row->id }}</td>
+                            <td scope="row" data-label="รหัสวันที่">{{ $row->id }}</td>
                             {{-- <td scope="row">{{ $row->form_name }}</td> --}}
-                            <td data-label="วันที่">{{ $row->date }}</td>
+                            <td data-label="วันที่" id="dateDashBoard{{$row->id}}">{{ $row->date }}</td>
+                            <script>
+                              chageDateToThai({{$row->id}})
+                              function chageDateToThai(id){
+                                  const date = document.getElementById('dateDashBoard'+id);
+                                  const dateResponsive = document.getElementById('dateResponsive'+id);
+                                  
+                                  const gregorianDate = moment(date.textContent);
+                                  const buddhistYear = gregorianDate.year() + 543; // เพิ่ม 543 เพื่อแปลงเป็น พ.ศ.
+                                  const thaiDate = `${gregorianDate.date()} ${gregorianDate.format('MMMM')} พ.ศ. ${buddhistYear}`;
+                                  date.textContent = thaiDate;
+
+                                  const dates = new Date(dateResponsive.textContent); // สร้างวัตถุ Date จากวันที่ที่ต้องการ
+                                  const dayOfWeek = dates.getDay();
+
+                                  let dayName;
+
+                                switch (dayOfWeek) {
+                                    case 0:
+                                        dayName = 'วันอาทิตย์';
+                                        break;
+                                    case 1:
+                                        dayName = 'วันจันทร์';
+                                        break;
+                                    case 2:
+                                        dayName = 'วันอังคาร';
+                                        break;
+                                    case 3:
+                                        dayName = 'วันพุธ';
+                                        break;
+                                    case 4:
+                                        dayName = 'วันพฤหัสบดี';
+                                        break;
+                                    case 5:
+                                        dayName = 'วันศุกร์';
+                                        break;
+                                    case 6:
+                                        dayName = 'วันเสาร์';
+                                        break;
+                                }
+                                  dateResponsive.textContent = dayName + 'ที่ ' +thaiDate;
+                              }
+                            </script>
                             <td data-label="เวลาเริ่ม">{{ $row->time_start }}</td>
                             <td data-label="เวลาจบ">{{ $row->time_expried }}</td>
                             <td data-label="ดูรอบเช็คชื่อ"><a href="{{route('show_round_check',['activity_id'=>request()->route()->id, 'date_id'=>$row->id])}}" class="btn btn-success btn-viewlistround" ><i class="fa-solid fa-play fa-rotate-270"></i> รอบเช็คชื่อ</a></td>
