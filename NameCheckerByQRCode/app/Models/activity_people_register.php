@@ -9,6 +9,8 @@ class activity_people_register extends Model
 {
     use HasFactory;
 
+    // protected $appends = ['status_text'];
+
     protected $fillable=[
         'name',
         'last_name',
@@ -20,8 +22,30 @@ class activity_people_register extends Model
         'ip_address'
     ];
 
-    public function getStatusTextAttribute()
+//     public function getStatusTextAttribute()
+// {
+//     $round = activity_rounde_checker::where('id', '=', $this->rounde_id)->first();
+
+//     if($this->create_at < $round->round_checker_time_expried){
+//         return "normal";
+//     }else{
+//         return "late";
+//     }
+// }
+
+
+    public function getStatusTextAttribute($people_register_id)
     {
-        return $this->status === 'late' ? 'เช็คชื่อสาย' : 'เช็คชื่อปกติ';
+        $people_register = activity_people_register::where('id','=',$people_register_id)->first();
+
+        $round = activity_rounde_checker::where('id','=',$people_register->rounde_id)->first();
+
+        if($people_register->create_at < $round->round_checker_time_expried){
+            return "normal";
+        }else{
+            return "late";
+        }
+
     }
 }
+

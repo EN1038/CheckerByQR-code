@@ -27,7 +27,7 @@ function displayPage(pageNumber, data) {
       }else{
         console.log('error')
       }
-  
+
   for (let i = startIndex; i < endIndex && i < data.length; i++) {
       const row = tableBody.insertRow();
       const titleResponsive = row.insertCell(0); //null
@@ -47,16 +47,25 @@ function displayPage(pageNumber, data) {
       let statusNormal;
       let statusLate;
       let statusOn;
+    console.log(data[i].id);
 
-      if(checkstatus === 'normal'){
+    fetch('/api/one-round-data/'+data[i].round_id)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(one_round_data => {
+    console.log(one_round_data)
+    if(data[i].created_at < one_round_data.rounde_checker_time_expried){
         statusNormal = 'เข้าเวลาปกติ';
-      }else if(checkstatus === 'late'){
+        console.log(data[i].created_at);
+    }else{
         statusLate = 'เข้าสาย';
-      }else if(checkstatus === 'on'){
-        statusOn = 'ชื่ออยู่ในระบบ';
-      }
+    }
 
-      if(statusNormal){
+    if(statusNormal){
         titleResponsive.textContent = 'สถานะ '+statusNormal;
         titleResponsive.classList.add('text-success');
       }else if(statusLate){
@@ -76,7 +85,7 @@ function displayPage(pageNumber, data) {
 
       namelasCell.textContent = data[i].last_name;
       namelasCell.dataset.label = 'นามสกุล';
-     
+
       dateCell.textContent = time;
       dateCell.dataset.label = 'เวลาที่เข้าเช็ค';
       statusCell.textContent = data[i].status;
@@ -93,6 +102,59 @@ function displayPage(pageNumber, data) {
         statusCell.textContent = 'Error';
       }
       statusCell.dataset.label = 'สถานะ';
+
+  })
+  .catch(error => {
+    console.error('There was a problem with your fetch operation:', error);
+  });
+
+
+    //   if(checkstatus === 'normal'){
+    //     statusNormal = 'เข้าเวลาปกติ';
+    //     // console.log(data[i].created_at);
+    //   }else if(checkstatus === 'late'){
+    //     statusLate = 'เข้าสาย';
+    //   }else if(checkstatus === 'on'){
+    //     statusOn = 'ชื่ออยู่ในระบบ';
+    //   }
+
+    //   if(statusNormal){
+    //     titleResponsive.textContent = 'สถานะ '+statusNormal;
+    //     titleResponsive.classList.add('text-success');
+    //   }else if(statusLate){
+    //     titleResponsive.textContent = 'สถานะ '+statusLate;
+    //     titleResponsive.classList.add('text-danger');
+    //   }else if(statusOn){
+    //     titleResponsive.textContent = 'สถานะ '+statusOn;
+    //     titleResponsive.classList.add('text-primary');
+    //   }else{
+    //     titleResponsive.textContent = 'Error';
+    //   }
+
+    //   idUserCell.textContent = data[i].student_id;
+    //   idUserCell.dataset.label = 'รหัส';
+    //   namefsCell.textContent = data[i].name;
+    //   namefsCell.dataset.label = 'ชื่อจริง';
+
+    //   namelasCell.textContent = data[i].last_name;
+    //   namelasCell.dataset.label = 'นามสกุล';
+
+    //   dateCell.textContent = time;
+    //   dateCell.dataset.label = 'เวลาที่เข้าเช็ค';
+    //   statusCell.textContent = data[i].status;
+    //   if(statusNormal){
+    //     statusCell.textContent = statusNormal;
+    //     statusCell.classList.add('text-success');
+    //   }else if(statusLate){
+    //     statusCell.textContent = statusLate;
+    //     statusCell.classList.add('text-danger');
+    //   }else if(statusOn){
+    //     statusCell.textContent = statusOn;
+    //     statusCell.classList.add('text-primay');
+    //   }else{
+    //     statusCell.textContent = 'Error';
+    //   }
+    //   statusCell.dataset.label = 'สถานะ';
       // console.log(data[i].created_at);
   }
 }
@@ -110,7 +172,7 @@ function getDataofRound(url) {
         if (data) {
             displayPage(1, data);
             updatePagination(data);
-            
+
         } else {
             console.error('Unable to fetch data. Please try again later.');
         }
@@ -262,7 +324,7 @@ document.addEventListener('click', function (event) {
         let get = event.target;
         // console.log('คุณคลิกที่องค์ประกอบที่มี id: ' + get);
         showDetail(get);
-       
+
     }
 })
 
@@ -300,7 +362,7 @@ function showDetail(get){
           .then(data => {
             if (data) {
               let table = document.getElementById('dataTable');
-              let thead = table.getElementsByTagName('thead')[0]; 
+              let thead = table.getElementsByTagName('thead')[0];
               let idUser_Cells = thead.getElementsByTagName('th')[0];
               let lastName_Cells = thead.getElementsByTagName('th')[2];
               idUser_Cells.classList.remove('d-none');
@@ -318,7 +380,7 @@ function showDetail(get){
     }else if(data.list_of_name_mode_id === '2'){
       console.log('zzzz')
       let table = document.getElementById('dataTable');
-              let thead = table.getElementsByTagName('thead')[0]; 
+              let thead = table.getElementsByTagName('thead')[0];
               let idUser_Cells = thead.getElementsByTagName('th')[0];
               let lastName_Cells = thead.getElementsByTagName('th')[2];
               idUser_Cells.classList.add('d-none');
@@ -326,7 +388,7 @@ function showDetail(get){
       let textApi = `/api/activity/people-name-register-data/${btn_detail_idactivity}/${btn_detail_iddate}/${btn_detail_id}`;
       getDataofRound(textApi);
 
-      
+
     }
   })
   .catch(error => {
@@ -335,7 +397,7 @@ function showDetail(get){
 
 
 
-  
+
 }
 
 // function showAndHide(){

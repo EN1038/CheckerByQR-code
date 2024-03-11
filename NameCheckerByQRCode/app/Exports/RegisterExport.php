@@ -23,7 +23,7 @@ class RegisterExport implements FromCollection, WithMapping
             $people->id,
             $people->name,
             $people->last_name,
-            $people->getStatusTextAttribute(),
+            $people->getStatusTextAttribute($people->id),
             Carbon::parse($people->creat_at)->format('Y-m-d H:i:s'),
             // Add other fields you need to export
         ];
@@ -36,5 +36,5 @@ class RegisterExport implements FromCollection, WithMapping
     }
 
     // WithMapping interface method to map the columns
-   
+
 }

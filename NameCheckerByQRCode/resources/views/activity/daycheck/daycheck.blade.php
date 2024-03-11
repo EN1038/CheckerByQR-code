@@ -2,18 +2,18 @@
 @section('content_body')
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/th.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/th.js"></script>
 
 <link rel="stylesheet" href="{{asset('css/style_dayCheck.css')}}">
 <div class="px-2 px-lg-5 pb-4 pt-3">
   <div class="row row-cols-1">
     <div class="row">
 
-      
 
-      
+
+
     </div>
-    
+
     <div class="col my-4">
       <div class="col-12 d-flex justify-content-center my-3">
         <span class="fw-bold fs-2 text-success" id="dateNaja">{{$date->date}}</span>
@@ -33,7 +33,7 @@
         </thead>
         <tbody>
             @foreach ($round as $row)
-            
+
             <tr>
                 <td>
                   <?php
@@ -59,21 +59,21 @@
                 <td data-label="เวลาเริ่มการเช็ค">{{$row->rounde_checker_time_start}}</td>
                 <td data-label="เวลาจบการเช็ค">{{$row->rounde_checker_time_expried}}</td>
                 <td data-label="จำนวนคนที่เช็คชื่อ">{{$row->CountPeopleRegister()}}</td>
-                
+
                 {{-- รอไอดีกิจกรรมใส่ใน data-set --}}
-                
+
                 <td data-label="รายละเอียด"><a href='#' class="btn btn-primary text-light getid" id="btn_detail{{$row->id}}" data-id="{{$row->id}}" data-iddate="{{$row->date_id}}" data-idactivity="{{$row->activity_id}}" >ดูข้อมูล</a></td>
            <td data-label="อื่นๆ">
             <a href="{{route('register_export',$row->id)}}" class="btn btn-success">Excel</a>
             <button class="btn btn-warning text-light"  data-bs-toggle="modal" data-bs-target="#round-edit{{$row->id}}">แก้ไข</button>
             <button class="btn btn-danger" onclick="confirmDelete(`{{route('delete_round',$row->id)}}`)" >ลบ</button>
-            
+
           </td>
-          
+
               </tr>
             @endforeach
-       
-       
+
+
         </tbody>
     </table>
     </div>
@@ -84,7 +84,7 @@
       <table id="dataTable" class="tableII text-center">
         <thead>
           <tr>
-            
+
             <th style="width: 25%" class="">รหัสประจำตัว</th>
             <th style="width: 25%">ชื่อจริง</th>
             <th style="width: 25%">นามสกุล</th>
@@ -94,7 +94,7 @@
           </tr>
         </thead>
         <tbody id="bodyTable">
-          <!-- Add your data here -->
+
         </tbody>
       </table>
       <div class="text-center bg-showSolution" id="bg-showSolution">
@@ -104,8 +104,8 @@
         <ul class="pagination" id="pagination"></ul>
       </div>
   </div>
-    
-  
+
+
 </div>
 
 <script src="{{asset('js/dayCheck/dayCheck.js')}}"></script>
@@ -182,10 +182,10 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
+
         </div>
       </div>
     </div>
   </div>
-  @endforeach  
+  @endforeach
 @endforeach --}}

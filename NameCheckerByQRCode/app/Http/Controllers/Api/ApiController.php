@@ -103,7 +103,7 @@ class ApiController extends Controller
          return ["Alert" => "error"];
       }
 
-      
+
   }
 
   public function activityAllSettingData($activity_id){
@@ -118,7 +118,7 @@ class ApiController extends Controller
       $date_info = $item;
 
       // Fetch the round data for the current date
-      $round = activity_rounde_checker::where('date_id','=',$item->id)->get();
+      $round = activity_rounde_checker::where('date_id','=',$item->id)->where('status','=','on')->get();
 
       // Include round data in date_info if found
       if ($round) {
@@ -139,6 +139,12 @@ class ApiController extends Controller
 public function roundData($date_id){
    $round_data = activity_rounde_checker::where('date_id','=',$date_id)->get();
    return response()->json($round_data);
+}
+
+public function oneRoundData($round_id){
+    $round_data = activity_rounde_checker::where('id','=',$round_id)->first();
+
+    return response()->json($round_data);
 }
 
 

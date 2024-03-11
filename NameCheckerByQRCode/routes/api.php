@@ -39,3 +39,5 @@ Route::post('activity/date/delete/{date_id}',[ApiController::class,'deleteDate']
 Route::post('activity/super-edit',[TestController::class,'superEdit'])->name('activity_super_edit');
 ///api edit all
 Route::post('activity/edit-all',[ActivityController::class,'activityEditAll'])->name('activity_edit_all');
+
+Route::get('one-round-data/{round_id}',[ApiController::class,'oneRoundData'])->name('one_round_data');
