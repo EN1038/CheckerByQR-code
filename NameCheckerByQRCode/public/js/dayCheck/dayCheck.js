@@ -47,7 +47,7 @@ function displayPage(pageNumber, data) {
       let statusNormal;
       let statusLate;
       let statusOn;
-    console.log(data[i].id);
+
 
     fetch('/api/one-round-data/'+data[i].round_id)
   .then(response => {
@@ -57,7 +57,7 @@ function displayPage(pageNumber, data) {
     return response.json();
   })
   .then(one_round_data => {
-    console.log(one_round_data)
+
     if(data[i].created_at < one_round_data.rounde_checker_time_expried){
         statusNormal = 'เข้าเวลาปกติ';
         console.log(data[i].created_at);
