@@ -13,10 +13,11 @@
 
 
     </div>
-
+    
     <div class="col my-4">
-      <div class="col-12 d-flex justify-content-center my-3">
-        <span class="fw-bold fs-2 text-success" id="dateNaja">{{$date->date}}</span>
+      <div class="col-12 d-flex flex-column justify-content-center align-items-center my-3">
+        <p class="fw-bold fs-1 text-success"><i class="fa-solid fa-clipboard"></i> กิจกรรมชื่อ {{$activity_data->activity_name}}</p>
+        <p class="fw-bold fs-2 text-success" id="dateNaja">{{$date->date}}</p>
        </div>
 
       <table class="table text-center">

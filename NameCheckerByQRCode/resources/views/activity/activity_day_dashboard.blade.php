@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="{{ asset('css/style_day_dashboard.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/th.js"></script> 
-  
+    
 
     <div class="d-flex flex-column">
         <p class="fs-4 fs-sm-3 fw-bold mx-0 mb-4 mt-5 text-center text-success"><i class="fa-solid fa-bars-staggered"></i> กิจกรรม {{$activity_data->activity_name}}</p>

@@ -58,10 +58,21 @@ function displayPage(pageNumber, data) {
   })
   .then(one_round_data => {
 
-    if(data[i].created_at < one_round_data.rounde_checker_time_expried){
+    var created_at_date = new Date(data[i].created_at);
+
+    // ดึงข้อมูลชั่วโมง นาที และวินาทีออกมา
+    var hours = created_at_date.getHours();
+    var minutes = created_at_date.getMinutes();
+    var seconds = created_at_date.getSeconds();
+    
+    var time_cal = (hours + ":" + minutes + ":" + seconds);
+    // console.log(hours + ":" + minutes + ":" + seconds);
+
+    if(time_cal < one_round_data.rounde_checker_time_expried){
         statusNormal = 'เข้าเวลาปกติ';
-        console.log(data[i].created_at);
+  
     }else{
+
         statusLate = 'เข้าสาย';
     }
 
@@ -351,7 +362,6 @@ function showDetail(get){
 
     if(data.list_of_name_mode_id === '1'){
       // console.log('/api/activity-people/v2')
-      console.log('xxxx')
           fetch('/api/activity-people/v2/'+btn_detail_idactivity)
           .then(response => {
             if (!response.ok) {
@@ -378,7 +388,7 @@ function showDetail(get){
           });
 
     }else if(data.list_of_name_mode_id === '2'){
-      console.log('zzzz')
+
       let table = document.getElementById('dataTable');
               let thead = table.getElementsByTagName('thead')[0];
               let idUser_Cells = thead.getElementsByTagName('th')[0];

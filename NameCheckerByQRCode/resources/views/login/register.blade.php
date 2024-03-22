@@ -37,7 +37,7 @@
       <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
         <div class="d-flex justify-content-center align-items-center w-75 w-xs-50">
             <div class="glassmorphism-body p-5">
-                <p class="fs-1 fw-bold text-primary text-center">สมัครเข้าใช้งานระบบ</p>
+                <p class="fs-1 fw-bold text-primary text-center">สมัครเข้าใช้งานระบบ Qr-Code Checker</p>
                 <div class="d-flex flex-column align-items-center justify-content-center">
                     <form action="{{route('register_post')}}" class="mb-3 w-100 w-xs-75" method="POST">
                         @csrf
@@ -73,6 +73,14 @@
                 
             </div>
         </div>
+         {{-- Footer --}}
+    <footer class=" container-fluid py-3 content-segment">
+        <div class="d-flex align-items-center justify-content-center small">
+            <div class="text-muted text-center">NSRU Nakhon Sawan Rajabhat University <br> CIT
+                NSRU All Rights Reserved</div>
+        </div>
+    </footer>
+    {{-- End_Footer --}}
       </div>
     
 </div>
