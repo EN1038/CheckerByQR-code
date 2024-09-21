@@ -12,6 +12,7 @@
  <li> Can search for each person's name in the activity. </li>
  <li> Login Auths NSRU core </li>
  <li> Responsive design </li>
+ <li> Statistical system </li>
 </ul>
 
 ## Technologies Used
