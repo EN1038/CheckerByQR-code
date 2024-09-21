@@ -13,6 +13,7 @@
  <li> Login Auths NSRU core </li>
  <li> Responsive design </li>
  <li> Statistical system </li>
+ <li> Navigation bar </li>
 </ul>
 
 ## Technologies Used
